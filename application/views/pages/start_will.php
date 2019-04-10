@@ -43,6 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <div class="container">
 	<div class="jumbotron ">
+    <form class="" action="<?php echo base_url(); ?>/Will_controller/personal_info_view" method="post">
 	<h1 class="display-3 text-center">Start Your Will Now</h1>
 	<div class="row text-center">
 		<div class="col-lg-4 ml-5 mt-3">
@@ -72,10 +73,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="row">
       <div class="btn-group btn-group-toggle" data-toggle="buttons">
       <label class="btn btn-primary btn-lg">
-      	<input type="radio" name="married" id="single" autocomplete="off" value="single"> Single
+      	<input type="radio" name="is_married" id="single" autocomplete="off" value="single"> Single
       </label>
       <label class="btn btn-primary btn-lg">
-      	<input type="radio" name="married" id="married" autocomplete="off" value="married"> Married
+      	<input type="radio" name="is_married" id="married" autocomplete="off" value="married"> Married
       </label>
       </div>
     </div>
@@ -93,27 +94,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="row">
 <div class="btn-group btn-group-toggle" data-toggle="buttons">
 <label class="btn btn-primary btn-lg">
-	<input type="radio" name="child" id="" autocomplete="off" value="1"> Yes
+	<input type="radio" name="is_have_child" id="" autocomplete="off" value="1"> Yes
 </label>
 <label class="btn btn-primary btn-lg">
-	<input type="radio" name="child" id="" autocomplete="off" value="0"> No child
+	<input type="radio" name="is_have_child" id="" autocomplete="off" value="0"> No child
 </label>
 </div>
 </div>
 </div>
-<div class="col-lg-4">
-
-</div>
+<div class="col-lg-4"></div>
 </div>
 <br><br>
 <div class="row float-right pb-5">
-
   <p class="lead ">
-    <a class="btn btn-primary btn-lg pl-5 pr-5" href="#" role="button">Next</a>
+    <button class="btn btn-primary btn-lg pl-5 pr-5" href="#" role="button">Next</button>
   </p>
 	<br><br>
 	</div>
 	<br><br>
+</form>
 </div>
 </div>
 <script>
