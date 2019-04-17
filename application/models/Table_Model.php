@@ -109,7 +109,6 @@
       return $result;
     }
 
-
     public function countGiftRows($will_id){
       $this->db->select('id');
       $this->db->from('tbl_other_gift');
@@ -122,6 +121,25 @@
     public function getAllGiftAjax($limit,$start,$order,$dir,$will_id){
       $this->db->select('*');
       $this->db->from('tbl_other_gift');
+      $this->db->where('will_id',$will_id);
+      $query = $this->db->get();
+      $result = $query->result();
+      return $result;
+    }
+
+
+    public function countWitnessRows($will_id){
+      $this->db->select('id');
+      $this->db->from('tbl_witness');
+      $this->db->where('will_id',$will_id);
+      $query = $this->db->get();
+      $num = $query->num_rows();
+      return $num;
+    }
+
+    public function getAllWitnessAjax($limit,$start,$order,$dir,$will_id){
+      $this->db->select('*');
+      $this->db->from('tbl_witness');
       $this->db->where('will_id',$will_id);
       $query = $this->db->get();
       $result = $query->result();

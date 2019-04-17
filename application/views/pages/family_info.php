@@ -182,11 +182,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </td></tr>
           </tbody>
         </table>
-
-
-
           <div class="row" id="f_member">
-
           </div>
           <!-- Family Memer List -->
       </div>
@@ -214,151 +210,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
 
-<script>
-$(document).ready(function(){
-  var will_id = $('#will_id').val();
-  // Fill up personal data on page load...
-  $.ajax({
-    data: { 'will_id' : will_id  },
-    type: "post",
-    url: "<?php echo base_url(); ?>/Will_controller/get_personal_info",
-    success: function (data){
-      var info = JSON.parse(data);
-      $('#lbl_name').text(info[0]['full_name']);
-      $('#lbl_mobile').text(info[0]['mobile_no']);
-      $('#lbl_email').text(info[0]['email']);
-      $('#lbl_address').text(info[0]['address']+', '+info[0]['city']+'-'+info[0]['pin_code']+', '+info[0]['state']+', '+info[0]['country']);
-      $('#lbl_occupation').text(info[0]['occupation']);
-      $('#lbl_aadhar').text(info[0]['aadhar_no']);
-      $('#lbl_pan').text(info[0]['pan_no']);
-    }
-  });
-
-  // get and fill up personal info list...
-  $('.table_personal_info').dataTable({
-			'bDestroy': true
-	}).fnDestroy(); // destroy table.
-
-  $('.table_personal_info').DataTable({
-    "bFilter" : false,
-    "bLengthChange": false,
-    "bPaginate": false,
-    "bInfo": false,
-	});
-
-  // get and fill up family member list...
-  $('.table_family_member').dataTable({
-			'bDestroy': true
-	}).fnDestroy(); // destroy table.
-
-  $('.table_family_member').DataTable({
-		"processing": true,
-		"serverSide": true,
-    "bFilter" : false,
-    "bLengthChange": false,
-    "bPaginate": false,
-    "bInfo": false,
-		"ajax":{
-			"url": "<?php echo base_url(); ?>Table_controller/family_member_list",
-			"dataType": "json",
-			"type": "POST",
-			"data":{ 'will_id' : will_id  }
-		},
-	});
-
-  // datepicker.. set condition depend on age... calculate age.. show/hide Guardian...
-  $('#family_person_dob').datepicker({
-    dateFormat: 'dd/mm/yy',//check change
-    changeMonth: true,
-    changeYear: true,
-    onSelect: function(dateText, inst) {
-      // Get Today date...
-      var today = new Date();
-      var dd = today.getDate();
-      var mm = today.getMonth() + 1; //January is 0!
-      var yyyy = today.getFullYear();
-      if (dd < 10) {
-        dd = '0' + dd;
-      }
-      if (mm < 10) {
-        mm = '0' + mm;
-      }
-      var today2 = dd + '/' + mm + '/' + yyyy;
-      // Get Today date end...
-      var birthdate2 = $(this).val();
-        var today = moment(today2,'DD/MM/YYYY');
-        var birthdate = moment(birthdate2,'DD/MM/YYYY');
-
-        var years = today.diff(birthdate, 'year');
-        birthdate.add(years, 'years');
-        var months = today.diff(birthdate, 'months');
-        birthdate.add(months, 'months');
-        //alert(years+' '+months);
-        var title = $('#relationship').val();
-        $('#age_div').show();
-        $('#family_person_age').val(years+' Year '+months+' Month');
-        if((title == 'Son' || title == 'Daughter') && years < 18){
-          $('#guardian_div').show();
-          $('#is_minar').val('1');
-
-        }
-        else{
-          $('#guardian_name').val('');
-          $('#guardian_address').val('');
-          $('#guardian_div').hide();
-        }
-    }
-  });
-
-	//	Save/Add Family Member
-	$('#add_family_member').click(function(){
-		var form_data = $('#family_member_form').serialize();
-  	$.ajax({
-  		data: form_data,
-  		type: "post",
-  		url: "<?php echo base_url(); ?>/Will_controller/save_family_member",
-  		success: function (data){
-        $('.clear').val('');
-        $('.clear_dr').val(0);
-        $('#guardian_div').hide();
-
-
-
-        var will_id = $('#will_id').val();
-        $('.table_family_member').dataTable({
-      			'bDestroy': true
-      	}).fnDestroy(); // destroy table.
-
-        $('.table_family_member').DataTable({
-  				"processing": true,
-  				"serverSide": true,
-          "bFilter" : false,
-          "bLengthChange": false,
-          "bPaginate": false,
-          "bInfo": false,
-  				"ajax":{
-  					 "url": "<?php echo base_url(); ?>Table_controller/family_member_list",
-  					 "dataType": "json",
-  					 "type": "POST",
-  					 "data":{ 'will_id' : will_id  }
-  				},
-      	});
-
-			}
-		});
-	});
-
-	//Update Personal data...
-	$('#destroy').click(function(){
-		$.ajax({
-			type: "post",
-			url: "<?php echo base_url(); ?>/Will_controller/destroy_session",
-			success: function (data){
-				location.reload();
-			}
-		});
-	});
-});
-</script>
+<!-- Custome Javascript file -->
+<script type="text/javascript">var base_url = "<?php echo base_url() ?>";</script>
+<script src="<?php echo base_url(); ?>assets/js/islamic_will_custome.js" type="text/javascript"></script>
 </body>
 <?php } ?>

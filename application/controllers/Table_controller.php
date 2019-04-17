@@ -45,7 +45,7 @@
 
           $nestedData = array();
           //if($is_minar == 0){
-            $nestedData[] = "<div class='row'><div class='col-md-10'>Name: ".$family_person_name.", Relationship: ".$relationship.", Age: ".$family_person_age." ".$info."
+            $nestedData[] = "<div class='row'><div class='col-md-10'>".$id.") Name: ".$family_person_name.", Relationship: ".$relationship.", Age: ".$family_person_age." ".$info."
             </div><div class='col-md-2'><button type='button' id='family_member_delete".$id."'  class='badge badge-pill badge-danger' title='Delete Family Member'><i class='fa fa-trash' style='font-size:15px; width:30px;'></i></button>
             </div></div>
             <script>
@@ -79,53 +79,6 @@
               });
             </script>
             ";
-
-        //  }
-        //  else{
-          /*  $nestedData[] = "<div class='row'><div class='col-md-10'>Name: ".$family_person_name.", Relationship: ".$relationship.", Age: ".$family_person_age."
-            </br>Guardian: ".$guardian_name.", Guardian Address:".$guardian_address."
-            </div><div class='col-md-2'><button type='button' id='family_member_delete".$id."'  class='badge badge-pill badge-danger' title='Delete Family Member'><i class='fa fa-trash' style='font-size:15px; width:30px;'></i></button>
-            </div></div>
-            <script>
-              $('#family_member_delete".$id."').click(function(e){
-                //alert();
-            			$.ajax({
-            				data:{ 'id' : ".$memberId."  },
-            				type: 'post',
-            				url: '".base_url()."Will_controller/delete_family_member',
-            				success: function (data){
-                      $('.table_family_member').dataTable({
-                            'bDestroy': true
-                        }).fnDestroy(); // destroy table.
-
-                        $('.table_family_member').DataTable({
-                              'processing': true,
-                              'serverSide': true,
-                              'bFilter' : false,
-                              'bLengthChange': false,
-                              'bPaginate': false,
-                              'bInfo': false,
-                              'ajax':{
-                                 'url': '".base_url()."Table_controller/family_member_list',
-                                 'dataType': 'json',
-                                 'type': 'POST',
-                                 'data':{ 'will_id' : ".$will_id."  }
-                                },
-                            });
-            				}
-            			});
-              });
-            </script>
-            ";*/
-        //  }
-
-          //$nestedData[] = $id;
-          /*$nestedData[] = $post->relationship;
-          $nestedData[] = $post->family_person_name;
-          $nestedData[] = $post->family_person_age;
-          $nestedData[] = $post->is_minar;
-          $nestedData[] = $post->guardian_name;
-          $nestedData[] = $post->guardian_address;*/
           $data[] = $nestedData;
         }
       }

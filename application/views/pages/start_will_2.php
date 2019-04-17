@@ -47,18 +47,73 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <form class="" action="<?php echo base_url(); ?>/Will_controller/store_start_info" method="post">
 	<h1 class="display-3 text-center">Start Your Will Now</h1>
-
-
-
-<div class="row">
-	<div class="col-md-6">
-	    <a href="<?php echo base_url(); ?>Will_controller/login" class="btn btn-primary btn-lg pl-5 pr-5 float-right" href="#" role="button">Login</a>
-	</div>
-
-	<div class="col-md-6 float-right">
-	    <a href="<?php echo base_url(); ?>Will_controller/personal_info_view" class="btn btn-primary btn-lg pl-5 pr-5" href="#" role="button">Start Your Will</a>
-	</div>
+	<div class="row text-center">
+		<div class="col-lg-4 ml-5 mt-3">
+			<h2 class="float-right">SEX :</h2>
+		</div>
+		<div class="  col-lg-4 ">
+      <div class="row">
+      	<div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-primary  btn-lg">
+          <input type="radio" name="gender" id="option2" autocomplete="off" value="male" > Male
+        </label>
+        <label class="btn btn-primary btn-lg">
+          <input type="radio" name="gender" id="option3" autocomplete="off" value="female"> Female
+        </label>
+      </div>
+      </div>
+		</div>
+<div class="col-lg-4">
 </div>
+</div>
+<br><br>
+<div class="row ">
+	<div class="col-lg-4 ml-5 mt-3">
+		<h2 class="float-right">Marital Status :</h2>
+	</div>
+	<div class="col-lg-4 ">
+		<div class="row">
+      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+      <label class="btn btn-primary btn-lg">
+      	<input type="radio" name="is_married" id="single" autocomplete="off" value="0"> Single
+      </label>
+      <label class="btn btn-primary btn-lg">
+      	<input type="radio" name="is_married" id="married" autocomplete="off" value="1
+        "> Married
+      </label>
+      </div>
+    </div>
+</div>
+<div class="col-lg-4">
+
+</div>
+</div>
+<br><br>
+<div class="row   " id="child" >
+	<div class="col-lg-4 ml-5 mt-3 ">
+		<h2 class="float-right">Children :</h2>
+	</div>
+	<div class="col-lg-4 " >
+<div class="row">
+<div class="btn-group btn-group-toggle" data-toggle="buttons">
+<label class="btn btn-primary btn-lg">
+	<input type="radio" name="is_have_child" id="" autocomplete="off" value="1"> Yes
+</label>
+<label class="btn btn-primary btn-lg">
+	<input type="radio" name="is_have_child" id="" autocomplete="off" value="0"> No child
+</label>
+</div>
+</div>
+</div>
+<div class="col-lg-4"></div>
+</div>
+<br><br>
+<div class="row float-right pb-5">
+  <p class="lead ">
+    <button class="btn btn-primary btn-lg pl-5 pr-5" href="#" role="button">Next</button>
+  </p>
+	<br><br>
+	</div>
 	<br><br>
 </form>
 </div>

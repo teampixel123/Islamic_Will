@@ -9,18 +9,22 @@
     }
 
     public function index(){
-  	  //$this->load->view('pages/start_will');
       $this->load->view('pages/personal_info');
   	}
+
+    public function login(){
+      $this->load->view('pages/login');
+  	}
+
+    public function start_will_view(){
+      $this->session->sess_destroy();
+      $this->load->view('pages/start_will');
+    }
 
     public function personal_info_view(){
   	  //$this->load->view('pages/start_will');
       $this->load->view('pages/personal_info');
   	}
-
-    public function start_will_view(){
-      $this->load->view('pages/family_info');
-    }
 
     public function family_info_view(){
       $this->load->view('pages/family_info');
@@ -394,6 +398,14 @@
                   'witness_address' => $this->input->post('witness_address'),
                 );
       $this->Will_Model->save_witness_info($witness_data);
+    }
+
+    /**************************************************************/
+    /*            Delete Witness... datta...             */
+    /**************************************************************/
+    public function delete_witness(){
+      $id = $this->input->post('id');
+      $this->Will_Model->delete_witness($id);
     }
 
     public function destroy_session(){

@@ -9,7 +9,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
  <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
  <link href="<?php echo base_url('assets/css/style.css');?>" rel="stylesheet">
- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
 </head>
 <body>
 <div class="container-fluid">
@@ -44,35 +43,52 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div class="container">
 	<div class="jumbotron ">
-
     <form class="" action="<?php echo base_url(); ?>/Will_controller/store_start_info" method="post">
-	<h1 class="display-3 text-center">Start Your Will Now</h1>
+      <legend class="text-center">Login</legend>
 
 
+      <div class="form-group">
+        <div class="row text-center">
+          <div class="col-md-4 text-right">
+            <label for="exampleInputEmail1">Mobile No. / Email:</label>
+          </div>
+          <div class="col-md-5">
+            <input type="number" name="mobile_no" class="form-control" id="mobile_no" aria-describedby="emailHelp" >
+          </div>
+        </div>
+      </div>
 
-<div class="row">
-	<div class="col-md-6">
-	    <a href="<?php echo base_url(); ?>Will_controller/login" class="btn btn-primary btn-lg pl-5 pr-5 float-right" href="#" role="button">Login</a>
-	</div>
+      <div class="form-group" style="display:none;">
+        <div class="row text-center">
+          <div class="col-md-4 text-right">
+            <label for="exampleInputEmail1">Mobile No. / Email:</label>
+          </div>
+          <div class="col-md-5">
+            <input type="number" name="mobile_no" class="form-control" id="mobile_no" aria-describedby="emailHelp" >
+          </div>
+        </div>
+      </div>
 
-	<div class="col-md-6 float-right">
-	    <a href="<?php echo base_url(); ?>Will_controller/personal_info_view" class="btn btn-primary btn-lg pl-5 pr-5" href="#" role="button">Start Your Will</a>
-	</div>
+      <div class="row">
+      	<div class="col-md-12 text-center">
+      	    <button id="btn_send_otp" class="btn btn-primary btn-md" role="button">Send OTP</button>
+      	</div>
+      </div>
+    </form>
 </div>
-	<br><br>
-</form>
 </div>
-</div>
+
+
+<link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
+<link href="<?php echo base_url('assets/css/style.css');?>" rel="stylesheet">
+<link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
 <script>
-
 $(document).ready(function(){
-		$("#child").hide();
-  $("#married").click(function(){
-    $("#child").toggle();
-  });
-	$("#single").click(function(){
-		$("#child").hide();
-	});
+
+  alert();
 });
 </script>
 </body>

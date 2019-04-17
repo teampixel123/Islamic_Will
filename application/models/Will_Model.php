@@ -143,5 +143,11 @@
     public function save_witness_info($data){
       $this->db->insert('tbl_witness',$data);
     }
+
+    //	Delete Witness..
+    public function delete_witness($id){
+      $this->db->where('id',$id);
+      $this->db->delete('tbl_witness');
+    }
   }
  ?>
