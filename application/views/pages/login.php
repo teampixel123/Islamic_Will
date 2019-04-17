@@ -43,7 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div class="container">
 	<div class="jumbotron ">
-    <form class="" action="<?php echo base_url(); ?>/Will_controller/store_start_info" method="post">
+    <form class="" method="post">
       <legend class="text-center">Login</legend>
 
 
@@ -53,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <label for="exampleInputEmail1">Mobile No. / Email:</label>
           </div>
           <div class="col-md-5">
-            <input type="number" name="mobile_no" class="form-control" id="mobile_no" aria-describedby="emailHelp" >
+            <input type="number" name="mob_email" id="mob_email" class="form-control" aria-describedby="emailHelp" >
           </div>
         </div>
       </div>
@@ -64,31 +64,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <label for="exampleInputEmail1">Mobile No. / Email:</label>
           </div>
           <div class="col-md-5">
-            <input type="number" name="mobile_no" class="form-control" id="mobile_no" aria-describedby="emailHelp" >
+            <input type="text" name="mobile_no" class="form-control" id="mobile_no" aria-describedby="emailHelp" >
           </div>
         </div>
       </div>
 
       <div class="row">
       	<div class="col-md-12 text-center">
-      	    <button id="btn_send_otp" class="btn btn-primary btn-md" role="button">Send OTP</button>
+      	    <button type="button" id="btn_send_otp" class="btn btn-primary btn-md">Send OTP</button>
       	</div>
       </div>
     </form>
 </div>
 </div>
 
+<script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/js/jquery-3.3.0.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/js/moment.min.js" type="text/javascript"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
 
-<link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
-<link href="<?php echo base_url('assets/css/style.css');?>" rel="stylesheet">
-<link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
 <script>
 $(document).ready(function(){
+  $('#btn_send_otp').click(function(){
+    var mob_email = $('#mob_email').val();
+    $.ajax({
+  		data: {'mob_email' : mob_email},
+  		type: "post",
+  		url: "<?php echo base_url(); ?>Will_controller/generate_otp",
+  		success: function (data){
+      }
+    });
+    //alert(mob_email);
+  });
 
-  alert();
 });
 </script>
 </body>

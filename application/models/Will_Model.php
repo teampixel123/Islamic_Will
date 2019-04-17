@@ -1,6 +1,9 @@
 <?php
   class Will_Model extends CI_Model{
 
+    public function update_otp_info(){
+
+    }
     // Check for email id exist or not...
     public function check_mail_id($mail){
       $this->db->select('email');

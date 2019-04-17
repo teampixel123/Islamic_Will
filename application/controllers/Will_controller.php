@@ -41,6 +41,21 @@
     public function witness_info_view(){
       $this->load->view('pages/witness_info');
     }
+
+    public function generate_otp(){
+      $mob_email = $this->input->post('mob_email');
+      $this->load->helper('string');
+      $otp = random_string('nozero',6);
+
+      $this->Will_Model->check_valid_mob_email($mob_email);
+
+      json_encode($mob_email);
+      //$this->load->view('pages/witness_info');
+    }
+
+
+
+
     /*public function store_start_info(){
       $gender = $this->input->post('gender');
       $is_married = $this->input->post('is_married');
