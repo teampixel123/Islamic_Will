@@ -90,16 +90,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $(document).ready(function(){
   $('#btn_send_otp').click(function(){
     var mob_email = $('#mob_email').val();
-    $.ajax({
-  		data: {'mob_email' : mob_email},
-  		type: "post",
-  		url: "<?php echo base_url(); ?>Will_controller/generate_otp",
-  		success: function (data){
+		var intRegex = /[0-9 -()+]+$/;
+		if(intRegex.test(mob_email)) {
+			alert('');
+		}
+    	$.ajax({
+  			data: {'mob_email' : mob_email},
+  			type: "post",
+  			url: "<?php echo base_url(); ?>Will_controller/generate_otp",
+  			success: function (data){
       }
     });
     //alert(mob_email);
   });
-
 });
 </script>
 </body>
