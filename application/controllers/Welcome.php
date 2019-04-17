@@ -5,19 +5,35 @@ class Welcome extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->Model('Will_Model');
+			$this->load->library('Pdf');
 	}
 	public function index()
 	{
 		$this->load->view('welcome_message');
-		//$this->load->library('Pdf');
-	//	$personal_data = $this->Will_Model->display_personal_info();
-		//$this->load->view('welcome_message',['data'=>$personal_data]);
 	}
 
 	public function pdf(){
-		$this->load->library('Pdf');
 		$personal_data = $this->Will_Model->display_personal_info();
 		$this->load->view('welcome_message',['data'=>$personal_data]);
+	}
+
+	public function new_pdf(){
+		$personal_data = $this->Will_Model->display_personal_info();
+		$this->load->view('new_pdf',['data'=>$personal_data]);
+
+	}
+
+	public function final_pdf(){
+		$data['personal_data']=$this->Will_Model->display_personal_info();
+		$data['family_data']= $this->Will_Model->display_family_info();
+	 	$data['excutor_data']= $this->Will_Model->display_excutor_info();
+		$data['real_estate']= $this->Will_Model->display_real_estate_info();
+		$data['bank_assets']= $this->Will_Model->display_bank_assets_info();
+		$data['vehicle']= $this->Will_Model->display_vehicle_info();
+		$data['other_gift']= $this->Will_Model->display_other_gift_info();
+		$data['witness']= $this->Will_Model->display_witness_info();
+		$this->load->view('final_pdf_steup',$data);
+
 	}
 
 	// generate PDF File
@@ -34,6 +50,7 @@ class Welcome extends CI_Controller {
             $this->createPDF(dirname(__FILE__).$createPDFFile, $htmlContent);
             redirect(dirname(__FILE__).$createPDFFile);
          }
+
 
         // create pdf file
         public function createPDF($fileName,$html) {

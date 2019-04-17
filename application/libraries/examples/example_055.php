@@ -25,7 +25,7 @@
  */
 
 // Include the main TCPDF library (search for installation path).
-require_once('tcpdf_include.php');
+// require_once('tcpdf_include.php');
 
 // create new PDF document
 $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
@@ -102,7 +102,8 @@ foreach($core_fonts as $font) {
 	$pdf->Ln(20);
 
 	// print a pangram
-	$pdf->Cell(0, 0, 'The quick brown fox jumps over the lazy dog', 0, 1, 'C', false, '', 0, false, 'T', 'M');
+$pdf->RoundedRect(05, 05, 200, 290, 00, '1000', ' ', $style, array(400, 400, 400));
+
 }
 
 // ---------------------------------------------------------

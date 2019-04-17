@@ -1,24 +1,21 @@
 <?php
- if($this->session->userdata('will_id')){
 defined('BASEPATH') OR exit('No direct script access allowed');
-?>
+?><!DOCTYPE html>
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-	<title>Personal Info</title>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!--css -->
+	 <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
+	 <link href="<?php echo base_url('assets/css/style.css');?>" rel="stylesheet">
 
- <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
- <link href="<?php echo base_url('assets/css/style.css');?>" rel="stylesheet">
- <link href="<?php echo base_url('assets/css/datepicker_css/jquery-ui.min.css');?>" rel="stylesheet">
- <link href="<?php echo base_url('assets/css/datepicker_css/jquery-ui.structure.min.css');?>" rel="stylesheet">
- <link href="<?php echo base_url('assets/css/datepicker_css/jquery-ui.theme.min.css');?>" rel="stylesheet">
- <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
-</head>
+	 <!-- js -->
+	 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
+   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	</head>
 <body>
+<!-- navigation bar strat -->
 <div class="container-fluid">
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Navbar</a>
@@ -48,170 +45,187 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </div>
 </nav>
 </div>
-
-<!-- family info containner start -->
-<?php $start_will_data = $this->session->userdata() ?>
+<!-- navigation bar end  -->
 <div class="container">
 	<div class="jumbotron ">
-	<!--action="<?php echo base_url(); ?>/Will_controller/save_personal_info"-->
-<h1 class=" text-center">Family Information</h1>
-  <div class="row">
-    <div class="col-md-6">
-  	<div id="box">
-  		<form class="" id="family_member_form" method="post">
+	<h5 class="display-3 text-center">Family info</h5>
 
-      <fieldset>
-      <div class="form-group">
-        <div class="row text-center">
-          <label class="col-md-3 text-right" for="exampleInputEmail1">Relation</label>
-  				<div class="col-md-6">
-  					<select class="form-control clear_dr" name="relationship" id="relationship">
-              <option value="0">Select Relationship</option>
-  					  <option>Father</option>
-  					 <option>Mother</option>
-  					 <option>Spouse</option>
-  					 <option>Son</option>
-  					 <option>Daughter</option>
-  					 <option>Brother</option>
-  					 <option>Sister</option>
-  				 </select>
-          </div>
-        </div>
-      </div>
+	<!-- strat family_info -->
+	<div class="row ">
+	<div class="col-md-6">
 
-  		<div class="form-group" id="">
-        <div class="row text-center">
-          <label class="col-md-3 text-right" for="exampleInputEmail1">Name</label>
-  				<div class="col-md-9">
-  					<input type="text" name="family_person_name" id="family_person_name" class="form-control clear"  aria-describedby="emailHelp" >
-          </div>
-        </div>
-      </div>
-
-  		<div class="form-group" id="">
-        <div class="row text-center">
-          <label class="col-md-3 text-right" for="exampleInputEmail1">Date of Birth</label>
-  				<div class="col-md-9">
-  					<input type="text" name="family_person_dob" id="family_person_dob" class="form-control clear"  aria-describedby="emailHelp" >
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group" id="age_div" style="display:none">
-        <div class="row text-center">
-          <label class="col-md-3 text-right" for="exampleInputEmail1">Age:</label>
-  				<div class="col-md-9">
-  					<input type="text" name="family_person_age" id="family_person_age" class="form-control clear"  aria-describedby="emailHelp" >
-          </div>
-        </div>
-      </div>
-
-      <div id="guardian_div" style="display:none">
-    		<input type="hidden" name="is_minar" id="is_minar" class="form-control clear"  aria-describedby="emailHelp" >
-
-        <div class="form-group" id="">
-          <div class="row text-center">
-            <label class="col-md-3 text-right" for="exampleInputEmail1">Guardian Name</label>
-            <div class="col-md-9">
-              <input type="text" name="guardian_name" id="guardian_name" class="form-control clear"  aria-describedby="emailHelp" >
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group" id="">
-          <div class="row text-center">
-            <label class="col-md-3 text-right" for="exampleInputEmail1">Address</label>
-            <div class="col-md-9">
-              <input type="text" name="guardian_address" id="guardian_address" class="form-control clear"  aria-describedby="emailHelp" >
-            </div>
-          </div>
-        </div>
-      </div>
-      </fieldset>
-  		</form>
-      <p>  <button type="button" id="add_family_member" class="btn btn-success" >Add</button></p>
-      <p>  <a href="<?php echo base_url() ?>/Will_controller/personal_info_view" type="button" id="personal_previous" class="btn btn-info">Previous</a>
-  		<button type="button" id="destroy" class="btn btn-danger">Clear session</button>
-  		<a href="<?php echo base_url() ?>/Will_controller/executor_funeral_view" type="button" id="personal_next" class="btn btn-info" >Next</a></p>
-  </div>
-  </div>
-
-  <div class="col-md-6">
-  	<input type="hidden" name="will_id" id="will_id" value="<?php echo $start_will_data['will_id']; ?>">
-
-    <div class="container" style="background-color:white;">
-    	<div class="" style="">
-        <table id="table_personal_info" class="table table-bordered table_personal_info">
-          <thead>
+    <form action="<?php echo base_url(); ?>Will_controller/save_family_info" method="post">
+			<select id="relationship" name="relationship">
+<option value="relationship" >Reletionship</option>
+<option value="Father" >Father</option>
+<option value="Mother" >Mother</option>
+<option value="Brothers" >Brothers</option>
+<option value="Sisters" >Sisters</option>
+</select>
+			  <!--<input type="text" id="reletionship" placeholder="Reletionship">-->
+				<label for="">Full Name : </label>
+        <input type="text" id="family_person_name" name="family_person_name" placeholder="family_person_name"><br>
+				<label for="">Date of Brith : </label>
+        <input type="date" id="family_person_dob" name="family_person_dob" placeholder="family_person_dob"><br><br>
+    	<input type="button" class="add-row" value="disply data">
+			<input type="submit" class="add-row" value="Add">
+    </form>
+	</div>
+	<div class="col-md-6">
+    <table id="family_info">
+        <thead>
             <tr>
-              <th>Personal Info</th>
+                <th>Select</th>
+                <th>Reletionship</th>
+                <th>Full Name</th>
+								<th>Date of Birth</th>
             </tr>
-          </thead>
-          <tbody>
-            <tr><td>
-              <div class="row text-center">
-    		        <label class="col-md-4 text-right" for="exampleInputEmail1" >Name :</label>
-    						<label class="col-md-8 text-left" id="lbl_name" style="font-weight:600;"></label>
-    		      </div>
-
-    		      <div class="row text-center">
-    		        <label class="col-md-4 text-right" for="exampleInputEmail1">Mobile :</label>
-    						<label class="col-md-8 text-left" id="lbl_mobile"></label>
-    		      </div>
-
-    		      <div class="row text-center">
-    		        <label class="col-md-4 text-right" for="exampleInputEmail1">Email :</label>
-    						<label class="col-md-8 text-left" id="lbl_email"></label>
-    		      </div>
-    		      <div class="row text-center">
-    		        <label class="col-md-4 text-right" for="exampleInputEmail1">Address :</label>
-    						<label class="col-md-8 text-left" id="lbl_address"></label>
-    		      </div>
-    		      <div class="row text-center">
-    		        <label class="col-md-4 text-right" for="exampleInputEmail1">Occupation :</label>
-    						<label class="col-md-8 text-left" id="lbl_occupation"></label>
-    		      </div>
-    		      <div class="row text-center">
-    		        <label class="col-md-4 text-right" for="exampleInputEmail1">Aadhar No :</label>
-    						<label class="col-md-8 text-left" id="lbl_aadhar"></label>
-    		      </div>
-    		      <div class="row text-center">
-    		        <label class="col-md-4 text-right" for="exampleInputEmail1">PAN No :</label>
-    						<label class="col-md-8 text-left" id="lbl_pan"></label>
-    		      </div>
-            </td></tr>
-          </tbody>
-        </table>
-          <div class="row" id="f_member">
-          </div>
-          <!-- Family Memer List -->
-      </div>
-    </div>
-  </br>
-    <div class="container" style="background-color:white;">
-    <table id="table_family_member" class="table table-bordered table_family_member">
-      <thead>
-        <tr>
-          <th>Family Member Info</th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="checkbox" name="record"></td>
+                <td>Father</td>
+                <td>Sham ramesh shinde</td>
+								<td>02/03/2014</td>
+            </tr>
+        </tbody>
     </table>
-    </div>
-  </div>
-  </div>
+    <button type="button" class="delete-row">Delete Row</button>
 </div>
 </div>
-<!-- personal info containner end -->
-<script src="<?php echo base_url(); ?>assets/js/jquery-3.3.0.min.js" type="text/javascript"></script>
-<script src="<?php echo base_url(); ?>assets/js/jquery-ui.min.js" type="text/javascript"></script>
-<script src="<?php echo base_url(); ?>assets/js/moment.min.js" type="text/javascript"></script>
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="text/javascript"></script>
-<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
+<!--End family_info  -->
+<br><br>
 
-<!-- Custome Javascript file -->
-<script type="text/javascript">var base_url = "<?php echo base_url() ?>";</script>
-<script src="<?php echo base_url(); ?>assets/js/islamic_will_custome.js" type="text/javascript"></script>
+
+<!--Strat guardian Info -->
+<div class="row ">
+<div class="col-md-6">
+
+		<form action="<?php echo base_url(); ?>Will_controller/save_guardian_info" method="post">
+
+			<br>
+
+				<!--<input type="text" id="reletionship" placeholder="Reletionship">-->
+				<label for="">Guardian Name : </label>
+				<input type="text" id="guardian_name" name="guardian_name" placeholder="Enter Guardian Name"><br>
+				<label for="">Guardian Address : </label>
+				<input type="text" id="guardian_address" name="guardian_address" placeholder="Guardian Address"><br><br>
+				<input type="button" class="add-row1" value="disply_data">
+			<input type="submit" class="add-row1" value="Add">
+		</form>
+	</div>
+		<div class="col-md-6">
+		<table id="guardian">
+				<thead>
+						<tr>
+								<th>guardian_name</th>
+								<th>guardian_address</th>
+
+						</tr>
+				</thead>
+				<tbody>
+						<tr>
+								<td><input type="checkbox" name="record"></td>
+								<td>sham</td>
+								<td>kolhapur</td>
+						</tr>
+				</tbody>
+		</table>
+		<button type="button" class="delete-row1">Delete Row</button>
+</div>
+
+</div>
+<!-- End guardian_info -->
+<div class="row float-right pb-5">
+
+  <p class="lead ">
+    <a class="btn btn-primary btn-lg pl-5 pr-5" href="#" role="button" type="submit">Next</a>
+  </p>
+	<br><br>
+	</div>
+
+</div>
+
 </body>
-<?php } ?>
+
+<script type="text/javascript">
+// Strat family script
+    $(document).ready(function(){
+        $(".add-row").click(function(){
+						var relationship = $("#relationship").val();
+						var family_person_name = $("#family_person_name").val();
+						var family_person_dob = $("#family_person_dob").val();
+						var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + relationship + "</td><td>" + family_person_name + "</td> <td>"+ family_person_dob +"</td></tr>";
+						$("#family_info tbody").append(markup);
+
+						$("#family_person_name").val('');
+						$("#family_person_dob").val('');
+
+
+					//	$('#save_personal_data').click(function(){
+				/*	var form_data = $('#family_info_form').serialize();
+					$.ajax({
+							data: form_data,
+							type: "post",
+							url: "/Will_controller/save_family_info",
+						/*	success: function (data){
+									var info = JSON.parse(data);
+									$('#lbl_name').text(info[0]['full_name']);
+									$('#lbl_mobile').text(info[0]['mobile_no']);
+									$('#lbl_email').text(info[0]['email']);
+									$('#lbl_address').text(info[0]['address']+', '+info[0]['city']+'-'+info[0]['pin_code']+', '+info[0]['state']+', '+info[0]['country']);
+									$('#lbl_occupation').text(info[0]['occupation']);
+									$('#lbl_aadhar').text(info[0]['aadhar_no']);
+									$('#lbl_pan').text(info[0]['pan_no']);
+
+									$('#save_personal_data').hide();
+									$('#update_personal_data').show();
+
+							}*/
+					});
+			});
+
+
+
+        });
+
+        // Find and remove selected table rows
+        $(".delete-row").click(function(){
+            $("table tbody").find('input[name="record"]').each(function(){
+            	if($(this).is(":checked")){
+                    $(this).parents("tr").remove();
+                }
+            });
+        });
+    });
+
+// end family script
+
+ //Strat guardian script
+		$(document).ready(function(){
+				$(".add-row1").click(function(){
+					var guardian_name = $("#guardian_name").val();
+					var guardian_address = $("#guardian_address").val();
+					var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + guardian_name + "</td><td>" + guardian_address + "</td></tr>";
+						$("#guardian tbody").append(markup);
+						$("#guardian_name").val('');
+						$("#guardian_address").val('');
+				});
+
+				// Find and remove selected table rows
+				$(".delete-row1").click(function(){
+						$("table tbody").find('input[name="record"]').each(function(){
+							if($(this).is(":checked")){
+										$(this).parents("tr").remove();
+								}
+						});
+				});
+		});
+// end guardian script
+
+</script>
+
+
+
+
+</html>
