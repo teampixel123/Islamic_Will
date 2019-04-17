@@ -52,6 +52,11 @@
       return $result;
     }
 
+    public function update_personal_info($will_id,$personal_data_update){
+      $this->db->where('will_id',$will_id);
+      $this->db->update('tbl_personal_info',$personal_data_update);
+    }
+
     //	Save/Add Family Member
     public function save_family_member($data){
       $this->db->insert('tbl_family_info',$data);
@@ -64,6 +69,79 @@
       $query = $this->db->get();
       $result = $query->result();
       return $result;
+    }
+
+    public function delete_family_member($id){
+      $this->db->where('id',$id);
+      $this->db->delete('tbl_family_info');
+    }
+
+    //	Save/Add executor...
+    public function save_executor($data){
+      $this->db->insert('tbl_executor',$data);
+    }
+
+    //	Save/Add executor...
+    public function delete_executor($id){
+      $this->db->where('id',$id);
+      $this->db->delete('tbl_executor');
+    }
+
+    //	Save/Add funeral...
+    public function save_funeral($data){
+      $this->db->insert('tbl_funeral',$data);
+    }
+
+    //	Save/Add executor...
+    public function delete_funeral($id){
+      $this->db->where('id',$id);
+      $this->db->delete('tbl_funeral');
+    }
+
+    //	Save/Add Real Estate Assets...
+    public function save_assets($data){
+      $this->db->insert('tbl_real_estate',$data);
+    }
+    // Delete Real Estate Assets...
+    public function delete_real_estate($id){
+      $this->db->where('id',$id);
+      $this->db->delete('tbl_real_estate');
+    }
+    //	Save/Add Bank Assets...
+    public function save_bank_assets($data){
+      $this->db->insert('tbl_bank_assets',$data);
+    }
+
+    //	Delete Bank Assets...
+    public function delete_bank_assets($id){
+      $this->db->where('id',$id);
+      $this->db->delete('tbl_bank_assets');
+    }
+
+    //	Save/Add Other Gift Assets...
+    public function save_other_gift_assets($data){
+      $this->db->insert('tbl_other_gift',$data);
+    }
+
+    //	Delete Gift Assets...
+    public function delete_gift($id){
+      $this->db->where('id',$id);
+      $this->db->delete('tbl_other_gift');
+    }
+
+    //	Save/Add Vehicle Assets...
+    public function save_vehicle_assets($data){
+      $this->db->insert('tbl_vehicle',$data);
+    }
+
+    //	Delete Vehicle Assets...
+    public function delete_vehicle($id){
+      $this->db->where('id',$id);
+      $this->db->delete('tbl_vehicle');
+    }
+    //	Save/Add Witness...
+    public function save_witness_info($data){
+      $this->db->insert('tbl_witness',$data);
     }
   }
  ?>

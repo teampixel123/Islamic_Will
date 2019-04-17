@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <head>
   <meta charset="utf-8">
-	<title>Personal Info</title>
+	<title>Executor & Funeral Info</title>
 
  <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
  <link href="<?php echo base_url('assets/css/style.css');?>" rel="stylesheet">
@@ -54,85 +54,73 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="container">
 	<div class="jumbotron ">
 	<!--action="<?php echo base_url(); ?>/Will_controller/save_personal_info"-->
-<h1 class=" text-center">Family Information</h1>
+<h1 class=" text-center">Executor & Funeral Info</h1>
   <div class="row">
     <div class="col-md-6">
   	<div id="box">
-  		<form class="" id="family_member_form" method="post">
-
+      <!-- Executor Information Start  -->
+  		<form class="" id="executor_form" method="post">
+      <input type="hidden" name="will_id" id="will_id" value="<?php echo $start_will_data['will_id']; ?>">
       <fieldset>
-      <div class="form-group">
+      <h3 class=" text-left">Executor: </h3>
+      <div class="form-group" id="">
         <div class="row text-center">
-          <label class="col-md-3 text-right" for="exampleInputEmail1">Relation</label>
-  				<div class="col-md-6">
-  					<select class="form-control clear_dr" name="relationship" id="relationship">
-              <option value="0">Select Relationship</option>
-  					  <option>Father</option>
-  					 <option>Mother</option>
-  					 <option>Spouse</option>
-  					 <option>Son</option>
-  					 <option>Daughter</option>
-  					 <option>Brother</option>
-  					 <option>Sister</option>
-  				 </select>
+          <label class="col-md-3 text-right" for="exampleInputEmail1">Executor Name: </label>
+  				<div class="col-md-9">
+  					<input type="text" name="executor_name" id="executor_name" class="form-control clear"  aria-describedby="emailHelp" >
           </div>
         </div>
       </div>
 
   		<div class="form-group" id="">
         <div class="row text-center">
-          <label class="col-md-3 text-right" for="exampleInputEmail1">Name</label>
+          <label class="col-md-3 text-right" for="exampleInputEmail1">Address: </label>
   				<div class="col-md-9">
-  					<input type="text" name="family_person_name" id="family_person_name" class="form-control clear"  aria-describedby="emailHelp" >
+  					<input type="text" name="executor_address" id="executor_address" class="form-control clear"  aria-describedby="emailHelp" >
           </div>
         </div>
       </div>
 
   		<div class="form-group" id="">
         <div class="row text-center">
-          <label class="col-md-3 text-right" for="exampleInputEmail1">Date of Birth</label>
+          <label class="col-md-3 text-right" for="exampleInputEmail1">Age: </label>
   				<div class="col-md-9">
-  					<input type="text" name="family_person_dob" id="family_person_dob" class="form-control clear"  aria-describedby="emailHelp" >
+  					<input type="number" name="executor_age" id="executor_age" class="form-control clear"  aria-describedby="emailHelp" placeholder="Enter executor age in year" >
           </div>
         </div>
       </div>
-
-      <div class="form-group" id="age_div" style="display:none">
+        <p>  <button type="button" id="add_executor" class="btn btn-success" >Add</button></p>
+      </fieldset>
+  		</form>
+      <!-- Executor Information End  -->
+      <!-- Funeral and Burial Information Start  -->
+      <form class="" id="funeral_form" method="post">
+      <fieldset>
+      <h3 class=" text-left">Funeral and Burial: </h3>
+      <div class="form-group" id="">
         <div class="row text-center">
-          <label class="col-md-3 text-right" for="exampleInputEmail1">Age:</label>
+          <label class="col-md-3 text-right" for="exampleInputEmail1">Funeral and Burial Person Name: </label>
   				<div class="col-md-9">
-  					<input type="text" name="family_person_age" id="family_person_age" class="form-control clear"  aria-describedby="emailHelp" >
+  					<input type="text" name="funeral_name" id="funeral_name" class="form-control clear"  aria-describedby="emailHelp" >
           </div>
         </div>
       </div>
 
-      <div id="guardian_div" style="display:none">
-    		<input type="hidden" name="is_minar" id="is_minar" class="form-control clear"  aria-describedby="emailHelp" >
-
-        <div class="form-group" id="">
-          <div class="row text-center">
-            <label class="col-md-3 text-right" for="exampleInputEmail1">Guardian Name</label>
-            <div class="col-md-9">
-              <input type="text" name="guardian_name" id="guardian_name" class="form-control clear"  aria-describedby="emailHelp" >
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group" id="">
-          <div class="row text-center">
-            <label class="col-md-3 text-right" for="exampleInputEmail1">Address</label>
-            <div class="col-md-9">
-              <input type="text" name="guardian_address" id="guardian_address" class="form-control clear"  aria-describedby="emailHelp" >
-            </div>
+  		<div class="form-group" id="">
+        <div class="row text-center">
+          <label class="col-md-3 text-right" for="exampleInputEmail1">Address: </label>
+  				<div class="col-md-9">
+  					<input type="text" name="funeral_address" id="funeral_address" class="form-control clear"  aria-describedby="emailHelp" >
           </div>
         </div>
       </div>
       </fieldset>
+      <p>  <button type="button" id="add_funeral" class="btn btn-success" >Add</button></p>
   		</form>
-      <p>  <button type="button" id="add_family_member" class="btn btn-success" >Add</button></p>
-      <p>  <a href="<?php echo base_url() ?>/Will_controller/personal_info_view" type="button" id="personal_previous" class="btn btn-info">Previous</a>
+      <!-- Funeral and Burial Information End  -->
+      <p>  <a href="<?php echo base_url() ?>/Will_controller/family_info_view" type="button" id="personal_previous" class="btn btn-info">Previous</a>
   		<button type="button" id="destroy" class="btn btn-danger">Clear session</button>
-  		<a href="<?php echo base_url() ?>/Will_controller/executor_funeral_view" type="button" id="personal_next" class="btn btn-info" >Next</a></p>
+  		<a href="<?php echo base_url() ?>/Will_controller/assets_info_view" type="button" id="personal_next" class="btn btn-info" >Next</a></p>
   </div>
   </div>
 
@@ -182,16 +170,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </td></tr>
           </tbody>
         </table>
-
-
-
-          <div class="row" id="f_member">
-
-          </div>
-          <!-- Family Memer List -->
       </div>
     </div>
-  </br>
+
+    </br>
     <div class="container" style="background-color:white;">
     <table id="table_family_member" class="table table-bordered table_family_member">
       <thead>
@@ -203,6 +185,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </tbody>
     </table>
     </div>
+
+    </br>
+    <div class="container" style="background-color:white;">
+    <table id="table_executor" class="table table-bordered table_executor">
+      <thead>
+        <tr>
+          <th>Executor Info</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+    </div>
+
+
+    <div class="container" style="background-color:white;">
+    <table id="table_funeral" class="table table-bordered table_funeral">
+      <thead>
+        <tr>
+          <th>Funeral Info</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+    </div>
+
   </div>
   </div>
 </div>
@@ -266,82 +275,111 @@ $(document).ready(function(){
 		},
 	});
 
-  // datepicker.. set condition depend on age... calculate age.. show/hide Guardian...
-  $('#family_person_dob').datepicker({
-    dateFormat: 'dd/mm/yy',//check change
-    changeMonth: true,
-    changeYear: true,
-    onSelect: function(dateText, inst) {
-      // Get Today date...
-      var today = new Date();
-      var dd = today.getDate();
-      var mm = today.getMonth() + 1; //January is 0!
-      var yyyy = today.getFullYear();
-      if (dd < 10) {
-        dd = '0' + dd;
-      }
-      if (mm < 10) {
-        mm = '0' + mm;
-      }
-      var today2 = dd + '/' + mm + '/' + yyyy;
-      // Get Today date end...
-      var birthdate2 = $(this).val();
-        var today = moment(today2,'DD/MM/YYYY');
-        var birthdate = moment(birthdate2,'DD/MM/YYYY');
+  // get and fill up executor...
+  $('.table_executor').dataTable({
+			'bDestroy': true
+	}).fnDestroy(); // destroy table.
 
-        var years = today.diff(birthdate, 'year');
-        birthdate.add(years, 'years');
-        var months = today.diff(birthdate, 'months');
-        birthdate.add(months, 'months');
-        //alert(years+' '+months);
-        var title = $('#relationship').val();
-        $('#age_div').show();
-        $('#family_person_age').val(years+' Year '+months+' Month');
-        if((title == 'Son' || title == 'Daughter') && years < 18){
-          $('#guardian_div').show();
-          $('#is_minar').val('1');
+  $('.table_executor').DataTable({
+		"processing": true,
+		"serverSide": true,
+    "bFilter" : false,
+    "bLengthChange": false,
+    "bPaginate": false,
+    "bInfo": false,
+		"ajax":{
+			"url": "<?php echo base_url(); ?>Table_controller/executor_list",
+			"dataType": "json",
+			"type": "POST",
+			"data":{ 'will_id' : will_id  }
+		},
+	});
 
-        }
-        else{
-          $('#guardian_name').val('');
-          $('#guardian_address').val('');
-          $('#guardian_div').hide();
-        }
-    }
-  });
+  // get and fill up Funeral...
+  $('.table_funeral').dataTable({
+			'bDestroy': true
+	}).fnDestroy(); // destroy table.
 
-	//	Save/Add Family Member
-	$('#add_family_member').click(function(){
-		var form_data = $('#family_member_form').serialize();
+  $('.table_funeral').DataTable({
+		"processing": true,
+		"serverSide": true,
+    "bFilter" : false,
+    "bLengthChange": false,
+    "bPaginate": false,
+    "bInfo": false,
+		"ajax":{
+			"url": "<?php echo base_url(); ?>Table_controller/funeral_list",
+			"dataType": "json",
+			"type": "POST",
+			"data":{ 'will_id' : will_id  }
+		},
+	});
+
+	//	Save/Add Executor... Datta...
+	$('#add_executor').click(function(){
+		var form_data = $('#executor_form').serialize();
   	$.ajax({
   		data: form_data,
   		type: "post",
-  		url: "<?php echo base_url(); ?>/Will_controller/save_family_member",
+  		url: "<?php echo base_url(); ?>/Will_controller/save_executor",
   		success: function (data){
+
         $('.clear').val('');
         $('.clear_dr').val(0);
-        $('#guardian_div').hide();
-
-
 
         var will_id = $('#will_id').val();
-        $('.table_family_member').dataTable({
+        // get and fill up executor...
+        $('.table_executor').dataTable({
       			'bDestroy': true
       	}).fnDestroy(); // destroy table.
 
-        $('.table_family_member').DataTable({
-  				"processing": true,
-  				"serverSide": true,
+        $('.table_executor').DataTable({
+      		"processing": true,
+      		"serverSide": true,
           "bFilter" : false,
           "bLengthChange": false,
           "bPaginate": false,
           "bInfo": false,
-  				"ajax":{
-  					 "url": "<?php echo base_url(); ?>Table_controller/family_member_list",
-  					 "dataType": "json",
-  					 "type": "POST",
-  					 "data":{ 'will_id' : will_id  }
-  				},
+      		"ajax":{
+      			"url": "<?php echo base_url(); ?>Table_controller/executor_list",
+      			"dataType": "json",
+      			"type": "POST",
+      			"data":{ 'will_id' : will_id  }
+      		},
+      	});
+			}
+		});
+	});
+
+  //	Save/Add Funeral...
+	$('#add_funeral').click(function(){
+		var form_data = $('#funeral_form').serialize();
+  	$.ajax({
+  		data: form_data,
+  		type: "post",
+  		url: "<?php echo base_url(); ?>/Will_controller/save_funeral",
+  		success: function (data){
+        $('.clear').val('');
+        $('.clear_dr').val(0);
+        $('#guardian_div').hide();
+        // get and fill up Funeral...
+        $('.table_funeral').dataTable({
+      			'bDestroy': true
+      	}).fnDestroy(); // destroy table.
+
+        $('.table_funeral').DataTable({
+      		"processing": true,
+      		"serverSide": true,
+          "bFilter" : false,
+          "bLengthChange": false,
+          "bPaginate": false,
+          "bInfo": false,
+      		"ajax":{
+      			"url": "<?php echo base_url(); ?>Table_controller/funeral_list",
+      			"dataType": "json",
+      			"type": "POST",
+      			"data":{ 'will_id' : will_id  }
+      		},
       	});
 
 			}

@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <head>
   <meta charset="utf-8">
-	<title>Personal Info</title>
+	<title>Witness Info</title>
 
  <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
  <link href="<?php echo base_url('assets/css/style.css');?>" rel="stylesheet">
@@ -54,83 +54,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="container">
 	<div class="jumbotron ">
 	<!--action="<?php echo base_url(); ?>/Will_controller/save_personal_info"-->
-<h1 class=" text-center">Family Information</h1>
+<h1 class=" text-center">Witness Information</h1>
   <div class="row">
     <div class="col-md-6">
   	<div id="box">
-  		<form class="" id="family_member_form" method="post">
+  		<form class="" id="witness_form" method="post">
 
       <fieldset>
-      <div class="form-group">
+  		<div class="form-group" id="">
         <div class="row text-center">
-          <label class="col-md-3 text-right" for="exampleInputEmail1">Relation</label>
-  				<div class="col-md-6">
-  					<select class="form-control clear_dr" name="relationship" id="relationship">
-              <option value="0">Select Relationship</option>
-  					  <option>Father</option>
-  					 <option>Mother</option>
-  					 <option>Spouse</option>
-  					 <option>Son</option>
-  					 <option>Daughter</option>
-  					 <option>Brother</option>
-  					 <option>Sister</option>
-  				 </select>
+          <label class="col-md-3 text-right" for="exampleInputEmail1">Witness Name</label>
+  				<div class="col-md-9">
+  					<input type="text" name="witness_name" id="witness_name" class="form-control clear"  aria-describedby="emailHelp" >
           </div>
         </div>
       </div>
 
   		<div class="form-group" id="">
         <div class="row text-center">
-          <label class="col-md-3 text-right" for="exampleInputEmail1">Name</label>
+          <label class="col-md-3 text-right" for="exampleInputEmail1">Witness Address</label>
   				<div class="col-md-9">
-  					<input type="text" name="family_person_name" id="family_person_name" class="form-control clear"  aria-describedby="emailHelp" >
-          </div>
-        </div>
-      </div>
-
-  		<div class="form-group" id="">
-        <div class="row text-center">
-          <label class="col-md-3 text-right" for="exampleInputEmail1">Date of Birth</label>
-  				<div class="col-md-9">
-  					<input type="text" name="family_person_dob" id="family_person_dob" class="form-control clear"  aria-describedby="emailHelp" >
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group" id="age_div" style="display:none">
-        <div class="row text-center">
-          <label class="col-md-3 text-right" for="exampleInputEmail1">Age:</label>
-  				<div class="col-md-9">
-  					<input type="text" name="family_person_age" id="family_person_age" class="form-control clear"  aria-describedby="emailHelp" >
-          </div>
-        </div>
-      </div>
-
-      <div id="guardian_div" style="display:none">
-    		<input type="hidden" name="is_minar" id="is_minar" class="form-control clear"  aria-describedby="emailHelp" >
-
-        <div class="form-group" id="">
-          <div class="row text-center">
-            <label class="col-md-3 text-right" for="exampleInputEmail1">Guardian Name</label>
-            <div class="col-md-9">
-              <input type="text" name="guardian_name" id="guardian_name" class="form-control clear"  aria-describedby="emailHelp" >
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group" id="">
-          <div class="row text-center">
-            <label class="col-md-3 text-right" for="exampleInputEmail1">Address</label>
-            <div class="col-md-9">
-              <input type="text" name="guardian_address" id="guardian_address" class="form-control clear"  aria-describedby="emailHelp" >
-            </div>
+  					<input type="text" name="witness_address" id="witness_address" class="form-control clear"  aria-describedby="emailHelp" >
           </div>
         </div>
       </div>
       </fieldset>
   		</form>
-      <p>  <button type="button" id="add_family_member" class="btn btn-success" >Add</button></p>
-      <p>  <a href="<?php echo base_url() ?>/Will_controller/personal_info_view" type="button" id="personal_previous" class="btn btn-info">Previous</a>
+      <p>  <button type="button" id="add_witness" class="btn btn-success" >Add</button></p>
+      <p>  <a href="<?php echo base_url() ?>/Will_controller/assets_info_view" type="button" id="personal_previous" class="btn btn-info">Previous</a>
   		<button type="button" id="destroy" class="btn btn-danger">Clear session</button>
   		<a href="<?php echo base_url() ?>/Will_controller/executor_funeral_view" type="button" id="personal_next" class="btn btn-info" >Next</a></p>
   </div>
@@ -182,16 +133,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </td></tr>
           </tbody>
         </table>
-
-
-
-          <div class="row" id="f_member">
-
-          </div>
-          <!-- Family Memer List -->
       </div>
     </div>
-  </br>
+
+    </br>
     <div class="container" style="background-color:white;">
     <table id="table_family_member" class="table table-bordered table_family_member">
       <thead>
@@ -203,6 +148,89 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </tbody>
     </table>
     </div>
+
+    </br>
+    <div class="container" style="background-color:white;">
+    <table id="table_executor" class="table table-bordered table_executor">
+      <thead>
+        <tr>
+          <th>Executor Info</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+    </div>
+
+
+    <div class="container" style="background-color:white;">
+    <table id="table_funeral" class="table table-bordered table_funeral">
+      <thead>
+        <tr>
+          <th>Funeral Info</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+    </div>
+</br>
+    <div class="container" style="background-color:white;">
+      <b>Assets Information</b>
+    <table id="table_real_estate" class="table table-bordered table_real_estate">
+      <thead>
+        <tr>
+          <th>Real Estate Info</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+
+    <table id="table_bank_assets" class="table table-bordered table_bank_assets">
+      <thead>
+        <tr>
+          <th>Bank Assets Info</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+
+    <table id="table_vehicle" class="table table-bordered table_vehicle">
+      <thead>
+        <tr>
+          <th>Vehicle Info</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+
+    <table id="table_gift" class="table table-bordered table_gift">
+      <thead>
+        <tr>
+          <th>Gift Info</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+    </div>
+    </br>
+    <div class="container" style="background-color:white;">
+    <table id="table_witness" class="table table-bordered table_witness">
+      <thead>
+        <tr>
+          <th>Witness Info</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+    </div>
+
+
   </div>
   </div>
 </div>
@@ -234,38 +262,164 @@ $(document).ready(function(){
     }
   });
 
-  // get and fill up personal info list...
-  $('.table_personal_info').dataTable({
-			'bDestroy': true
-	}).fnDestroy(); // destroy table.
 
-  $('.table_personal_info').DataTable({
-    "bFilter" : false,
-    "bLengthChange": false,
-    "bPaginate": false,
-    "bInfo": false,
-	});
+    // get and fill up family member list...
+    $('.table_family_member').dataTable({
+  			'bDestroy': true
+  	}).fnDestroy(); // destroy table.
 
-  // get and fill up family member list...
-  $('.table_family_member').dataTable({
-			'bDestroy': true
-	}).fnDestroy(); // destroy table.
+    $('.table_family_member').DataTable({
+  		"processing": true,
+  		"serverSide": true,
+      "bFilter" : false,
+      "bLengthChange": false,
+      "bPaginate": false,
+      "bInfo": false,
+  		"ajax":{
+  			"url": "<?php echo base_url(); ?>Table_controller/family_member_list",
+  			"dataType": "json",
+  			"type": "POST",
+  			"data":{ 'will_id' : will_id  }
+  		},
+  	});
 
-  $('.table_family_member').DataTable({
-		"processing": true,
-		"serverSide": true,
-    "bFilter" : false,
-    "bLengthChange": false,
-    "bPaginate": false,
-    "bInfo": false,
-		"ajax":{
-			"url": "<?php echo base_url(); ?>Table_controller/family_member_list",
-			"dataType": "json",
-			"type": "POST",
-			"data":{ 'will_id' : will_id  }
-		},
-	});
+    // get and fill up executor...
+    $('.table_executor').dataTable({
+  			'bDestroy': true
+  	}).fnDestroy(); // destroy table.
 
+    $('.table_executor').DataTable({
+  		"processing": true,
+  		"serverSide": true,
+      "bFilter" : false,
+      "bLengthChange": false,
+      "bPaginate": false,
+      "bInfo": false,
+  		"ajax":{
+  			"url": "<?php echo base_url(); ?>Table_controller/executor_list",
+  			"dataType": "json",
+  			"type": "POST",
+  			"data":{ 'will_id' : will_id  }
+  		},
+  	});
+
+    // get and fill up Funeral...
+    $('.table_funeral').dataTable({
+  			'bDestroy': true
+  	}).fnDestroy(); // destroy table.
+
+    $('.table_funeral').DataTable({
+  		"processing": true,
+  		"serverSide": true,
+      "bFilter" : false,
+      "bLengthChange": false,
+      "bPaginate": false,
+      "bInfo": false,
+  		"ajax":{
+  			"url": "<?php echo base_url(); ?>Table_controller/funeral_list",
+  			"dataType": "json",
+  			"type": "POST",
+  			"data":{ 'will_id' : will_id  }
+  		},
+  	});
+
+    // get and fill up Funeral...
+    $('.table_real_estate').dataTable({
+        'bDestroy': true
+    }).fnDestroy(); // destroy table.
+
+    $('.table_real_estate').DataTable({
+      "processing": true,
+      "serverSide": true,
+      "bFilter" : false,
+      "bLengthChange": false,
+      "bPaginate": false,
+      "bInfo": false,
+      "ajax":{
+        "url": "<?php echo base_url(); ?>Table_controller/real_estate_list",
+        "dataType": "json",
+        "type": "POST",
+        "data":{ 'will_id' : will_id  }
+      },
+    });
+
+    // get and fill up Funeral...
+    $('.table_bank_assets').dataTable({
+  			'bDestroy': true
+  	}).fnDestroy(); // destroy table.
+
+    $('.table_bank_assets').DataTable({
+  		"processing": true,
+  		"serverSide": true,
+      "bFilter" : false,
+      "bLengthChange": false,
+      "bPaginate": false,
+      "bInfo": false,
+  		"ajax":{
+  			"url": "<?php echo base_url(); ?>Table_controller/bank_assets_list",
+  			"dataType": "json",
+  			"type": "POST",
+  			"data":{ 'will_id' : will_id  }
+  		},
+  	});
+
+    // get and fill up Vehicle...
+    $('.table_vehicle').dataTable({
+  			'bDestroy': true
+  	}).fnDestroy(); // destroy table.
+
+    $('.table_vehicle').DataTable({
+  		"processing": true,
+  		"serverSide": true,
+      "bFilter" : false,
+      "bLengthChange": false,
+      "bPaginate": false,
+      "bInfo": false,
+  		"ajax":{
+  			"url": "<?php echo base_url(); ?>Table_controller/vehicle_list",
+  			"dataType": "json",
+  			"type": "POST",
+  			"data":{ 'will_id' : will_id  }
+  		},
+	  });
+    // get and fill up Gift Info...
+    $('.table_gift').dataTable({
+  			'bDestroy': true
+  	}).fnDestroy(); // destroy table.
+
+    $('.table_gift').DataTable({
+  		"processing": true,
+  		"serverSide": true,
+      "bFilter" : false,
+      "bLengthChange": false,
+      "bPaginate": false,
+      "bInfo": false,
+  		"ajax":{
+  			"url": "<?php echo base_url(); ?>Table_controller/gift_list",
+  			"dataType": "json",
+  			"type": "POST",
+  			"data":{ 'will_id' : will_id  }
+  		},
+  	});
+    // get and fill up Witness Info...
+    $('.table_witness').dataTable({
+  			'bDestroy': true
+  	}).fnDestroy(); // destroy table.
+
+    $('.table_witness').DataTable({
+  		"processing": true,
+  		"serverSide": true,
+      "bFilter" : false,
+      "bLengthChange": false,
+      "bPaginate": false,
+      "bInfo": false,
+  		"ajax":{
+  			"url": "<?php echo base_url(); ?>Table_controller/witness_list",
+  			"dataType": "json",
+  			"type": "POST",
+  			"data":{ 'will_id' : will_id  }
+  		},
+  	});
   // datepicker.. set condition depend on age... calculate age.. show/hide Guardian...
   $('#family_person_dob').datepicker({
     dateFormat: 'dd/mm/yy',//check change
@@ -311,12 +465,12 @@ $(document).ready(function(){
   });
 
 	//	Save/Add Family Member
-	$('#add_family_member').click(function(){
-		var form_data = $('#family_member_form').serialize();
+	$('#add_witness').click(function(){
+		var form_data = $('#witness_form').serialize();
   	$.ajax({
   		data: form_data,
   		type: "post",
-  		url: "<?php echo base_url(); ?>/Will_controller/save_family_member",
+  		url: "<?php echo base_url(); ?>/Will_controller/save_witness_info",
   		success: function (data){
         $('.clear').val('');
         $('.clear_dr').val(0);

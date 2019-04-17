@@ -108,6 +108,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
     </div>
 
+		<div class="form-group" id="have_child_div">
+      <div class="row text-center">
+        <label class="col-md-3 text-right" for="exampleInputEmail1">Age</label>
+				<div class="col-md-9">
+					<input type="text" name="age" class="form-control" id="age" aria-describedby="emailHelp" >
+        </div>
+      </div>
+    </div>
+
     <div class="form-group">
       <div class="row text-center">
         <div class="col-md-3 text-right">
@@ -219,10 +228,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 		</form>
 </div>
-    <button type="button" id="save_personal_data" class="btn btn-success">Save</button>
-		<button type="button" style="display:none;" id="update_personal_data" class="btn btn-info">Update</button>
+    <button type="button" id="save_personal_data" class="btn btn-success" style="float:right;">Save & Next</button>
+		<button type="button" id="update_personal_data" class="btn btn-info" style="float:right;">Update & Next</button>
 		<button type="button" id="destroy" class="btn btn-danger">Clear session</button>
-		<a href="<?php echo base_url() ?>/Will_controller/family_info_view" type="button" id="personal_next" class="btn btn-info">Next</a>
+		<!--a href="<?php echo base_url() ?>/Will_controller/family_info_view" type="button" id="personal_next" class="btn btn-info">Next</a-->
   </fieldset>
 </div>
 <div class="col-md-6">
@@ -313,6 +322,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				$('#pan_no').val(info[0]['pan_no']);
 				$('#name_title').val(info[0]['name_title']);
 				$('#marital_status').val(info[0]['marital_status']);
+				$('#age').val(info[0]['age']);
 
 				$('#save_personal_data').hide();
 				$('#update_personal_data').show();
@@ -344,13 +354,13 @@ $(document).ready(function(){
 		});
 
 		$('#name_title').change(function(){
-			$title = $('#name_title').val();
-			if($title == 'Mr.'){
+			var title = $('#name_title').val();
+			if(title == 'Mr.'){
 				$('#marital_status_div').show();
 				$('#widove').hide();
 				$('#have_child_div').show();
 			}
-			else if ($title == 'Mrs.') {
+			else if (title == 'Mrs.') {
 				$('#marital_status_div').show();
 				$('#widove').show();
 				$('#have_child_div').show();
@@ -392,11 +402,37 @@ $(document).ready(function(){
 					$('#save_personal_data').hide();
 					$('#update_personal_data').show();
 
+					window.location.href = "<?php echo base_url() ?>/Will_controller/family_info_view";
 				}
 			});
 		});
 
+
 		//Update Personal data...
+
+		$('#update_personal_data').click(function(){
+			var form_data = $('#personal_info_form').serialize();
+			$.ajax({
+				data: form_data,
+				type: "post",
+				url: "<?php echo base_url(); ?>/Will_controller/update_personal_info",
+				success: function (data){
+					var info = JSON.parse(data);
+					$('#lbl_name').text(info[0]['full_name']);
+					$('#lbl_mobile').text(info[0]['mobile_no']);
+					$('#lbl_email').text(info[0]['email']);
+					$('#lbl_address').text(info[0]['address']+', '+info[0]['city']+'-'+info[0]['pin_code']+', '+info[0]['state']+', '+info[0]['country']);
+					$('#lbl_occupation').text(info[0]['occupation']);
+					$('#lbl_aadhar').text(info[0]['aadhar_no']);
+					$('#lbl_pan').text(info[0]['pan_no']);
+
+					$('#save_personal_data').hide();
+					$('#update_personal_data').show();
+					window.location.href = "<?php echo base_url() ?>/Will_controller/family_info_view";
+				}
+			});
+		});
+
 		$('#destroy').click(function(){
 			$.ajax({
 				type: "post",
