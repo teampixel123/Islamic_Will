@@ -102,7 +102,12 @@ foreach($core_fonts as $font) {
 	$pdf->Ln(20);
 
 	// print a pangram
+<<<<<<< HEAD
 	$pdf->Cell(0, 0, 'The quick brown fox jumps over the lazy dog', 0, 1, 'C', false, '', 0, false, 'T', 'M');
+=======
+$pdf->RoundedRect(05, 05, 200, 290, 00, '1000', ' ', $style, array(400, 400, 400));
+
+>>>>>>> 96200cbf3f48cc97715e2d95c2f8835e510d73e4
 }
 
 // ---------------------------------------------------------

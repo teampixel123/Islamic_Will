@@ -64,6 +64,16 @@
     public function save_family_member($data){
       $this->db->insert('tbl_family_info',$data);
     }
+    public function display_family_info(){
+      $this->db->select('*');
+      $this->db->from('tbl_family_info');
+      $this->db->order_by('id','DESC');
+      $this->db->limit(2);
+
+      $query = $this->db->get();
+      $result = $query->result();
+      return $result;
+    }
 
     public function get_family_member_list($will_id){
       $this->db->select('*');
@@ -151,6 +161,127 @@
     public function delete_witness($id){
       $this->db->where('id',$id);
       $this->db->delete('tbl_witness');
+    }
+
+    public function display_excutor_info(){
+      $this->db->select('*');
+      $this->db->from('tbl_executor');
+      $this->db->order_by('id','ASC');
+      $this->db->limit(2);
+
+      $query = $this->db->get();
+      $result = $query->result();
+      return $result;
+    }
+
+    public function get_excutor_list($will_id){
+      $this->db->select('*');
+      $this->db->from('tbl_executor');
+      $this->db->where('will_id',$will_id);
+      $query = $this->db->get();
+      $result = $query->result();
+      return $result;
+    }
+
+
+    public function display_real_estate_info(){
+      $this->db->select('*');
+      $this->db->from('tbl_real_estate');
+      $this->db->order_by('id','ASC');
+      $this->db->limit(2);
+
+      $query = $this->db->get();
+      $result = $query->result();
+      return $result;
+    }
+
+    public function get_real_estate($will_id){
+      $this->db->select('*');
+      $this->db->from('tbl_real_estate');
+      $this->db->where('will_id',$will_id);
+      $query = $this->db->get();
+      $result = $query->result();
+      return $result;
+    }
+
+    public function display_bank_assets_info(){
+      $this->db->select('*');
+      $this->db->from('tbl_bank_assets');
+      $this->db->order_by('id','ASC');
+      $this->db->limit(8);
+
+      $query = $this->db->get();
+      $result = $query->result();
+      return $result;
+    }
+
+    public function get_bank_assets($will_id){
+      $this->db->select('*');
+      $this->db->from('tbl_bank_assets');
+      $this->db->where('will_id',$will_id);
+      $query = $this->db->get();
+      $result = $query->result();
+      return $result;
+    }
+
+    public function display_vehicle_info(){
+      $this->db->select('*');
+      $this->db->from('tbl_vehicle');
+      $this->db->order_by('id','ASC');
+      $this->db->limit(5);
+
+      $query = $this->db->get();
+      $result = $query->result();
+      return $result;
+    }
+
+    public function get_vehicle($will_id){
+      $this->db->select('*');
+      $this->db->from('tbl_vehicle');
+      $this->db->where('will_id',$will_id);
+      $query = $this->db->get();
+      $result = $query->result();
+      return $result;
+    }
+
+    public function display_other_gift_info(){
+      $this->db->select('*');
+      $this->db->from('tbl_other_gift');
+      $this->db->order_by('id','ASC');
+      $this->db->limit(5);
+
+      $query = $this->db->get();
+      $result = $query->result();
+      return $result;
+    }
+
+    public function get_other_gift($will_id){
+      $this->db->select('*');
+      $this->db->from('tbl_other_gift');
+      $this->db->where('will_id',$will_id);
+      $query = $this->db->get();
+      $result = $query->result();
+      return $result;
+    }
+
+    public function display_witness_info(){
+      $this->db->select('*');
+      $this->db->from('tbl_witness');
+      $this->db->order_by('id','ASC');
+      $this->db->limit(2);
+
+      $query = $this->db->get();
+      $result = $query->result();
+      return $result;
+    }
+
+    public function get_witness($will_id){
+      $this->db->select('*');
+      $this->db->from('tbl_witness');
+      $this->db->where('will_id',$will_id);
+      $query = $this->db->get();
+      $result = $query->result();
+      return $result;
     }
   }
  ?>
