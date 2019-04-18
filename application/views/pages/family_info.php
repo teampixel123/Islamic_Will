@@ -1,4 +1,5 @@
 <?php
+ if($this->session->userdata('will_id')){
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <!DOCTYPE html>
@@ -18,7 +19,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
 </head>
 <body>
-<!-- navigation bar strat -->
 <div class="container-fluid">
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Navbar</a>
@@ -48,7 +48,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </div>
 </nav>
 </div>
-<!-- navigation bar end  -->
+
+<!-- family info containner start -->
+<?php $start_will_data = $this->session->userdata() ?>
 <div class="container">
 	<div class="jumbotron ">
 	<!--action="<?php echo base_url(); ?>/Will_controller/save_personal_info"-->
@@ -200,8 +202,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </div>
   </div>
 </div>
-<!-- End guardian_info -->
-<div class="row float-right pb-5">
+</div>
+<!-- personal info containner end -->
+<script src="<?php echo base_url(); ?>assets/js/jquery-3.3.0.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/js/moment.min.js" type="text/javascript"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
 
 <!-- Custome Javascript file -->
 <script type="text/javascript">var base_url = "<?php echo base_url() ?>";</script>

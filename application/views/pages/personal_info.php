@@ -380,6 +380,7 @@ $(document).ready(function(){
 
 		//	save_personal_data
 		$('#save_personal_data').click(function(){
+			//Validation...
 			var form_data = $('#personal_info_form').serialize();
 			$.ajax({
 				data: form_data,
@@ -401,10 +402,16 @@ $(document).ready(function(){
 					window.location.href = "<?php echo base_url() ?>/Will_controller/family_info_view";
 				}
 			});
+
 		});
 
 		//Update Personal data...
 		$('#update_personal_data').click(function(){
+			var full_name = $('#full_name').val();
+			if(full_name == ''){
+				alert('Name is Required');
+			}
+			else{
 			var form_data = $('#personal_info_form').serialize();
 			$.ajax({
 				data: form_data,
@@ -425,6 +432,7 @@ $(document).ready(function(){
 					window.location.href = "<?php echo base_url() ?>/Will_controller/family_info_view";
 				}
 			});
+		}
 		});
 
 		$('#destroy').click(function(){

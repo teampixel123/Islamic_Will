@@ -21,11 +21,6 @@ class Welcome extends CI_Controller {
 		$this->load->view('welcome_message',['data'=>$personal_data]);
 	}
 
-	public function pdf(){
-		$personal_data = $this->Will_Model->display_personal_info();
-		$this->load->view('welcome_message',['data'=>$personal_data]);
-	}
-
 	public function new_pdf(){
 		$personal_data = $this->Will_Model->display_personal_info();
 		$this->load->view('new_pdf',['data'=>$personal_data]);

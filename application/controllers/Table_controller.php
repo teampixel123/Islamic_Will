@@ -288,11 +288,11 @@
                     url: '".base_url()."Will_controller/delete_real_estate',
                     success: function (data){
 
-                      $('.table_funeral').dataTable({
+                      $('.table_real_estate').dataTable({
                             'bDestroy': true
                         }).fnDestroy(); // destroy table.
 
-                      $('.table_funeral').DataTable({
+                      $('.table_real_estate').DataTable({
                         'processing': true,
                         'serverSide': true,
                         'bFilter' : false,
