@@ -47,7 +47,7 @@ include('include/login_header.php'); ?>
                  <input type="hidden" name="will_id" id="will_id" value="<?php echo $will_list->will_id; ?>" />
                </form>
                <a type="button" id="btn_will_details" class="btn btn-sm btn-success no-margin"><i class="fa fa-eye"></i>View</a> -->
-               <form id="form_will_edit" action="<?php echo base_url(); ?>/Will_controller/personal_info_view" method="post">
+               <form id="form_will_edit" action="<?php echo base_url(); ?>/Will_controller/load_login_personal_info" method="post">
                  <input type="hidden" name="will_id" id="will_id" value="<?php echo $will_list->will_id; ?>" />
                </form>
                <form id="form_will_pdf" action="<?php echo base_url(); ?>/Pdf_controller/final_pdf" method="post">

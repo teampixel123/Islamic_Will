@@ -113,12 +113,14 @@ $('#add_family_member').click(function(){
   var family_person_dob = $('#family_person_dob').val();
   var guardian_name = $('#guardian_name').val();
   var guardian_address = $('#guardian_address').val();
+  var family_person_name_format =  /^[a-zA-Z ]*$/;
+  var guardian_name_format =  /^[a-zA-Z ]*$/;
 
   if(relationship == '0'){
     $('#error_relationship').show();
   }
 
-  if(family_person_name == ''){
+  if(!family_person_name_format.test(family_person_name) || family_person_name == ''){
     $('#error_family_person_name').show();
   }
 
@@ -134,13 +136,13 @@ $('#add_family_member').click(function(){
     $('#error_guardian_name').show();
   }
 
-  if(guardian_address == ''  && years < 18){
-    $('#error_guardian_address').show();
+  if(!guardian_name_format.test(guardian_name) || guardian_name == ''  && years < 18){
+    $('#error_guardian_name').show();
   }
-
 
   else {
      $('.valide').hide();
+
      var form_data = $('#family_member_form').serialize();
      $.ajax({
        data: form_data,
@@ -421,14 +423,14 @@ $('#add_funeral').click(function(){
     	}
 
 	});
-
   //	Save/Add Bank Assets...
 	$('#add_bank_assets').click(function(){
     var assets_type = $('#assets_type').val();
     var account_number = $('#account_number').val();
     var bank_name = $('#bank_name').val();
     var branch_name = $('#branch_name').val();
-    var key_number = $('#key_number').val();
+    var fd_recipt_No = $('#fd_recipt_No').val();
+
 
     if(assets_type == '0'){
       $('#error_assets_type').show();
@@ -441,15 +443,30 @@ $('#add_funeral').click(function(){
     if(bank_name == ''){
       $('#error_bank_name').show();
     }
+
     if(branch_name == ''){
       $('#error_branch_name').show();
     }
+     // if(assets_type == 'Bank Locker'){
 
-    if(key_number == ''){
-      $('#error_key_number').show();
-    }
-
+    // }
     else {
+
+      var assets_type = $('#assets_type').val();
+      var key_number = $('#key_number').val();
+      var fd_recipt_No = $('#fd_recipt_No').val();
+
+      if(assets_type == 'Bank Locker'){
+        if(key_number == ''){
+          $('#error_key_number').show();
+        }
+
+        if(fd_recipt_No == ''){
+          $('#error_fd_recipt_No').show();
+        }
+
+      }
+
             $('.valide').hide();
             var form_data = $('#bank_assets_form').serialize();
            $.ajax({
@@ -480,10 +497,11 @@ $('#add_funeral').click(function(){
                  },
                });
              }
-           });
+         });
      }
 
 	});
+
 
 
   //	Save/Add Bank Assets...

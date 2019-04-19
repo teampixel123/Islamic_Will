@@ -61,7 +61,7 @@ include('include/head.php');
         <label class="col-md-3 text-right" for="exampleInputEmail1">Have Child</label>
 				<div class="col-md-9">
 					<select class="form-control" name="is_have_child" id="is_have_child">
-					<option value="0">select </option>
+					<option value="-1">select </option>
 					 <option value="1">Yes</option>
 					 <option value="0">No</option>
 				 </select>
@@ -214,7 +214,7 @@ include('include/head.php');
     </div>
 		</form>
 </div>
-    <button type="button" id="save_personal_data" class="btn btn-success" style="float:right;">Save & Next</button>
+    <button type="submit" id="save_personal_data" class="btn btn-success" style="float:right;">Save & Next</button>
 		<button type="button" id="update_personal_data" class="btn btn-info" style="float:right;">Update & Next</button>
 		<button type="button" id="destroy" class="btn btn-danger">Clear session</button>
 		<!--a href="<?php echo base_url() ?>/Will_controller/family_info_view" type="button" id="personal_next" class="btn btn-info">Next</a-->
@@ -367,7 +367,8 @@ $(document).ready(function(){
 
 		//	save_personal_data
 		$('#save_personal_data').click(function(){
-				// save validation $start
+
+
 				var full_name = $('#full_name').val();
 				var marital_status = $('#marital_status').val();
 				var is_have_child = $('#is_have_child').val();
@@ -382,6 +383,12 @@ $(document).ready(function(){
 				var occupation = $('#occupation').val();
 				var pin_code = $('#pin_code').val();
 				var aadhar_no = $('#aadhar_no').val();
+				var full_name_format =  /^[a-zA-Z ]*$/;
+				var address_format =  /^[a-zA-Z ]*$/;
+				var city_format =  /^[a-zA-Z ]*$/;
+				var state_format =  /^[a-zA-Z ]*$/;
+				var country_format =  /^[a-zA-Z ]*$/;
+				var occupation_format =  /^[a-zA-Z ]*$/;
 				var pin_code_format = /^[0-9]{6}$/;
 				var aadhar_no_format = /^[0-9]{12}$/;
 				var mobile_format = /^[7-9][0-9]{9}$/;
@@ -396,7 +403,7 @@ $(document).ready(function(){
 						$('#error_marital_status').show();
 					}
 
-					if(is_have_child == '0'){
+					if(is_have_child == '-1'){
 						$('#error_is_have_child').show();
 					}
 
@@ -417,25 +424,25 @@ $(document).ready(function(){
 					$('#error_email').show();
 				 }
 
-				if(address == ''){
-					$('#error_address').show();
-				}
+				 if(!address_format.test(address) || address == ''){
+   				$('#error_address').show();
+   			}
 
-				if(city == ''){
-					$('#error_city').show();
-				}
+  			if(!city_format.test(city) || city == ''){
+  				$('#error_city').show();
+  			}
 
-				if(state == ''){
-				 $('#error_state').show();
-			 }
+  			if(!state_format.test(state) || state == ''){
+  			 $('#error_state').show();
+  		 }
 
-				if(country == ''){
-				 $('#error_country').show();
-			 }
+  		 if(!country_format.test(country) || country == ''){
+  			$('#error_country').show();
+  		}
 
-				if(occupation == ''){
-				 $('#error_occupation').show();
-			 }
+  		 if(!occupation_format.test(occupation) || occupation == ''){
+  			$('#error_occupation').show();
+  		}
 
 				if(!pin_code_format.test(pin_code) || pin_code == '') {
 				$('#error_pin_code').show();
@@ -483,7 +490,8 @@ $(document).ready(function(){
 
 		$("#full_name").blur(function(){
 			var full_name = $('#full_name').val();
-			if(full_name == ''){
+			var full_name_format =  /^[a-zA-Z ]*$/;
+			if(!full_name_format.test(full_name) || full_name == ''){
 				$('#error_name').show();
 			}
 			else{
@@ -506,7 +514,7 @@ $(document).ready(function(){
 
 		$("#is_have_child").blur(function(){
 			var is_have_child = $('#is_have_child').val();
-			if(is_have_child == '0'){
+			if(is_have_child == '-1'){
 				$('#error_is_have_child').show();
 			}
 			else{
@@ -569,7 +577,8 @@ $(document).ready(function(){
 
 	$("#address").blur(function(){
 		var address = $('#address').val();
-		if(address == ''){
+		var address_format =  /^[a-zA-Z ]*$/;
+		if(!address_format.test(address) || address == ''){
 			$('#error_address').show();
 		}
 		else{
@@ -581,7 +590,8 @@ $(document).ready(function(){
 
 	$("#city").blur(function(){
 		var city = $('#city').val();
-		if(city == ''){
+		var city_format =  /^[a-zA-Z ]*$/;
+		if(!city_format.test(city) || city == ''){
 			$('#error_city').show();
 		}
 		else{
@@ -593,7 +603,8 @@ $(document).ready(function(){
 
 	$("#state").blur(function(){
 		var state = $('#state').val();
-		if(state == ''){
+		var state_format =  /^[a-zA-Z ]*$/;
+		if(!state_format.test(state) || state == ''){
 		 $('#error_state').show();
 	 }
 		else{
@@ -605,7 +616,8 @@ $(document).ready(function(){
 
 	$("#country").blur(function(){
 		var country = $('#country').val();
-		if(country == ''){
+		var country_format =  /^[a-zA-Z ]*$/;
+		if(!country_format.test(country) || country == ''){
 		 $('#error_country').show();
 	 }
 		else{
@@ -617,7 +629,8 @@ $(document).ready(function(){
 
 	$("#occupation").blur(function(){
 		var occupation = $('#occupation').val();
-		if(occupation == ''){
+		var occupation_format =  /^[a-zA-Z ]*$/;
+		if(!occupation_format.test(occupation) || occupation == ''){
 		 $('#error_occupation').show();
 	 }
 		else{
@@ -673,6 +686,12 @@ $(document).ready(function(){
 			var occupation = $('#occupation').val();
 			var pin_code = $('#pin_code').val();
 			var aadhar_no = $('#aadhar_no').val();
+			var full_name_format =  /^[a-zA-Z ]*$/;
+			var address_format =  /^[a-zA-Z ]*$/;
+			var city_format =  /^[a-zA-Z ]*$/;
+			var state_format =  /^[a-zA-Z ]*$/;
+			var country_format =  /^[a-zA-Z ]*$/;
+			var occupation_format =  /^[a-zA-Z ]*$/;
 			var pin_code_format = /^[0-9]{6}$/;
 			var aadhar_no_format = /^[0-9]{12}$/;
 			var mobile_format = /^[7-9][0-9]{9}$/;
@@ -687,10 +706,9 @@ $(document).ready(function(){
 					$('#error_marital_status').show();
 				}
 
-				if(is_have_child == '0'){
+				if(is_have_child == '-1'){
 					$('#error_is_have_child').show();
 				}
-
 				if(gender == '0'){
 					$('#error_gender').show();
 				}
@@ -708,25 +726,25 @@ $(document).ready(function(){
 				$('#error_email').show();
 			 }
 
-			if(address == ''){
-				$('#error_address').show();
-			}
+			 if(!address_format.test(address) || address == ''){
+ 				$('#error_address').show();
+ 			}
 
-			if(city == ''){
+			if(!city_format.test(city) || city == ''){
 				$('#error_city').show();
 			}
 
-			if(state == ''){
+			if(!state_format.test(state) || state == ''){
 			 $('#error_state').show();
 		 }
 
-			if(country == ''){
-			 $('#error_country').show();
-		 }
+		 if(!country_format.test(country) || country == ''){
+			$('#error_country').show();
+		}
 
-			if(occupation == ''){
-			 $('#error_occupation').show();
-		 }
+		 if(!occupation_format.test(occupation) || occupation == ''){
+			$('#error_occupation').show();
+		}
 
 			if(!pin_code_format.test(pin_code) || pin_code == '') {
 			$('#error_pin_code').show();

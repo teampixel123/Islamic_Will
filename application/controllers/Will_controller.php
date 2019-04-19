@@ -22,15 +22,13 @@
       $this->load->view('pages/start_will');
     }
 
+
+
     public function personal_info_view(){
       $is_login = $this->session->userdata('user_is_login');
-      if($is_login && $this->input->post('will_id')){
-        $will_id = $this->input->post('will_id');
-        $this->session->set_userdata('will_id',$will_id);
-        $user_id = $this->session->userdata('user_id');
-        //$data['user_data'] = $this->Will_Model->get_user_data($user_id);
+      $user_id = $this->session->userdata('user_id');
+      if($is_login && $user_id){
         $user_data = $this->Will_Model->get_user_data($user_id);
-        //echo $user_data;
         $this->load->view('pages/personal_info',['user_data'=>$user_data]);
       }
       else{
@@ -40,6 +38,18 @@
   	  //$this->load->view('pages/start_will');
 
   	}
+
+    public function load_login_personal_info(){
+      $is_login = $this->session->userdata('user_is_login');
+      if($is_login && $this->input->post('will_id')){
+        $will_id = $this->input->post('will_id');
+        $this->session->set_userdata('will_id',$will_id);
+        header('location:personal_info_view');
+      }
+      else{
+        header('location:login');
+      }
+    }
 
     public function family_info_view(){
       $this->load->view('pages/family_info');

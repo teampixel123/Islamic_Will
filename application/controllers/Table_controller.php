@@ -19,7 +19,8 @@
 			$will_id = $this->input->post('will_id');
       $totalData = $this->Table_Model->countFamilyMembarRows($will_id);
       $totalFiltered = $totalData;
-      $posts = $this->Table_Model->getAllFamilyMembarDataAjax($limit,$start,$order,$dir,$will_id);
+      $posts = $this->Table_Model->getAllFamilyMembarDataAjax($will_id);
+      //echo print_r($posts);die;
       $data = array();
       if(!empty($posts))
 			{
@@ -103,7 +104,7 @@
 			$will_id = $this->input->post('will_id');
       $totalData = $this->Table_Model->countExecutorRows($will_id);
       $totalFiltered = $totalData;
-      $posts = $this->Table_Model->getAllExecutorDataAjax($limit,$start,$order,$dir,$will_id);
+      $posts = $this->Table_Model->getAllExecutorDataAjax($will_id);
       $data = array();
       if(!empty($posts))
 			{
@@ -178,7 +179,7 @@
       $will_id = $this->input->post('will_id');
       $totalData = $this->Table_Model->countFuneralRows($will_id);
       $totalFiltered = $totalData;
-      $posts = $this->Table_Model->getAllFuneralDataAjax($limit,$start,$order,$dir,$will_id);
+      $posts = $this->Table_Model->getAllFuneralDataAjax($will_id);
       $data = array();
       if(!empty($posts))
       {
@@ -252,7 +253,7 @@
       $will_id = $this->input->post('will_id');
       $totalData = $this->Table_Model->countRealEstateRows($will_id);
       $totalFiltered = $totalData;
-      $posts = $this->Table_Model->getAllRealEstateDataAjax($limit,$start,$order,$dir,$will_id);
+      $posts = $this->Table_Model->getAllRealEstateDataAjax($will_id);
       $data = array();
       if(!empty($posts))
       {
@@ -336,7 +337,7 @@
       $will_id = $this->input->post('will_id');
       $totalData = $this->Table_Model->countBankAssetsRows($will_id);
       $totalFiltered = $totalData;
-      $posts = $this->Table_Model->getAllBankAssetsDataAjax($limit,$start,$order,$dir,$will_id);
+      $posts = $this->Table_Model->getAllBankAssetsDataAjax($will_id);
       $data = array();
       if(!empty($posts))
       {
@@ -451,7 +452,7 @@
       $will_id = $this->input->post('will_id');
       $totalData = $this->Table_Model->countVehicleRows($will_id);
       $totalFiltered = $totalData;
-      $posts = $this->Table_Model->getAllVehicleAjax($limit,$start,$order,$dir,$will_id);
+      $posts = $this->Table_Model->getAllVehicleAjax($will_id);
       $data = array();
       if(!empty($posts))
       {
@@ -526,7 +527,7 @@
       $will_id = $this->input->post('will_id');
       $totalData = $this->Table_Model->countGiftRows($will_id);
       $totalFiltered = $totalData;
-      $posts = $this->Table_Model->getAllGiftAjax($limit,$start,$order,$dir,$will_id);
+      $posts = $this->Table_Model->getAllGiftAjax($will_id);
       $data = array();
       if(!empty($posts))
       {
@@ -600,7 +601,7 @@
       $will_id = $this->input->post('will_id');
       $totalData = $this->Table_Model->countWitnessRows($will_id);
       $totalFiltered = $totalData;
-      $posts = $this->Table_Model->getAllWitnessAjax($limit,$start,$order,$dir,$will_id);
+      $posts = $this->Table_Model->getAllWitnessAjax($will_id);
       $data = array();
       if(!empty($posts))
       {

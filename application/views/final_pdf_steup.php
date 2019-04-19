@@ -60,9 +60,9 @@
 
  // set document information
  $pdf->SetCreator(PDF_CREATOR);
- $pdf->SetAuthor('Nicola Asuni');
- $pdf->SetTitle('TCPDF Example 003');
- $pdf->SetSubject('TCPDF Tutorial');
+ $pdf->SetAuthor(' ');
+ $pdf->SetTitle('Islamic_Will');
+ $pdf->SetSubject(' ');
  $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
  // set default header data
@@ -565,7 +565,8 @@ $pdf->writeHTML($html, true, 0, true, 0);
 
 //$pdf->Image('application\img\logo.png', 90, 100, 60, 60, '', '', '', true, 72);
 //Close and output PDF document
-$pdf->Output('example_049.pdf', 'I');
+$pdf->Output('Islamic_will.pdf', 'I');
+
 //============================================================+
 // END OF FILE
 //============================================================+

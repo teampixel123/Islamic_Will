@@ -254,7 +254,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //  strat validation asif
 $("#funeral_name").blur(function(){
   var funeral_name = $('#funeral_name').val();
-  if(funeral_name == ''){
+  var funeral_name_format =  /^[a-zA-Z ]*$/;
+  if(!funeral_name_format.test(funeral_name) || funeral_name == ''){
     $('#error_funeral_name').show();
   }
   else{
@@ -264,7 +265,8 @@ $("#funeral_name").blur(function(){
 
 $("#funeral_address").blur(function(){
   var funeral_address = $('#funeral_address').val();
-  if(funeral_address == ''){
+  var funeral_address_format =  /^[a-zA-Z ]*$/;
+  if(!funeral_address_format.test(funeral_address) || funeral_address == ''){
     $('#error_funeral_address').show();
   }
   else{
