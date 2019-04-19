@@ -45,31 +45,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div class="jumbotron ">
     <form class="" method="post">
       <legend class="text-center">Login</legend>
-
-
+			
       <div class="form-group">
         <div class="row text-center">
           <div class="col-md-4 text-right">
             <label for="exampleInputEmail1">Mobile No. / Email:</label>
           </div>
           <div class="col-md-5">
-            <input type="number" name="mob_email" id="mob_email" class="form-control" aria-describedby="emailHelp" >
+            <input type="text" name="mob_email" id="mob_email" class="form-control" aria-describedby="emailHelp" >
+						<p id="error_invalide" style="color:red; display:none" class="text-left invalide">*Invalide Mobile Number/Email Format</p>
+						<p id="error_required" style="color:red; display:none" class="text-left invalide">*Fill up Mobile Number/Email Id</p>
           </div>
         </div>
       </div>
 
-      <div class="form-group" style="display:none;">
-        <div class="row text-center">
-          <div class="col-md-4 text-right">
-            <label for="exampleInputEmail1">Mobile No. / Email:</label>
-          </div>
-          <div class="col-md-5">
-            <input type="text" name="mobile_no" class="form-control" id="mobile_no" aria-describedby="emailHelp" >
-          </div>
-        </div>
-      </div>
+			<div id="otp_div" style="display:none;">
+				<input type="hidden" name="will_id" class="form-control" id="will_id" aria-describedby="emailHelp" >
+	      <div class="form-group" >
+	        <div class="row text-center">
+	          <div class="col-md-4 text-right">
+	            <label for="exampleInputEmail1">Enter OTP</label>
+	          </div>
+	          <div class="col-md-5">
+	            <input type="text" name="otp" class="form-control" id="otp" aria-describedby="emailHelp" >
+							<p id="error_invalide_otp" style="color:red; display:none" class="text-left invalide">*Invalide OTP</p>
+							<p id="error_expired_otp" style="color:red; display:none" class="text-left invalide">*Invalide Expired</p>
+	          </div>
+	        </div>
+	      </div>
+				<div class="row">
+	      	<div class="col-md-12 text-center">
+	      	    <button type="button" id="btn_login" class="btn btn-success btn-md">Login</button>
+	      	</div>
+	      </div>
+			</div>
 
-      <div class="row">
+      <div id="send_otp_div" class="row">
       	<div class="col-md-12 text-center">
       	    <button type="button" id="btn_send_otp" class="btn btn-primary btn-md">Send OTP</button>
       	</div>
@@ -88,17 +99,74 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <script>
 $(document).ready(function(){
+
   $('#btn_send_otp').click(function(){
     var mob_email = $('#mob_email').val();
-    $.ajax({
-  		data: {'mob_email' : mob_email},
-  		type: "post",
-  		url: "<?php echo base_url(); ?>Will_controller/generate_otp",
-  		success: function (data){
-      }
-    });
-    //alert(mob_email);
+		var mobile_format = /^[6-9][0-9]{9}$/;
+		var email_format = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;;
+		if(mob_email == ''){
+			$('#error_required').show();
+		}
+		else if(mobile_format.test(mob_email)) {
+			var validate = 'mobile_number';
+			$('.invalide').hide();
+		}
+		else if(email_format.test(mob_email)){
+			var validate = 'email';
+			$('.invalide').hide();
+		}
+		else{
+			$('#error_invalide').show();
+		}
+		if(validate == 'mobile_number' || validate == 'email'){
+			$.ajax({
+	  		data: {'mob_email' : mob_email,
+							'validate' : validate,},
+	  		type: "post",
+	  		url: "<?php echo base_url(); ?>Login_controller/generate_otp",
+	  		success: function(data){
+					var responce = JSON.parse(data);
+					//alert(responce['responce']);
+					if(responce['responce'] == 'Success'){
+						$('#send_otp_div').hide();
+						$('#otp_div').show();
+						$("#mob_email").attr("disabled", "disabled");
+						$('#will_id').val(responce['will_id']);
+					}
+	      }
+	    });
+		}
   });
+
+	 $('#btn_login').click(function(){
+		 var will_id = $('#will_id').val();
+		 var otp = $('#otp').val();
+		 $.ajax({
+			 data:{
+				 'will_id' : will_id,
+				 'otp' : otp,
+			  },
+			 type: 'post',
+			 url: "<?php echo base_url(); ?>Login_controller/login_user",
+			 success: function(data){
+				 var responce = JSON.parse(data);
+				 if(responce['responce'] == 'Success'){
+					 $('.invalide').hide();
+					 window.location.href = "<?php echo base_url() ?>/Will_controller/user_dashboard";
+				 }
+				 else if(responce['responce'] == 'Expire_OTP'){
+					 $('.invalide').hide();
+					 $('#error_expired_otp').show();
+				 }
+				 else if (responce['responce'] == 'Invalide_OTP') {
+					 $('.invalide').hide();
+					 $('#error_invalide_otp').show();
+					 //alert('Invalide OTP...');
+				 }
+			 }
+		 });
+	 });
+
 
 });
 </script>

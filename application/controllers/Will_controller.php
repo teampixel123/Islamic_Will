@@ -9,7 +9,7 @@
     }
 
     public function index(){
-      $this->load->view('pages/personal_info');
+      $this->load->view('pages/start_will');
   	}
 
     public function login(){
@@ -42,19 +42,18 @@
       $this->load->view('pages/witness_info');
     }
 
-    public function generate_otp(){
-      $mob_email = $this->input->post('mob_email');
-      $this->load->helper('string');
-      $otp = random_string('nozero',6);
+    public function user_dashboard(){
+      $is_login = $this->session->userdata('user_is_login');
+      if($is_login){
+        $will_id = $this->session->userdata('will_id');
+        $personal_data = $this->Will_Model->get_personal_data($will_id);
+        $this->load->view('pages/user_dashboard',['personal_data'=>$personal_data]);
+      }
+      else{
+        header('Location:login');
+      }
 
-      $this->Will_Model->check_valid_mob_email($mob_email);
-
-      json_encode($mob_email);
-      //$this->load->view('pages/witness_info');
     }
-
-
-
 
     /*public function store_start_info(){
       $gender = $this->input->post('gender');
@@ -438,9 +437,10 @@
     }
 
     public function destroy_session(){
-      $this->session->unset_userdata('will_id');
-      $this->session->unset_userdata('will_start');
+    //  $this->session->unset_userdata('will_id');
+    //  $this->session->unset_userdata('will_start');
       $this->session->sess_destroy();
+      header('Location:start_will_view');
     }
 
 
