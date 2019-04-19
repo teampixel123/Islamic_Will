@@ -10,6 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
  <link href="<?php echo base_url('assets/css/style.css');?>" rel="stylesheet">
  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
 <div class="container-fluid">
@@ -65,8 +66,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				 </select>
         </div>
         <div class="col-md-6">
-          <input type="text" name="full_name"  id="full_name"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
-        </div>
+					<input type="text" name="full_name"  id="full_name"class="form-control empty" id="exampleInputEmail1" aria-describedby="emailHelp" >
+					<p id="error_name" style="color:red; display:none" class="text-left">*This field is required.</p>
+				</div>
       </div>
     </div>
 
@@ -75,11 +77,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <label class="col-md-3 text-right" for="exampleInputEmail1">Marital status</label>
 				<div class="col-md-9">
 					<select class="form-control" name="marital_status" id="marital_status">
+					<option value="0">select </option>
 					 <option>Married</option>
 					 <option>Unmarried</option>
 					 <option id="widove">Widove</option>
 					 <option>Divorcee</option>
 				 </select>
+				 <p id="error_marital_status" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
         </div>
       </div>
     </div>
@@ -89,9 +93,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <label class="col-md-3 text-right" for="exampleInputEmail1">Have Child</label>
 				<div class="col-md-9">
 					<select class="form-control" name="is_have_child" id="is_have_child">
+					<option value="0">select </option>
 					 <option value="1">Yes</option>
 					 <option value="0">No</option>
 				 </select>
+				 <p id="error_is_have_child" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
         </div>
       </div>
     </div>
@@ -101,9 +107,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <label class="col-md-3 text-right" for="exampleInputEmail1">Gender</label>
 				<div class="col-md-9">
 					<select class="form-control" name="gender" id="gender">
+					<option value="0">select </option>
 					 <option>Male</option>
 					 <option>Female</option>
 				 </select>
+				 <p id="error_gender" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
         </div>
       </div>
     </div>
@@ -112,7 +120,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="row text-center">
         <label class="col-md-3 text-right" for="exampleInputEmail1">Age</label>
 				<div class="col-md-9">
-					<input type="number" name="age" class="form-control" id="age" aria-describedby="emailHelp" >
+					<input type="number" name="age" class="form-control empty" id="age" aria-describedby="emailHelp" required >
+					<p id="error_age" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
         </div>
       </div>
     </div>
@@ -123,7 +132,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <label for="exampleInputEmail1">Address</label>
         </div>
         <div class="col-md-9">
-          <input type="text" name="address" class="form-control" id="address" aria-describedby="emailHelp" >
+          <input type="text" name="address" class="form-control" id="address" aria-describedby="emailHelp" required>
+					<p id="error_address" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
         </div>
       </div>
     </div>
@@ -135,6 +145,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <div class="col-md-9">
           <input type="text" name="city" class="form-control" id="city" aria-describedby="emailHelp" >
+					<p id="error_city" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
         </div>
       </div>
     </div>
@@ -146,6 +157,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <div class="col-md-9">
           <input type="number" name="pin_code" class="form-control" id="pin_code" aria-describedby="emailHelp" >
+					<p id="error_pin_code" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
         </div>
       </div>
     </div>
@@ -158,6 +170,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="col-md-9">
           <input type="text" name="state" class="form-control" id="state" aria-describedby="emailHelp" >
         </div>
+				<p id="error_state" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
       </div>
     </div>
 
@@ -168,6 +181,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <div class="col-md-9">
           <input type="text" name="country" class="form-control" id="country" aria-describedby="emailHelp" >
+					<p id="error_country" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
         </div>
       </div>
     </div>
@@ -179,6 +193,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <div class="col-md-9">
           <input type="number" name="mobile_no" class="form-control" id="mobile_no" aria-describedby="emailHelp" >
+					<p id="error_mobile_no" style="color:red; display:none" class="text-left invalide">*Please enter a valid number.</p>
         </div>
       </div>
     </div>
@@ -190,6 +205,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <div class="col-md-9">
           <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" >
+					<p id="error_email" style="color:red; display:none" class="text-left invalide">*Please enter a valid email address.</p>
         </div>
       </div>
     </div>
@@ -201,6 +217,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <div class="col-md-9">
           <input type="text" name="occupation" class="form-control" id="occupation" aria-describedby="emailHelp" >
+					<p id="error_occupation" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
         </div>
       </div>
     </div>
@@ -212,6 +229,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <div class="col-md-9">
           <input type="number" name="aadhar_no" class="form-control" id="aadhar_no" aria-describedby="emailHelp" >
+					<p id="error_aadhar_no" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
         </div>
       </div>
     </div>
@@ -404,14 +422,208 @@ $(document).ready(function(){
 			});
 
 		});
+		// Validation satrt
+
+		$("#full_name").blur(function(){
+			var full_name = $('#full_name').val();
+			if(full_name == ''){
+				$('#error_name').show();
+			}
+			else{
+					$('#error_name').hide();
+				}
+		});
+
+
+		$("#marital_status").blur(function(){
+			var marital_status = $('#marital_status').val();
+			if(marital_status == '0'){
+				$('#error_marital_status').show();
+			}
+			else{
+				$('#error_marital_status').hide();
+				}
+
+		});
+
+
+		$("#is_have_child").blur(function(){
+			var is_have_child = $('#is_have_child').val();
+			if(is_have_child == '0'){
+				$('#error_is_have_child').show();
+			}
+			else{
+				$('#error_is_have_child').hide();
+				}
+
+		});
+
+
+		$("#gender").blur(function(){
+			var gender = $('#gender').val();
+			if(gender == '0'){
+				$('#error_gender').show();
+			}
+			else{
+				$('#error_gender').hide();
+				}
+
+		});
+
+
+		$("#age").blur(function(){
+			var age = $('#age').val();
+			if(age == '' || age == '' )
+			{
+				$('#error_age').show();
+			}
+			else{
+				$('#error_gender').hide();
+				}
+
+		});
+
+
+		$("#mobile_no").blur(function(){
+			var mobile_no = $('#mobile_no').val();
+ 		 var mobile_format = /^[7-9][0-9]{9}$/;
+			if(!mobile_format.test(mobile_no) || mobile_no == '') {
+			$('#error_mobile_no').show();
+		 }
+			else{
+				$('#error_mobile_no').hide();
+				}
+
+		});
+
+
+	 $("#email").blur(function(){
+		 var email = $('#email').val();
+ 		var email_format = /^[a-z0-9._%+-]+@([a-z0-9-]+\.)+[a-z]{2,4}$/;
+		 if(!email_format.test(email) || email == '') {
+			$('#error_email').show();
+		 }
+		 else{
+			 $('#error_email').hide();
+			 }
+
+	 });
+
+
+	$("#address").blur(function(){
+		var address = $('#address').val();
+		if(address == ''){
+			$('#error_address').show();
+		}
+		else{
+			$('#error_address').hide();
+			}
+
+	});
+
+
+	$("#city").blur(function(){
+		var city = $('#city').val();
+		if(city == ''){
+			$('#error_city').show();
+		}
+		else{
+			$('#error_city').hide();
+			}
+
+	});
+
+
+	$("#state").blur(function(){
+		var state = $('#state').val();
+		if(state == ''){
+		 $('#error_state').show();
+	 }
+		else{
+			$('#error_state').hide();
+			}
+
+	});
+
+
+	$("#country").blur(function(){
+		var country = $('#country').val();
+		if(country == ''){
+		 $('#error_country').show();
+	 }
+		else{
+			$('#error_country').hide();
+			}
+
+	});
+
+
+	$("#occupation").blur(function(){
+		var occupation = $('#occupation').val();
+		if(occupation == ''){
+		 $('#error_occupation').show();
+	 }
+		else{
+			$('#error_occupation').hide();
+			}
+
+	});
+
+
+	$("#pin_code").blur(function(){
+		var pin_code = $('#pin_code').val();
+		var pin_code_format = /^[0-9]{6}$/;
+
+		if(!pin_code_format.test(pin_code) || pin_code == '') {
+		$('#error_pin_code').show();
+	 }
+		else{
+			$('#error_pin_code').hide();
+			}
+
+	});
+
+
+
+	$("#aadhar_no").blur(function(){
+		var aadhar_no = $('#aadhar_no').val();
+		var aadhar_no_format = /^[0-9]{12}$/;
+
+		if(!aadhar_no_format.test(aadhar_no) || aadhar_no == '') {
+			 $('#error_aadhar_no').show();
+				 }
+		else {
+			$('#error_aadhar_no').hide();
+			}
+
+	});
+
+		// Validation end
+
 
 		//Update Personal data...
 		$('#update_personal_data').click(function(){
 			var full_name = $('#full_name').val();
-			if(full_name == ''){
-				alert('Name is Required');
-			}
-			else{
+			var marital_status = $('#marital_status').val();
+			var is_have_child = $('#is_have_child').val();
+			var gender = $('#gender').val();
+			var age = $('#age').val();
+		  var mobile_no = $('#mobile_no').val();
+			var email = $('#email').val();
+			var address = $('#address').val();
+			var city = $('#city').val();
+			var state = $('#state').val();
+			var country = $('#country').val();
+			var occupation = $('#occupation').val();
+			var pin_code = $('#pin_code').val();
+			var aadhar_no = $('#aadhar_no').val();
+			var pin_code_format = /^[0-9]{6}$/;
+			var aadhar_no_format = /^[0-9]{12}$/;
+			var mobile_format = /^[7-9][0-9]{9}$/;
+			var email_format = /^[a-z0-9._%+-]+@([a-z0-9-]+\.)+[a-z]{2,4}$/;
+
+
+
 			var form_data = $('#personal_info_form').serialize();
 			$.ajax({
 				data: form_data,
@@ -432,7 +644,7 @@ $(document).ready(function(){
 					window.location.href = "<?php echo base_url() ?>/Will_controller/family_info_view";
 				}
 			});
-		}
+
 		});
 
 		$('#destroy').click(function(){
