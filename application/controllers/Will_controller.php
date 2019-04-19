@@ -9,6 +9,7 @@
     }
 
     public function index(){
+      $this->session->sess_destroy();
       $this->load->view('pages/start_will');
   	}
 
@@ -45,14 +46,25 @@
     public function user_dashboard(){
       $is_login = $this->session->userdata('user_is_login');
       if($is_login){
-        $will_id = $this->session->userdata('will_id');
-        $personal_data = $this->Will_Model->get_personal_data($will_id);
-        $this->load->view('pages/user_dashboard',['personal_data'=>$personal_data]);
+        $user_id = $this->session->userdata('user_id');
+        $user_data = $this->Will_Model->get_user_data($user_id);
+        $this->load->view('pages/user_dashboard',['user_data'=>$user_data]);
       }
       else{
         header('Location:login');
       }
+    }
 
+    public function will_list(){
+      $is_login = $this->session->userdata('user_is_login');
+      if($is_login){
+        $user_id = $this->session->userdata('user_id');
+        $user_data = $this->Will_Model->get_user_data($user_id);
+        $this->load->view('pages/will_list',['user_data'=>$user_data]);
+      }
+      else{
+        header('Location:login');
+      }
     }
 
     /*public function store_start_info(){
@@ -88,6 +100,7 @@
    $will_date = date('d-m-Y');
    $this->load->helper('string');
    $will_id = random_string('nozero',8);
+   $user_id = random_string('nozero',8);
    $name_title = $this->input->post('name_title');
 
    if($name_title == 'Miss.'){
@@ -107,8 +120,15 @@
                'will_id' => $will_id,
                'will_date' => $will_date,
              );
+    $user_data = array(
+      'user_id'=>$user_id,
+      'user_fullname'=>$this->input->post('full_name'),
+      'user_mobile_number'=>$this->input->post('mobile_no'),
+      'user_email_id'=>$this->input->post('email'),
+    );
    $personal_data = array(
              'will_id' => $will_id,
+             'will_user_id' => $user_id,
              'name_title'=>$this->input->post('name_title'),
              'full_name'=>$this->input->post('full_name'),
              'address'=>$this->input->post('address'),
@@ -136,6 +156,7 @@
        echo "Mobile Number Exist";
      }
      else{*/
+       $this->Will_Model->save_user($user_data);
        $this->Will_Model->save_personal_info($personal_data);
        $this->Will_Model->save_will_data($will_data);
 

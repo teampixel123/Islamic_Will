@@ -16,7 +16,7 @@
       $result = $this->Login_Model->check_valid_mob_email($mob_email);
 
       if($result){
-        $will_id = $result[0]['will_id'];
+        $user_id = $result[0]['user_id'];
         $otp = random_string('nozero',6);
         $current_date = date('d-m-Y');
         $current_time = date('H:i:s');
@@ -29,9 +29,10 @@
           'otp_start_time' => $current_time,
           'otp_end_time' => $end_time,
         );
-        $this->Login_Model->update_otp($will_id,$update_otp_data);
+        $this->Login_Model->update_otp($user_id,$update_otp_data);
+
         $result['responce'] = 'Success';
-        $result['will_id'] = $will_id;
+        $result['user_id'] = $user_id;
         echo json_encode($result);
       }
       else{
@@ -41,18 +42,18 @@
     }
 
     public function login_user(){
-      $will_id = $this->input->post('will_id');
+      $user_id = $this->input->post('user_id');
       $otp = $this->input->post('otp');
       $current_date = date('d-m-Y');
       $current_time = date('H:i:s');
 
-      $get_data = $this->Login_Model->get_otp_data($will_id,$otp);
+      $get_data = $this->Login_Model->validate_otp($user_id,$otp);
       if($get_data){
         $otp_date = $get_data[0]['otp_date'];
         $otp_end_time = $get_data[0]['otp_end_time'];
          if(strtotime($otp_date) == strtotime($current_date) && strtotime($current_time) <= strtotime($otp_end_time)){
            //$this->session->sess_destroy();
-           $session_data = array('user_is_login' => 'YES','will_id' =>$will_id);
+           $session_data = array('user_is_login' => 'YES','user_id' =>$user_id);
            $this->session->set_userdata($session_data);
            $result['responce'] = 'Success';
          }

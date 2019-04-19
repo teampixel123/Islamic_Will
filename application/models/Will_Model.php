@@ -24,6 +24,21 @@
       return $num;
     }
 
+    // Save User... Datta...
+    public function save_user($data){
+      $this->db->insert('tbl_user',$data);
+    }
+
+    // Get User Data... Datta...
+    public function get_user_data($user_id){
+      $this->db->select('*');
+      $this->db->from('tbl_user');
+      $this->db->where('user_id',$user_id);
+      $query = $this->db->get();
+      $result = $query->result();
+      return $result;
+    }
+
     // Save personal Info...
     public function save_personal_info($data){
       $this->db->insert('tbl_personal_info',$data);
@@ -94,6 +109,16 @@
       $this->db->insert('tbl_executor',$data);
     }
 
+    //	Get executor...
+    public function get_executor($will_id){
+      $this->db->select('*');
+      $this->db->from('tbl_executor');
+      $this->db->where('will_id',$will_id);
+      $query = $this->db->get();
+      $result = $query->result();
+      return $result;
+    }
+
     //	Save/Add executor...
     public function delete_executor($id){
       $this->db->where('id',$id);
@@ -103,6 +128,16 @@
     //	Save/Add funeral...
     public function save_funeral($data){
       $this->db->insert('tbl_funeral',$data);
+    }
+
+    //	Get Funeral...
+    public function get_funeral($will_id){
+      $this->db->select('*');
+      $this->db->from('tbl_funeral');
+      $this->db->where('will_id',$will_id);
+      $query = $this->db->get();
+      $result = $query->result();
+      return $result;
     }
 
     //	Save/Add executor...
@@ -115,6 +150,8 @@
     public function save_assets($data){
       $this->db->insert('tbl_real_estate',$data);
     }
+
+
     // Delete Real Estate Assets...
     public function delete_real_estate($id){
       $this->db->where('id',$id);

@@ -12,3 +12,14 @@ margin-left: 600px;
 .btn{
   margin: 20px;
 }
+
+
+
+.content{
+  background-color: #eee;
+  border-radius: 0;
+}
+
+.no-margin{
+    margin: 0px !important;
+}
