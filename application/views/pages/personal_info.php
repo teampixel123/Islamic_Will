@@ -358,6 +358,7 @@ else{ ?>
 
 
 <script>
+//ok
 $(document).ready(function(){
 		$("#child").hide();
   	$("#married").click(function(){
@@ -398,9 +399,7 @@ $(document).ready(function(){
 
 		//	save_personal_data
 		$('#save_personal_data').click(function(){
-
 				// save validation $start
-
 				var full_name = $('#full_name').val();
 				var marital_status = $('#marital_status').val();
 				var is_have_child = $('#is_have_child').val();
