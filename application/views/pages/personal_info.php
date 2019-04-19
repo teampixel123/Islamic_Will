@@ -65,14 +65,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				 </select>
         </div>
         <div class="col-md-6">
-<<<<<<< HEAD
-          <input type="text" name="full_name"  id="full_name"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
-        </div>
-=======
+
 					<input type="text" name="full_name"  id="full_name"class="form-control empty" id="exampleInputEmail1" aria-describedby="emailHelp" >
 					<p id="error_name" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
 				</div>
->>>>>>> acbb33c863a1573b8fd60b357047c76e2a38bf8d
       </div>
     </div>
 
@@ -387,9 +383,7 @@ $(document).ready(function(){
 
 		//	save_personal_data
 		$('#save_personal_data').click(function(){
-
 				// save validation $start
-
 				var full_name = $('#full_name').val();
 				var marital_status = $('#marital_status').val();
 				var is_have_child = $('#is_have_child').val();
@@ -408,7 +402,6 @@ $(document).ready(function(){
 				var aadhar_no_format = /^[0-9]{12}$/;
 				var mobile_format = /^[7-9][0-9]{9}$/;
 				var email_format = /^[a-z0-9._%+-]+@([a-z0-9-]+\.)+[a-z]{2,4}$/;
-
 
 					if(full_name == ''){
 						$('#error_name').show();
@@ -491,187 +484,162 @@ $(document).ready(function(){
 								window.location.href = "<?php echo base_url() ?>/Will_controller/family_info_view";
 							}
 						});
-
 					}
-
 				// Validation end asif
-
-
-				 // save validation end
-
-
 		});
-<<<<<<< HEAD
-=======
+
 		// Validation satrt asif
->>>>>>> acbb33c863a1573b8fd60b357047c76e2a38bf8d
+        $("#full_name").blur(function(){
+            var full_name = $('#full_name').val();
+            if(full_name == ''){
+                $('#error_name').show();
+            }
+            else{
+                    $('#error_name').hide();
+                }
+        });
 
-		//Update Personal data...
-		$('#update_personal_data').click(function(){
-			var full_name = $('#full_name').val();
-			if(full_name == ''){
-				alert('Name is Required');
-			}
-			else{
-<<<<<<< HEAD
-			var form_data = $('#personal_info_form').serialize();
-			$.ajax({
-				data: form_data,
-				type: "post",
-				url: "<?php echo base_url(); ?>/Will_controller/update_personal_info",
-				success: function (data){
-					var info = JSON.parse(data);
-					$('#lbl_name').text(info[0]['full_name']);
-					$('#lbl_mobile').text(info[0]['mobile_no']);
-					$('#lbl_email').text(info[0]['email']);
-					$('#lbl_address').text(info[0]['address']+', '+info[0]['city']+'-'+info[0]['pin_code']+', '+info[0]['state']+', '+info[0]['country']);
-					$('#lbl_occupation').text(info[0]['occupation']);
-					$('#lbl_aadhar').text(info[0]['aadhar_no']);
-					$('#lbl_pan').text(info[0]['pan_no']);
+        $("#marital_status").blur(function(){
+            var marital_status = $('#marital_status').val();
+            if(marital_status == '0'){
+                $('#error_marital_status').show();
+            }
+            else{
+                $('#error_marital_status').hide();
+                }
+        });
 
-					$('#save_personal_data').hide();
-					$('#update_personal_data').show();
-					window.location.href = "<?php echo base_url() ?>/Will_controller/family_info_view";
-				}
-			});
-		}
-=======
-				$('#error_gender').hide();
-				}
+        $("#is_have_child").blur(function(){
+            var is_have_child = $('#is_have_child').val();
+            if(is_have_child == '0'){
+                $('#error_is_have_child').show();
+            }
+            else{
+                $('#error_is_have_child').hide();
+                }
+        });
 
-		});
+        $("#gender").blur(function(){
+            var gender = $('#gender').val();
+            if(gender == '0'){
+                $('#error_gender').show();
+            }
+            else{
+                $('#error_gender').hide();
+                }
+        });
 
+        $("#age").blur(function(){
+            var age = $('#age').val();
+            if(age == '' || age == '' )
+            {
+                $('#error_age').show();
+            }
+            else{
+                $('#error_age').hide();
+                }
+        });
 
-		$("#age").blur(function(){
-			var age = $('#age').val();
-			if(age == '' || age == '' )
-			{
-				$('#error_age').show();
-			}
-			else{
-				$('#error_age').hide();
-				}
+        $("#mobile_no").blur(function(){
+            var mobile_no = $('#mobile_no').val();
+          var mobile_format = /^[7-9][0-9]{9}$/;
+            if(!mobile_format.test(mobile_no) || mobile_no == '') {
+            $('#error_mobile_no').show();
+         }
+            else{
+                $('#error_mobile_no').hide();
+                }
+        });
 
-		});
+     $("#email").blur(function(){
+         var email = $('#email').val();
+         var email_format = /^[a-z0-9._%+-]+@([a-z0-9-]+\.)+[a-z]{2,4}$/;
+         if(!email_format.test(email) || email == '') {
+            $('#error_email').show();
+         }
+         else{
+             $('#error_email').hide();
+             }
+     });
 
+    $("#address").blur(function(){
+        var address = $('#address').val();
+        if(address == ''){
+            $('#error_address').show();
+        }
+        else{
+            $('#error_address').hide();
+            }
+    });
 
-		$("#mobile_no").blur(function(){
-			var mobile_no = $('#mobile_no').val();
- 		 var mobile_format = /^[7-9][0-9]{9}$/;
-			if(!mobile_format.test(mobile_no) || mobile_no == '') {
-			$('#error_mobile_no').show();
-		 }
-			else{
-				$('#error_mobile_no').hide();
-				}
-
-		});
-
-
-	 $("#email").blur(function(){
-		 var email = $('#email').val();
- 		var email_format = /^[a-z0-9._%+-]+@([a-z0-9-]+\.)+[a-z]{2,4}$/;
-		 if(!email_format.test(email) || email == '') {
-			$('#error_email').show();
-		 }
-		 else{
-			 $('#error_email').hide();
-			 }
-
-	 });
-
-
-	$("#address").blur(function(){
-		var address = $('#address').val();
-		if(address == ''){
-			$('#error_address').show();
-		}
-		else{
-			$('#error_address').hide();
-			}
-
-	});
-
-
-	$("#city").blur(function(){
-		var city = $('#city').val();
-		if(city == ''){
-			$('#error_city').show();
-		}
-		else{
-			$('#error_city').hide();
-			}
-
-	});
+    $("#city").blur(function(){
+        var city = $('#city').val();
+        if(city == ''){
+            $('#error_city').show();
+        }
+        else{
+            $('#error_city').hide();
+            }
+    });
 
 
-	$("#state").blur(function(){
-		var state = $('#state').val();
-		if(state == ''){
-		 $('#error_state').show();
-	 }
-		else{
-			$('#error_state').hide();
-			}
+    $("#state").blur(function(){
+        var state = $('#state').val();
+        if(state == ''){
+         $('#error_state').show();
+     }
+        else{
+            $('#error_state').hide();
+            }
+    });
 
-	});
+    $("#country").blur(function(){
+        var country = $('#country').val();
+        if(country == ''){
+         $('#error_country').show();
+     }
+        else{
+            $('#error_country').hide();
+            }
+    });
 
+    $("#occupation").blur(function(){
+        var occupation = $('#occupation').val();
+        if(occupation == ''){
+         $('#error_occupation').show();
+     }
+        else{
+            $('#error_occupation').hide();
+            }
+    });
 
-	$("#country").blur(function(){
-		var country = $('#country').val();
-		if(country == ''){
-		 $('#error_country').show();
-	 }
-		else{
-			$('#error_country').hide();
-			}
+    $("#pin_code").blur(function(){
+        var pin_code = $('#pin_code').val();
+        var pin_code_format = /^[0-9]{6}$/;
 
-	});
+        if(!pin_code_format.test(pin_code) || pin_code == '') {
+        $('#error_pin_code').show();
+     }
+        else{
+            $('#error_pin_code').hide();
+            }
+    });
 
+    $("#aadhar_no").blur(function(){
+        var aadhar_no = $('#aadhar_no').val();
+        var aadhar_no_format = /^[0-9]{12}$/;
 
-	$("#occupation").blur(function(){
-		var occupation = $('#occupation').val();
-		if(occupation == ''){
-		 $('#error_occupation').show();
-	 }
-		else{
-			$('#error_occupation').hide();
-			}
+        if(!aadhar_no_format.test(aadhar_no) || aadhar_no == '') {
+             $('#error_aadhar_no').show();
+                 }
+        else {
+            $('#error_aadhar_no').hide();
+            }
+    });
 
-	});
+        // Validation end asif
 
-
-	$("#pin_code").blur(function(){
-		var pin_code = $('#pin_code').val();
-		var pin_code_format = /^[0-9]{6}$/;
-
-		if(!pin_code_format.test(pin_code) || pin_code == '') {
-		$('#error_pin_code').show();
-	 }
-		else{
-			$('#error_pin_code').hide();
-			}
-
-	});
-
-
-
-	$("#aadhar_no").blur(function(){
-		var aadhar_no = $('#aadhar_no').val();
-		var aadhar_no_format = /^[0-9]{12}$/;
-
-		if(!aadhar_no_format.test(aadhar_no) || aadhar_no == '') {
-			 $('#error_aadhar_no').show();
-				 }
-		else {
-			$('#error_aadhar_no').hide();
-			}
-
-	});
-
-		// Validation end asif
-
-
+// Personal Info Update...
 		$('#update_personal_data').click(function(){
 		  var full_name = $('#full_name').val();
 			var marital_status = $('#marital_status').val();
@@ -774,9 +742,6 @@ $(document).ready(function(){
 				}
 
 			// Validation end asif
-
-
->>>>>>> acbb33c863a1573b8fd60b357047c76e2a38bf8d
 		});
 
 		$('#destroy').click(function(){
