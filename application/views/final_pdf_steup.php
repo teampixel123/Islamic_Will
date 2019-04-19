@@ -147,8 +147,8 @@ $html .= '<br><h1 style="text-align:center; font-family: times, serif;"> ISLAMIC
 <br><br>
 <h2 style="text-align:center; font-family: times, serif;" >of........................................</h2>
 
-<p style="font-size:12; font-family: times, serif; text-align: justify; ">I Miss/Mr./Mrs'.$personal_data->full_name.' a Muslim, presently resident of
-'.$personal_data->address.', Age - ..........., Occupation – '.$personal_data->occupation.', having my
+<p style="font-size:12; font-family: times, serif; text-align: justify; ">I '.$personal_data->name_title.' '.$personal_data->full_name.' a Muslim, presently resident of
+'.$personal_data->address.', Age- '.$personal_data->age.', Occupation – '.$personal_data->occupation.', having my
 Aadhar No. '.$personal_data->aadhar_no.' being sound mind and memory declare that the following is my
 Islamic last Will and Testament (wasiyyat).</p>
 
@@ -199,14 +199,13 @@ Paradise is true, the Day of Judgement is coming without any doubt, and Allah (e
 <p style="font-size:12; font-family: times, serif;">
 My family consists of:<br>';
 foreach($family_data as $family_data ) {
-    $html .= ' My '. $family_data->relationship . '&nbsp;&nbsp;&nbsp; (name) &nbsp;&nbsp;'.$family_data->family_person_name.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$family_data->family_person_dob.'<br>'
+    $html .= 'My '. $family_data->relationship . '&nbsp;(name)&nbsp;'.$family_data->family_person_name.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$family_data->family_person_dob.'<br>'
 
 		;
 }
 
 
 $html .= '
-
 </p>
 
 <h2 style="text-align:center; font-family: times, serif;" >D. EXECUTOR </h2>';
@@ -228,14 +227,9 @@ foreach($excutor_data as $excutor_data ) {
 		</p>
 		';
 	}
-	//$html .= ' '
-	//;
 }
 
 $html .= '
-
-
-
 <p style="font-size:12; font-family: times, serif;"> a)	 I give my executor herein named power to settle any claim for or against my estate and power to sell any property, real, personal, or mixed,
  in which I have an interest, without court order and without bond. I direct no bond or surety for any bond be required for my executor in
   the performance of his/her duties.</p>
@@ -319,14 +313,10 @@ IV.	Distribution of the residue of my Estate to my Islamic heirs in accordance w
 
 	foreach($real_estate as $real_estate ) {
 	    $html .= ' '
-
 			;
 	}
 
-
 	$html .= '
-
-
 <h1 style="text-align:center; font-family: times, serif;" > My assets and properties – </h1>
 
 <h1 style=" font-family: times, serif;" >A. 	Immovable Property -  </h1>
@@ -336,7 +326,6 @@ IV.	Distribution of the residue of my Estate to my Islamic heirs in accordance w
 </p>
 
 <h1 style="font-family: times, serif;" > Bank Assets – </h1>
-
 ' ;
 
 foreach($bank_assets as $bank_assets ) {
@@ -409,27 +398,19 @@ foreach($bank_assets as $bank_assets ) {
 		</p>
 		';
 	}
-
 }
 
-
 $html .= '
-
-
 <h1 style=" font-family: times, serif;" >Vehicles –  </h1>';
-
 foreach($vehicle as $vehicle ) {
 		$html .= '
 		<p style="font-size:12; font-family: times, serif;" >
 			My vehicle with registration no '. $vehicle->registration_number .'. make year '. $vehicle->vehicle_make_year .', vehicle company '. $vehicle->vehicle_company .' and model name '. $vehicle->vehicle_model .' .
 		</p>'
-
 		;
 }
 
-
 $html .= '
-
 <h1 style="text-align:center; font-family: times, serif;" >Others gift -  </h1>';
 
 foreach($other_gift as $other_gift ) {
@@ -448,13 +429,10 @@ foreach($other_gift as $other_gift ) {
 		</p>
 		';
 	}
-
 }
 
 $html .= '
-
 ';
-
 if($personal_data->marital_status == 0){
 	$html .= '<h1 style="text-align:center; font-family: times, serif;" > I. DISTRIBUTION OF THE REMINDER OF MY ESTATE</h1>
 	<p style="font-size:12; font-family: times, serif;" > a.	I direct, devise and bequest all the residue and remainder of my estate after making provision for payment of
@@ -464,12 +442,8 @@ if($personal_data->marital_status == 0){
 	';
 }
 
-
-
 $html .= '
 <h1 style="text-align:center; font-family: times, serif;" > SCHEDULE A – MAWARITH (INHERITANCE) </h1>
-
-
 
 <p style="font-size:12; font-family: times, serif;" >This schedule A is signed by me as a part of this Last Will and Testament.</p>
 <p>b.	I direct that no part of the residue and remainder of my estate shall be inherited by any non-Muslim relative,
@@ -493,7 +467,6 @@ whether he/she is a kin or an in-law, spouse, parent or child. I further direct 
 	* Schedule A has been prepared by .............................. and made a ---------------- by him for the service of Muslims in India,
 	may Allah shower his soul with mercy and forgiveness.
 </h2>
-
 
 <p style="font-size:12; font-family: times, serif;" >
 	e.	I direct and devise that any foetus, conceived before my death, whose relationship to me qualifies it to be an heir according to this Article,
@@ -527,8 +500,6 @@ whether he/she is a kin or an in-law, spouse, parent or child. I further direct 
  </p>
  <p style="font-size:12; font-family: times, serif;" >This is my last and final will, which I have laid out.</p>
  <ul>
-
-
  	<li>PLACE: ____________</li><br>
 	<li>Dated:____________</li>
  </ul>
@@ -540,7 +511,6 @@ whether he/she is a kin or an in-law, spouse, parent or child. I further direct 
 Signature
 </p>
 
-
 <h1 style="text-align:center; font-family: times, serif;" >K. SEPARABILITY</h1>
 
 <p style="font-family: times, serif;">In case  one or more of the provisions contained in this/ any part of this Last Will and Testament is determined invalid by a court of competent jurisdiction I direct and ordain that other remaining provisions
@@ -551,8 +521,6 @@ I subscribe my name to this Will this day ______ of ____________, 201-- at _____
 </p>
 <p>This is my last and final will, which I have laid out.</p>
 <ul>
-
-
  <li>PLACE: ____________</li><br>
  <li>Dated:____________</li>
 </ul>
@@ -563,27 +531,21 @@ I subscribe my name to this Will this day ______ of ____________, 201-- at _____
 <p>______________________
 Signature
 </p>
-
 <h1 style="text-align:center; font-family: times, serif;" >M.  WITNESSES</h1>
 <p style="font-family: times, serif;" >
  We hereby certify that the foregoing instrument was on the date thereof, signed, Published, and declared by
  the Testator '.$personal_data->full_name.', as and for His/her Last Will and Testament, in our presence, who at
  his/her request and in his/her Presence, and in the presence of each other, have hereunto subscribed our names as
  Witnesses thereto, believing said Testator at the time of the signing to be of sound mind and memory.
-
 </p>';
 $i=0 ;
 foreach($witness as $witness ) {
 	$i++;
 	//if($i == 1){
 		$html .= '
-
 		 '.$i.'. &nbsp;'.$witness->witness_name.' of '.$witness->witness_address.'<br>
-
 		 ';
-
 }
-
 
 // reset pointer to the last page
 $pdf->lastPage();
@@ -598,15 +560,12 @@ $pdf->lastPage();
 //
 // $html = '';
 
-
-
 // output the HTML content
 $pdf->writeHTML($html, true, 0, true, 0);
 
 //$pdf->Image('application\img\logo.png', 90, 100, 60, 60, '', '', '', true, 72);
 //Close and output PDF document
 $pdf->Output('example_049.pdf', 'I');
-
 //============================================================+
 // END OF FILE
 //============================================================+

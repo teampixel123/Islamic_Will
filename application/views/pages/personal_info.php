@@ -1,50 +1,18 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Personal Info</title>
-
- <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
- <link href="<?php echo base_url('assets/css/style.css');?>" rel="stylesheet">
- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
- <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
-</head>
+include('include/head.php');
+?>
 <body>
-<div class="container-fluid">
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarColor02">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
-</div>
-
+	<?php
+		$is_login = $this->session->userdata('user_is_login');
+	  if($is_login && $this->input->post('will_id')){
+			include('include/login_header.php');
+		}
+		else{
+			include('include/header.php');
+		}
+	 ?>
 <!-- personal info containner start  asif change -->
-<?php $start_will_data = $this->session->userdata() ?>
 <div class="container">
 	<div class="jumbotron ">
 
@@ -254,7 +222,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <div class="col-md-6">
 <?php if($this->session->userdata('will_id')){	?>
-	<input type="hidden" name="will_id" id="will_id" value="<?php echo $start_will_data['will_id']; ?>">
+	<input type="hidden" name="will_id" id="will_id" value="<?php echo $this->session->userdata('will_id'); ?>">
 <?php } ?>
   <div class="container" style="background-color:white;">
   	<div class="" style="">

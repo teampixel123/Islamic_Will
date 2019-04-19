@@ -14,6 +14,9 @@
       if($is_login){
         $user_id = $this->session->userdata('user_id');
         $user_data = $this->Will_Model->get_user_data($user_id);
+        // foreach ($user_data as $user_data) {
+        //   echo $user_data->user_fullname;
+        // }
         $this->load->view('pages/user_dashboard',['user_data'=>$user_data]);
       }
       else{

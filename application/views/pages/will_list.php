@@ -7,10 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <?php include('include/head.php'); ?>
 <!-- include head end -->
 <body>
-  <?php
-  foreach ($user_data as $user_data) {
-  }
-  ?>
+
 <!-- include header -->
 <?php
 $page = 'will_list';
@@ -53,8 +50,12 @@ include('include/login_header.php'); ?>
                <form id="form_will_edit" action="<?php echo base_url(); ?>/Will_controller/personal_info_view" method="post">
                  <input type="hidden" name="will_id" id="will_id" value="<?php echo $will_list->will_id; ?>" />
                </form>
+               <form id="form_will_pdf" action="<?php echo base_url(); ?>/Pdf_controller/final_pdf" method="post">
+                 <input type="hidden" name="will_id" id="will_id" value="<?php echo $will_list->will_id; ?>" />
+               </form>
                <a id="btn_will_edit" type="button" class="btn btn-sm btn-info no-margin"><i class="fa fa-edit"></i></i>Edit</a>
                <a type="button" class="btn btn-sm btn-danger no-margin"><i class="fa fa-trash"></i>Delete</a>
+               <a id="btn_will_pdf" type="button" class="btn btn-sm btn-success no-margin"><i class="fa fa-pdf"></i>PDF</a>
            </tr>
            <?php
               }
@@ -78,6 +79,10 @@ $(document).ready(function(){
 
     $('#btn_will_edit').click(function(){
       $('#form_will_edit').submit();
+    });
+
+    $('#btn_will_pdf').click(function(){
+      $('#form_will_pdf').submit();
     });
 });
 </script>

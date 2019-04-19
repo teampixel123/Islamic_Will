@@ -27,7 +27,11 @@
       if($is_login && $this->input->post('will_id')){
         $will_id = $this->input->post('will_id');
         $this->session->set_userdata('will_id',$will_id);
-        $this->load->view('pages/personal_info');
+        $user_id = $this->session->userdata('user_id');
+        //$data['user_data'] = $this->Will_Model->get_user_data($user_id);
+        $user_data = $this->Will_Model->get_user_data($user_id);
+        //echo $user_data;
+        $this->load->view('pages/personal_info',['user_data'=>$user_data]);
       }
       else{
         $this->load->view('pages/personal_info');
@@ -268,8 +272,8 @@
                   'guardian_address' => $this->input->post('guardian_address'),
                 );
       $this->Will_Model->save_family_member($member_data);
-      $list = $this->Will_Model->get_family_member_list($will_id);
-      echo json_encode($list);
+      //$list = $this->Will_Model->get_family_member_list($will_id);
+      //echo json_encode($list);
     }
 
 //family_info
@@ -468,6 +472,13 @@
     }
 
     public function destroy_session(){
+    //  $this->session->unset_userdata('will_id');
+    //  $this->session->unset_userdata('will_start');
+      $this->session->sess_destroy();
+      header('Location:start_will_view');
+    }
+
+    public function logout_user(){
     //  $this->session->unset_userdata('will_id');
     //  $this->session->unset_userdata('will_start');
       $this->session->sess_destroy();

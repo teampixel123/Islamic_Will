@@ -1,9 +1,6 @@
-<?php foreach($user_data as $user_data){
-
-} ?>
 <div class="container-fluid">
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#"><?php echo $user_data->user_fullname; ?></a>
+  <a class="navbar-brand" href="#">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -14,16 +11,13 @@
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url() ?>/User_controller/will_list">Will List</a>
+        <a class="nav-link" href="#">Features</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Pricing</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">About</a>
-      </li>
-			<li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url() ?>/Will_controller/logout_user">Logout</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">

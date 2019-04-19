@@ -10,7 +10,7 @@
       return $num;
     }
 
-    public function getAllFamilyMembarDataAjax($limit,$start,$order,$dir,$will_id){
+    public function getAllFamilyMembarDataAjax($will_id){
       $this->db->select('*');
       $this->db->from('tbl_family_info');
       $this->db->where('will_id',$will_id);
@@ -28,7 +28,7 @@
       return $num;
     }
 
-    public function getAllExecutorDataAjax($limit,$start,$order,$dir,$will_id){
+    public function getAllExecutorDataAjax($will_id){
       $this->db->select('*');
       $this->db->from('tbl_executor');
       $this->db->where('will_id',$will_id);
@@ -46,7 +46,7 @@
       return $num;
     }
 
-    public function getAllFuneralDataAjax($limit,$start,$order,$dir,$will_id){
+    public function getAllFuneralDataAjax($will_id){
       $this->db->select('*');
       $this->db->from('tbl_funeral');
       $this->db->where('will_id',$will_id);
@@ -64,7 +64,7 @@
       return $num;
     }
 
-    public function getAllRealEstateDataAjax($limit,$start,$order,$dir,$will_id){
+    public function getAllRealEstateDataAjax($will_id){
       $this->db->select('*');
       $this->db->from('tbl_real_estate');
       $this->db->where('will_id',$will_id);
@@ -82,7 +82,7 @@
       return $num;
     }
 
-    public function getAllBankAssetsDataAjax($limit,$start,$order,$dir,$will_id){
+    public function getAllBankAssetsDataAjax($will_id){
       $this->db->select('*');
       $this->db->from('tbl_bank_assets');
       $this->db->where('will_id',$will_id);
@@ -100,7 +100,7 @@
       return $num;
     }
 
-    public function getAllVehicleAjax($limit,$start,$order,$dir,$will_id){
+    public function getAllVehicleAjax($will_id){
       $this->db->select('*');
       $this->db->from('tbl_vehicle');
       $this->db->where('will_id',$will_id);
@@ -118,7 +118,7 @@
       return $num;
     }
 
-    public function getAllGiftAjax($limit,$start,$order,$dir,$will_id){
+    public function getAllGiftAjax($will_id){
       $this->db->select('*');
       $this->db->from('tbl_other_gift');
       $this->db->where('will_id',$will_id);
@@ -137,7 +137,7 @@
       return $num;
     }
 
-    public function getAllWitnessAjax($limit,$start,$order,$dir,$will_id){
+    public function getAllWitnessAjax($will_id){
       $this->db->select('*');
       $this->db->from('tbl_witness');
       $this->db->where('will_id',$will_id);
@@ -145,23 +145,5 @@
       $result = $query->result();
       return $result;
     }
-  /*  $('.table_family_member').dataTable({
-        'bDestroy': true
-    }).fnDestroy(); // destroy table.
-
-    $('.table_family_member').DataTable({
-          'processing': true,
-          'serverSide': true,
-          'bFilter' : false,
-          'bLengthChange': false,
-          'bPaginate': false,
-          'bInfo': false,
-          'ajax':{
-             'url': 'Table_controller/family_member_list',
-             'dataType': 'json',
-             'type': 'POST',
-             'data':{ 'will_id' : ".$will_id."  }
-            },
-        });*/
   }
 ?>
