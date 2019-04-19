@@ -343,6 +343,7 @@ else{ ?>
 
 
 <script>
+//ok
 $(document).ready(function(){
 		$("#child").hide();
   	$("#married").click(function(){
