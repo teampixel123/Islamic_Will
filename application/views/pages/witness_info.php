@@ -66,6 +66,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <label class="col-md-3 text-right" for="exampleInputEmail1">Witness Name</label>
   				<div class="col-md-9">
   					<input type="text" name="witness_name" id="witness_name" class="form-control clear"  aria-describedby="emailHelp" >
+            <p id="error_witness_name" style="color:red; display:none" class="text-left valide">*This field is required.</p>
           </div>
         </div>
       </div>
@@ -75,6 +76,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <label class="col-md-3 text-right" for="exampleInputEmail1">Witness Address</label>
   				<div class="col-md-9">
   					<input type="text" name="witness_address" id="witness_address" class="form-control clear"  aria-describedby="emailHelp" >
+            <p id="error_witness_address" style="color:red; display:none" class="text-left valide">*This field is required.</p>
           </div>
         </div>
       </div>
@@ -242,6 +244,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!-- Custome Javascript file -->
 <script type="text/javascript">var base_url = "<?php echo base_url() ?>";</script>
 <script src="<?php echo base_url(); ?>assets/js/islamic_will_custome.js" type="text/javascript"></script>
+
+<script>
+// validation start asif//
+$("#witness_name").blur(function(){
+  var witness_name = $('#witness_name').val();
+  if(witness_name == ''){
+    $('#error_witness_name').show();
+  }
+  else{
+      $('#error_witness_name').hide();
+    }
+});
+
+$("#witness_address").blur(function(){
+  var witness_address = $('#witness_address').val();
+  if(witness_address == ''){
+    $('#error_witness_address').show();
+  }
+  else{
+      $('#error_witness_address').hide();
+    }
+});
+// validation end asif//
+</script>
 
 </body>
 <?php } ?>

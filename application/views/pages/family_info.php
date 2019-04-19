@@ -75,6 +75,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   					 <option>Brother</option>
   					 <option>Sister</option>
   				 </select>
+           <p id="error_relationship" style="color:red; display:none" class="text-left valide">*This field is required.</p>
           </div>
         </div>
       </div>
@@ -84,6 +85,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <label class="col-md-3 text-right" for="exampleInputEmail1">Name</label>
   				<div class="col-md-9">
   					<input type="text" name="family_person_name" id="family_person_name" class="form-control clear"  aria-describedby="emailHelp" >
+            	<p id="error_family_person_name" style="color:red; display:none" class="text-left valide">*This field is required.</p>
           </div>
         </div>
       </div>
@@ -93,6 +95,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <label class="col-md-3 text-right" for="exampleInputEmail1">Date of Birth</label>
   				<div class="col-md-9">
   					<input type="text" name="family_person_dob" id="family_person_dob" class="form-control clear"  aria-describedby="emailHelp" >
+            <p id="error_family_person_dob" style="color:red; display:none" class="text-left valide">*This field is required.</p>
           </div>
         </div>
       </div>
@@ -102,6 +105,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <label class="col-md-3 text-right" for="exampleInputEmail1">Age:</label>
   				<div class="col-md-9">
   					<input type="text" name="family_person_age" id="family_person_age" class="form-control clear"  aria-describedby="emailHelp" >
+            <p id="error_family_person_age" style="color:red; display:none" class="text-left valide">*This field is required.</p>
           </div>
         </div>
       </div>
@@ -114,6 +118,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <label class="col-md-3 text-right" for="exampleInputEmail1">Guardian Name</label>
             <div class="col-md-9">
               <input type="text" name="guardian_name" id="guardian_name" class="form-control clear"  aria-describedby="emailHelp" >
+              <p id="error_guardian_name" style="color:red; display:none" class="text-left valide">*This field is required.</p>
             </div>
           </div>
         </div>
@@ -123,6 +128,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <label class="col-md-3 text-right" for="exampleInputEmail1">Address</label>
             <div class="col-md-9">
               <input type="text" name="guardian_address" id="guardian_address" class="form-control clear"  aria-describedby="emailHelp" >
+              <p id="error_guardian_address" style="color:red; display:none" class="text-left valide">*This field is required.</p>
             </div>
           </div>
         </div>
@@ -213,5 +219,117 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!-- Custome Javascript file -->
 <script type="text/javascript">var base_url = "<?php echo base_url() ?>";</script>
 <script src="<?php echo base_url(); ?>assets/js/islamic_will_custome.js" type="text/javascript"></script>
+
+<script>
+
+// start add validation asif
+
+// $('#add_family_member').click(function(){
+//           var relationship = $('#relationship').val();
+//   				var family_person_name = $('#family_person_name').val();
+//           var family_person_age = $('#family_person_age').val();
+//           var family_person_dob = $('#family_person_dob').val();
+//           var guardian_name = $('#guardian_name').val();
+//           var guardian_address = $('#guardian_address').val();
+//
+//           if(relationship == '0'){
+//             $('#error_relationship').show();
+//           }
+//
+//           if(family_person_name == ''){
+//             $('#error_family_person_name').show();
+//           }
+//
+//           if(family_person_age == '' || family_person_age == '0 Year 0 Month'){
+//             $('#error_family_person_age').show();
+//           }
+//
+//           if(family_person_dob == ''){
+//             $('#error_family_person_dob').show();
+//           }
+//
+//           if(guardian_name == ''){
+//             $('#error_guardian_name').show();
+//           }
+//
+//           if(guardian_address == ''){
+//             $('#error_guardian_address').show();
+//           }
+//
+//           else {
+//   					 $('.valide').hide();
+//   						// alert('ok');
+//   					}
+// });
+
+// end add validation asif
+
+//  strat validation asif
+$("#relationship").blur(function(){
+  var relationship = $('#relationship').val();
+  if(relationship == '0'){
+    $('#error_relationship').show();
+  }
+  else{
+      $('#error_relationship').hide();
+    }
+});
+
+$("#family_person_name").blur(function(){
+  var family_person_name = $('#family_person_name').val();
+  if(family_person_name == ''){
+    $('#error_family_person_name').show();
+  }
+  else{
+      $('#error_family_person_name').hide();
+    }
+});
+
+$("#family_person_age").blur(function(){
+  var family_person_age = $('#family_person_age').val();
+  if(family_person_age == '' || family_person_age == '0 Year 0 Month'){
+    $('#error_family_person_age').show();
+  }
+  else{
+      $('#error_family_person_age').hide();
+    }
+});
+
+$("#family_person_dob").blur(function(){
+  var family_person_dob = $('#family_person_dob').val();
+  if(family_person_dob == ''){
+    $('#error_family_person_dob').show();
+  }
+  else{
+      $('#error_family_person_dob').hide();
+    }
+});
+
+$("#guardian_name").blur(function(){
+  var guardian_name = $('#guardian_name').val();
+  if(guardian_name == ''){
+    $('#error_guardian_name').show();
+  }
+  else{
+      $('#error_guardian_name').hide();
+    }
+});
+
+$("#guardian_address").blur(function(){
+  var guardian_address = $('#guardian_address').val();
+  if(guardian_address == ''){
+    $('#error_guardian_address').show();
+  }
+  else{
+      $('#error_guardian_address').hide();
+    }
+});
+
+//  end  validation asif
+
+</script>
+
+
+
 </body>
 <?php } ?>
