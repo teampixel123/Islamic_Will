@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
  <link href="<?php echo base_url('assets/css/style.css');?>" rel="stylesheet">
  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 </head>
 <body>
 <div class="container-fluid">
@@ -43,7 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </nav>
 </div>
 
-<!-- personal info containner start -->
+<!-- personal info containner start  asif change -->
 <?php $start_will_data = $this->session->userdata() ?>
 <div class="container">
 	<div class="jumbotron ">
@@ -67,7 +67,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <div class="col-md-6">
 					<input type="text" name="full_name"  id="full_name"class="form-control empty" id="exampleInputEmail1" aria-describedby="emailHelp" >
-					<p id="error_name" style="color:red; display:none" class="text-left">*This field is required.</p>
+					<p id="error_name" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
 				</div>
       </div>
     </div>
@@ -169,8 +169,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <div class="col-md-9">
           <input type="text" name="state" class="form-control" id="state" aria-describedby="emailHelp" >
+					<p id="error_state" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
         </div>
-				<p id="error_state" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
       </div>
     </div>
 
@@ -297,7 +297,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </div>
 </div>
-<!-- personal info containner end -->
+<!-- personal info containner end  asif change -->
 <script src="<?php echo base_url(); ?>assets/js/jquery-3.3.0.min.js" type="text/javascript"></script>
 <?php
 // Fill Up form data on page load if session is set...
@@ -398,31 +398,121 @@ $(document).ready(function(){
 
 		//	save_personal_data
 		$('#save_personal_data').click(function(){
-			//Validation...
-			var form_data = $('#personal_info_form').serialize();
-			$.ajax({
-				data: form_data,
-				type: "post",
-				url: "<?php echo base_url(); ?>/Will_controller/save_personal_info",
-				success: function (data){
-					var info = JSON.parse(data);
-					$('#lbl_name').text(info[0]['full_name']);
-					$('#lbl_mobile').text(info[0]['mobile_no']);
-					$('#lbl_email').text(info[0]['email']);
-					$('#lbl_address').text(info[0]['address']+', '+info[0]['city']+'-'+info[0]['pin_code']+', '+info[0]['state']+', '+info[0]['country']);
-					$('#lbl_occupation').text(info[0]['occupation']);
-					$('#lbl_aadhar').text(info[0]['aadhar_no']);
-					$('#lbl_pan').text(info[0]['pan_no']);
 
-					$('#save_personal_data').hide();
-					$('#update_personal_data').show();
+				// save validation $start
 
-					window.location.href = "<?php echo base_url() ?>/Will_controller/family_info_view";
+				var full_name = $('#full_name').val();
+				var marital_status = $('#marital_status').val();
+				var is_have_child = $('#is_have_child').val();
+				var gender = $('#gender').val();
+				var age = $('#age').val();
+				var mobile_no = $('#mobile_no').val();
+				var email = $('#email').val();
+				var address = $('#address').val();
+				var city = $('#city').val();
+				var state = $('#state').val();
+				var country = $('#country').val();
+				var occupation = $('#occupation').val();
+				var pin_code = $('#pin_code').val();
+				var aadhar_no = $('#aadhar_no').val();
+				var pin_code_format = /^[0-9]{6}$/;
+				var aadhar_no_format = /^[0-9]{12}$/;
+				var mobile_format = /^[7-9][0-9]{9}$/;
+				var email_format = /^[a-z0-9._%+-]+@([a-z0-9-]+\.)+[a-z]{2,4}$/;
+
+
+					if(full_name == ''){
+						$('#error_name').show();
+					}
+
+					if(marital_status == '0'){
+						$('#error_marital_status').show();
+					}
+
+					if(is_have_child == '0'){
+						$('#error_is_have_child').show();
+					}
+
+					if(gender == '0'){
+						$('#error_gender').show();
+					}
+
+					if(age == '' || age == '' )
+					{
+						$('#error_age').show();
+					}
+
+					if(!mobile_format.test(mobile_no) || mobile_no == '') {
+					$('#error_mobile_no').show();
+				 }
+
+				 if(!email_format.test(email) || email == '') {
+					$('#error_email').show();
+				 }
+
+				if(address == ''){
+					$('#error_address').show();
 				}
-			});
+
+				if(city == ''){
+					$('#error_city').show();
+				}
+
+				if(state == ''){
+				 $('#error_state').show();
+			 }
+
+				if(country == ''){
+				 $('#error_country').show();
+			 }
+
+				if(occupation == ''){
+				 $('#error_occupation').show();
+			 }
+
+				if(!pin_code_format.test(pin_code) || pin_code == '') {
+				$('#error_pin_code').show();
+			 }
+
+				if(!aadhar_no_format.test(aadhar_no) || aadhar_no == '') {
+					 $('#error_aadhar_no').show();
+						 }
+				else {
+					 $('.invalide').hide();
+						// alert('ok');
+
+						var form_data = $('#personal_info_form').serialize();
+						$.ajax({
+							data: form_data,
+							type: "post",
+							url: "<?php echo base_url(); ?>/Will_controller/save_personal_info",
+							success: function (data){
+								var info = JSON.parse(data);
+								$('#lbl_name').text(info[0]['full_name']);
+								$('#lbl_mobile').text(info[0]['mobile_no']);
+								$('#lbl_email').text(info[0]['email']);
+								$('#lbl_address').text(info[0]['address']+', '+info[0]['city']+'-'+info[0]['pin_code']+', '+info[0]['state']+', '+info[0]['country']);
+								$('#lbl_occupation').text(info[0]['occupation']);
+								$('#lbl_aadhar').text(info[0]['aadhar_no']);
+								$('#lbl_pan').text(info[0]['pan_no']);
+
+								$('#save_personal_data').hide();
+								$('#update_personal_data').show();
+
+								window.location.href = "<?php echo base_url() ?>/Will_controller/family_info_view";
+							}
+						});
+
+					}
+
+				// Validation end asif
+
+
+				 // save validation end
+
 
 		});
-		// Validation satrt
+		// Validation satrt asif
 
 		$("#full_name").blur(function(){
 			var full_name = $('#full_name').val();
@@ -478,7 +568,7 @@ $(document).ready(function(){
 				$('#error_age').show();
 			}
 			else{
-				$('#error_gender').hide();
+				$('#error_age').hide();
 				}
 
 		});
@@ -598,12 +688,11 @@ $(document).ready(function(){
 
 	});
 
-		// Validation end
+		// Validation end asif
 
 
-		//Update Personal data...
 		$('#update_personal_data').click(function(){
-			var full_name = $('#full_name').val();
+		  var full_name = $('#full_name').val();
 			var marital_status = $('#marital_status').val();
 			var is_have_child = $('#is_have_child').val();
 			var gender = $('#gender').val();
@@ -623,27 +712,88 @@ $(document).ready(function(){
 			var email_format = /^[a-z0-9._%+-]+@([a-z0-9-]+\.)+[a-z]{2,4}$/;
 
 
-
-			var form_data = $('#personal_info_form').serialize();
-			$.ajax({
-				data: form_data,
-				type: "post",
-				url: "<?php echo base_url(); ?>/Will_controller/update_personal_info",
-				success: function (data){
-					var info = JSON.parse(data);
-					$('#lbl_name').text(info[0]['full_name']);
-					$('#lbl_mobile').text(info[0]['mobile_no']);
-					$('#lbl_email').text(info[0]['email']);
-					$('#lbl_address').text(info[0]['address']+', '+info[0]['city']+'-'+info[0]['pin_code']+', '+info[0]['state']+', '+info[0]['country']);
-					$('#lbl_occupation').text(info[0]['occupation']);
-					$('#lbl_aadhar').text(info[0]['aadhar_no']);
-					$('#lbl_pan').text(info[0]['pan_no']);
-
-					$('#save_personal_data').hide();
-					$('#update_personal_data').show();
-					window.location.href = "<?php echo base_url() ?>/Will_controller/family_info_view";
+				if(full_name == ''){
+					$('#error_name').show();
 				}
-			});
+
+				if(marital_status == '0'){
+					$('#error_marital_status').show();
+				}
+
+				if(is_have_child == '0'){
+					$('#error_is_have_child').show();
+				}
+
+				if(gender == '0'){
+					$('#error_gender').show();
+				}
+
+				if(age == '' || age == '' )
+				{
+					$('#error_age').show();
+				}
+
+				if(!mobile_format.test(mobile_no) || mobile_no == '') {
+				$('#error_mobile_no').show();
+			 }
+
+			 if(!email_format.test(email) || email == '') {
+				$('#error_email').show();
+			 }
+
+			if(address == ''){
+				$('#error_address').show();
+			}
+
+			if(city == ''){
+				$('#error_city').show();
+			}
+
+			if(state == ''){
+			 $('#error_state').show();
+		 }
+
+			if(country == ''){
+			 $('#error_country').show();
+		 }
+
+			if(occupation == ''){
+			 $('#error_occupation').show();
+		 }
+
+			if(!pin_code_format.test(pin_code) || pin_code == '') {
+			$('#error_pin_code').show();
+		 }
+
+			if(!aadhar_no_format.test(aadhar_no) || aadhar_no == '') {
+				 $('#error_aadhar_no').show();
+					 }
+			else {
+						 $('.invalide').hide();
+						 var form_data = $('#personal_info_form').serialize();
+		 				$.ajax({
+		 					data: form_data,
+		 					type: "post",
+		 					url: "<?php echo base_url(); ?>/Will_controller/update_personal_info",
+		 					success: function (data){
+		 						var info = JSON.parse(data);
+		 						$('#lbl_name').text(info[0]['full_name']);
+		 						$('#lbl_mobile').text(info[0]['mobile_no']);
+		 						$('#lbl_email').text(info[0]['email']);
+		 						$('#lbl_address').text(info[0]['address']+', '+info[0]['city']+'-'+info[0]['pin_code']+', '+info[0]['state']+', '+info[0]['country']);
+		 						$('#lbl_occupation').text(info[0]['occupation']);
+		 						$('#lbl_aadhar').text(info[0]['aadhar_no']);
+		 						$('#lbl_pan').text(info[0]['pan_no']);
+
+		 						$('#save_personal_data').hide();
+		 						$('#update_personal_data').show();
+		 						window.location.href = "<?php echo base_url() ?>/Will_controller/family_info_view";
+		 					}
+		 				});
+				}
+
+			// Validation end asif
+
 
 		});
 

@@ -102,6 +102,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <label class="col-md-3 text-right" for="exampleInputEmail1">Funeral and Burial Person Name: </label>
   				<div class="col-md-9">
   					<input type="text" name="funeral_name" id="funeral_name" class="form-control clear"  aria-describedby="emailHelp" >
+            <p id="error_funeral_name" style="color:red; display:none" class="text-left valide">*This field is required.</p>
           </div>
         </div>
       </div>
@@ -111,6 +112,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <label class="col-md-3 text-right" for="exampleInputEmail1">Address: </label>
   				<div class="col-md-9">
   					<input type="text" name="funeral_address" id="funeral_address" class="form-control clear"  aria-describedby="emailHelp" >
+            <p id="error_funeral_address" style="color:red; display:none" class="text-left valide">*This field is required.</p>
           </div>
         </div>
       </div>
@@ -226,4 +228,51 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script type="text/javascript">var base_url = "<?php echo base_url() ?>";</script>
 <script src="<?php echo base_url(); ?>assets/js/islamic_will_custome.js" type="text/javascript"></script>
 </body>
+
+<script>
+
+// start add validation asif
+// $('#add_funeral').click(function(){
+//           var funeral_name = $('#funeral_name').val();
+//             var funeral_address = $('#funeral_address').val();
+//
+//           if(family_person_name == ''){
+//             $('#error_funeral_name').show();
+//           }
+//
+//           if(funeral_address == ''){
+//             $('#error_funeral_address').show();
+//           }
+//
+//           else {
+//               $('.valide').hide();
+//           }
+// });
+
+// end add validation asif
+
+//  strat validation asif
+$("#funeral_name").blur(function(){
+  var funeral_name = $('#funeral_name').val();
+  if(funeral_name == ''){
+    $('#error_funeral_name').show();
+  }
+  else{
+      $('#error_funeral_name').hide();
+    }
+});
+
+$("#funeral_address").blur(function(){
+  var funeral_address = $('#funeral_address').val();
+  if(funeral_address == ''){
+    $('#error_funeral_address').show();
+  }
+  else{
+      $('#error_funeral_address').hide();
+    }
+});
+//  end validation asif
+</script>
+
+
 <?php } ?>
