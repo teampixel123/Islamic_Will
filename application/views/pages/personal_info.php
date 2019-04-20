@@ -246,7 +246,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 		</form>
 </div>
-    <button type="button" id="save_personal_data" class="btn btn-success" style="float:right;">Save & Next</button>
+    <button type="submit" id="save_personal_data" class="btn btn-success" style="float:right;">Save & Next</button>
 		<button type="button" id="update_personal_data" class="btn btn-info" style="float:right;">Update & Next</button>
 		<button type="button" id="destroy" class="btn btn-danger">Clear session</button>
 		<!--a href="<?php echo base_url() ?>/Will_controller/family_info_view" type="button" id="personal_next" class="btn btn-info">Next</a-->

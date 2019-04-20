@@ -135,6 +135,7 @@ $('#add_family_member').click(function(){
 
   else {
      $('.valide').hide();
+
      var form_data = $('#family_member_form').serialize();
      $.ajax({
        data: form_data,
@@ -170,8 +171,6 @@ $('#add_family_member').click(function(){
        }
      });
     }
-
-
 });
 
 // Executor & Funeral JS........
