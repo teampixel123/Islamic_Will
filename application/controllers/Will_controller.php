@@ -23,8 +23,18 @@
     }
 
     public function personal_info_view(){
+      $is_login = $this->session->userdata('user_is_login');
+      if($is_login && $this->input->post('will_id')){
+        $will_id = $this->input->post('will_id');
+        $this->session->set_userdata('will_id',$will_id);
+        $this->load->view('pages/personal_info');
+      }
+      else{
+        $this->load->view('pages/personal_info');
+      }
+      //echo $will_id;
   	  //$this->load->view('pages/start_will');
-      $this->load->view('pages/personal_info');
+
   	}
 
     public function family_info_view(){
@@ -119,6 +129,7 @@
    $will_data = array(
                'will_id' => $will_id,
                'will_date' => $will_date,
+               'will_user_id' => $user_id,
              );
     $user_data = array(
       'user_id'=>$user_id,
@@ -128,7 +139,6 @@
     );
    $personal_data = array(
              'will_id' => $will_id,
-             'will_user_id' => $user_id,
              'name_title'=>$this->input->post('name_title'),
              'full_name'=>$this->input->post('full_name'),
              'address'=>$this->input->post('address'),

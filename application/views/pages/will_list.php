@@ -50,7 +50,7 @@ include('include/login_header.php'); ?>
                  <input type="hidden" name="will_id" id="will_id" value="<?php echo $will_list->will_id; ?>" />
                </form>
                <a type="button" id="btn_will_details" class="btn btn-sm btn-success no-margin"><i class="fa fa-eye"></i>View</a> -->
-               <form id="form_will_edit" action="<?php echo base_url(); ?>/User_controller/will_details" method="post">
+               <form id="form_will_edit" action="<?php echo base_url(); ?>/Will_controller/personal_info_view" method="post">
                  <input type="hidden" name="will_id" id="will_id" value="<?php echo $will_list->will_id; ?>" />
                </form>
                <a id="btn_will_edit" type="button" class="btn btn-sm btn-info no-margin"><i class="fa fa-edit"></i></i>Edit</a>

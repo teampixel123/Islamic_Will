@@ -80,12 +80,17 @@ $('#family_person_dob').datepicker({
 
       var years = today.diff(birthdate, 'year');
       birthdate.add(years, 'years');
-      var months = today.diff(birthdate, 'months');
-      birthdate.add(months, 'months');
+    //  var months = today.diff(birthdate, 'months');
+    //  birthdate.add(months, 'months');
       //alert(years+' '+months);
       var title = $('#relationship').val();
       $('#age_div').show();
-      $('#family_person_age').val(years+' Year '+months+' Month');
+      $('#family_person_age').val(years+' Year ');
+      if((title == 'Father' || title == 'Mother') && years < 18){
+        alert('Invalide Date');
+        $('#family_person_dob').val('');
+
+      }
       if((title == 'Son' || title == 'Daughter') && years < 18){
         $('#guardian_div').show();
         $('#is_minar').val('1');
@@ -117,7 +122,7 @@ $('#add_family_member').click(function(){
     $('#error_family_person_name').show();
   }
 
-  if(family_person_age == '' || family_person_age == '0 Year 0 Month'){
+  if(family_person_age == ''){
     $('#error_family_person_age').show();
   }
 
@@ -125,13 +130,14 @@ $('#add_family_member').click(function(){
     $('#error_family_person_dob').show();
   }
 
-  if(guardian_name == ''){
+  if(guardian_name == '' && years < 18){
     $('#error_guardian_name').show();
   }
 
-  if(guardian_address == ''){
+  if(guardian_address == ''  && years < 18){
     $('#error_guardian_address').show();
   }
+
 
   else {
      $('.valide').hide();
@@ -170,8 +176,6 @@ $('#add_family_member').click(function(){
        }
      });
     }
-
-
 });
 
 // Executor & Funeral JS........
@@ -723,49 +727,6 @@ $('#add_funeral').click(function(){
   			"data":{ 'will_id' : will_id  }
   		},
   	});
-  // datepicker.. set condition depend on age... calculate age.. show/hide Guardian...
-  $('#family_person_dob').datepicker({
-    dateFormat: 'dd/mm/yy',//check change
-    changeMonth: true,
-    changeYear: true,
-    onSelect: function(dateText, inst) {
-      // Get Today date...
-      var today = new Date();
-      var dd = today.getDate();
-      var mm = today.getMonth() + 1; //January is 0!
-      var yyyy = today.getFullYear();
-      if (dd < 10) {
-        dd = '0' + dd;
-      }
-      if (mm < 10) {
-        mm = '0' + mm;
-      }
-      var today2 = dd + '/' + mm + '/' + yyyy;
-      // Get Today date end...
-      var birthdate2 = $(this).val();
-        var today = moment(today2,'DD/MM/YYYY');
-        var birthdate = moment(birthdate2,'DD/MM/YYYY');
-
-        var years = today.diff(birthdate, 'year');
-        birthdate.add(years, 'years');
-        var months = today.diff(birthdate, 'months');
-        birthdate.add(months, 'months');
-        //alert(years+' '+months);
-        var title = $('#relationship').val();
-        $('#age_div').show();
-        $('#family_person_age').val(years+' Year '+months+' Month');
-        if((title == 'Son' || title == 'Daughter') && years < 18){
-          $('#guardian_div').show();
-          $('#is_minar').val('1');
-
-        }
-        else{
-          $('#guardian_name').val('');
-          $('#guardian_address').val('');
-          $('#guardian_div').hide();
-        }
-    }
-  });
 
 	//	Save/Add Family Member
 	$('#add_witness').click(function(){
