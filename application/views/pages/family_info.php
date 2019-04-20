@@ -135,7 +135,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
       </fieldset>
   		</form>
-      <p>  <button type="button" id="add_family_member" class="btn btn-success" >Add</button></p>
+      <p>  <button  id="add_family_member" class="btn btn-success" >Add</button></p>
       <p>  <a href="<?php echo base_url() ?>/Will_controller/personal_info_view" type="button" id="personal_previous" class="btn btn-info">Previous</a>
   		<button type="button" id="destroy" class="btn btn-danger">Clear session</button>
   		<a href="<?php echo base_url() ?>/Will_controller/executor_funeral_view" type="button" id="personal_next" class="btn btn-info" >Next</a></p>

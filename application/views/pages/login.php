@@ -45,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div class="jumbotron ">
     <form class="" method="post">
       <legend class="text-center">Login</legend>
-			
+
       <div class="form-group">
         <div class="row text-center">
           <div class="col-md-4 text-right">
@@ -60,7 +60,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
 
 			<div id="otp_div" style="display:none;">
-				<input type="hidden" name="will_id" class="form-control" id="will_id" aria-describedby="emailHelp" >
+				<input type="hidden" name="user_id" class="form-control" id="user_id">
 	      <div class="form-group" >
 	        <div class="row text-center">
 	          <div class="col-md-4 text-right">
@@ -131,7 +131,7 @@ $(document).ready(function(){
 						$('#send_otp_div').hide();
 						$('#otp_div').show();
 						$("#mob_email").attr("disabled", "disabled");
-						$('#will_id').val(responce['will_id']);
+						$('#user_id').val(responce['user_id']);
 					}
 	      }
 	    });
@@ -139,11 +139,11 @@ $(document).ready(function(){
   });
 
 	 $('#btn_login').click(function(){
-		 var will_id = $('#will_id').val();
+		 var user_id = $('#user_id').val();
 		 var otp = $('#otp').val();
 		 $.ajax({
 			 data:{
-				 'will_id' : will_id,
+				 'user_id' : user_id,
 				 'otp' : otp,
 			  },
 			 type: 'post',
@@ -152,7 +152,7 @@ $(document).ready(function(){
 				 var responce = JSON.parse(data);
 				 if(responce['responce'] == 'Success'){
 					 $('.invalide').hide();
-					 window.location.href = "<?php echo base_url() ?>/Will_controller/user_dashboard";
+					 window.location.href = "<?php echo base_url() ?>User_controller/user_dashboard";
 				 }
 				 else if(responce['responce'] == 'Expire_OTP'){
 					 $('.invalide').hide();
