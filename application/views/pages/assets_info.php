@@ -93,8 +93,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       					  <option> Commercial Shop unit</option>
       					  <option>Commercial office unit</option>
       				 </select>
-               <p id="error_estate_type" style="color:red; display:none" class="text-left valide">*This field is required.</p>
               </div>
+                <p id="error_estate_type" style="color:red; display:none" class="text-left valide">*This field is required.</p>
             </div>
           </div>
 
@@ -132,8 +132,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       					  <option>Square Feet</option>
       					  <option>Hector</option>
       				 </select>
-               <p id="error_measurment_unit" style="color:red; display:none" class="text-left valide">*This field is required.</p>
-             </div>
+              </div>
+              <p id="error_measurment_unit" style="color:red; display:none" class="text-left valide">*This field is required.</p>
             </div>
           </div>
 
@@ -212,8 +212,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       					  <option>Stock Equities</option>
       					  <option>Insurance Policy</option>
       				 </select>
-               <p id="error_assets_type" style="color:red; display:none" class="text-left valide">*This field is required.</p>
               </div>
+              <p id="error_assets_type" style="color:red; display:none" class="text-left valide">*This field is required.</p>
             </div>
           </div>
 
@@ -336,7 +336,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       					  <option>Jewellery and Valuables</option>
       					  <option>Remained Assets</option>
       				 </select>
-               <p id="error_gift_type" style="color:red; display:none" class="text-left valide">*This field is required.</p>
               </div>
 
             </div>
@@ -533,7 +532,8 @@ $("#estate_type").blur(function(){
 
 $("#house_no").blur(function(){
   var house_no = $('#house_no').val();
-  if(house_no == ''){
+  // var house_no_format = /^[0-9]$/;
+  if( house_no == ''){
     $('#error_house_no').show();
   }
   else{
@@ -593,8 +593,7 @@ $("#estate_city").blur(function(){
 
 $("#estate_pin").blur(function(){
   var estate_pin = $('#estate_pin').val();
-  	var estate_pin_format = /^[0-9]{6}$/;
-  if(!estate_pin_format.test(estate_pin) || estate_pin == ''){
+  if(estate_pin == ''){
     $('#error_estate_pin').show();
   }
   else{
@@ -625,6 +624,7 @@ $("#estate_state").blur(function(){
 
 // validation Bank asif //
 
+
 $("#assets_type").blur(function(){
   var assets_type = $('#assets_type').val();
   if(assets_type == '0'){
@@ -647,7 +647,9 @@ $("#account_number").blur(function(){
 
 $("#bank_name").blur(function(){
   var bank_name = $('#bank_name').val();
-  if(bank_name == ''){
+  var bank_name_format =  /^[a-zA-Z ]*$/;
+
+  if(!bank_name_format.test(bank_name) || bank_name == ''){
     $('#error_bank_name').show();
   }
   else{
@@ -666,6 +668,11 @@ $("#branch_name").blur(function(){
     }
 });
 
+
+$("#assets_type").blur(function(){
+  var assets_type = $('#assets_type').val();
+  if(assets_type == 'Bank Locker'){
+
 $("#key_number").blur(function(){
   var key_number = $('#key_number').val();
   if(key_number == ''){
@@ -675,6 +682,23 @@ $("#key_number").blur(function(){
       $('#error_key_number').hide();
     }
 });
+
+$("#fd_recipt_No").blur(function(){
+  var fd_recipt_No = $('#fd_recipt_No').val();
+  if(fd_recipt_No == ''){
+    $('#error_fd_recipt_No').show();
+  }
+  else{
+      $('#error_fd_recipt_No').hide();
+    }
+});
+
+}
+else {
+
+}
+});
+
 
 // validation vehicle asif //
 

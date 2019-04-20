@@ -277,7 +277,8 @@ $("#relationship").blur(function(){
 
 $("#family_person_name").blur(function(){
   var family_person_name = $('#family_person_name').val();
-  if(family_person_name == ''){
+  var family_person_name_format =  /^[a-zA-Z ]*$/;
+  if(!family_person_name_format.test(family_person_name) || family_person_name == ''){
     $('#error_family_person_name').show();
   }
   else{
@@ -307,7 +308,8 @@ $("#family_person_dob").blur(function(){
 
 $("#guardian_name").blur(function(){
   var guardian_name = $('#guardian_name').val();
-  if(guardian_name == ''){
+  var guardian_name_format =  /^[a-zA-Z ]*$/;
+  if(!guardian_name_format.test(guardian_name) || guardian_name == ''){
     $('#error_guardian_name').show();
   }
   else{
@@ -316,8 +318,9 @@ $("#guardian_name").blur(function(){
 });
 
 $("#guardian_address").blur(function(){
+  var guardian_address_format =  /^[a-zA-Z ]*$/;
   var guardian_address = $('#guardian_address').val();
-  if(guardian_address == ''){
+  if(!guardian_address_format.test(guardian_address) || guardian_address == ''){
     $('#error_guardian_address').show();
   }
   else{
