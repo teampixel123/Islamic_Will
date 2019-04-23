@@ -55,6 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <input type="text" name="mob_email" id="mob_email" class="form-control" aria-describedby="emailHelp" >
 						<p id="error_invalide" style="color:red; display:none" class="text-left invalide">*Invalide Mobile Number/Email Format</p>
 						<p id="error_required" style="color:red; display:none" class="text-left invalide">*Fill up Mobile Number/Email Id</p>
+						<p id="error_not_found" style="color:red; display:none" class="text-left invalide">*This Mobile/Email not registered</p>
           </div>
         </div>
       </div>
@@ -99,7 +100,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <script>
 $(document).ready(function(){
-
   $('#btn_send_otp').click(function(){
     var mob_email = $('#mob_email').val();
 		var mobile_format = /^[6-9][0-9]{9}$/;
@@ -132,6 +132,9 @@ $(document).ready(function(){
 						$('#otp_div').show();
 						$("#mob_email").attr("disabled", "disabled");
 						$('#user_id').val(responce['user_id']);
+					}
+					else{
+						$('#error_not_found').show();
 					}
 	      }
 	    });
@@ -166,8 +169,6 @@ $(document).ready(function(){
 			 }
 		 });
 	 });
-
-
 });
 </script>
 </body>

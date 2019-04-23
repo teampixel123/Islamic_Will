@@ -10,8 +10,16 @@
   		$this->load->library('Pdf');
     }
 
+    public function pdf(){
+  		//$this->load->library('Pdf');
+  		$will_id = $this->session->userdata('will_id');
+  		$personal_data = $this->Will_Model->get_personal_data($will_id);
+  		$this->load->view('welcome_message',['data'=>$personal_data]);
+  	}
+
     public function final_pdf(){
       $is_login = $this->session->userdata('user_is_login');
+      //echo $is_login;
       if($is_login && $this->input->post('will_id')){
         $will_id = $this->input->post('will_id');
     		$data['personal_data']=$this->Will_Model->get_personal_data($will_id);

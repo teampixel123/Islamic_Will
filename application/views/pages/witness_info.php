@@ -1,53 +1,18 @@
 <?php
  if($this->session->userdata('will_id')){
 defined('BASEPATH') OR exit('No direct script access allowed');
+include('include/head.php');
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-	<title>Witness Info</title>
-
- <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
- <link href="<?php echo base_url('assets/css/style.css');?>" rel="stylesheet">
- <link href="<?php echo base_url('assets/css/datepicker_css/jquery-ui.min.css');?>" rel="stylesheet">
- <link href="<?php echo base_url('assets/css/datepicker_css/jquery-ui.structure.min.css');?>" rel="stylesheet">
- <link href="<?php echo base_url('assets/css/datepicker_css/jquery-ui.theme.min.css');?>" rel="stylesheet">
- <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
-</head>
 <body>
-<div class="container-fluid">
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarColor02">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
-</div>
+  <?php
+    $is_login = $this->session->userdata('user_is_login');
+    if($is_login){
+      include('include/login_header.php');
+    }
+    else{
+      include('include/header.php');
+    }
+   ?>
 
 <!-- family info containner start -->
 <?php $start_will_data = $this->session->userdata() ?>
@@ -85,7 +50,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <p>  <button type="button" id="add_witness" class="btn btn-success" >Add</button></p>
       <p>  <a href="<?php echo base_url() ?>/Will_controller/assets_info_view" type="button" id="personal_previous" class="btn btn-info">Previous</a>
   		<button type="button" id="destroy" class="btn btn-danger">Clear session</button>
-  		<a href="#" type="button" id="personal_next" class="btn btn-info" >Create PDF</a></p>
+      <?php if($this->session->userdata('user_is_login')){
+        ?>
+        <form target="_blank" id="final_pdf" class="" action="<?php echo base_url() ?>/Pdf_controller/final_pdf" method="post">
+          <input type="hidden" name="will_id" value="<?php echo $this->session->userdata('will_id'); ?>">
+        </form>
+        <button href="" type="submit" id="btn_final_pdf" class="btn btn-info" >Create PDF</button></p>
+        <?php
+      } else{ ?>
+        <form id="pdf" class="" action="<?php echo base_url() ?>/Pdf_controller/pdf" method="post">
+          <input type="hidden" name="will_id" value="<?php echo $this->session->userdata('will_id'); ?>">
+        <button href="" type="submit" id="personal_next" class="btn btn-info" >Create PDF</button></p>
+        </form>
+    <?php } ?>
   </div>
   </div>
 
@@ -265,6 +242,18 @@ $("#witness_address").blur(function(){
   else{
       $('#error_witness_address').hide();
     }
+});
+
+// $('#my-div').click(function() {
+//    window.open('http://google.com');
+// });
+
+$('#btn_final_pdf').click(function(){
+  //alert();
+  //window.location.href = "<?php echo base_url() ?>Will_controller/login";
+  $('#btn_login').show();
+  $('#final_pdf').submit();
+  //$('#go_login').submit();
 });
 // validation end asif//
 </script>

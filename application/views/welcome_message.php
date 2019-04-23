@@ -134,7 +134,7 @@ $pdf->RoundedRect(05, 05, 200, 290, 00, '1000');
 $html = '<h1 style="text-align:center; font-family: times, serif;"> ISLAMIC LAST Will and Testament</h1>
 <h2 style="text-align:center; font-family: times, serif;" >of........................................</h2>
 
-<p style="font-size:14px; font-family:Candara; ">I Miss/Mr./Mrs    '.$data->full_name.'    a Muslim, presently resident of
+<p style="font-size:14px; font-family:Candara; ">I '.$data->name_title.' '.$data->full_name.'    a Muslim, presently resident of
 	        '.$data->address.'       , Age - ..........., Occupation –     '.$data->occupation.'      , having my
 Aadhar No.       '.$data->aadhar_no.'        being sound mind and memory declare that the following is my
 Islamic last Will and Testament (wasiyyat).</p>

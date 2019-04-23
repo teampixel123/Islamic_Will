@@ -64,7 +64,15 @@
     }
 
     public function witness_info_view(){
+      $is_login = $this->session->userdata('user_is_login');
+      $user_id = $this->session->userdata('user_id');
+      if($is_login && $user_id){
+        $user_data = $this->Will_Model->get_user_data($user_id);
+        $this->load->view('pages/witness_info',['user_data'=>$user_data]);
+      }
+      else{
       $this->load->view('pages/witness_info');
+      }
     }
 
     public function user_dashboard(){
@@ -277,10 +285,12 @@
                   'family_person_name' => $this->input->post('family_person_name'),
                   'family_person_dob' => $this->input->post('family_person_dob'),
                   'family_person_age' => $this->input->post('family_person_age'),
+                  'family_person_age_format' => $this->input->post('family_person_age_format'),
                   'is_minar' => $this->input->post('is_minar'),
                   'guardian_name' => $this->input->post('guardian_name'),
                   'guardian_address' => $this->input->post('guardian_address'),
                 );
+        //echo print_r($member_data);
       $this->Will_Model->save_family_member($member_data);
       //$list = $this->Will_Model->get_family_member_list($will_id);
       //echo json_encode($list);

@@ -93,8 +93,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       					  <option> Commercial Shop unit</option>
       					  <option>Commercial office unit</option>
       				 </select>
+                 <p id="error_estate_type" style="color:red; display:none" class="text-left valide">*This field is required.</p>
               </div>
-                <p id="error_estate_type" style="color:red; display:none" class="text-left valide">*This field is required.</p>
             </div>
           </div>
 
@@ -132,8 +132,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       					  <option>Square Feet</option>
       					  <option>Hector</option>
       				 </select>
+               <p id="error_measurment_unit" style="color:red; display:none" class="text-left valide">*Required.</p>
               </div>
-              <p id="error_measurment_unit" style="color:red; display:none" class="text-left valide">*This field is required.</p>
+
             </div>
           </div>
 
@@ -212,8 +213,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       					  <option>Stock Equities</option>
       					  <option>Insurance Policy</option>
       				 </select>
+               <p id="error_assets_type" style="color:red; display:none" class="text-left valide">*This field is required.</p>
               </div>
-              <p id="error_assets_type" style="color:red; display:none" class="text-left valide">*This field is required.</p>
             </div>
           </div>
 
@@ -239,11 +240,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <label class="col-md-3 text-right" for="exampleInputEmail1">
                 <div id="company_name" class="hide_name" style="display:none;">Company Name: </div> <!--For Mutual Funds and Stock Equities and PPF-->
                 <div id="insurance_company" class="hide_name" style="display:none;">Insurance Company: </div> <!--For Mutual Funds -->
-                <div id="bank_name" class="hide_name" >Bank Name: </div>
+                <div id="bank_nm" class="hide_name" >Bank Name: </div>
               </label>
       				<div class="col-md-9">
       					<input type="text" name="bank_name" id="bank_name" class="form-control clear"  aria-describedby="emailHelp" >
-                <p id="error_bank_name" style="color:red; display:none" class="text-left valide">*This field is required.</p>
+                <p id="error_bank_name" style="color:red; display:none" class="text-left valide">*Bank name is required.</p>
               </div>
             </div>
           </div>
@@ -336,8 +337,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       					  <option>Jewellery and Valuables</option>
       					  <option>Remained Assets</option>
       				 </select>
+               <p id="error_gift_type" style="color:red; display:none" class="text-left valide">*Select Gift Type.</p>
               </div>
-
             </div>
           </div>
 
@@ -355,7 +356,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       		</form>
         </div>
         <!-- Other Gift end -->
-
       </div>
       <!-- Executor Information End  -->
       <!-- Funeral and Burial Information Start  -->
@@ -514,248 +514,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <!-- Custome Javascript file -->
 <script type="text/javascript">var base_url = "<?php echo base_url() ?>";</script>
-<script src="<?php echo base_url(); ?>assets/js/islamic_will_custome.js" type="text/javascript"></script>
-
-<script>
-// validation start //
-
-// validation Real Estate asif //
-$("#estate_type").blur(function(){
-  var estate_type = $('#estate_type').val();
-  if(estate_type == '0'){
-    $('#error_estate_type').show();
-  }
-  else{
-      $('#error_estate_type').hide();
-    }
-});
-
-$("#house_no").blur(function(){
-  var house_no = $('#house_no').val();
-  // var house_no_format = /^[0-9]$/;
-  if( house_no == ''){
-    $('#error_house_no').show();
-  }
-  else{
-      $('#error_house_no').hide();
-    }
-});
-
-$("#survey_number").blur(function(){
-  var survey_number = $('#survey_number').val();
-  if(survey_number == ''){
-    $('#error_survey_number').show();
-  }
-  else{
-      $('#error_survey_number').hide();
-    }
-});
-
-$("#measurment_area").blur(function(){
-  var measurment_area = $('#measurment_area').val();
-  if(measurment_area == ''){
-    $('#error_measurment_area').show();
-  }
-  else{
-      $('#error_measurment_area').hide();
-    }
-});
-
-$("#measurment_unit").blur(function(){
-  var measurment_unit = $('#measurment_unit').val();
-  if(measurment_unit == '0'){
-    $('#error_measurment_unit').show();
-  }
-  else{
-      $('#error_measurment_unit').hide();
-    }
-});
-
-$("#estate_address").blur(function(){
-  var estate_address = $('#estate_address').val();
-  if(estate_address == ''){
-    $('#error_estate_address').show();
-  }
-  else{
-      $('#error_estate_address').hide();
-    }
-});
-
-$("#estate_city").blur(function(){
-  var estate_city = $('#estate_city').val();
-  if(estate_city == ''){
-    $('#error_estate_city').show();
-  }
-  else{
-      $('#error_estate_city').hide();
-    }
-});
-
-$("#estate_pin").blur(function(){
-  var estate_pin = $('#estate_pin').val();
-  if(estate_pin == ''){
-    $('#error_estate_pin').show();
-  }
-  else{
-      $('#error_estate_pin').hide();
-    }
-});
-
-$("#estate_country").blur(function(){
-  var estate_country = $('#estate_country').val();
-  if(estate_country == ''){
-    $('#error_estate_country').show();
-  }
-  else{
-      $('#error_estate_country').hide();
-    }
-});
-
-$("#estate_state").blur(function(){
-  var estate_state = $('#estate_state').val();
-  if(estate_state == ''){
-    $('#error_estate_state').show();
-  }
-  else{
-      $('#error_estate_state').hide();
-    }
-});
-
-
-// validation Bank asif //
-
-
-$("#assets_type").blur(function(){
-  var assets_type = $('#assets_type').val();
-  if(assets_type == '0'){
-    $('#error_assets_type').show();
-  }
-  else{
-      $('#error_assets_type').hide();
-    }
-});
-
-$("#account_number").blur(function(){
-  var account_number = $('#account_number').val();
-  if(account_number == ''){
-    $('#error_account_number').show();
-  }
-  else{
-      $('#error_account_number').hide();
-    }
-});
-
-$("#bank_name").blur(function(){
-  var bank_name = $('#bank_name').val();
-  var bank_name_format =  /^[a-zA-Z ]*$/;
-
-  if(!bank_name_format.test(bank_name) || bank_name == ''){
-    $('#error_bank_name').show();
-  }
-  else{
-      $('#error_bank_name').hide();
-    }
-});
-
-
-$("#branch_name").blur(function(){
-  var branch_name = $('#branch_name').val();
-  if(branch_name == ''){
-    $('#error_branch_name').show();
-  }
-  else{
-      $('#error_branch_name').hide();
-    }
-});
-
-
-$("#assets_type").blur(function(){
-  var assets_type = $('#assets_type').val();
-  if(assets_type == 'Bank Locker'){
-
-$("#key_number").blur(function(){
-  var key_number = $('#key_number').val();
-  if(key_number == ''){
-    $('#error_key_number').show();
-  }
-  else{
-      $('#error_key_number').hide();
-    }
-});
-
-$("#fd_recipt_No").blur(function(){
-  var fd_recipt_No = $('#fd_recipt_No').val();
-  if(fd_recipt_No == ''){
-    $('#error_fd_recipt_No').show();
-  }
-  else{
-      $('#error_fd_recipt_No').hide();
-    }
-});
-
-}
-else {
-
-}
-});
-
-
-// validation vehicle asif //
-
-$("#vehicle_model").blur(function(){
-  var vehicle_model = $('#vehicle_model').val();
-  if(vehicle_model == ''){
-    $('#error_vehicle_model').show();
-  }
-  else{
-      $('#error_vehicle_model').hide();
-    }
-});
-
-$("#vehicle_make_year").blur(function(){
-  var vehicle_make_year = $('#vehicle_make_year').val();
-  if(vehicle_make_year == ''){
-    $('#error_vehicle_make_year').show();
-  }
-  else{
-      $('#error_vehicle_make_year').hide();
-    }
-});
-
-$("#registration_number").blur(function(){
-  var registration_number = $('#registration_number').val();
-  if(registration_number == ''){
-    $('#error_registration_number').show();
-  }
-  else{
-      $('#error_registration_number').hide();
-    }
-});
-
-// validation Other git asif //
-
-$("#gift_type").blur(function(){
-  var gift_type = $('#gift_type').val();
-  if(gift_type == '0'){
-    $('#error_gift_type').show();
-  }
-  else{
-      $('#error_gift_type').hide();
-    }
-});
-
-$("#gift_description").blur(function(){
-  var gift_description = $('#gift_description').val();
-  if(gift_description == ''){
-    $('#error_gift_description').show();
-  }
-  else{
-      $('#error_gift_description').hide();
-    }
-});
-
-// validation end asif //
-
-</script>
+<script src="<?php echo base_url(); ?>assets/js/will_custome/assets_js.js" type="text/javascript"></script>
 </body>
 <?php } ?>

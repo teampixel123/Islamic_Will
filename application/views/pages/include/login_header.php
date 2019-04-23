@@ -26,10 +26,11 @@
         <a class="nav-link" href="<?php echo base_url() ?>/Will_controller/logout_user">Logout</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
+		<button id="btn_login" style="display:none;" class="btn btn-secondary my-2 my-sm-0" type="submit">Login</button>
+    <!-- <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-    </form>
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Login</button>
+    </form> -->
   </div>
 </nav>
 </div>
