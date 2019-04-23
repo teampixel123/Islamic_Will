@@ -49,24 +49,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </nav>
 </div>
 
+<!-- status bar satrt -->
+<div class="container-fluid">
+<br /><br />
+<ul class="list-unstyled multi-steps">
+
+	<li  >Personal Information</li>
+	<li >Family Information</li>
+	<li >Executor</li>
+	<li class="is-active">Assets</li>
+	<li>Witness</li>
+</ul>
+</div>
+ <!-- end status bar -->
+
+
 <!-- family info containner start -->
 <?php $start_will_data = $this->session->userdata() ?>
 <div class="container">
-	<div class="jumbotron ">
+	<!-- <div class="jumbotron "> -->
 	<!--action="<?php echo base_url(); ?>/Will_controller/save_personal_info"-->
-<h1 class=" text-center">Assets Info</h1>
+<!-- <h1 class=" text-center">Assets Info</h1> --><br>
   <div class="row">
-    <div class="col-md-6">
-  	<div id="box">
+    <div class="col-md-6 ">
+  	<div id="box" class="personal_info1" >
       <!-- Executor Information Start  -->
+      	<h3 class=" text-left">Assets Info </h3><br>
       <ul class="nav nav-tabs">
         <li class="nav-item" style="width:25%;">
           <a class="nav-link active" data-toggle="tab" href="#real_estate"><i class="fa fa-home fa-2x" ></i></br> Real Estate</a>
         </li>
-        <li class="nav-item" style="width:25%;">
+        <li class="nav-item" style="width:26%;">
           <a class="nav-link " data-toggle="tab" href="#bank_assets"><i class="fa fa-university fa-2x" ></i></br> Bank Assets</a>
         </li>
-        <li class="nav-item" style="width:25%;">
+        <li class="nav-item" style="width:24%;">
           <a class="nav-link " data-toggle="tab" href="#vehicle"><i class="fa fa-car fa-2x" ></i></br> Vehicle</a>
         </li>
         <li class="nav-item" style="width:25%;">
@@ -355,29 +371,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       		</form>
         </div>
         <!-- Other Gift end -->
-
+<br><br><br>
       </div>
       <!-- Executor Information End  -->
       <!-- Funeral and Burial Information Start  -->
-</br></br>
+
       <!-- Funeral and Burial Information End  -->
       <div>
-      <p>  <a href="<?php echo base_url() ?>/Will_controller/executor_funeral_view" type="button" id="personal_previous" class="btn btn-info">Previous</a>
-  		<button type="button" id="destroy" class="btn btn-danger">Clear session</button>
-  		<a href="<?php echo base_url() ?>/Will_controller/witness_info_view" style="float:right;" type="button" id="personal_next" class="btn btn-info" >Next</a></p>
+
     </div>
   </div>
+
+  <p>  <a href="<?php echo base_url() ?>/Will_controller/executor_funeral_view" type="button" id="personal_previous" class="btn btn-info">Previous</a>
+  <!-- <button type="button" id="destroy" class="btn btn-danger">Clear session</button> -->
+  <a href="<?php echo base_url() ?>/Will_controller/witness_info_view" style="float:right;" type="button" id="personal_next" class="btn btn-info" >Next</a></p>
   </div>
 
   <div class="col-md-6">
   	<input type="hidden" name="will_id" id="will_id" value="<?php echo $start_will_data['will_id']; ?>">
 
-    <div class="container" style="background-color:white;">
+    <div class="container">
     	<div class="" style="">
-        <table id="table_personal_info" class="table table-bordered table_personal_info">
+        <table id="table_personal_info" class="personal_data_dispaly table_personal_info">
           <thead>
             <tr>
-              <th>Personal Info</th>
+              <th>Personal Info <br> <hr> </th>
             </tr>
           </thead>
           <tbody>
@@ -418,12 +436,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
     </div>
 
-    </br>
     <div class="container" style="background-color:white;">
-    <table id="table_family_member" class="table table-bordered table_family_member">
+    <table id="table_family_member" class="personal_data_dispaly table_family_member">
       <thead>
         <tr>
-          <th>Family Member Info</th>
+          <th>Family Member Info <br> <hr> </th>
         </tr>
       </thead>
       <tbody>
@@ -431,12 +448,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </table>
     </div>
 
-    </br>
     <div class="container" style="background-color:white;">
-    <table id="table_executor" class="table table-bordered table_executor">
+    <table id="table_executor" class="personal_data_dispaly table_executor">
       <thead>
         <tr>
-          <th>Executor Info</th>
+          <th>Executor Info <br> <hr> </th>
         </tr>
       </thead>
       <tbody>
@@ -446,53 +462,53 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
     <div class="container" style="background-color:white;">
-    <table id="table_funeral" class="table table-bordered table_funeral">
+    <table id="table_funeral" class="personal_data_dispaly table_funeral">
       <thead>
         <tr>
-          <th>Funeral Info</th>
+          <th>Funeral Info <br> <hr> </th>
         </tr>
       </thead>
       <tbody>
       </tbody>
     </table>
     </div>
-</br>
+
     <div class="container" style="background-color:white;">
       <b>Assets Information</b>
-    <table id="table_real_estate" class="table table-bordered table_real_estate">
+    <table id="table_real_estate" class="personal_data_dispaly table_real_estate">
       <thead>
         <tr>
-          <th>Real Estate Info</th>
+          <th>Real Estate Info <br> <hr> </th>
         </tr>
       </thead>
       <tbody>
       </tbody>
     </table>
 
-    <table id="table_bank_assets" class="table table-bordered table_bank_assets">
+    <table id="table_bank_assets" class="personal_data_dispaly table_bank_assets">
       <thead>
         <tr>
-          <th>Bank Assets Info</th>
+          <th>Bank Assets Info <br> <hr> </th>
         </tr>
       </thead>
       <tbody>
       </tbody>
     </table>
 
-    <table id="table_vehicle" class="table table-bordered table_vehicle">
+    <table id="table_vehicle" class="personal_data_dispaly table_vehicle">
       <thead>
         <tr>
-          <th>Vehicle Info</th>
+          <th>Vehicle Info <br> <hr></th>
         </tr>
       </thead>
       <tbody>
       </tbody>
     </table>
 
-    <table id="table_gift" class="table table-bordered table_gift">
+    <table id="table_gift" class="personal_data_dispaly table_gift">
       <thead>
         <tr>
-          <th>Gift Info</th>
+          <th>Gift Info <br> <hr> </th>
         </tr>
       </thead>
       <tbody>
@@ -502,7 +518,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
   </div>
   </div>
-</div>
+<!-- </div> -->
 </div>
 <!-- personal info containner end -->
 <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js" type="text/javascript"></script>
@@ -583,7 +599,8 @@ $("#estate_address").blur(function(){
 
 $("#estate_city").blur(function(){
   var estate_city = $('#estate_city').val();
-  if(estate_city == ''){
+  var estate_city_format =  /^[a-zA-Z ]*$/;
+  if(!estate_city_format.test(estate_city) || estate_city == ''){
     $('#error_estate_city').show();
   }
   else{
@@ -592,6 +609,7 @@ $("#estate_city").blur(function(){
 });
 
 $("#estate_pin").blur(function(){
+
   var estate_pin = $('#estate_pin').val();
   if(estate_pin == ''){
     $('#error_estate_pin').show();
@@ -603,7 +621,8 @@ $("#estate_pin").blur(function(){
 
 $("#estate_country").blur(function(){
   var estate_country = $('#estate_country').val();
-  if(estate_country == ''){
+  var estate_country_format =  /^[a-zA-Z ]*$/;
+  if(!estate_country_format.test(estate_country) || estate_country == ''){
     $('#error_estate_country').show();
   }
   else{
@@ -613,7 +632,8 @@ $("#estate_country").blur(function(){
 
 $("#estate_state").blur(function(){
   var estate_state = $('#estate_state').val();
-  if(estate_state == ''){
+  var estate_state_format =  /^[a-zA-Z ]*$/;
+  if(!estate_state_format.test(estate_state) || estate_state == ''){
     $('#error_estate_state').show();
   }
   else{

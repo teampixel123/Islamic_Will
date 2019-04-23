@@ -46,7 +46,9 @@
           $nestedData = array();
           //if($is_minar == 0){
             $nestedData[] = "<div class='row'><div class='col-md-10'>".$id.") Name: ".$family_person_name.", Relationship: ".$relationship.", Age: ".$family_person_age." ".$info."
-            </div><div class='col-md-2'><button type='button' id='family_member_delete".$id."'  class='badge badge-pill badge-danger' title='Delete Family Member'><i class='fa fa-trash' style='font-size:15px; width:30px;'></i></button>
+            </div><div class='col-md-2'>
+            <button type='button' id='family_member_delete".$id."'  class='badge badge-pill ' title='Delete Family Member'>
+            <i class='fa fa-trash' style='font-size:15px; width:30px;'></i></button>
             </div></div>
             <script>
               $('#family_member_delete".$id."').click(function(e){

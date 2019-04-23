@@ -10,6 +10,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
  <link href="<?php echo base_url('assets/css/style.css');?>" rel="stylesheet">
  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+	 <!-- <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'> -->
  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 </head>
 <body>
@@ -43,21 +45,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </nav>
 </div>
 
+
+<!-- status bar satrt -->
+<div class="container-fluid">
+<br /><br />
+<ul class="list-unstyled multi-steps">
+	<li class="is-active" >Personal Information</li>
+	<li >Family Information</li>
+	<li >Executor</li>
+	<li >Assets</li>
+	<li>Witness</li>
+</ul>
+</div>
+ <!-- end status bar -->
+
+
 <!-- personal info containner start  asif change -->
 <?php $start_will_data = $this->session->userdata() ?>
 <div class="container">
-	<div class="jumbotron ">
+	<!-- <div class="jumbotron "> -->
+	<!-- <h1 class="heading">Personal Information</h1>
+			<!--action="<?php echo base_url(); ?>/Will_controller/save_personal_info"--> <br>
 
-			<!--action="<?php echo base_url(); ?>/Will_controller/save_personal_info"-->
-<h1 class=" text-center">Personal Information</h1>
-<div class="row">
-  <div class="col-md-6">
+
+
+
+<div class="row ">
+  <div class="col-md-7 personal_info1 " >
 	<div id="box">
 		<form class="" id="personal_info_form" method="post">
   <fieldset>
+		<h3 class=" text-left">Personal Information </h3><br>
     <div class="form-group">
       <div class="row text-center">
-        <label class="col-md-3 text-right" for="exampleInputEmail1">Full Name</label>
+        <label class="col-md-2 text-right" for="exampleInputEmail1">Full Name</label>
 				<div class="col-md-3">
 					<select class="form-control" name="name_title" id="name_title">
 					 <option>Mr.</option>
@@ -65,17 +86,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					 <option>Mrs.</option>
 				 </select>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-7">
 					<input type="text" name="full_name"  id="full_name"class="form-control empty" id="exampleInputEmail1" aria-describedby="emailHelp" >
 					<p id="error_name" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
 				</div>
       </div>
     </div>
 
-		<div class="form-group" id="marital_status_div">
+		<div class="form-group" id="marital_status_div" >
       <div class="row text-center">
-        <label class="col-md-3 text-right" for="exampleInputEmail1">Marital status</label>
-				<div class="col-md-9">
+			<div class="col-md-2 marital_status1" >
+        <label class=" text-right" for="exampleInputEmail1">Marital status</label>
+			</div>
+				<div class="col-md-4  ">
 					<select class="form-control" name="marital_status" id="marital_status">
 					<option value="0">select </option>
 					 <option>Married</option>
@@ -85,14 +108,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				 </select>
 				 <p id="error_marital_status" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
         </div>
+
+			<div class="col-md-2">
+				<label class=" text-right" for="exampleInputEmail1">Have Child</label>
+			</div>
+				<div class="col-md-4">
+					<select class="form-control  " name="is_have_child" id="is_have_child">
+					<option value="-1">select </option>
+					 <option value="1">Yes</option>
+					 <option value="0">No</option>
+				 </select>
+				 <p id="error_is_have_child" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
+				</div>
+
       </div>
     </div>
 
-		<div class="form-group" id="have_child_div">
+		<!-- <div class="form-group" id="have_child_div">
       <div class="row text-center">
-        <label class="col-md-3 text-right" for="exampleInputEmail1">Have Child</label>
-				<div class="col-md-9">
-					<select class="form-control" name="is_have_child" id="is_have_child">
+        <label class="col-md-2 text-right" for="exampleInputEmail1">Have Child</label>
+				<div class="col-md-4">
+					<select class="form-control personal_cell " name="is_have_child" id="is_have_child">
 					<option value="-1">select </option>
 					 <option value="1">Yes</option>
 					 <option value="0">No</option>
@@ -100,38 +136,45 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				 <p id="error_is_have_child" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
         </div>
       </div>
-    </div>
+    </div> -->
 
 		<div class="form-group" id="have_child_div">
       <div class="row text-center">
-        <label class="col-md-3 text-right" for="exampleInputEmail1">Gender</label>
-				<div class="col-md-9">
-					<select class="form-control" name="gender" id="gender">
+        <label class="col-md-2 text-right" for="exampleInputEmail1">Gender</label>
+				<div class="col-md-4">
+					<select class="form-control  " name="gender" id="gender">
 					<option value="0">select </option>
 					 <option>Male</option>
 					 <option>Female</option>
 				 </select>
 				 <p id="error_gender" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
         </div>
+
+				<label class="col-md-2 text-right" for="exampleInputEmail1">Age</label>
+				<div class="col-md-4">
+					<input type="number" name="age" class="form-control empty   " id="age" aria-describedby="emailHelp" required >
+					<p id="error_age" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
+				</div>
+
       </div>
     </div>
 
-		<div class="form-group" id="have_child_div">
+		<!-- <div class="form-group" id="have_child_div">
       <div class="row text-center">
         <label class="col-md-3 text-right" for="exampleInputEmail1">Age</label>
-				<div class="col-md-9">
-					<input type="number" name="age" class="form-control empty" id="age" aria-describedby="emailHelp" required >
+				<div class="col-md-3">
+					<input type="number" name="age" class="form-control empty   " id="age" aria-describedby="emailHelp" required >
 					<p id="error_age" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="form-group">
       <div class="row text-center">
-        <div class="col-md-3 text-right">
+        <div class="col-md-2 text-right">
           <label for="exampleInputEmail1">Address</label>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-10">
           <input type="text" name="address" class="form-control" id="address" aria-describedby="emailHelp" required>
 					<p id="error_address" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
         </div>
@@ -140,106 +183,151 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <div class="form-group">
       <div class="row text-center">
-        <div class="col-md-3 text-right">
+        <div class="col-md-2 text-right">
           <label for="exampleInputEmail1">City</label>
         </div>
-        <div class="col-md-9">
-          <input type="text" name="city" class="form-control" id="city" aria-describedby="emailHelp" >
+        <div class="col-md-3">
+          <input type="text" name="city" class="form-control  " id="city" aria-describedby="emailHelp" >
 					<p id="error_city" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
         </div>
+
+				<div class="col-md-2 text-right marital_status1">
+          <label for="exampleInputEmail1">Pin Code</label>
+        </div>
+        <div class="col-md-2">
+          <input type="number" name="pin_code" class="form-control" id="pin_code" aria-describedby="emailHelp" >
+					<p id="error_pin_code" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
+        </div>
+
+				<div class="col-md-1 text-right">
+          <label for="exampleInputEmail1">State</label>
+        </div>
+        <div class="col-md-2">
+          <input type="text" name="state" class="form-control" id="state" aria-describedby="emailHelp" >
+					<p id="error_state" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
+        </div>
+
+
       </div>
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
       <div class="row text-center">
-        <div class="col-md-3 text-right">
+        <div class="col-md-2 text-right">
           <label for="exampleInputEmail1">Pin Code</label>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-4">
           <input type="number" name="pin_code" class="form-control" id="pin_code" aria-describedby="emailHelp" >
 					<p id="error_pin_code" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="form-group">
       <div class="row text-center">
-        <div class="col-md-3 text-right">
+        <!-- <div class="col-md-2 text-right">
           <label for="exampleInputEmail1">State</label>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-2">
           <input type="text" name="state" class="form-control" id="state" aria-describedby="emailHelp" >
 					<p id="error_state" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
+        </div> -->
+
+				<div class="col-md-2 text-right">
+          <label for="exampleInputEmail1">Country</label>
         </div>
+        <div class="col-md-4">
+          <input type="text" name="country" class="form-control" id="country" aria-describedby="emailHelp" >
+					<p id="error_country" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
+        </div>
+
       </div>
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
       <div class="row text-center">
-        <div class="col-md-3 text-right">
+        <div class="col-md-2 text-right">
           <label for="exampleInputEmail1">Country</label>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-4">
           <input type="text" name="country" class="form-control" id="country" aria-describedby="emailHelp" >
 					<p id="error_country" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="form-group">
       <div class="row text-center">
-        <div class="col-md-3 text-right">
+        <div class="col-md-2 text-right">
           <label for="exampleInputEmail1">Mobile No</label>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-4">
           <input type="number" name="mobile_no" class="form-control" id="mobile_no" aria-describedby="emailHelp" >
 					<p id="error_mobile_no" style="color:red; display:none" class="text-left invalide">*Please enter a valid number.</p>
         </div>
+
+				<div class="col-md-2 text-right">
+          <label for="exampleInputEmail1">Email</label>
+        </div>
+        <div class="col-md-4">
+          <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" >
+					<p id="error_email" style="color:red; display:none" class="text-left invalide">*Please enter a valid email address.</p>
+        </div>
+
       </div>
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
       <div class="row text-center">
-        <div class="col-md-3 text-right">
+        <div class="col-md-2 text-right">
           <label for="exampleInputEmail1">Email</label>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-4">
           <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" >
 					<p id="error_email" style="color:red; display:none" class="text-left invalide">*Please enter a valid email address.</p>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="form-group">
       <div class="row text-center">
-        <div class="col-md-3 text-right">
+        <div class="col-md-2 text-right">
           <label for="exampleInputEmail1">Occupation</label>
         </div>
-        <div class="col-md-9">
-          <input type="text" name="occupation" class="form-control" id="occupation" aria-describedby="emailHelp" >
+        <div class="col-md-4">
+          <input type="text" name="occupation" class="form-control " id="occupation" aria-describedby="emailHelp" >
 					<p id="error_occupation" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
         </div>
+
+				<div class="col-md-2 text-right">
+          <label for="exampleInputEmail1">Aadhar No</label>
+        </div>
+        <div class="col-md-4">
+          <input type="number" name="aadhar_no" class="form-control" id="aadhar_no" aria-describedby="emailHelp" >
+					<p id="error_aadhar_no" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
+        </div>
+
       </div>
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
       <div class="row text-center">
-        <div class="col-md-3 text-right">
+        <div class="col-md-2 text-right">
           <label for="exampleInputEmail1">Aadhar No</label>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-4">
           <input type="number" name="aadhar_no" class="form-control" id="aadhar_no" aria-describedby="emailHelp" >
 					<p id="error_aadhar_no" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="form-group">
       <div class="row text-center">
-        <div class="col-md-3 text-right">
+        <div class="col-md-2 text-right">
           <label for="exampleInputEmail1">PAN No</label>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-4">
           <input type="text" name="pan_no" class="form-control" id="pan_no" aria-describedby="emailHelp" >
         </div>
       </div>
@@ -252,11 +340,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<!--a href="<?php echo base_url() ?>/Will_controller/family_info_view" type="button" id="personal_next" class="btn btn-info">Next</a-->
   </fieldset>
 </div>
-<div class="col-md-6">
+
+<div class="col-md-5 personal_info">
 <?php if($this->session->userdata('will_id')){	?>
 	<input type="hidden" name="will_id" id="will_id" value="<?php echo $start_will_data['will_id']; ?>">
 <?php } ?>
-  <div class="container" style="background-color:white;">
+  <div class="container personal_data_dispaly " style="border-color: #eee;  ">
   	<div class="" style="">
 			<form>
 		      <div class="row text-center">
@@ -295,7 +384,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 </div>
 
-</div>
+<!-- </div> -->
 </div>
 <!-- personal info containner end  asif change -->
 <script src="<?php echo base_url(); ?>assets/js/jquery-3.3.0.min.js" type="text/javascript"></script>
@@ -785,6 +874,7 @@ $(document).ready(function(){
 			if(!aadhar_no_format.test(aadhar_no) || aadhar_no == '') {
 				 $('#error_aadhar_no').show();
 					 }
+
 			else {
 						 $('.invalide').hide();
 						 var form_data = $('#personal_info_form').serialize();

@@ -49,18 +49,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </nav>
 </div>
 
+<!-- status bar satrt -->
+<div class="container-fluid">
+<br /><br />
+<ul class="list-unstyled multi-steps">
+	
+	<li  >Personal Information</li>
+	<li class="is-active">Family Information</li>
+	<li >Executor</li>
+	<li >Assets</li>
+	<li>Witness</li>
+</ul>
+</div>
+ <!-- end status bar -->
+
+
+
 <!-- family info containner start -->
 <?php $start_will_data = $this->session->userdata() ?>
 <div class="container">
-	<div class="jumbotron ">
+	<!-- <div class="jumbotron "> -->
 	<!--action="<?php echo base_url(); ?>/Will_controller/save_personal_info"-->
-<h1 class=" text-center">Family Information</h1>
+<!-- <h1 class="heading">Family Information</h1> --><br>
   <div class="row">
-    <div class="col-md-6">
-  	<div id="box">
+    <div class="col-md-6  ">
+  	<div id="box" class="personal_info1"style="margin-right: -15px;" >
   		<form class="" id="family_member_form" method="post">
 
       <fieldset>
+
+        	<h3 class=" text-left">Family Information </h3><br>
+
       <div class="form-group">
         <div class="row text-center">
           <label class="col-md-3 text-right" for="exampleInputEmail1">Relation</label>
@@ -136,21 +155,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </fieldset>
   		</form>
       <p>  <button  id="add_family_member" class="btn btn-success" >Add</button></p>
-      <p>  <a href="<?php echo base_url() ?>/Will_controller/personal_info_view" type="button" id="personal_previous" class="btn btn-info">Previous</a>
-  		<button type="button" id="destroy" class="btn btn-danger">Clear session</button>
-  		<a href="<?php echo base_url() ?>/Will_controller/executor_funeral_view" type="button" id="personal_next" class="btn btn-info" >Next</a></p>
+      <br><br>
   </div>
+  <p>  <a href="<?php echo base_url() ?>/Will_controller/personal_info_view" type="button" id="personal_previous" class="btn btn-info">Previous</a>
+  <!-- <button type="button" id="destroy" class="btn btn-danger">Clear session</button> -->
+  <a href="<?php echo base_url() ?>/Will_controller/executor_funeral_view" type="button" id="personal_next" class="btn btn-info" style="float:right;" >Next</a></p>
   </div>
 
-  <div class="col-md-6">
+  <div class="col-md-6  personal_data_dispaly1  ">
   	<input type="hidden" name="will_id" id="will_id" value="<?php echo $start_will_data['will_id']; ?>">
 
     <div class="container" style="background-color:white;">
     	<div class="" style="">
-        <table id="table_personal_info" class="table table-bordered table_personal_info">
+        <table id="table_personal_info" class=" personal_data_dispaly table_personal_info">
           <thead>
             <tr>
-              <th>Personal Info</th>
+              <th>Personal Info <br>
+                <hr>
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -193,12 +215,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <!-- Family Memer List -->
       </div>
     </div>
-  </br>
-    <div class="container" style="background-color:white;">
-    <table id="table_family_member" class="table table-bordered table_family_member">
+
+    <div class="container  " style="background-color:white;">
+    <table id="table_family_member" class=" personal_data_dispaly table_family_member">
       <thead>
         <tr>
-          <th>Family Member Info</th>
+          <th>Family Member Info
+            <br>
+              <hr>
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -207,7 +232,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
   </div>
   </div>
-</div>
+<!-- </div> -->
 </div>
 <!-- personal info containner end -->
 <script src="<?php echo base_url(); ?>assets/js/jquery-3.3.0.min.js" type="text/javascript"></script>

@@ -42,8 +42,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </nav>
 </div>
 
-<div class="container">
-	<div class="jumbotron ">
+<div class="container" >
+	<div class=""  >
 
     <form class="" action="<?php echo base_url(); ?>/Will_controller/store_start_info" method="post">
 	<h1 class="display-3 text-center">Start Your Will Now</h1>

@@ -49,18 +49,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </nav>
 </div>
 
+<!-- status bar satrt -->
+<div class="container-fluid">
+<br /><br />
+<ul class="list-unstyled multi-steps">
+	
+	<li  >Personal Information</li>
+	<li >Family Information</li>
+	<li >Executor</li>
+	<li >Assets</li>
+	<li class="is-active">Witness</li>
+</ul>
+</div>
+ <!-- end status bar -->
+
 <!-- family info containner start -->
 <?php $start_will_data = $this->session->userdata() ?>
 <div class="container">
-	<div class="jumbotron ">
+	<!-- <div class="jumbotron "> -->
 	<!--action="<?php echo base_url(); ?>/Will_controller/save_personal_info"-->
-<h1 class=" text-center">Witness Information</h1>
+<!-- <h1 class=" text-center">Witness Information</h1> --><br>
   <div class="row">
     <div class="col-md-6">
-  	<div id="box">
+  	<div id="box" class="personal_info1">
   		<form class="" id="witness_form" method="post">
 
       <fieldset>
+
+      <h3 class=" text-left">Witness Information </h3><br>
+
   		<div class="form-group" id="">
         <div class="row text-center">
           <label class="col-md-3 text-right" for="exampleInputEmail1">Witness Name</label>
@@ -82,11 +99,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
       </fieldset>
   		</form>
-      <p>  <button type="button" id="add_witness" class="btn btn-success" >Add</button></p>
-      <p>  <a href="<?php echo base_url() ?>/Will_controller/assets_info_view" type="button" id="personal_previous" class="btn btn-info">Previous</a>
-  		<button type="button" id="destroy" class="btn btn-danger">Clear session</button>
-  		<a href="#" type="button" id="personal_next" class="btn btn-info" >Create PDF</a></p>
+      <p>  <button type="button" id="add_witness" class="btn btn-success" style="float:right;" >Add</button></p>
+      <br><br>
   </div>
+
+  <p>  <a href="<?php echo base_url() ?>/Will_controller/assets_info_view" type="button" id="personal_previous" class="btn btn-info">Previous</a>
+  <!-- <button type="button" id="destroy" class="btn btn-danger">Clear session</button> -->
+  <a href="#" type="button" id="personal_next" class="btn btn-info" style="float:right;">Create PDF</a></p>
   </div>
 
   <div class="col-md-6">
@@ -94,17 +113,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <div class="container" style="background-color:white;">
     	<div class="" style="">
-        <table id="table_personal_info" class="table table-bordered table_personal_info">
+        <table id="table_personal_info" class="personal_data_dispaly table_personal_info">
           <thead>
             <tr>
-              <th>Personal Info</th>
+              <th>Personal Info <br> <hr> </th>
             </tr>
           </thead>
           <tbody>
             <tr><td>
               <div class="row text-center">
     		        <label class="col-md-4 text-right" for="exampleInputEmail1" >Name :</label>
-    						<label class="col-md-8 text-left" id="lbl_name" style="font-weight:600;"></label>
+    						<label class="col-md-8 text-left" id="lbl_name" ></label>
     		      </div>
 
     		      <div class="row text-center">
@@ -138,12 +157,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
     </div>
 
-    </br>
     <div class="container" style="background-color:white;">
-    <table id="table_family_member" class="table table-bordered table_family_member">
+    <table id="table_family_member" class="personal_data_dispaly table_family_member">
       <thead>
         <tr>
-          <th>Family Member Info</th>
+          <th>Family Member Info <br> <hr> </th>
         </tr>
       </thead>
       <tbody>
@@ -151,12 +169,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </table>
     </div>
 
-    </br>
     <div class="container" style="background-color:white;">
-    <table id="table_executor" class="table table-bordered table_executor">
+    <table id="table_executor" class="personal_data_dispaly table_executor">
       <thead>
         <tr>
-          <th>Executor Info</th>
+          <th>Executor Info <br> <hr> </th>
         </tr>
       </thead>
       <tbody>
@@ -166,65 +183,65 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
     <div class="container" style="background-color:white;">
-    <table id="table_funeral" class="table table-bordered table_funeral">
+    <table id="table_funeral" class="personal_data_dispaly table_funeral">
       <thead>
         <tr>
-          <th>Funeral Info</th>
+          <th>Funeral Info <br> <hr> </th>
         </tr>
       </thead>
       <tbody>
       </tbody>
     </table>
     </div>
-</br>
+
     <div class="container" style="background-color:white;">
       <b>Assets Information</b>
-    <table id="table_real_estate" class="table table-bordered table_real_estate">
+    <table id="table_real_estate" class="personal_data_dispaly table_real_estate">
       <thead>
         <tr>
-          <th>Real Estate Info</th>
+          <th>Real Estate Info <br> <hr> </th>
         </tr>
       </thead>
       <tbody>
       </tbody>
     </table>
 
-    <table id="table_bank_assets" class="table table-bordered table_bank_assets">
+    <table id="table_bank_assets" class="personal_data_dispaly table_bank_assets">
       <thead>
         <tr>
-          <th>Bank Assets Info</th>
+          <th>Bank Assets Info <br> <br></th>
         </tr>
       </thead>
       <tbody>
       </tbody>
     </table>
 
-    <table id="table_vehicle" class="table table-bordered table_vehicle">
+    <table id="table_vehicle" class="personal_data_dispaly table_vehicle">
       <thead>
         <tr>
-          <th>Vehicle Info</th>
+          <th>Vehicle Info <br> <hr> </th>
         </tr>
       </thead>
       <tbody>
       </tbody>
     </table>
 
-    <table id="table_gift" class="table table-bordered table_gift">
+    <table id="table_gift" class="personal_data_dispaly table_gift">
       <thead>
         <tr>
-          <th>Gift Info</th>
+          <th>Gift Info <br> <hr> </th>
         </tr>
       </thead>
       <tbody>
       </tbody>
     </table>
     </div>
-    </br>
+
     <div class="container" style="background-color:white;">
-    <table id="table_witness" class="table table-bordered table_witness">
+    <table id="table_witness" class="personal_data_dispaly table_witness">
       <thead>
         <tr>
-          <th>Witness Info</th>
+          <th>Witness Info <br> <hr> </th>
         </tr>
       </thead>
       <tbody>
@@ -233,7 +250,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
   </div>
   </div>
-</div>
+<!-- </div> -->
 </div>
 <!-- personal info containner end -->
 <script src="<?php echo base_url(); ?>assets/js/jquery-3.3.0.min.js" type="text/javascript"></script>

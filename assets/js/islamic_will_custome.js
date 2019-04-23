@@ -223,9 +223,10 @@ $('#add_funeral').click(function(){
               var funeral_name = $('#funeral_name').val();
               var funeral_address = $('#funeral_address').val();
 
-            if(funeral_name == ''){
-              $('#error_funeral_name').show();
-            }
+              var funeral_name_format =  /^[a-zA-Z ]*$/;
+              if(!funeral_name_format.test(funeral_name) || funeral_name == ''){
+                $('#error_funeral_name').show();
+              }
 
             if(funeral_address == ''){
               $('#error_funeral_address').show();
@@ -440,7 +441,8 @@ $('#add_funeral').click(function(){
       $('#error_account_number').show();
     }
 
-    if(bank_name == ''){
+    var bank_name_format =  /^[a-zA-Z ]*$/;
+     if(!bank_name_format.test(bank_name) || bank_name == ''){
       $('#error_bank_name').show();
     }
 
