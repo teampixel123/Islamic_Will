@@ -105,20 +105,20 @@
 
   <p>  <a href="<?php echo base_url() ?>/Will_controller/assets_info_view" type="button" id="personal_previous" class="btn btn-info">Previous</a>
   <!-- <button type="button" id="destroy" class="btn btn-danger">Clear session</button> -->
+
   <?php if($this->session->userdata('user_is_login')){
           ?>
-          <form target="_blank" id="final_pdf" class="" action="<?php echo base_url() ?>/Pdf_controller/final_pdf" method="post">
-            <input type="hidden" name="will_id" value="<?php echo $this->session->userdata('will_id'); ?>">
-          </form>
           <button href="" type="submit" id="btn_final_pdf" class="btn btn-info" >Create PDF</button></p>
           <?php
         } else{ ?>
-          <form id="pdf" class="" action="<?php echo base_url() ?>/Pdf_controller/pdf" method="post">
-            <input type="hidden" name="will_id" value="<?php echo $this->session->userdata('will_id'); ?>">
           <button href="" type="submit" id="btn_pdf" class="btn btn-info" >Create PDF</button></p>
-          </form>
       <?php } ?>
-
+      <form target="_blank" id="final_pdf" class="" action="<?php echo base_url() ?>/Pdf_controller/final_pdf" method="post">
+        <input type="hidden" name="will_id" value="<?php echo $this->session->userdata('will_id'); ?>">
+      </form>
+      <form id="pdf" class="" action="<?php echo base_url() ?>/Pdf_controller/pdf" method="post">
+        <input type="hidden" name="will_id" value="<?php echo $this->session->userdata('will_id'); ?>">
+      </form>
   <!--a href="#" type="button" id="personal_next" class="btn btn-info" style="float:right;">Create PDF</a--></p>
   </div>
 

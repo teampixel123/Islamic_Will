@@ -28,8 +28,6 @@
 </div>
  <!-- end status bar -->
 
-
-
 <!-- family info containner start -->
 <?php $start_will_data = $this->session->userdata() ?>
 <div class="container">
@@ -126,9 +124,9 @@
       <p>  <button  id="add_family_member" class="btn btn-success" >Add</button></p>
       <br><br>
   </div>
-  <p>  <a href="<?php echo base_url() ?>/Will_controller/personal_info_view" type="button" id="personal_previous" class="btn btn-info">Previous</a>
+  <p>  <a href="<?php echo base_url() ?>/Will_controller/personal_info_view" type="button" id="family_previous" class="btn btn-info">Previous</a>
   <!-- <button type="button" id="destroy" class="btn btn-danger">Clear session</button> -->
-  <a href="<?php echo base_url() ?>/Will_controller/executor_funeral_view" type="button" id="personal_next" class="btn btn-info" style="float:right;" >Next</a></p>
+  <button id="family_next" class="btn btn-info" style="float:right;" >Next</button></p>
   </div>
 
   <div class="col-md-6  personal_data_dispaly1  ">

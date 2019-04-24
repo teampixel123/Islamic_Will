@@ -45,9 +45,25 @@
     }
 
     //save will data...
-    public function save_will_data($data)
-    {
+    public function save_will_data($data){
       $this->db->insert('tbl_will',$data);
+    }
+
+    public function get_have_miner($will_id){
+      $this->db->select('id');
+      $this->db->from('tbl_family_info');
+      $this->db->where('is_minar',1);
+      $this->db->where('will_id',$will_id);
+      $query = $this->db->get();
+      $num = $query->num_rows();
+      return $num;
+    }
+
+    //save will data...
+    public function update_have_miner($will_id,$key){
+      $this->db->where('will_id',$will_id);
+      $this->db->set('is_have_minar_child',$key);
+      $this->db->update('tbl_will');
     }
 
     public function display_personal_info(){

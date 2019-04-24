@@ -311,8 +311,25 @@
                 );
         //echo print_r($member_data);
       $this->Will_Model->save_family_member($member_data);
+      if($this->input->post('is_minar') == 1){
+        $key = 1;
+        $this->Will_Model->update_have_miner($will_id,$key);//is_have_minar_child
+      }
       //$list = $this->Will_Model->get_family_member_list($will_id);
       //echo json_encode($list);
+    }
+
+    public function update_have_miner(){
+      $will_id = $this->session->userdata('will_id');
+      $result = $this->Will_Model->get_have_miner($will_id);
+      if($result == 0){
+        $key = 0;
+        $this->Will_Model->update_have_miner($will_id,$key);
+      }
+      else{
+        $key = 1;
+        $this->Will_Model->update_have_miner($will_id,$key);
+      }
     }
 
 //family_info

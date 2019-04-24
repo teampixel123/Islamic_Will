@@ -7,16 +7,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<meta charset="utf-8">
 		<title></title>
 		<!--css -->
-
-
-
    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 	</head>
-
-
-
-
-
 <body>
     <form class="" action="<?php echo base_url(); ?>/Will_controller/save_family_info" method="post">
 			<select id="reletionship" name="instruction">

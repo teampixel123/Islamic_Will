@@ -26,6 +26,11 @@ $('.table_personal_info').DataTable({
   "bLengthChange": false,
   "bPaginate": false,
   "bInfo": false,
+  //"aoColumns": [{"bSortable": false}, null],
+  // "bSortable": false,
+  // "bSearchable": false,
+  // "aoColumnDefs": [{ "bSortable": false, "aTargets": [ 0, 1, 2, 3 ] },
+  //               { "bSearchable": false, "aTargets": [ 0, 1, 2, 3 ] }
 });
 
 // get and fill up family member list...

@@ -24,6 +24,8 @@
         $will_id = $this->input->post('will_id');
     		$data['personal_data']=$this->Will_Model->get_personal_data($will_id);
     		$data['family_data']= $this->Table_Model->getAllFamilyMembarDataAjax($will_id);
+    		$data['family_data2']= $this->Table_Model->getAllFamilyMembarDataAjax($will_id);
+    		$data['family_data3']= $this->Table_Model->getAllFamilyMembarDataAjax($will_id);
     	 	$data['excutor_data']= $this->Table_Model->getAllExecutorDataAjax($will_id);
     	 	$data['funeral_data']= $this->Table_Model->getAllFuneralDataAjax($will_id);
     		$data['real_estate']= $this->Table_Model->getAllRealEstateDataAjax($will_id);

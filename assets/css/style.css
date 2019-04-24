@@ -320,3 +320,9 @@ li {
   border-right-color: aqua;
   border-block-end-width: 1px;
 }
+
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc {
+    background : none;
+}

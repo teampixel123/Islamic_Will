@@ -31,7 +31,7 @@
 
  	//Page header
  	public function Header() {
-		$this->RoundedRect(05, 05, 200, 290, 0, '1000');
+		$this->RoundedRect(10, 10, 190, 280, 0, '1000');
  		// Logo
  		// $image_file = K_PATH_IMAGES.'logo_example.jpg';
  		// $this->Image($image_file, 10, 10, 15, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
@@ -48,10 +48,10 @@
 
 		$this->SetFont('helvetica', 'I', 8);
 	 // Page number
-	 $this->Cell(10, 10, 'Page '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
+	 $this->Cell(20, 10, 'Page '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
  		// Set font
  		$this->SetFont('helvetica', 'I', 12);
- 			$this->Cell(295, 15, ' Signature.................. ', 0, false, 'C', 0, '', 0, false, 'M', 'M');
+ 			$this->Cell(275, 15, ' Signature.................. ', 0, false, 'C', 0, '', 0, false, 'M', 'M');
  	}
  }
 
@@ -76,7 +76,7 @@
  $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
  // set margins
- $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+ $pdf->SetMargins(20, 20, 20);
  $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
  $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 
@@ -105,14 +105,14 @@ $pdf->SetFont('helvetica', '', 10);
 // add a page
 $pdf->AddPage();
 //page  start border
-$pdf->RoundedRect(05, 05, 200, 290, 00, '1000', ' ', array(400, 400, 400));
+//$pdf->RoundedRect(10, 05, 200, 290, 00, '1000', ' ', array(400, 400, 400));
 //page end border
 
 $html = '<br><br><br><br><br><br><br> <h1 style="text-align:center; font-family: times, serif; " > In the Name of Allah the Most Gracious, the most Merciful
 ISLAMIC LAST Will and Testament</h1>
 ';
 
-$pdf->Image('application\img\title.png', 10, 150, 190, 50, '', '', '', 72);
+$pdf->Image('application\img\title.png', 20, 180, 170, 45, '', '', '', 72);
 
 //$pdf->Image('application\img\logo.png', 50, 225, 100, 30, '', '', '', true, 52);
 // output the HTML content
@@ -120,22 +120,18 @@ $pdf->writeHTML($html, true, 0, true, 0);
 // add a page
 $pdf->AddPage();
 
+foreach ($will_data as $will_data) {
+}
 
-
-/*
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
- foreach ($personal_data as $personal_data) {
- //	$pdf->Write(0, 'Image Clipping using geometric functions'.$data->full_name, '', 0, 'C', 1, 0, false, false, 0);
- //$pdf->RoundedRect(05, 05, 200, 290, 00, '1000');
-
+foreach ($personal_data as $personal_data) {
 }
 
 
 
 //page  start border
-$pdf->RoundedRect(05, 05, 200, 290, 00, '1000');
+//$pdf->RoundedRect(05, 05, 200, 290, 00, '1000');
 //page end border
-$pdf->RoundedRect(05, 05, 200, 290, 00, '1000');$pdf->RoundedRect(05, 05, 200, 290, 00, '1000');
+//$pdf->RoundedRect(05, 05, 200, 290, 00, '1000');$pdf->RoundedRect(05, 05, 200, 290, 00, '1000');
 $html ='<style>
 							p{
 								text-align: justify;
@@ -145,10 +141,10 @@ $html ='<style>
 
 $html .= '<br><h1 style="text-align:center; font-family: times, serif;"> ISLAMIC LAST Will and Testament</h1>
 <br><br>
-<h2 style="text-align:center; font-family: times, serif;" >of........................................</h2>
+<h2 style="text-align:center; font-family: times, serif;" >of '.$personal_data->name_title.' '.$personal_data->full_name.'</h2>
 
-<p style="font-size:12; font-family: times, serif; text-align: justify; ">I Miss/Mr./Mrs'.$personal_data->full_name.' a Muslim, presently resident of
-'.$personal_data->address.', Age - ..........., Occupation – '.$personal_data->occupation.', having my
+<p style="font-size:12; font-family: times, serif; text-align: justify; ">I '.$personal_data->name_title.' '.$personal_data->full_name.' a Muslim, presently resident of
+'.$personal_data->address.', Age- '.$personal_data->age.', Occupation – '.$personal_data->occupation.', having my
 Aadhar No. '.$personal_data->aadhar_no.' being sound mind and memory declare that the following is my
 Islamic last Will and Testament (wasiyyat).</p>
 
@@ -199,23 +195,20 @@ Paradise is true, the Day of Judgement is coming without any doubt, and Allah (e
 <p style="font-size:12; font-family: times, serif;">
 My family consists of:<br>';
 foreach($family_data as $family_data ) {
-    $html .= ' My '. $family_data->relationship . '&nbsp;&nbsp;&nbsp; (name) &nbsp;&nbsp;'.$family_data->family_person_name.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$family_data->family_person_dob.'<br>'
+    $html .= 'My '. $family_data->relationship . '&nbsp;'.$family_data->family_person_name.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$family_data->family_person_dob.'<br>'
 
 		;
 }
 
-
 $html .= '
-
 </p>
-
 <h2 style="text-align:center; font-family: times, serif;" >D. EXECUTOR </h2>';
 $i = 0;
 foreach($excutor_data as $excutor_data ) {
 	$i++;
 	if($i == 1){
 		$html .= '<p style="font-size:12; font-family: times, serif;">
-	1.	I '.$i.' hereby nominate and appoint, namely Miss/Mr./Mrs'.$excutor_data->executor_name.' presently residing
+	1.	I '.$i.' hereby nominate and appoint, namely Miss/Mr./Mrs '.$excutor_data->executor_name.' presently residing
 	at &nbsp;'.$excutor_data->executor_address.', age &nbsp;'.$excutor_data->executor_age.', to be the executor/s of my Last Will and Testament.
 </p>';
 	}
@@ -223,7 +216,7 @@ foreach($excutor_data as $excutor_data ) {
 		$html .= '
 		<p style="font-size:12; font-family: times, serif;">
 			2.	In the event that he/she will be unwilling or unable to act as executor, I nominate and appoint,
-			namely Miss/Mr./Mrs &nbsp;'.$excutor_data->executor_name.'&nbsp; residing at &nbsp;'.$excutor_data->executor_address.'&nbsp;age &nbsp;'.$excutor_data->executor_age.',&nbsp;to be executor of this,
+			namely Miss/Mr./Mrs '.$excutor_data->executor_name.'&nbsp; residing at &nbsp;'.$excutor_data->executor_address.'&nbsp;age &nbsp;'.$excutor_data->executor_age.',&nbsp;to be executor of this,
 			 my Last Will and Testament. I direct no bond or surety for any bond be required for my executor in the performance of his/her duties.
 		</p>
 		';
@@ -285,71 +278,80 @@ IV.	Distribution of the residue of my Estate to my Islamic heirs in accordance w
 		 I direct that all inheritance, state, and succession taxes (including interest and other penalties thereon) payable by reason of my death shall be paid out of and be charged generally against the principal of my
 		 residuary estate (Any portion of the testator &apos s estate that is not specifically devised to someone in the will), without reimbursement from any person; except that this provision shall not be construed as a waiver of any right which my executor has,
 		  by law or otherwise, to claim reimbursement for any such taxes which become payable on account of property, if any, over which I have a power of appointment.
-	</p>
+	</p>';
 
+
+
+  if($will_data->is_have_minar_child == 1) {
+
+
+$html .= '
 	<h1 style="text-align:center; font-family: times, serif;" >G.	GUARDIANSHIP </h1>
 	<p style="font-size:12; font-family: times, serif;">
-	I appoint Miss/Mr./Mrs' . $family_data->guardian_name .'&nbsp;of&nbsp;' . $family_data->guardian_address .'&nbsp;to be the Guardian/s of my children who are under the age of eighteen (18) at the time of my
-	death with the view to take care of their education, health, and fulfill their/his/her all other necessary requirements with the passage of time.
-	<p>
+	I appoint Miss/Mr./Mrs ';
+  foreach($family_data2 as $family_data2 ) {
+    if($family_data2->is_minar == 1){
+         $html .= ''.$family_data2->guardian_name.' '.$family_data2->guardian_address.', ';
+    }
 
+  } $html .= 'to be the Guardian/s of my children who are under the age of eighteen (18) at the time of my
+	death with the view to take care of their education, health, and fulfill their/his/her all other necessary requirements with the passage of time.
+	<p>';
+  $i = 1;
+  foreach($family_data3 as $family_data3 ) {
+    if($family_data3->is_minar == 1){
+
+  $html .= '
 	<p style="font-size:12; font-family: times, serif;">
-		i) Therefore i appoint.........................................................., residing at.............................................., to be the guardian of my son– NAME OF SON,, until he son attains 18 years of age only,
-		and if his mother, NAME OF MOTHER, cannot take care of NAME OF SON either on account of personal, health, financial, or other reasons, , so long as said guardian remains a Muslim of sound mind and judgment. In the event he shall
+		'.$i++.') Therefore I appoint '.$family_data3->guardian_name.', residing at '.$family_data3->guardian_address.', to be the guardian of my '.$family_data3->relationship.'– '.$family_data3->family_person_name.', until he son attains 18 years of age only,
+		and if his mother, cannot take care of '.$family_data3->family_person_name.' either on account of personal, health, financial, or other reasons, , so long as said guardian remains a Muslim of sound mind and judgment. In the event he shall
 		be unwilling or unable to act as guardian. In the event he shall be unwilling or unable to act as guardian, I nominate and appoint ....................................................residing in ..................................
 		......................, to be the guardian.
-	</p>
+	</p>';
+  }
+}
 
-	<p style="font-size:12; font-family: times, serif;">
-		ii) 	Therefore i appoint and nominate.................................................., residing at Add .........................................
-		.....,  to be the guardian of my daughter NAME OF DAUGHTER, until she attains 18 years of age only  if her mother, NAME OF MOTHER (can cannot take
-		care of NAME OF DAUGHTER either on account of personal, health, financial, or other reasons, , so long as said guardian remains a Muslim of sound
-		 mind and judgment. In the event has shall be unwilling or unable to act as guardian, I nominate and appoint .......................................
-		 .............residing in ........................................................, to be the guardian.
-	</p>
 
-	<p style="font-size:12; font-family: times, serif;">
+	$html .= '<p style="font-size:12; font-family: times, serif;">
 	In such case, I urge that all my minor children be raised to be practicing Sunni Muslims and not in any way be indoctrinated into any other
 	 faith, religion, or sect of Islam. I direct that no bond be required of any personal guardian. Any property or other inheritance that this
 	  Will gives to any of my minor children shall be administered by their guardian in their best interest.
-	</p>
-  	<p style="font-size:12; font-family: times, serif;"></p>
-		<h1 style="text-align:center; font-family: times, serif;" > H.DESCRIPTION OF PROPERTY </h1>
-  <h2 style="font-family: times, serif;" > 1 )	Real Estate </h2> ';
+	</p>';
+}
+  $html .= '	<p style="font-size:12; font-family: times, serif;"></p>
+		<h1 style="text-align:center; font-family: times, serif;" > H.DESCRIPTION OF PROPERTY </h1>';
 
-	foreach($real_estate as $real_estate ) {
-	    $html .= ' '
-
-			;
-	}
-
-
-	$html .= '
-
-
+  $html .= '
 <h1 style="text-align:center; font-family: times, serif;" > My assets and properties – </h1>
 
 <h1 style=" font-family: times, serif;" >A. 	Immovable Property -  </h1>
-<p style="font-size:12; font-family: times, serif;" >
-	Whereas I am the owner of '. $real_estate->estate_type .' no. '. $real_estate->house_no .' having property bearing C.S. no.'. $real_estate->survey_number .' measuring about '. $real_estate->measurment_area . $real_estate->measurment_unit .' of Second floor,
-	located at '. $real_estate->estate_address .', '. $real_estate->estate_city .', State – '. $real_estate->estate_state .', Pin code - '. $real_estate->estate_pin .'&nbsp;'. $real_estate->estate_country .'.
-</p>
 
-<h1 style="font-family: times, serif;" > Bank Assets – </h1>
+<p style="font-size:12; font-family: times, serif;" >&nbsp;&nbsp;&nbsp;I own and possess and I am absolutely entitled to the following immovable property/properties</p>
+';
+foreach($real_estate as $real_estate ) {
+    $html .= '<p style="font-size:12; font-family: times, serif;" >
+    	Whereas I am the owner of '. $real_estate->estate_type .' no. '. $real_estate->house_no .' having property bearing C.S. no.'. $real_estate->survey_number .' measuring about '.$real_estate->measurment_area.' '.$real_estate->measurment_unit .' of Second floor,
+    	located at '. $real_estate->estate_address .', '. $real_estate->estate_city .', State – '. $real_estate->estate_state .', Pin code - '. $real_estate->estate_pin .'&nbsp;'. $real_estate->estate_country .'.
+    </p>';
+}
+
+
+$html .= '<h1 style="font-family: times, serif;" > Bank Assets – </h1>
 
 ' ;
 
+$i=0;
 foreach($bank_assets as $bank_assets ) {
 	if($bank_assets->assets_type == 'Savings A/c'){
-		$html .= '<h1 style=" font-family: times, serif;" >1. Savings in Bank Accounts   </h1>
-		<p style="font-size:12; font-family: times, serif;" >
+    $html .= '<h1 style=" font-family: times, serif; padding: 0px; margin:0px; >Savings in Bank Account  </h1>';
+		$html .= '<p style="font-size:12; font-family: times, serif; padding: 0px; margin:0px;" >
 			Bank balance of my savings A/c. No.'. $bank_assets->account_number .' with '. $bank_assets->bank_name .' , Branch – '. $bank_assets->branch_name .' State – '. $bank_assets->state .', Pin code - '. $bank_assets->pin_code .'.
 		</p>
 ';
 	}
-	elseif($bank_assets->assets_type == 'Current  A/C'){
+	elseif($bank_assets->assets_type == 'Current A/C'){
+    $html .= '<h1 style=" font-family: times, serif;" >Current Account</h1>';
 		$html .= '
-		<h1 style=" font-family: times, serif;" >Current Account - </h1>
 		<p style="font-size:12; font-family: times, serif;" >
 			Bank balance of my current A/c. No.'. $bank_assets->account_number .' with '. $bank_assets->bank_name .' , Branch - '. $bank_assets->branch_name .' State – '. $bank_assets->state .', Pin code - '. $bank_assets->pin_code .'.
 		</p>
@@ -409,15 +411,9 @@ foreach($bank_assets as $bank_assets ) {
 		</p>
 		';
 	}
-
 }
-
-
 $html .= '
-
-
 <h1 style=" font-family: times, serif;" >Vehicles –  </h1>';
-
 foreach($vehicle as $vehicle ) {
 		$html .= '
 		<p style="font-size:12; font-family: times, serif;" >
@@ -426,12 +422,8 @@ foreach($vehicle as $vehicle ) {
 
 		;
 }
-
-
 $html .= '
-
 <h1 style="text-align:center; font-family: times, serif;" >Others gift -  </h1>';
-
 foreach($other_gift as $other_gift ) {
 	if($other_gift->gift_type == 'Jewellery and Valuables'){
 		$html .= '<h1 style=" font-family: times, serif;" >Jewelry and Ornaments –  </h1>
@@ -517,50 +509,29 @@ whether he/she is a kin or an in-law, spouse, parent or child. I further direct 
  that a non-Muslim relative be disregarded and disqualified.</p>
  <p style="font-size:12; font-family: times, serif;" >4. I direct that no part of my estate shall be given to relatives whose relationship to me, ascending or descending, has occurred through non-Islamic and unlawful marriage, or through adoption.</p>
 
- <h1 style="text-align:center; font-family: times, serif;" >K. SEPARABILITY</h1>
+ <h1 style="text-align:center; font-family: times, serif;" >K. SEPARABILITY</h1>';
+ $will_date = $will_data->will_date;
+$day = date('d', strtotime($will_date));
+$month = date('F', strtotime($will_date));
+$year = date('Y', strtotime($will_date));
 
- <p style="font-size:12; font-family: times, serif;">In case  one or more of the provisions contained in this/ any part of this Last Will and Testament is determined invalid by a court of competent jurisdiction I direct and ordain that other remaining provisions
+ $html .= '<p style="font-size:12; font-family: times, serif;">In case  one or more of the provisions contained in this/ any part of this Last Will and Testament is determined invalid by a court of competent jurisdiction I direct and ordain that other remaining provisions
  shall remain valid and enforceable and effective.</p>
  <p style="font-size:12; font-family: times, serif;" >
- I subscribe my name to this Will this day ______ of ____________, 201-- at ________ am/pm and do hereby declare that I sign and execute this instrument as my last Will and that I sign it willingly, that I execute it as my
+ I subscribe my name to this Will this day '.$day.' of '.$month.', '.$year.' at '.$will_data->will_time.' am/pm and do hereby declare that I sign and execute this instrument as my last Will and that I sign it willingly, that I execute it as my
   free and voluntary act for the purposes therein expressed, and that I am of age or otherwise legally empowered to make a Will, under no constraint or undue influence
  </p>
- <p style="font-size:12; font-family: times, serif;" >This is my last and final will, which I have laid out.</p>
- <ul>
+ <p style="font-size:12; font-family: times, serif;" >This is my last and final will, which I have laid out.</p>';
 
-
- 	<li>PLACE: ____________</li><br>
-	<li>Dated:____________</li>
+ $html .= '<ul>
+ 	<li>PLACE: '.$will_data->will_place.'</li><br>
+	<li>Dated: '.$will_data->will_date.'</li>
  </ul>
  <p style="font-size:12; font-family: times, serif;" >L.  TESTATOR’S SIGNATURE </p>
  <p style="font-size:12; font-family: times, serif;" >
- 	In witness whereof, I have hereunto set my hand and seal on this: _________ day of _______, 2___.
+ 	In witness whereof, I have hereunto set my hand and seal on this: '.$day.' day of '.$month.', '.$year.'.
  </p>
  <p >______________________
-Signature
-</p>
-
-
-<h1 style="text-align:center; font-family: times, serif;" >K. SEPARABILITY</h1>
-
-<p style="font-family: times, serif;">In case  one or more of the provisions contained in this/ any part of this Last Will and Testament is determined invalid by a court of competent jurisdiction I direct and ordain that other remaining provisions
-shall remain valid and enforceable and effective.</p>
-<p style="font-family: times, serif;" >
-I subscribe my name to this Will this day ______ of ____________, 201-- at ________ am/pm and do hereby declare that I sign and execute this instrument as my last Will and that I sign it willingly, that I execute it as my
- free and voluntary act for the purposes therein expressed, and that I am of age or otherwise legally empowered to make a Will, under no constraint or undue influence
-</p>
-<p>This is my last and final will, which I have laid out.</p>
-<ul>
-
-
- <li>PLACE: ____________</li><br>
- <li>Dated:____________</li>
-</ul>
-<h1 style="text-align:center; font-family: times, serif;">L.  TESTATOR’S SIGNATURE </h1>
-<p style="font-family: times, serif;">
- In witness whereof, I have hereunto set my hand and seal on this: _________ day of _______, 2___.
-</p>
-<p>______________________
 Signature
 </p>
 
@@ -575,16 +546,8 @@ Signature
 $i=0 ;
 foreach($witness as $witness ) {
 	$i++;
-	//if($i == 1){
-		$html .= '
-
-		 '.$i.'. &nbsp;'.$witness->witness_name.' of '.$witness->witness_address.'<br>
-
-		 ';
-
+		$html .= $i.'. &nbsp;'.$witness->witness_name.' of '.$witness->witness_address.'<br>';
 }
-
-
 // reset pointer to the last page
 $pdf->lastPage();
 // -- set new background ---

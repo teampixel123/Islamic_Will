@@ -263,4 +263,16 @@ $('#add_family_member').click(function(){
      });
     }
 });
+
+// Check For Miner child have or not... and set in tbl_will table...
+$('#family_next').click(function(){
+  $.ajax({
+    type: "post",
+    url: base_url+"Will_controller/update_have_miner",
+    success: function (data){
+      window.location.href = base_url+"Will_controller/executor_funeral_view";
+    }
+});
+});
+
 // End	Save/Add Family Member.. Datta...
