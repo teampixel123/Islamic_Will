@@ -321,8 +321,8 @@ include('include/head.php');
 <?php if($this->session->userdata('will_id')){	?>
 	<input type="hidden" name="will_id" id="will_id" value="<?php echo $start_will_data['will_id']; ?>">
 <?php } ?>
-  <div class="container personal_data_dispaly " style="border-color: #eee;  ">
-  	<div class="" style="">
+  <div class="container personal_data_dispaly " >
+  	<div class="" >
 			<form>
 		      <div class="row text-center">
 		        <label class="col-md-4 text-right" for="exampleInputEmail1" >Name :</label>

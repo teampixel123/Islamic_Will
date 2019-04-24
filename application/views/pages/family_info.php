@@ -185,7 +185,7 @@
       </div>
     </div>
     <div class="container  " style="background-color:white;">
-    <table id="table_family_member" class=" personal_data_dispaly table_family_member">
+    <table id="table_family_member" class=" personal_data_dispaly table_family_member"  style=" width:100%;">
       <thead>
         <tr>
           <th>Family Member Info

@@ -118,7 +118,7 @@
   <div class="col-md-6">
   	<input type="hidden" name="will_id" id="will_id" value="<?php echo $start_will_data['will_id']; ?>">
 
-    <div class="container" style="background-color:white;">
+    <div class="container" >
     	<div class="" style="">
         <table id="table_personal_info" class=" personal_data_dispaly table_personal_info">
           <thead>
@@ -168,7 +168,7 @@
 
     </br>
     <div class="container" style="background-color:white;">
-    <table id="table_family_member" class=" personal_data_dispaly table_family_member">
+    <table id="table_family_member" class=" personal_data_dispaly table_family_member" style=" width:100%;">
       <thead>
         <tr>
           <th>Family Member Info
@@ -183,7 +183,7 @@
     </div>
 
     <div class="container" style="background-color:white;">
-    <table id="table_executor" class=" personal_data_dispaly table_executor">
+    <table id="table_executor" class=" personal_data_dispaly table_executor" style=" width:100%;">
       <thead>
         <tr>
           <th>Executor Info
@@ -198,7 +198,7 @@
     </div>
 
     <div class="container" style="background-color:white;">
-    <table id="table_funeral" class=" personal_data_dispaly table_funeral">
+    <table id="table_funeral" class=" personal_data_dispaly table_funeral" style=" width:100%;" >
       <thead>
         <tr>
           <th>Funeral Info

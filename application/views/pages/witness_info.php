@@ -172,7 +172,7 @@
     </div>
 
     <div class="container" style="background-color:white;">
-    <table id="table_family_member" class="personal_data_dispaly table_family_member">
+    <table id="table_family_member" class="personal_data_dispaly table_family_member" style=" width:100%;">
       <thead>
         <tr>
           <th>Family Member Info <br> <hr> </th>
@@ -184,7 +184,7 @@
     </div>
 
     <div class="container" style="background-color:white;">
-    <table id="table_executor" class="personal_data_dispaly table_executor">
+    <table id="table_executor" class="personal_data_dispaly table_executor" style=" width:100%;">
       <thead>
         <tr>
           <th>Executor Info <br> <hr> </th>
@@ -197,7 +197,7 @@
 
 
     <div class="container" style="background-color:white;">
-    <table id="table_funeral" class="personal_data_dispaly table_funeral">
+    <table id="table_funeral" class="personal_data_dispaly table_funeral" style=" width:100%;">
       <thead>
         <tr>
           <th>Funeral Info <br> <hr> </th>
@@ -210,7 +210,7 @@
 
     <div class="container" style="background-color:white;">
       <b>Assets Information</b>
-    <table id="table_real_estate" class="personal_data_dispaly table_real_estate">
+    <table id="table_real_estate" class="personal_data_dispaly table_real_estate" style=" width:100%;">
       <thead>
         <tr>
           <th>Real Estate Info <br> <hr> </th>
@@ -220,7 +220,7 @@
       </tbody>
     </table>
 
-    <table id="table_bank_assets" class="personal_data_dispaly table_bank_assets">
+    <table id="table_bank_assets" class="personal_data_dispaly table_bank_assets" style=" width:100%;">
       <thead>
         <tr>
           <th>Bank Assets Info <br> <br></th>
@@ -230,7 +230,7 @@
       </tbody>
     </table>
 
-    <table id="table_vehicle" class="personal_data_dispaly table_vehicle">
+    <table id="table_vehicle" class="personal_data_dispaly table_vehicle" style=" width:100%;">
       <thead>
         <tr>
           <th>Vehicle Info <br> <hr> </th>
@@ -240,7 +240,7 @@
       </tbody>
     </table>
 
-    <table id="table_gift" class="personal_data_dispaly table_gift">
+    <table id="table_gift" class="personal_data_dispaly table_gift" style=" width:100%;">
       <thead>
         <tr>
           <th>Gift Info <br> <hr> </th>
@@ -252,7 +252,7 @@
     </div>
 
     <div class="container" style="background-color:white;">
-    <table id="table_witness" class="personal_data_dispaly table_witness">
+    <table id="table_witness" class="personal_data_dispaly table_witness" style=" width:100%;">
       <thead>
         <tr>
           <th>Witness Info <br> <hr> </th>
