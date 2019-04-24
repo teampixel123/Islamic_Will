@@ -77,7 +77,7 @@ include('include/head.php');
 
 			</div> -->
 			<div class="col-md-2">
-				<label class=" text-right" for="exampleInputEmail1">Have Child</label>
+				<label class=" text-right" for="exampleInputEmail1">Child</label>
 			</div>
 				<div class="col-md-4">
 					<div class="row">
@@ -162,7 +162,7 @@ include('include/head.php');
         <div class="col-md-2 text-right">
           <label for="exampleInputEmail1">City</label>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
           <input type="text" name="city" class="form-control  " id="city" aria-describedby="emailHelp" >
 					<p id="error_city" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
         </div>
@@ -170,18 +170,12 @@ include('include/head.php');
 				<div class="col-md-2 text-right marital_status1">
           <label for="exampleInputEmail1">Pin Code</label>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-4">
           <input type="number" name="pin_code" class="form-control" id="pin_code" aria-describedby="emailHelp" >
 					<p id="error_pin_code" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
         </div>
 
-				<div class="col-md-1 text-right">
-          <label for="exampleInputEmail1">State</label>
-        </div>
-        <div class="col-md-2">
-          <input type="text" name="state" class="form-control" id="state" aria-describedby="emailHelp" >
-					<p id="error_state" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
-        </div>
+
 
 
       </div>
@@ -208,6 +202,13 @@ include('include/head.php');
           <input type="text" name="state" class="form-control" id="state" aria-describedby="emailHelp" >
 					<p id="error_state" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
         </div> -->
+				<div class="col-md-2 text-right">
+          <label for="exampleInputEmail1">State</label>
+        </div>
+        <div class="col-md-4">
+          <input type="text" name="state" class="form-control" id="state" aria-describedby="emailHelp" >
+					<p id="error_state" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
+        </div>
 
 				<div class="col-md-2 text-right">
           <label for="exampleInputEmail1">Country</label>
@@ -415,7 +416,8 @@ $(document).ready(function(){
       $('#save_personal_data').hide(); // Hide Save Button...
       $('#update_personal_data').show(); //Display Update Button...
 
-			// show div by data.... Datta...
+			// show div by data....
+
 			var marital_status1 = $('#marital_status').val();
 		  if(marital_status1 == 0 || marital_status1 == 'Unmarried'){
 		    $('#have_child_div').hide();
