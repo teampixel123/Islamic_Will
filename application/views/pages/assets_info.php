@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  <link href="<?php echo base_url('assets/css/datepicker_css/jquery-ui.theme.min.css');?>" rel="stylesheet">
  <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
 </head>
 <body>
@@ -437,7 +437,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 
     <div class="container" style="background-color:white;">
-    <table id="table_family_member" class="personal_data_dispaly table_family_member">
+    <table id="table_family_member" class="personal_data_dispaly table_family_member" style=" width:100%;">
       <thead>
         <tr>
           <th>Family Member Info <br> <hr> </th>
@@ -449,7 +449,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 
     <div class="container" style="background-color:white;">
-    <table id="table_executor" class="personal_data_dispaly table_executor">
+    <table id="table_executor" class="personal_data_dispaly table_executor" style=" width:100%;">
       <thead>
         <tr>
           <th>Executor Info <br> <hr> </th>
@@ -462,7 +462,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
     <div class="container" style="background-color:white;">
-    <table id="table_funeral" class="personal_data_dispaly table_funeral">
+    <table id="table_funeral" class="personal_data_dispaly table_funeral" style=" width:100%;">
       <thead>
         <tr>
           <th>Funeral Info <br> <hr> </th>
@@ -475,7 +475,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <div class="container" style="background-color:white;">
       <b>Assets Information</b>
-    <table id="table_real_estate" class="personal_data_dispaly table_real_estate">
+    <table id="table_real_estate" class="personal_data_dispaly table_real_estate" style=" width:100%;">
       <thead>
         <tr>
           <th>Real Estate Info <br> <hr> </th>
@@ -485,7 +485,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </tbody>
     </table>
 
-    <table id="table_bank_assets" class="personal_data_dispaly table_bank_assets">
+    <table id="table_bank_assets" class="personal_data_dispaly table_bank_assets" style=" width:100%;">
       <thead>
         <tr>
           <th>Bank Assets Info <br> <hr> </th>
@@ -495,7 +495,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </tbody>
     </table>
 
-    <table id="table_vehicle" class="personal_data_dispaly table_vehicle">
+    <table id="table_vehicle" class="personal_data_dispaly table_vehicle" style=" width:100%;">
       <thead>
         <tr>
           <th>Vehicle Info <br> <hr></th>
@@ -505,7 +505,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </tbody>
     </table>
 
-    <table id="table_gift" class="personal_data_dispaly table_gift">
+    <table id="table_gift" class="personal_data_dispaly table_gift" style=" width:100%;">
       <thead>
         <tr>
           <th>Gift Info <br> <hr> </th>

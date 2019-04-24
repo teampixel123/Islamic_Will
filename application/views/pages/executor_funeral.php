@@ -14,9 +14,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  <link href="<?php echo base_url('assets/css/datepicker_css/jquery-ui.structure.min.css');?>" rel="stylesheet">
  <link href="<?php echo base_url('assets/css/datepicker_css/jquery-ui.theme.min.css');?>" rel="stylesheet">
  <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+ <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> -->
  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
+
 </head>
 <body>
 <div class="container-fluid">
@@ -54,7 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="container-fluid">
 <br /><br />
 <ul class="list-unstyled multi-steps">
-	
+
 	<li  >Personal Information</li>
 	<li >Family Information</li>
 	<li class="is-active">Executor</li>
@@ -150,7 +152,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div class="col-md-6">
   	<input type="hidden" name="will_id" id="will_id" value="<?php echo $start_will_data['will_id']; ?>">
 
-    <div class="container" style="background-color:white;">
+    <div class="container" >
     	<div class="" style="">
         <table id="table_personal_info" class=" personal_data_dispaly table_personal_info">
           <thead>
@@ -200,7 +202,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     </br>
     <div class="container" style="background-color:white;">
-    <table id="table_family_member" class=" personal_data_dispaly table_family_member">
+    <table id="table_family_member" class=" personal_data_dispaly table_family_member" style=" width:100%;">
       <thead>
         <tr>
           <th>Family Member Info
@@ -215,7 +217,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 
     <div class="container" style="background-color:white;">
-    <table id="table_executor" class=" personal_data_dispaly table_executor">
+    <table id="table_executor" class=" personal_data_dispaly table_executor" style=" width:100%;">
       <thead>
         <tr>
           <th>Executor Info
@@ -231,7 +233,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
     <div class="container" style="background-color:white;">
-    <table id="table_funeral" class=" personal_data_dispaly table_funeral">
+    <table id="table_funeral" class=" personal_data_dispaly table_funeral" style=" width:100%;" >
       <thead>
         <tr>
           <th>Funeral Info

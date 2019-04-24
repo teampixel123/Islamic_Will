@@ -76,7 +76,7 @@ margin-left: 600px;
   padding-right: 10px; */
   clear: left;
   float: left;
-  width: 100%;
+  width: 100% !important;
 }
 
 .personal_data_dispaly2{
@@ -160,6 +160,18 @@ border-width: 0;
 .badge:hover{
   background-color: #1976d2;
 }
+
+.badge1{
+  background-color: #fff;
+  border-radius: 8px;
+  border-width: 1px;
+  border-color:#1976d2;;
+}
+
+/* .badge:hover{
+  background-color: #1976d2;
+} */
+
 .btn-info{
   border-radius: 4px !important;
 }
@@ -285,4 +297,26 @@ li {
 
 .add{
   padding-right: 1px;
+}
+
+
+.fa-trash:before {
+    content: "\f1f8";
+    color: #000;
+}
+
+
+.fa-trash:hover::before{
+    /* content: "\f1f8"; */
+    color: red !important;
+}
+
+.fa-edit:hover::before{
+
+    color: red !important;
+}
+
+.aborder{
+  border-right-color: aqua;
+  border-block-end-width: 1px;
 }

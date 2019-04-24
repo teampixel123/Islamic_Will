@@ -45,10 +45,13 @@
 
           $nestedData = array();
           //if($is_minar == 0){
-            $nestedData[] = "<div class='row'><div class='col-md-10'>".$id.") Name: ".$family_person_name.", Relationship: ".$relationship.", Age: ".$family_person_age." ".$info."
-            </div><div class='col-md-2'>
-            <button type='button' id='family_member_delete".$id."'  class='badge badge-pill ' title='Delete Family Member'>
-            <i class='fa fa-trash' style='font-size:15px; width:30px;'></i></button>
+            $nestedData[] = "<div class='row'><div class='col-md-9'>".$id.") Name: ".$family_person_name.", Relationship: ".$relationship.", Age: ".$family_person_age." ".$info."
+            </div><div class='col-md-3'>
+            <button type='button'  class='badge1 badge-pill ' title='Delete Family Member'>
+            <a id='family_member_delete".$id."' class='badge1 '  title='Delete Family Member' > <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
+            <a id='family_member_delete".$id."'  class='badge1 badge-pill '  title='Edit Family Member'> <i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
+
+            </button>
             </div></div>
             <script>
               $('#family_member_delete".$id."').click(function(e){
@@ -120,8 +123,11 @@
 
           $nestedData = array();
 
-            $nestedData[] = "<div class='row'><div class='col-md-10'>".$id.") Executor Name: ".$executor_name.",Age: ".$executor_age.", Address: ".$executor_address."
-            </div><div class='col-md-2'><button type='button' id='executor_delete".$id."'  class='badge badge-pill badge-danger' title='Delete Family Member'><i class='fa fa-trash' style='font-size:15px; width:30px;'></i></button>
+            $nestedData[] = "<div class='row'><div class='col-md-9'>".$id.") Executor Name: ".$executor_name.",Age: ".$executor_age.", Address: ".$executor_address."
+            </div><div class='col-md-3'><button type='button'  class='badge1 badge-pill badge-danger'>
+            <a id='executor_delete".$id."' class='badge1 '  title='Delete Family Member' > <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
+            <a id='executor_delete".$id."'  class='badge1 badge-pill '  title='Edit Family Member'> <i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
+            </button>
             </div></div>
             <script>
               $('#executor_delete".$id."').click(function(e){
@@ -194,8 +200,14 @@
 
           $nestedData = array();
 
-            $nestedData[] = "<div class='row'><div class='col-md-10'>".$id.") Funeral Name: ".$funeral_name.", Address: ".$funeral_address."
-            </div><div class='col-md-2'><button type='button' id='funeral_delete".$id."'  class='badge badge-pill badge-danger' title='Delete Family Member'><i class='fa fa-trash' style='font-size:15px; width:30px;'></i></button>
+            $nestedData[] = "<div class='row'><div class='col-md-9'>".$id.") Funeral Name: ".$funeral_name.", Address: ".$funeral_address."
+            </div><div class='col-md-3'><button type='button'   class='badge1 badge-pill badge-danger' >
+
+            <a id='funeral_delete".$id."' class='badge1 '  title='Delete Family Member' > <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
+            <a id='funeral_delete".$id."'  class='badge1 badge-pill '  title='Edit Family Member'> <i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
+
+
+              </button>
             </div></div>
             <script>
               $('#funeral_delete".$id."').click(function(e){
@@ -276,10 +288,14 @@
 
           $nestedData = array();
 
-            $nestedData[] = "<div class='row'><div class='col-md-10'>".$id.") Estate Types: ".$estate_type.", House No / Flat NO: ".$house_no."
+            $nestedData[] = "<div class='row'><div class='col-md-9'>".$id.") Estate Types: ".$estate_type.", House No / Flat NO: ".$house_no."
             Survey number: ".$survey_number.", Measurement: ".$measurment_area." ".$measurment_unit.",
             Address: ".$estate_address.",".$estate_city.", ".$estate_state.", ".$estate_country.", Pin:".$estate_pin."
-            </div><div class='col-md-2'><button type='button' id='real_estate_delete".$id."'  class='badge badge-pill badge-danger' title='Delete Family Member'><i class='fa fa-trash' style='font-size:15px; width:30px;'></i></button>
+            </div><div class='col-md-3'><button type='button'   class='badge1 badge-pill badge-danger' '>
+
+            <a id='real_estate_delete".$id."' class='badge1 '  title='Delete Family Member' > <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
+            <a id='real_estate_delete".$id."'  class='badge1 badge-pill '  title='Edit Family Member'> <i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
+              </button>
             </div></div>
             <script>
               $('#real_estate_delete".$id."').click(function(e){
@@ -393,8 +409,13 @@
 
           $nestedData = array();
 
-            $nestedData[] = "<div class='row'><div class='col-md-10'>".$id.") Assets type: ".$assets_type.", ".$name.": ".$bank_name.", Branch: ".$branch_name.", ".$acc_no.": ".$account_number."".$other."
-            </div><div class='col-md-2'><button type='button' id='bank_assets_delete".$id."' class='badge badge-pill badge-danger' title='Delete Family Member'><i class='fa fa-trash' style='font-size:15px; width:30px;'></i></button>
+            $nestedData[] = "<div class='row'><div class='col-md-9'>".$id.") Assets type: ".$assets_type.", ".$name.": ".$bank_name.", Branch: ".$branch_name.", ".$acc_no.": ".$account_number."".$other."
+            </div><div class='col-md-3'><button type='button' class='badge1 badge-pill badge-danger' >
+
+            <a id='bank_assets_delete".$id."' class='badge1 '  title='Delete Family Member' > <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
+            <a id='bank_assets_delete".$id."'  class='badge1 badge-pill '  title='Edit Family Member'> <i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
+
+            </button>
             </div></div>
             <script>
               $('#bank_assets_delete".$id."').click(function(e){
@@ -468,8 +489,13 @@
 
           $nestedData = array();
 
-            $nestedData[] = "<div class='row'><div class='col-md-10'>".$id.") Vehicle Model: ".$vehicle_model.", Make Year: ".$vehicle_make_year.", Registration Number: ".$registration_number."
-            </div><div class='col-md-2'><button type='button' id='vehicle_delete".$id."'  class='badge badge-pill badge-danger' title='Delete Family Member'><i class='fa fa-trash' style='font-size:15px; width:30px;'></i></button>
+            $nestedData[] = "<div class='row'><div class='col-md-9'>".$id.") Vehicle Model: ".$vehicle_model.", Make Year: ".$vehicle_make_year.", Registration Number: ".$registration_number."
+            </div><div class='col-md-3'><button type='button'   class='badge1 badge-pill badge-danger' >
+
+            <a id='vehicle_delete".$id."' class='badge1 '  title='Delete Family Member' > <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
+            <a id='vehicle_delete".$id."'  class='badge1 badge-pill '  title='Edit Family Member'> <i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
+
+            </button>
             </div></div>
             <script>
               $('#vehicle_delete".$id."').click(function(e){
@@ -542,8 +568,13 @@
 
           $nestedData = array();
 
-            $nestedData[] = "<div class='row'><div class='col-md-10'>".$id.") Gift Type: ".$gift_type.", Description: ".$gift_description."
-            </div><div class='col-md-2'><button type='button' id='gift_delete".$id."'  class='badge badge-pill badge-danger' title='Delete Family Member'><i class='fa fa-trash' style='font-size:15px; width:30px;'></i></button>
+            $nestedData[] = "<div class='row'><div class='col-md-9'>".$id.") Gift Type: ".$gift_type.", Description: ".$gift_description."
+            </div><div class='col-md-3'><button type='button'   class='badge1 badge-pill badge-danger' >
+
+            <a id='gift_delete".$id."' class='badge1 '  title='Delete Family Member' > <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
+            <a id='gift_delete".$id."'  class='badge1 badge-pill '  title='Edit Family Member'> <i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
+
+          </button>
             </div></div>
             <script>
               $('#gift_delete".$id."').click(function(e){
@@ -616,8 +647,13 @@
 
           $nestedData = array();
 
-            $nestedData[] = "<div class='row'><div class='col-md-10'>".$id.") Witness Name: ".$witness_name.", Address: ".$witness_address."
-            </div><div class='col-md-2'><button type='button' id='witness_delete".$id."'  class='badge badge-pill badge-danger' title='Delete Family Member'><i class='fa fa-trash' style='font-size:15px; width:30px;'></i></button>
+            $nestedData[] = "<div class='row'><div class='col-md-9'>".$id.") Witness Name: ".$witness_name.", Address: ".$witness_address."
+            </div><div class='col-md-3 '><button type='button'   class='badge1 badge-pill badge-danger' >
+
+            <a id='witness_delete".$id."' class='badge1 '  title='Delete Family Member' > <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
+            <a id='witness_delete".$id."'  class='badge1 badge-pill '  title='Edit Family Member'> <i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
+
+          </button>
             </div></div>
             <script>
               $('#witness_delete".$id."').click(function(e){
