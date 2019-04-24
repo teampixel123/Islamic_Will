@@ -1,60 +1,25 @@
 <?php
  if($this->session->userdata('will_id')){
-defined('BASEPATH') OR exit('No direct script access allowed');
+ defined('BASEPATH') OR exit('No direct script access allowed');
+ include('include/head.php');
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-	<title>Executor & Funeral Info</title>
-
- <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
- <link href="<?php echo base_url('assets/css/style.css');?>" rel="stylesheet">
- <link href="<?php echo base_url('assets/css/datepicker_css/jquery-ui.min.css');?>" rel="stylesheet">
- <link href="<?php echo base_url('assets/css/datepicker_css/jquery-ui.structure.min.css');?>" rel="stylesheet">
- <link href="<?php echo base_url('assets/css/datepicker_css/jquery-ui.theme.min.css');?>" rel="stylesheet">
- <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
-</head>
 <body>
-<div class="container-fluid">
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarColor02">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
-</div>
+  <?php
+    $is_login = $this->session->userdata('user_is_login');
+    if($is_login){
+      include('include/login_header.php');
+    }
+    else{
+      include('include/header.php');
+    }
+   ?>
 
 
 <!-- status bar satrt -->
 <div class="container-fluid">
 <br /><br />
 <ul class="list-unstyled multi-steps">
-	
+
 	<li  >Personal Information</li>
 	<li >Family Information</li>
 	<li class="is-active">Executor</li>
@@ -85,6 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <label class="col-md-3 text-right" for="exampleInputEmail1">Executor Name: </label>
   				<div class="col-md-9">
   					<input type="text" name="executor_name" id="executor_name" class="form-control clear"  aria-describedby="emailHelp" >
+            <p id="error_executor_name" style="color:red; display:none" class="text-left valide">*This field is required.</p>
           </div>
         </div>
       </div>
@@ -94,6 +60,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <label class="col-md-3 text-right" for="exampleInputEmail1">Address: </label>
   				<div class="col-md-9">
   					<input type="text" name="executor_address" id="executor_address" class="form-control clear"  aria-describedby="emailHelp" >
+            <p id="error_executor_address" style="color:red; display:none" class="text-left valide">*This field is required.</p>
           </div>
         </div>
       </div>
@@ -103,6 +70,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <label class="col-md-3 text-right" for="exampleInputEmail1">Age: </label>
   				<div class="col-md-9">
   					<input type="number" name="executor_age" id="executor_age" class="form-control clear"  aria-describedby="emailHelp" placeholder="Enter executor age in year" >
+            <p id="error_executor_age" style="color:red; display:none" class="text-left valide">*This field is required.</p>
           </div>
         </div>
       </div>
@@ -229,7 +197,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </table>
     </div>
 
-
     <div class="container" style="background-color:white;">
     <table id="table_funeral" class=" personal_data_dispaly table_funeral">
       <thead>
@@ -250,6 +217,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!-- </div> -->
 </div>
 <!-- personal info containner end -->
+
 <script src="<?php echo base_url(); ?>assets/js/jquery-3.3.0.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/js/jquery-ui.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/js/moment.min.js" type="text/javascript"></script>
@@ -257,54 +225,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
 <!-- Custome Javascript file -->
 <script type="text/javascript">var base_url = "<?php echo base_url() ?>";</script>
-<script src="<?php echo base_url(); ?>assets/js/islamic_will_custome.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/js/will_custome/executor_funeral_js.js" type="text/javascript"></script>
 </body>
-
-<script>
-
-// start add validation asif
-// $('#add_funeral').click(function(){
-//           var funeral_name = $('#funeral_name').val();
-//             var funeral_address = $('#funeral_address').val();
-//
-//           if(family_person_name == ''){
-//             $('#error_funeral_name').show();
-//           }
-//
-//           if(funeral_address == ''){
-//             $('#error_funeral_address').show();
-//           }
-//
-//           else {
-//               $('.valide').hide();
-//           }
-// });
-
-// end add validation asif
-
-//  strat validation asif
-$("#funeral_name").blur(function(){
-  var funeral_name = $('#funeral_name').val();
-  var funeral_name_format =  /^[a-zA-Z ]*$/;
-  if(!funeral_name_format.test(funeral_name) || funeral_name == ''){
-    $('#error_funeral_name').show();
-  }
-  else{
-      $('#error_funeral_name').hide();
-    }
-});
-
-$("#funeral_address").blur(function(){
-  var funeral_address = $('#funeral_address').val();
-  if( funeral_address == ''){
-    $('#error_funeral_address').show();
-  }
-  else{
-      $('#error_funeral_address').hide();
-    }
-});
-//  end validation asif
-</script>
-
-
 <?php } ?>

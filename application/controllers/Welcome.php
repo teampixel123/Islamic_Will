@@ -17,7 +17,8 @@ class Welcome extends CI_Controller {
 
 	public function pdf(){
 		$this->load->library('Pdf');
-		$personal_data = $this->Will_Model->display_personal_info();
+		$will_id = $this->session->userdata('will_id')
+		$personal_data = $this->Will_Model->get_personal_data($will_id);
 		$this->load->view('welcome_message',['data'=>$personal_data]);
 	}
 

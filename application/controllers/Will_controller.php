@@ -24,33 +24,74 @@
 
     public function personal_info_view(){
       $is_login = $this->session->userdata('user_is_login');
-      if($is_login && $this->input->post('will_id')){
-        $will_id = $this->input->post('will_id');
-        $this->session->set_userdata('will_id',$will_id);
-        $this->load->view('pages/personal_info');
+      $user_id = $this->session->userdata('user_id');
+      if($is_login && $user_id){
+        $user_data = $this->Will_Model->get_user_data($user_id);
+        $this->load->view('pages/personal_info',['user_data'=>$user_data]);
       }
       else{
         $this->load->view('pages/personal_info');
       }
-      //echo $will_id;
-  	  //$this->load->view('pages/start_will');
-
   	}
 
+    public function load_login_personal_info(){
+      $is_login = $this->session->userdata('user_is_login');
+      if($is_login && $this->input->post('will_id')){
+        $will_id = $this->input->post('will_id');
+        $this->session->set_userdata('will_id',$will_id);
+        header('location:personal_info_view');
+      }
+      else{
+        header('location:login');
+      }
+    }
+
     public function family_info_view(){
-      $this->load->view('pages/family_info');
+      $is_login = $this->session->userdata('user_is_login');
+      $user_id = $this->session->userdata('user_id');
+      if($is_login && $user_id){
+        $user_data = $this->Will_Model->get_user_data($user_id);
+        $this->load->view('pages/family_info',['user_data'=>$user_data]);
+      }
+      else{
+        $this->load->view('pages/family_info');
+      }
     }
 
     public function executor_funeral_view(){
-      $this->load->view('pages/executor_funeral');
+      $is_login = $this->session->userdata('user_is_login');
+      $user_id = $this->session->userdata('user_id');
+      if($is_login && $user_id){
+        $user_data = $this->Will_Model->get_user_data($user_id);
+        $this->load->view('pages/executor_funeral',['user_data'=>$user_data]);
+      }
+      else{
+        $this->load->view('pages/executor_funeral');
+      }
     }
 
     public function assets_info_view(){
-      $this->load->view('pages/assets_info');
+      $is_login = $this->session->userdata('user_is_login');
+      $user_id = $this->session->userdata('user_id');
+      if($is_login && $user_id){
+        $user_data = $this->Will_Model->get_user_data($user_id);
+        $this->load->view('pages/assets_info',['user_data'=>$user_data]);
+      }
+      else{
+        $this->load->view('pages/assets_info');
+      }
     }
 
     public function witness_info_view(){
+      $is_login = $this->session->userdata('user_is_login');
+      $user_id = $this->session->userdata('user_id');
+      if($is_login && $user_id){
+        $user_data = $this->Will_Model->get_user_data($user_id);
+        $this->load->view('pages/witness_info',['user_data'=>$user_data]);
+      }
+      else{
       $this->load->view('pages/witness_info');
+      }
     }
 
     public function user_dashboard(){
@@ -263,13 +304,15 @@
                   'family_person_name' => $this->input->post('family_person_name'),
                   'family_person_dob' => $this->input->post('family_person_dob'),
                   'family_person_age' => $this->input->post('family_person_age'),
+                  'family_person_age_format' => $this->input->post('family_person_age_format'),
                   'is_minar' => $this->input->post('is_minar'),
                   'guardian_name' => $this->input->post('guardian_name'),
                   'guardian_address' => $this->input->post('guardian_address'),
                 );
+        //echo print_r($member_data);
       $this->Will_Model->save_family_member($member_data);
-      $list = $this->Will_Model->get_family_member_list($will_id);
-      echo json_encode($list);
+      //$list = $this->Will_Model->get_family_member_list($will_id);
+      //echo json_encode($list);
     }
 
 //family_info
@@ -467,7 +510,27 @@
       $this->Will_Model->delete_witness($id);
     }
 
+    /**************************************************************/
+    /*            Save Date-Time and Place... datta...             */
+    /**************************************************************/
+    public function save_date_place_info(){
+      $will_id = $this->session->userdata('will_id');
+      $date_place_data = array(
+                  'will_date' => $this->input->post('will_date'),
+                  'will_time' => $this->input->post('will_time'),
+                  'will_place' => $this->input->post('will_place'),
+                );
+      $this->Will_Model->save_date_place_info($will_id,$date_place_data);
+    }
+
     public function destroy_session(){
+    //  $this->session->unset_userdata('will_id');
+    //  $this->session->unset_userdata('will_start');
+      $this->session->sess_destroy();
+      header('Location:start_will_view');
+    }
+
+    public function logout_user(){
     //  $this->session->unset_userdata('will_id');
     //  $this->session->unset_userdata('will_start');
       $this->session->sess_destroy();

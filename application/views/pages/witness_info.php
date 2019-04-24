@@ -1,59 +1,25 @@
 <?php
  if($this->session->userdata('will_id')){
-defined('BASEPATH') OR exit('No direct script access allowed');
+ defined('BASEPATH') OR exit('No direct script access allowed');
+ include('include/head.php');
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-	<title>Witness Info</title>
 
- <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
- <link href="<?php echo base_url('assets/css/style.css');?>" rel="stylesheet">
- <link href="<?php echo base_url('assets/css/datepicker_css/jquery-ui.min.css');?>" rel="stylesheet">
- <link href="<?php echo base_url('assets/css/datepicker_css/jquery-ui.structure.min.css');?>" rel="stylesheet">
- <link href="<?php echo base_url('assets/css/datepicker_css/jquery-ui.theme.min.css');?>" rel="stylesheet">
- <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
-</head>
 <body>
-<div class="container-fluid">
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarColor02">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
-</div>
+  <?php
+    $is_login = $this->session->userdata('user_is_login');
+    if($is_login){
+      include('include/login_header.php');
+    }
+    else{
+      include('include/header.php');
+    }
+   ?>
 
 <!-- status bar satrt -->
 <div class="container-fluid">
 <br /><br />
 <ul class="list-unstyled multi-steps">
-	
+
 	<li  >Personal Information</li>
 	<li >Family Information</li>
 	<li >Executor</li>
@@ -73,11 +39,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="col-md-6">
   	<div id="box" class="personal_info1">
   		<form class="" id="witness_form" method="post">
-
       <fieldset>
-
       <h3 class=" text-left">Witness Information </h3><br>
-
   		<div class="form-group" id="">
         <div class="row text-center">
           <label class="col-md-3 text-right" for="exampleInputEmail1">Witness Name</label>
@@ -100,12 +63,63 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </fieldset>
   		</form>
       <p>  <button type="button" id="add_witness" class="btn btn-success" style="float:right;" >Add</button></p>
+      <br><br><hr>
+
+      <form class="" id="date_place_form" method="post">
+      <fieldset>
+      <h3 class=" text-left">Date and Place </h3><br>
+  		<div class="form-group" id="">
+        <div class="row text-center">
+          <label class="col-md-3 text-right" for="exampleInputEmail1">Date of Signature</label>
+  				<div class="col-md-9">
+  					<input type="text" name="will_date" id="will_date" class="form-control clear"  aria-describedby="emailHelp" >
+            <p id="error_will_date" style="color:red; display:none" class="text-left valide">*This field is required.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="form-group" id="">
+        <div class="row text-center">
+          <label class="col-md-3 text-right" for="exampleInputEmail1">Time</label>
+  				<div class="col-md-9"> -->
+  					<input type="hidden" name="will_time" id="will_time" value="<?php echo date("h:i:s A"); ?>" class="form-control clear">
+          <!-- </div>
+        </div>
+      </div> -->
+
+  		<div class="form-group" id="">
+        <div class="row text-center">
+          <label class="col-md-3 text-right" for="exampleInputEmail1">Place</label>
+  				<div class="col-md-9">
+  					<input type="text" name="will_place" id="will_place" class="form-control clear"  aria-describedby="emailHelp" >
+            <p id="error_will_place" style="color:red; display:none" class="text-left valide">*This field is required.</p>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+  		</form>
+      <p>  <button type="button" id="add_date_place" class="btn btn-success" style="float:right;" >Add</button></p>
       <br><br>
+
   </div>
 
   <p>  <a href="<?php echo base_url() ?>/Will_controller/assets_info_view" type="button" id="personal_previous" class="btn btn-info">Previous</a>
   <!-- <button type="button" id="destroy" class="btn btn-danger">Clear session</button> -->
-  <a href="#" type="button" id="personal_next" class="btn btn-info" style="float:right;">Create PDF</a></p>
+  <?php if($this->session->userdata('user_is_login')){
+          ?>
+          <form target="_blank" id="final_pdf" class="" action="<?php echo base_url() ?>/Pdf_controller/final_pdf" method="post">
+            <input type="hidden" name="will_id" value="<?php echo $this->session->userdata('will_id'); ?>">
+          </form>
+          <button href="" type="submit" id="btn_final_pdf" class="btn btn-info" >Create PDF</button></p>
+          <?php
+        } else{ ?>
+          <form id="pdf" class="" action="<?php echo base_url() ?>/Pdf_controller/pdf" method="post">
+            <input type="hidden" name="will_id" value="<?php echo $this->session->userdata('will_id'); ?>">
+          <button href="" type="submit" id="btn_pdf" class="btn btn-info" >Create PDF</button></p>
+          </form>
+      <?php } ?>
+
+  <!--a href="#" type="button" id="personal_next" class="btn btn-info" style="float:right;">Create PDF</a--></p>
   </div>
 
   <div class="col-md-6">
@@ -253,38 +267,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!-- </div> -->
 </div>
 <!-- personal info containner end -->
+<script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/js/jquery-3.3.0.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/js/jquery-ui.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/js/moment.min.js" type="text/javascript"></script>
+<!-- bootstrap-datetimepicker -->
+<script src="<?php echo base_url(); ?>assets/datetimepicker3/bootstrap-datetimepicker.js"></script>
+<script src="<?php echo base_url(); ?>assets/datetimepicker3/bootstrap-datetimepicker.fr.js"></script>
+
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
+
 <!-- Custome Javascript file -->
 <script type="text/javascript">var base_url = "<?php echo base_url() ?>";</script>
-<script src="<?php echo base_url(); ?>assets/js/islamic_will_custome.js" type="text/javascript"></script>
-
-<script>
-// validation start asif//
-$("#witness_name").blur(function(){
-  var witness_name = $('#witness_name').val();
-  if(witness_name == ''){
-    $('#error_witness_name').show();
-  }
-  else{
-      $('#error_witness_name').hide();
-    }
-});
-
-$("#witness_address").blur(function(){
-  var witness_address = $('#witness_address').val();
-  if(witness_address == ''){
-    $('#error_witness_address').show();
-  }
-  else{
-      $('#error_witness_address').hide();
-    }
-});
-// validation end asif//
-</script>
-
+<script src="<?php echo base_url(); ?>assets/js/will_custome/witness_js.js" type="text/javascript"></script>
 </body>
 <?php } ?>

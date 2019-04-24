@@ -9,8 +9,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
   <?php
     $page = 'dashboard';
-    foreach ($user_data as $user_data) {
-    }
   ?>
 <!-- include header -->
 <?php include('include/login_header.php'); ?>
