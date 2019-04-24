@@ -53,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="container-fluid">
 <br /><br />
 <ul class="list-unstyled multi-steps">
-
+	
 	<li  >Personal Information</li>
 	<li class="is-active">Family Information</li>
 	<li >Executor</li>
@@ -155,7 +155,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </fieldset>
   		</form>
       <p>  <button  id="add_family_member" class="btn btn-success" >Add</button></p>
-      
       <br><br>
   </div>
   <p>  <a href="<?php echo base_url() ?>/Will_controller/personal_info_view" type="button" id="personal_previous" class="btn btn-info">Previous</a>
