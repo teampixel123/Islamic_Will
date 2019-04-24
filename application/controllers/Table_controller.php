@@ -53,7 +53,7 @@
             <script>
               $('#family_member_delete".$id."').click(function(e){
                 //alert();
-            			$.ajax({
+            			$.ajax({ 
             				data:{ 'id' : ".$memberId."  },
             				type: 'post',
             				url: '".base_url()."Will_controller/delete_family_member',
