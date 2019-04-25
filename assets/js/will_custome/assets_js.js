@@ -1,3 +1,4 @@
+$(document).ready(function(){
 var will_id = $('#will_id').val();
 // Fill up personal data on page load...
 $.ajax({
@@ -48,52 +49,13 @@ $('.table_family_member').DataTable({
   },
 });
 // End Family Member Js....
-// get and fill up executor...
-$('.table_executor').dataTable({
-    'bDestroy': true
-}).fnDestroy(); // destroy table.
-
-$('.table_executor').DataTable({
-  "processing": true,
-  "serverSide": true,
-  "bFilter" : false,
-  "bLengthChange": false,
-  "bPaginate": false,
-  "bInfo": false,
-  "ajax":{
-    "url": base_url+"Table_controller/executor_list",
-    "dataType": "json",
-    "type": "POST",
-    "data":{ 'will_id' : will_id  }
-  },
-});
-
-// get and fill up Funeral...
-$('.table_funeral').dataTable({
-    'bDestroy': true
-}).fnDestroy(); // destroy table.
-
-$('.table_funeral').DataTable({
-  "processing": true,
-  "serverSide": true,
-  "bFilter" : false,
-  "bLengthChange": false,
-  "bPaginate": false,
-  "bInfo": false,
-  "ajax":{
-    "url": base_url+"Table_controller/funeral_list",
-    "dataType": "json",
-    "type": "POST",
-    "data":{ 'will_id' : will_id  }
-  },
-});
 
 // get and fill up real_estate...
 $('.table_real_estate').dataTable({
     'bDestroy': true
 }).fnDestroy(); // destroy table.
 
-$('.table_real_estate').DataTable({
+var table_real = $('.table_real_estate').DataTable({
   "processing": true,
   "serverSide": true,
   "bFilter" : false,
@@ -107,12 +69,23 @@ $('.table_real_estate').DataTable({
     "data":{ 'will_id' : will_id  }
   },
 });
+
+// Check Bank assets empty...
+$('.table_real_estate').on( 'draw.dt', function(){
+   if (! table_real.data().any() ) {
+      $('.table_real_estate').hide();
+    }
+    else{
+      $('.table_real_estate').show();
+    }
+});
+ //alert(a);
 // get and fill up bank_assets...
 $('.table_bank_assets').dataTable({
     'bDestroy': true
 }).fnDestroy(); // destroy table.
 
-$('.table_bank_assets').DataTable({
+var table_bank_assets = $('.table_bank_assets').DataTable({
   "processing": true,
   "serverSide": true,
   "bFilter" : false,
@@ -126,13 +99,22 @@ $('.table_bank_assets').DataTable({
     "data":{ 'will_id' : will_id  }
   },
 });
-
+// Check Bank assets empty...
+$('.table_bank_assets').on( 'draw.dt', function(){
+   if (! table_bank_assets.data().any() ) {
+      $('.table_bank_assets').hide();
+    }
+    else{
+      $('.table_bank_assets').show();
+    }
+});
+//alert(a);
 // get and fill up Vehicle...
 $('.table_vehicle').dataTable({
     'bDestroy': true
 }).fnDestroy(); // destroy table.
 
-$('.table_vehicle').DataTable({
+var table_vehicle = $('.table_vehicle').DataTable({
   "processing": true,
   "serverSide": true,
   "bFilter" : false,
@@ -146,12 +128,21 @@ $('.table_vehicle').DataTable({
     "data":{ 'will_id' : will_id  }
   },
 });
+// Check Vehicle assets empty...
+$('.table_vehicle').on( 'draw.dt', function(){
+   if (! table_vehicle.data().any() ) {
+      $('.table_vehicle').hide();
+    }
+    else{
+      $('.table_vehicle').show();
+    }
+});
 // get and fill up Gift Info...
 $('.table_gift').dataTable({
     'bDestroy': true
 }).fnDestroy(); // destroy table.
 
-$('.table_gift').DataTable({
+var table_gift = $('.table_gift').DataTable({
   "processing": true,
   "serverSide": true,
   "bFilter" : false,
@@ -164,6 +155,25 @@ $('.table_gift').DataTable({
     "type": "POST",
     "data":{ 'will_id' : will_id  }
   },
+});
+$('.table_gift').on( 'draw.dt', function(){
+   if (!table_gift.data().any()) {
+      $('.table_gift').hide();
+    }
+    else{
+      $('.table_gift').show();
+    }
+});
+
+$('.table_gift, .table_vehicle, .table_bank_assets, .table_real_estate').on( 'draw.dt', function(){
+   if (!table_gift.data().any() && !table_vehicle.data().any() && !table_bank_assets.data().any() && !table_real.data().any()) {
+      $('#error_add_assets').show();
+      $('#assets_next').prop('disabled', true);
+    }
+    else{
+      $('#error_add_assets').hide();
+      $('#assets_next').prop('disabled', false);
+    }
 });
 
 // get and fill up Witness Info...
@@ -528,7 +538,7 @@ $('.table_witness').DataTable({
                  'bDestroy': true
              }).fnDestroy(); // destroy table.
 
-             $('.table_real_estate').DataTable({
+            var table_real = $('.table_real_estate').DataTable({
                "processing": true,
                "serverSide": true,
                "bFilter" : false,
@@ -541,6 +551,17 @@ $('.table_witness').DataTable({
                  "type": "POST",
                  "data":{ 'will_id' : will_id  }
                },
+             });
+             // Check Bank assets empty...
+             $('.table_real_estate').on( 'draw.dt', function(){
+                if (! table_real.data().any() ) {
+                   $('.table_real_estate').hide();
+                 }
+                 else{
+                   $('.table_real_estate').show();
+                   $('#error_add_assets').hide();
+                   $('#assets_next').prop('disabled', false);
+                 }
              });
            }
          });
@@ -595,7 +616,7 @@ $('.table_witness').DataTable({
                'bDestroy': true
            }).fnDestroy(); // destroy table.
 
-            $('.table_bank_assets').DataTable({
+            var table_bank_assets = $('.table_bank_assets').DataTable({
              "processing": true,
              "serverSide": true,
               "bFilter" : false,
@@ -608,6 +629,17 @@ $('.table_witness').DataTable({
                "type": "POST",
                "data":{ 'will_id' : will_id  }
              },
+           });
+           // Check Bank assets empty...
+           $('.table_bank_assets').on( 'draw.dt', function(){
+              if (! table_bank_assets.data().any() ) {
+                 $('.table_bank_assets').hide();
+               }
+               else{
+                 $('.table_bank_assets').show();
+                 $('#error_add_assets').hide();
+                 $('#assets_next').prop('disabled', false);
+               }
            });
          }
        });
@@ -651,7 +683,7 @@ $('.table_witness').DataTable({
             'bDestroy': true
         }).fnDestroy(); // destroy table.
 
-        $('.table_vehicle').DataTable({
+      var table_vehicle =  $('.table_vehicle').DataTable({
           "processing": true,
           "serverSide": true,
           "bFilter" : false,
@@ -664,6 +696,17 @@ $('.table_witness').DataTable({
             "type": "POST",
             "data":{ 'will_id' : will_id  }
           },
+        });
+        // Check Vehicle assets empty...
+        $('.table_vehicle').on( 'draw.dt', function(){
+           if (! table_vehicle.data().any() ) {
+              $('.table_vehicle').hide();
+            }
+            else{
+              $('.table_vehicle').show();
+              $('#error_add_assets').hide();
+              $('#assets_next').prop('disabled', false);
+            }
         });
       }
     });
@@ -703,7 +746,7 @@ $('.table_witness').DataTable({
       			'bDestroy': true
       	}).fnDestroy(); // destroy table.
 
-        $('.table_gift').DataTable({
+        var table_gift = $('.table_gift').DataTable({
       		"processing": true,
       		"serverSide": true,
           "bFilter" : false,
@@ -717,8 +760,25 @@ $('.table_witness').DataTable({
       			"data":{ 'will_id' : will_id  }
       		},
       	});
+        $('.table_gift').on( 'draw.dt', function(){
+           if (!table_gift.data().any()) {
+              $('.table_gift').hide();
+              $('#error_add_assets').hide();
+              $('#assets_next').prop('disabled', false);
+            }
+            else{
+              $('.table_gift').show();
+              $('#error_add_assets').hide();
+              $('#assets_next').prop('disabled', false);
+            }
+        });
 			}
 		});
   }
 	});
+
+  $('#assets_next').click(function(){
+      window.location.href = base_url+"Will_controller/executor_funeral_view";
+  });
 //Assets JS End...
+});

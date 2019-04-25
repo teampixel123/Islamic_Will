@@ -1,6 +1,9 @@
 <?php
   class Login_Model extends CI_Model{
 
+    public function save_register_user($register_data){
+      $this->db->insert('tbl_user',$register_data);
+    }
     public function check_valid_mob_email($mob_email){
       $this->db->select('user_id');
       $this->db->from('tbl_user');

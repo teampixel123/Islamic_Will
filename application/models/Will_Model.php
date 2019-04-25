@@ -6,9 +6,9 @@
     }
     // Check for email id exist or not...
     public function check_mail_id($mail){
-      $this->db->select('email');
-      $this->db->from('tbl_personal_info');
-      $this->db->where('email',$mail);
+      $this->db->select('user_email_id');
+      $this->db->from('tbl_user');
+      $this->db->where('user_email_id',$mail);
       $query =  $this->db->get();
       $num= $query->num_rows();
       return $num;
@@ -16,9 +16,9 @@
 
     // Check for mobile_no id exist or not...
     public function check_mobile_no($mobile_no){
-      $this->db->select('mobile_no');
-      $this->db->from('tbl_personal_info');
-      $this->db->where('mobile_no',$mobile_no);
+      $this->db->select('user_mobile_number');
+      $this->db->from('tbl_user');
+      $this->db->where('user_mobile_number',$mobile_no);
       $query =  $this->db->get();
       $num = $query->num_rows();
       return $num;

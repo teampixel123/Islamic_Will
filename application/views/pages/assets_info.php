@@ -21,8 +21,8 @@
 
 	<li  >Personal Information</li>
 	<li >Family Information</li>
-	<li >Executor</li>
 	<li class="is-active">Assets</li>
+	<li >Executor</li>
 	<li>Witness</li>
 </ul>
 </div>
@@ -348,10 +348,10 @@
 
     </div>
   </div>
-
-  <p>  <a href="<?php echo base_url() ?>/Will_controller/executor_funeral_view" type="button" id="personal_previous" class="btn btn-info">Previous</a>
+  <p id="error_add_assets" style="color:red; display:none" class="text-left valide">*Add family information for next.</p>
+  <p>  <a href="<?php echo base_url() ?>Will_controller/family_info_view" type="button" id="assets_previous" class="btn btn-info">Previous</a>
   <!-- <button type="button" id="destroy" class="btn btn-danger">Clear session</button> -->
-  <a href="<?php echo base_url() ?>/Will_controller/witness_info_view" style="float:right;" type="button" id="personal_next" class="btn btn-info" >Next</a></p>
+  <button type="button" href="<?php echo base_url() ?>Will_controller/executor_funeral_view" style="float:right;" type="button" id="assets_next" class="btn btn-info" >Next</button></p>
   </div>
 
   <div class="col-md-6">
@@ -408,29 +408,6 @@
       <thead>
         <tr>
           <th>Family Member Info <br> <hr> </th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
-    </div>
-
-    <div class="container" style="background-color:white;">
-    <table id="table_executor" class="personal_data_dispaly table_executor" style=" width:100%;">
-      <thead>
-        <tr>
-          <th>Executor Info <br> <hr> </th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
-    </div>
-    <div class="container" style="background-color:white;">
-    <table id="table_funeral" class="personal_data_dispaly table_funeral" style=" width:100%;">
-      <thead>
-        <tr>
-          <th>Funeral Info <br> <hr> </th>
         </tr>
       </thead>
       <tbody>
@@ -497,4 +474,8 @@
 <script type="text/javascript">var base_url = "<?php echo base_url() ?>";</script>
 <script src="<?php echo base_url(); ?>assets/js/will_custome/assets_js.js" type="text/javascript"></script>
 </body>
-<?php } ?>
+<?php }
+else{
+  header('location:login');
+}
+?>

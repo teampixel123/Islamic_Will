@@ -5,6 +5,7 @@
 ?>
 
 <body>
+
   <?php
     $is_login = $this->session->userdata('user_is_login');
     if($is_login){
@@ -14,7 +15,7 @@
       include('include/header.php');
     }
    ?>
-
+<div class="" id="witness_page_div">
 <!-- status bar satrt -->
 <div class="container-fluid">
 <br /><br />
@@ -22,8 +23,8 @@
 
 	<li  >Personal Information</li>
 	<li >Family Information</li>
-	<li >Executor</li>
 	<li >Assets</li>
+	<li >Executor</li>
 	<li class="is-active">Witness</li>
 </ul>
 </div>
@@ -32,10 +33,7 @@
 <!-- family info containner start -->
 <?php $start_will_data = $this->session->userdata() ?>
 <div class="container">
-	<!-- <div class="jumbotron "> -->
-	<!--action="<?php echo base_url(); ?>/Will_controller/save_personal_info"-->
-<!-- <h1 class=" text-center">Witness Information</h1> --><br>
-  <div class="row">
+  <div class="row" >
     <div class="col-md-6">
   	<div id="box" class="personal_info1">
   		<form class="" id="witness_form" method="post">
@@ -103,7 +101,7 @@
 
   </div>
 
-  <p>  <a href="<?php echo base_url() ?>/Will_controller/assets_info_view" type="button" id="personal_previous" class="btn btn-info">Previous</a>
+  <p>  <a href="<?php echo base_url() ?>Will_controller/assets_info_view" type="button" id="personal_previous" class="btn btn-info">Previous</a>
   <!-- <button type="button" id="destroy" class="btn btn-danger">Clear session</button> -->
 
   <?php if($this->session->userdata('user_is_login')){
@@ -113,10 +111,10 @@
         } else{ ?>
           <button href="" type="submit" id="btn_pdf" class="btn btn-info" >Create PDF</button></p>
       <?php } ?>
-      <form target="_blank" id="final_pdf" class="" action="<?php echo base_url() ?>/Pdf_controller/final_pdf" method="post">
+      <form target="_blank" id="final_pdf" class="" action="<?php echo base_url() ?>Pdf_controller/final_pdf" method="post">
         <input type="hidden" name="will_id" value="<?php echo $this->session->userdata('will_id'); ?>">
       </form>
-      <form id="pdf" class="" action="<?php echo base_url() ?>/Pdf_controller/pdf" method="post">
+      <form target="_blank" id="pdf" class="" action="<?php echo base_url() ?>Pdf_controller/pdf" method="post">
         <input type="hidden" name="will_id" value="<?php echo $this->session->userdata('will_id'); ?>">
       </form>
   <!--a href="#" type="button" id="personal_next" class="btn btn-info" style="float:right;">Create PDF</a--></p>
@@ -266,6 +264,30 @@
   </div>
 <!-- </div> -->
 </div>
+</div>
+<div class="" id="go_login_div" style="display:none">
+  <!-- status bar satrt -->
+  <div class="container-fluid">
+  <br /><br />
+  <ul class="list-unstyled multi-steps">
+
+  	<li  >Personal Information</li>
+  	<li >Family Information</li>
+  	<li >Assets</li>
+  	<li >Executor</li>
+  	<li >Witness</li>
+  </ul>
+  </div>
+  <div class="container">
+    <div class="row" >
+      <div class="col-md-12 text center">
+    	<div class="personal_info1">
+        <p>Your 'Will' is created successfully. <a href="<?php echo base_url(); ?>Will_controller/login">Login</a> for complete download.</p>
+      </div>
+      </div>
+      </div>
+      </div>
+</div>
 <!-- personal info containner end -->
 <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/js/jquery-3.3.0.min.js" type="text/javascript"></script>
@@ -282,4 +304,8 @@
 <script type="text/javascript">var base_url = "<?php echo base_url() ?>";</script>
 <script src="<?php echo base_url(); ?>assets/js/will_custome/witness_js.js" type="text/javascript"></script>
 </body>
-<?php } ?>
+<?php }
+else{
+  header('location:login');
+}
+?>

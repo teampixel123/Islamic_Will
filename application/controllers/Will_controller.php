@@ -6,6 +6,7 @@
     function __construct(){
       parent::__construct();
       $this->load->Model('Will_Model');
+      $this->load->helper('string');
     }
 
     public function index(){
@@ -14,6 +15,7 @@
   	}
 
     public function login(){
+      $this->session->sess_destroy();
       $this->load->view('pages/login');
   	}
 
@@ -146,10 +148,11 @@
  }
 
 
-
+ /**************************************************************/
+ /*            Save personal info.... datta...                 */
+ /**************************************************************/
  public function save_personal_info(){
    $will_date = date('d-m-Y');
-   $this->load->helper('string');
    $will_id = random_string('nozero',8);
    $user_id = random_string('nozero',8);
    $name_title = $this->input->post('name_title');
@@ -177,6 +180,7 @@
       'user_fullname'=>$this->input->post('full_name'),
       'user_mobile_number'=>$this->input->post('mobile_no'),
       'user_email_id'=>$this->input->post('email'),
+      'reg_date' => $will_date,
     );
    $personal_data = array(
              'will_id' => $will_id,
@@ -200,13 +204,15 @@
      $check_mail = $this->Will_Model->check_mail_id($this->input->post('email'));
      $check_mobile = $this->Will_Model->check_mobile_no($this->input->post('mobile_no'));
 
-    /*if ($check_mail > 0) {
-       echo "Email Exist";
+    if($check_mobile > 0) {
+      $error = 'Mobile_Exist';
+      echo json_encode($error);
      }
-     elseif ($check_mobile > 0) {
-       echo "Mobile Number Exist";
+     elseif ($check_mail > 0) {
+       $error = 'Email_Exist';
+       echo json_encode($error);
      }
-     else{*/
+     else{
        $this->Will_Model->save_user($user_data);
        $this->Will_Model->save_personal_info($personal_data);
        $this->Will_Model->save_will_data($will_data);
@@ -217,13 +223,13 @@
        $get_personal_data = $this->Will_Model->get_personal_data($will_id);
        echo json_encode($get_personal_data);
        //header('Location: display_personal_info');
-   //  }
+     }
  }
 
 
  /**************************************************************/
-     /*            Get personal info.... datta...                 */
-     /**************************************************************/
+ /*            Get personal info.... datta...                 */
+ /**************************************************************/
      public function get_personal_info(){
        $will_id = $this->input->post('will_id');
        $get_personal_data = $this->Will_Model->get_personal_data($will_id);
@@ -246,10 +252,12 @@
       if($name_title == 'Miss.'){
         $marital_status = 'Unmarried';
         $is_have_child = '0';
+        $gender = 'Female';
       }
       else {
         $marital_status = $this->input->post('marital_status');
         $is_have_child = $this->input->post('is_have_child');
+        $gender = $this->input->post('gender');
       }
 
       if($marital_status == 'Unmarried'){
@@ -270,7 +278,7 @@
                 'occupation'=>$this->input->post('occupation'),
                 'aadhar_no'=>$this->input->post('aadhar_no'),
                 'pan_no'=>$this->input->post('pan_no'),
-                'gender'=>$this->input->post('gender'),
+                'gender'=>$gender,
                 'age'=>$this->input->post('age'),
                 'marital_status'=>$marital_status,
                 'is_have_child'=>$is_have_child,
@@ -306,8 +314,11 @@
                   'family_person_age' => $this->input->post('family_person_age'),
                   'family_person_age_format' => $this->input->post('family_person_age_format'),
                   'is_minar' => $this->input->post('is_minar'),
+                  'mother_of_minar' => $this->input->post('mother_of_minar'),
                   'guardian_name' => $this->input->post('guardian_name'),
                   'guardian_address' => $this->input->post('guardian_address'),
+                  'opt_guardian_name' => $this->input->post('opt_guardian_name'),
+                  'opt_guardian_address' => $this->input->post('opt_guardian_address'),
                 );
         //echo print_r($member_data);
       $this->Will_Model->save_family_member($member_data);

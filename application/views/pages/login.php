@@ -1,52 +1,14 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Welcome to CodeIgniter</title>
-
- <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
- <link href="<?php echo base_url('assets/css/style.css');?>" rel="stylesheet">
-</head>
+ defined('BASEPATH') OR exit('No direct script access allowed');
+ include('include/head.php');
+?>
 <body>
-<div class="container-fluid">
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarColor02">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
-</div>
+<?php include('include/header.php'); ?>
 
 <div class="container login2 ">
 	<!-- <div class="jumbotron "> -->
     <form class="" method="post">
-		
        <legend class="text-center">Login</legend>
-
       <div class="form-group">
         <div class="row text-center">
           <div class="col-md-4 text-right">
@@ -56,6 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <input type="text" name="mob_email" id="mob_email" class="form-control " aria-describedby="emailHelp"  style="width:90%;">
 						<p id="error_invalide" style="color:red; display:none" class="text-left invalide">*Invalide Mobile Number/Email Format</p>
 						<p id="error_required" style="color:red; display:none" class="text-left invalide">*Fill up Mobile Number/Email Id</p>
+						<p id="error_not_registered" style="color:red; display:none" class="text-left invalide">*This Mobile Number/Email is not Registered</p>
           </div>
         </div>
       </div>
@@ -133,6 +96,9 @@ $(document).ready(function(){
 						$('#otp_div').show();
 						$("#mob_email").attr("disabled", "disabled");
 						$('#user_id').val(responce['user_id']);
+					}
+					else{
+						$('#error_not_registered').show();
 					}
 	      }
 	    });

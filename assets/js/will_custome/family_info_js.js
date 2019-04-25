@@ -13,6 +13,18 @@ $.ajax({
     $('#lbl_occupation').text(info[0]['occupation']);
     $('#lbl_aadhar').text(info[0]['aadhar_no']);
     $('#lbl_pan').text(info[0]['pan_no']);
+
+    var marital_status = info[0]['marital_status'];
+    var is_have_child = info[0]['is_have_child'];
+    if(marital_status =='Unmarried'){
+      $('#Spouse').hide();
+      $('#Son').hide();
+      $('#Daugther').hide();
+    }
+    if(is_have_child == 0){
+      $('#Son').hide();
+      $('#Daugther').hide();
+    }
   }
 });
 
@@ -33,7 +45,7 @@ $('.table_personal_info').DataTable({
       'bDestroy': true
   }).fnDestroy(); // destroy table.
 
-  $('.table_family_member').DataTable({
+var table =  $('.table_family_member').DataTable({
     "processing": true,
     "serverSide": true,
     "bFilter" : false,
@@ -48,6 +60,25 @@ $('.table_personal_info').DataTable({
     },
   });
 // Family Member Js....
+//var count_row = $('.table_family_member').DataTable().rows().any();
+//var count_row = table.data().count();
+//var count_row = $('#table_family_member >tbody >tr').length;
+
+$('.table_family_member').on( 'draw.dt', function(){
+   if (! table.data().any() ) {
+     $('#family_next').prop('disabled', true);
+     $('.table_family_member').hide();
+     $('#error_add_member').show();
+    }
+    else{
+      $('#family_next').prop('disabled', false);
+      $('.table_family_member').show();
+      $('#error_add_member').hide();
+    }
+});
+//alert(count_row);
+
+
 
 $('#family_person_dob').datetimepicker({
   format: 'dd-mm-yyyy',
@@ -109,6 +140,7 @@ $('#family_person_dob').datetimepicker().on('changeDate', function(ev){
     if(title == 'Father' || title == 'Mother' || title == 'Spouse' || years > 18){
       $('#guardian_name').val('');
       $('#guardian_address').val('');
+      $('#mother_of_minar').val('');
       $('#guardian_div').hide();
     }
     if((title == 'Son' || title == 'Daughter' || title == 'Brother' || title == 'Sister') && years < 18){
@@ -118,8 +150,20 @@ $('#family_person_dob').datetimepicker().on('changeDate', function(ev){
     else{
       $('#guardian_name').val('');
       $('#guardian_address').val('');
+      $('#mother_of_minar').val('');
       $('#guardian_div').hide();
     }
+});
+
+$('#add_opt_guardian').change(function(){
+  if ($(this).prop('checked')) {
+    $('#opt_guardian_div').show();
+  }
+  else{
+    $('#opt_guardian_name').val('');
+    $('#opt_guardian_address').val('');
+    $('#opt_guardian_div').hide();
+  }
 });
 
 $('#relationship').change(function(){
@@ -230,6 +274,17 @@ $('#add_family_member').click(function(){
   else {
      $('.valide').hide();
 
+     $('.table_family_member').on( 'draw.dt', function(){
+        if (! table.data().any() ) {
+          $('#family_next').prop('disabled', true);
+          $('.table_family_member').hide();
+         }
+         else{
+           $('#family_next').prop('disabled', false);
+           $('.table_family_member').show();
+         }
+     });
+
      var form_data = $('#family_member_form').serialize();
      $.ajax({
        data: form_data,
@@ -245,7 +300,7 @@ $('#add_family_member').click(function(){
              'bDestroy': true
          }).fnDestroy(); // destroy table.
 
-         $('.table_family_member').DataTable({
+         var table = $('.table_family_member').DataTable({
            "processing": true,
            "serverSide": true,
            "bFilter" : false,
@@ -259,6 +314,20 @@ $('#add_family_member').click(function(){
               "data":{ 'will_id' : will_id  }
            },
          });
+
+         $('.table_family_member').on( 'draw.dt', function(){
+            if (! table.data().any() ) {
+              $('#family_next').prop('disabled', true);
+              $('.table_family_member').hide();
+              $('#error_add_member').show();
+             }
+             else{
+               $('#family_next').prop('disabled', false);
+               $('.table_family_member').show();
+               $('#error_add_member').hide();
+             }
+         });
+
        }
      });
     }
@@ -270,7 +339,7 @@ $('#family_next').click(function(){
     type: "post",
     url: base_url+"Will_controller/update_have_miner",
     success: function (data){
-      window.location.href = base_url+"Will_controller/executor_funeral_view";
+      window.location.href = base_url+"Will_controller/assets_info_view";
     }
 });
 });

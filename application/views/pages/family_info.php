@@ -21,8 +21,8 @@
 
 	<li  >Personal Information</li>
 	<li class="is-active">Family Information</li>
-	<li >Executor</li>
 	<li >Assets</li>
+	<li >Executor</li>
 	<li>Witness</li>
 </ul>
 </div>
@@ -38,9 +38,7 @@
     <div class="col-md-6  ">
   	<div id="box" class="personal_info1"style="margin-right: -15px;" >
   		<form class="" id="family_member_form" method="post">
-
       <fieldset>
-
         	<h3 class=" text-left">Family Information </h3><br>
 
       <div class="form-group">
@@ -50,12 +48,14 @@
   					<select class="form-control clear_dr" name="relationship" id="relationship">
               <option value="0">Select Relationship</option>
   					  <option>Father</option>
-  					 <option>Mother</option>
-  					 <option>Spouse</option>
-  					 <option>Son</option>
-  					 <option>Daughter</option>
-  					 <option>Brother</option>
-  					 <option>Sister</option>
+    					 <option>Mother</option>
+    					 <option id="Spouse">Spouse</option>
+    					 <option id="Son">Son</option>
+    					 <option id="Daugther">Daughter</option>
+    					 <option>Brother</option>
+    					 <option>Sister</option>
+    					 <option>Grand Mother</option>
+    					 <option>Grand Father</option>
   				 </select>
            <p id="error_relationship" style="color:red; display:none" class="text-left valide">*This field is required.</p>
           </div>
@@ -98,7 +98,15 @@
 
       <div id="guardian_div" style="display:none">
     		<input type="hidden" name="is_minar" id="is_minar" class="form-control clear"  aria-describedby="emailHelp" >
-
+        <div class="form-group" id="">
+          <div class="row text-center">
+            <label class="col-md-3 text-right" for="exampleInputEmail1">Mother of Minar</label>
+            <div class="col-md-9">
+              <input type="text" name="mother_of_minar" id="mother_of_minar" class="form-control clear" placeholder="Name of minar child's mother" >
+              <p id="error_mother_of_minar" style="color:red; display:none" class="text-left valide">*This field is required.</p>
+            </div>
+          </div>
+        </div>
         <div class="form-group" id="">
           <div class="row text-center">
             <label class="col-md-3 text-right" for="exampleInputEmail1">Guardian Name</label>
@@ -118,12 +126,42 @@
             </div>
           </div>
         </div>
+
+        <div class="form-group">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="add_opt_guardian" id="add_opt_guardian">
+            <label class="custom-control-label" for="add_opt_guardian">Add optional guardian</label>
+          </div>
+        </div>
+      </div>
+
+      <div id="opt_guardian_div" style="display:none">
+        <div class="form-group" id="">
+          <div class="row text-center">
+            <label class="col-md-3 text-right" for="exampleInputEmail1">Optional Guardian Name</label>
+            <div class="col-md-9">
+              <input type="text" name="opt_guardian_name" id="opt_guardian_name" class="form-control clear"  aria-describedby="emailHelp" >
+              <p id="error_opt_guardian_name" style="color:red; display:none" class="text-left valide">*This field is required.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group" id="">
+          <div class="row text-center">
+            <label class="col-md-3 text-right" for="exampleInputEmail1">Address</label>
+            <div class="col-md-9">
+              <input type="text" name="opt_guardian_address" id="opt_guardian_address" class="form-control clear"  aria-describedby="emailHelp" >
+              <p id="error_opt_guardian_address" style="color:red; display:none" class="text-left valide">*This field is required.</p>
+            </div>
+          </div>
+        </div>
       </div>
       </fieldset>
   		</form>
       <p>  <button  id="add_family_member" class="btn btn-success" >Add</button></p>
       <br><br>
   </div>
+  <p id="error_add_member" style="color:red; display:none" class="text-left valide">*Add family information for next.</p>
   <p>  <a href="<?php echo base_url() ?>/Will_controller/personal_info_view" type="button" id="family_previous" class="btn btn-info">Previous</a>
   <!-- <button type="button" id="destroy" class="btn btn-danger">Clear session</button> -->
   <button id="family_next" class="btn btn-info" style="float:right;" >Next</button></p>
@@ -131,7 +169,6 @@
 
   <div class="col-md-6  personal_data_dispaly1  ">
   	<input type="hidden" name="will_id" id="will_id" value="<?php echo $start_will_data['will_id']; ?>">
-
     <div class="container" style="background-color:white;">
     	<div class="" style="">
         <table id="table_personal_info" class=" personal_data_dispaly table_personal_info">
@@ -215,4 +252,8 @@
 <script src="<?php echo base_url(); ?>assets/js/will_custome/family_info_js.js" type="text/javascript"></script>
 
 </body>
-<?php } ?>
+<?php }
+else{
+  header('location:login');
+}
+?>

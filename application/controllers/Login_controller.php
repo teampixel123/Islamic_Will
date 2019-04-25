@@ -10,6 +10,28 @@
       $this->load->helper('string');
     }
 
+    public function register_user_view(){
+      $this->load->view('pages/register_user');
+    }
+
+    public function save_register_user(){
+      $date = date('d-m-Y');
+      $user_id = random_string('nozero',8);
+      $register_data = array(
+        'user_id' => $user_id,
+        'user_fullname' => $this->input->post('reg_name'),
+        'user_mobile_number' => $this->input->post('reg_mobile'),
+        'user_email_id' => $this->input->post('reg_email'),
+        'reg_date' => $date,
+      );
+      $this->Login_Model->save_register_user($register_data);
+      header('location:'.base_url().'Will_controller/login');
+      //$this->load->view('pages/register_user');
+    }
+
+
+
+
     public function generate_otp(){
       $mob_email = $this->input->post('mob_email');
 

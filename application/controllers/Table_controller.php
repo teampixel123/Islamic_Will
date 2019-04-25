@@ -61,11 +61,13 @@
             				type: 'post',
             				url: '".base_url()."Will_controller/delete_family_member',
             				success: function (data){
+
+
                       $('.table_family_member').dataTable({
                             'bDestroy': true
                         }).fnDestroy(); // destroy table.
 
-                        $('.table_family_member').DataTable({
+                      var table =   $('.table_family_member').DataTable({
                               'processing': true,
                               'serverSide': true,
                               'bFilter' : false,
@@ -78,6 +80,19 @@
                                  'type': 'POST',
                                  'data':{ 'will_id' : ".$will_id."  }
                                 },
+                            });
+
+                            $('.table_family_member').on( 'draw.dt', function(){
+                               if (! table.data().any() ) {
+                                 $('#family_next').prop('disabled', true);
+                                 $('.table_family_member').hide();
+                                 $('#error_add_member').show();
+                                }
+                                else{
+                                  $('#family_next').prop('disabled', false);
+                                  $('.table_family_member').show();
+                                  $('#error_add_member').hide();
+                                }
                             });
             				}
             			});
@@ -310,7 +325,7 @@
                             'bDestroy': true
                         }).fnDestroy(); // destroy table.
 
-                      $('.table_real_estate').DataTable({
+                    var table_real =  $('.table_real_estate').DataTable({
                         'processing': true,
                         'serverSide': true,
                         'bFilter' : false,
@@ -324,7 +339,15 @@
                            'data':{ 'will_id' : ".$will_id."  }
                           },
                       });
-
+                      // Check Bank assets empty...
+                      $('.table_real_estate').on( 'draw.dt', function(){
+                         if (! table_real.data().any() ) {
+                            $('.table_real_estate').hide();
+                          }
+                          else{
+                            $('.table_real_estate').show();
+                          }
+                      });
                     }
                   });
               });
@@ -430,7 +453,7 @@
                             'bDestroy': true
                         }).fnDestroy(); // destroy table.
 
-                      $('.table_bank_assets').DataTable({
+                    var table_bank_assets =  $('.table_bank_assets').DataTable({
                         'processing': true,
                         'serverSide': true,
                         'bFilter' : false,
@@ -444,7 +467,17 @@
                            'data':{ 'will_id' : ".$will_id."  }
                           },
                       });
-
+                      // Check Bank assets empty...
+                      $('.table_bank_assets').on( 'draw.dt', function(){
+                         if (! table_bank_assets.data().any() ) {
+                            $('.table_bank_assets').hide();
+                            $('#bank_estate_check').val('0');
+                          }
+                          else{
+                            $('.table_bank_assets').show();
+                            $('#bank_estate_check').val('1');
+                          }
+                      });
                     }
                   });
               });
@@ -510,7 +543,7 @@
                             'bDestroy': true
                         }).fnDestroy(); // destroy table.
 
-                      $('.table_vehicle').DataTable({
+                      var table_vehicle = $('.table_vehicle').DataTable({
                         'processing': true,
                         'serverSide': true,
                         'bFilter' : false,
@@ -524,7 +557,17 @@
                            'data':{ 'will_id' : ".$will_id."  }
                           },
                       });
-
+                      // Check Vehicle assets empty...
+                      $('.table_vehicle').on( 'draw.dt', function(){
+                         if (! table_vehicle.data().any() ) {
+                            $('.table_vehicle').hide();
+                            $('#vehicle_estate_check').val('0');
+                          }
+                          else{
+                            $('.table_vehicle').show();
+                            $('#vehicle_estate_check').val('1');
+                          }
+                      });
                     }
                   });
               });
@@ -589,7 +632,7 @@
                             'bDestroy': true
                         }).fnDestroy(); // destroy table.
 
-                      $('.table_gift').DataTable({
+                      var table_gift = $('.table_gift').DataTable({
                         'processing': true,
                         'serverSide': true,
                         'bFilter' : false,
@@ -603,7 +646,14 @@
                            'data':{ 'will_id' : ".$will_id."  }
                           },
                       });
-
+                      $('.table_gift').on( 'draw.dt', function(){
+                         if (!table_gift.data().any()) {
+                            $('.table_gift').hide();
+                          }
+                          else{
+                            $('.table_gift').show();
+                          }
+                      });
                     }
                   });
               });

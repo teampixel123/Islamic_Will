@@ -38,7 +38,7 @@ $('.table_family_member').dataTable({
     'bDestroy': true
 }).fnDestroy(); // destroy table.
 
-$('.table_family_member').DataTable({
+var table = $('.table_family_member').DataTable({
   "processing": true,
   "serverSide": true,
   "bFilter" : false,
@@ -52,13 +52,21 @@ $('.table_family_member').DataTable({
     "data":{ 'will_id' : will_id  }
   },
 });
+$('.table_family_member').on( 'draw.dt', function(){
+   if (! table.data().any() ) {
+     $('.table_family_member').hide();
+    }
+    else{
+      $('.table_family_member').show();
+    }
+});
 // End Family Member Js....
 // get and fill up executor...
 $('.table_executor').dataTable({
     'bDestroy': true
 }).fnDestroy(); // destroy table.
 
-$('.table_executor').DataTable({
+var table_executor = $('.table_executor').DataTable({
   "processing": true,
   "serverSide": true,
   "bFilter" : false,
@@ -72,13 +80,20 @@ $('.table_executor').DataTable({
     "data":{ 'will_id' : will_id  }
   },
 });
-
+$('.table_executor').on( 'draw.dt', function(){
+   if (! table_executor.data().any() ) {
+     $('.table_executor').hide();
+    }
+    else{
+      $('.table_executor').show();
+    }
+});
 // get and fill up Funeral...
 $('.table_funeral').dataTable({
     'bDestroy': true
 }).fnDestroy(); // destroy table.
 
-$('.table_funeral').DataTable({
+var table_funeral = $('.table_funeral').DataTable({
   "processing": true,
   "serverSide": true,
   "bFilter" : false,
@@ -92,13 +107,20 @@ $('.table_funeral').DataTable({
     "data":{ 'will_id' : will_id  }
   },
 });
-
+$('.table_funeral').on( 'draw.dt', function(){
+   if (! table_funeral.data().any() ) {
+     $('.table_funeral').hide();
+    }
+    else{
+      $('.table_funeral').show();
+    }
+});
 // get and fill up real_estate...
 $('.table_real_estate').dataTable({
     'bDestroy': true
 }).fnDestroy(); // destroy table.
 
-$('.table_real_estate').DataTable({
+var table_real_estate = $('.table_real_estate').DataTable({
   "processing": true,
   "serverSide": true,
   "bFilter" : false,
@@ -112,12 +134,20 @@ $('.table_real_estate').DataTable({
     "data":{ 'will_id' : will_id  }
   },
 });
+$('.table_real_estate').on( 'draw.dt', function(){
+   if (! table_real_estate.data().any() ) {
+     $('.table_real_estate').hide();
+    }
+    else{
+      $('.table_real_estate').show();
+    }
+});
 // get and fill up bank_assets...
 $('.table_bank_assets').dataTable({
     'bDestroy': true
 }).fnDestroy(); // destroy table.
 
-$('.table_bank_assets').DataTable({
+var table_bank_assets = $('.table_bank_assets').DataTable({
   "processing": true,
   "serverSide": true,
   "bFilter" : false,
@@ -131,13 +161,20 @@ $('.table_bank_assets').DataTable({
     "data":{ 'will_id' : will_id  }
   },
 });
-
+$('.table_bank_assets').on( 'draw.dt', function(){
+   if (! table_bank_assets.data().any() ) {
+     $('.table_bank_assets').hide();
+    }
+    else{
+      $('.table_bank_assets').show();
+    }
+});
 // get and fill up Vehicle...
 $('.table_vehicle').dataTable({
     'bDestroy': true
 }).fnDestroy(); // destroy table.
 
-$('.table_vehicle').DataTable({
+var table_vehicle = $('.table_vehicle').DataTable({
   "processing": true,
   "serverSide": true,
   "bFilter" : false,
@@ -151,12 +188,20 @@ $('.table_vehicle').DataTable({
     "data":{ 'will_id' : will_id  }
   },
 });
+$('.table_vehicle').on( 'draw.dt', function(){
+   if (! table_vehicle.data().any() ) {
+     $('.table_vehicle').hide();
+    }
+    else{
+      $('.table_vehicle').show();
+    }
+});
 // get and fill up Gift Info...
 $('.table_gift').dataTable({
     'bDestroy': true
 }).fnDestroy(); // destroy table.
 
-$('.table_gift').DataTable({
+var table_gift = $('.table_gift').DataTable({
   "processing": true,
   "serverSide": true,
   "bFilter" : false,
@@ -170,13 +215,20 @@ $('.table_gift').DataTable({
     "data":{ 'will_id' : will_id  }
   },
 });
-
+$('.table_gift').on( 'draw.dt', function(){
+   if (! table_gift.data().any() ) {
+     $('.table_gift').hide();
+    }
+    else{
+      $('.table_gift').show();
+    }
+});
 // get and fill up Witness Info...
 $('.table_witness').dataTable({
     'bDestroy': true
 }).fnDestroy(); // destroy table.
 
-$('.table_witness').DataTable({
+var table_witness = $('.table_witness').DataTable({
   "processing": true,
   "serverSide": true,
   "bFilter" : false,
@@ -190,7 +242,14 @@ $('.table_witness').DataTable({
     "data":{ 'will_id' : will_id  }
   },
 });
-
+$('.table_witness').on( 'draw.dt', function(){
+   if (! table_witness.data().any() ) {
+     $('.table_witness').hide();
+    }
+    else{
+      $('.table_witness').show();
+    }
+});
 // validation start asif//
 $("#witness_name").blur(function(){
   var witness_name = $('#witness_name').val();
@@ -213,19 +272,14 @@ $("#witness_address").blur(function(){
 });
 // validation end asif//
 $('#btn_final_pdf').click(function(){
-  //alert();
-  //window.location.href = "<?php echo base_url() ?>Will_controller/login";
-  //$('#btn_login').show();
   $('#final_pdf').submit();
-  //$('#go_login').submit();
 });
 
 $('#btn_pdf').click(function(){
-  //alert();
-  //window.location.href = "<?php echo base_url() ?>Will_controller/login";
-  $('#btn_login').show();
   $('#pdf').submit();
-  //$('#go_login').submit();
+  $('#witness_page_div').hide();
+  $('#go_login_div').show();
+  $('#btn_login').show();
 });
 
 //	Save/Add Family Member

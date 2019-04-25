@@ -20,10 +20,16 @@
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
+
+		<a href="<?php echo base_url(); ?>Login_controller/register_user_view" style="color:white; margin:0; font-size:15px;">Register</a>
+		<form action="<?php echo base_url(); ?>Will_controller/login" class="form-inline my-2 my-lg-0">
+      <button id="btn_login2" class="btn btn-secondary my-2 my-sm-0" type="submit">Login</button>
+    </form>
+
+    <!-- <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Search">
       <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    </form> -->
   </div>
 </nav>
 </div>

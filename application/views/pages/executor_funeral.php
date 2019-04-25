@@ -13,8 +13,6 @@
       include('include/header.php');
     }
    ?>
-
-
 <!-- status bar satrt -->
 <div class="container-fluid">
 <br /><br />
@@ -22,8 +20,8 @@
 
 	<li  >Personal Information</li>
 	<li >Family Information</li>
-	<li class="is-active">Executor</li>
 	<li >Assets</li>
+	<li class="is-active">Executor</li>
 	<li>Witness</li>
 </ul>
 </div>
@@ -109,9 +107,9 @@
       <!-- Funeral and Burial Information End  -->
       <br><br>
   </div>
-  <p>  <a href="<?php echo base_url() ?>/Will_controller/family_info_view" type="button" id="personal_previous" class="btn btn-info">Previous</a>
+  <p>  <a href="<?php echo base_url() ?>/Will_controller/assets_info_view" type="button" id="personal_previous" class="btn btn-info">Previous</a>
   <!-- <button type="button" id="destroy" class="btn btn-danger">Clear session</button> -->
-  <a href="<?php echo base_url() ?>/Will_controller/assets_info_view" type="button" id="personal_next" class="btn btn-info" style="float:right;">Next</a></p>
+  <a href="<?php echo base_url() ?>/Will_controller/witness_info_view" type="button" id="personal_next" class="btn btn-info" style="float:right;">Next</a></p>
 </div>
   </div>
 
@@ -227,4 +225,8 @@
 <script type="text/javascript">var base_url = "<?php echo base_url() ?>";</script>
 <script src="<?php echo base_url(); ?>assets/js/will_custome/executor_funeral_js.js" type="text/javascript"></script>
 </body>
-<?php } ?>
+<?php }
+else{
+  header('location:login');
+}
+?>
