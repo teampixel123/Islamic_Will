@@ -332,9 +332,19 @@ li {
   background-color: none !important ;
 } */
 
-th.sorting_asc::after,th.sorting_desc::after{ content:"" !important; }
+th.sorting_asc::after,th.sorting_desc::after{
+  content:"" !important;
+  padding-right: 1px !important;
+}
 
-th.sorting_asc::before,th.sorting_desc::before{ content:"" !important; }
+th.sorting_asc::before,th.sorting_desc::before{
+  content:"" !important;
+  padding-right: 1px !important;
+}
+
+thead>tr>th.sorting_asc, table.dataTable thead>tr>th.sorting_desc, table.dataTable thead>tr>th.sorting, table.dataTable thead>tr>td.sorting_asc, table.dataTable thead>tr>td.sorting_desc, table.dataTable thead>tr>td.sorting {
+    padding-right: 1px !important;
+}
 
  /* { content:"" !important; } */
 

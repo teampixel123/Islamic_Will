@@ -14,6 +14,7 @@
       $this->db->select('*');
       $this->db->from('tbl_family_info');
       $this->db->where('will_id',$will_id);
+      $this->db->order_by("FIELD(relationship,'Spouse','Father','Mother','Son','Daughter','Brother','Sister','Grand Father','Grand Mother')",'',FALSE);
       $query = $this->db->get();
       $result = $query->result();
       return $result;
@@ -59,6 +60,7 @@
       $this->db->select('id');
       $this->db->from('tbl_real_estate');
       $this->db->where('will_id',$will_id);
+      $this->db->order_by("FIELD(estate_type,'Flat','Shop','Land','Plot','Commercial Shop unit','Commercial office unit')",'',FALSE);
       $query = $this->db->get();
       $num = $query->num_rows();
       return $num;
@@ -86,7 +88,9 @@
       $this->db->select('*');
       $this->db->from('tbl_bank_assets');
       $this->db->where('will_id',$will_id);
+      $this->db->order_by("FIELD(assets_type,'savings A/c','current A/c','Fixed Deposits','PPF','Bank Locker','Mutual Funds','Stock Equities','Insurance Policy')",'',FALSE);
       $query = $this->db->get();
+      $last= $this->db->last_query();
       $result = $query->result();
       return $result;
     }
@@ -122,6 +126,7 @@
       $this->db->select('*');
       $this->db->from('tbl_other_gift');
       $this->db->where('will_id',$will_id);
+      $this->db->order_by("FIELD(gift_type,'Jewellery and Valuables','Remained Assets')");
       $query = $this->db->get();
       $result = $query->result();
       return $result;

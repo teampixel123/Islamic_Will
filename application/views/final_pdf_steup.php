@@ -31,7 +31,17 @@
 
  	//Page header
  	public function Header() {
-		$this->RoundedRect(10, 10, 190, 280, 0, '1000');
+		//$this->RoundedRect(10, 10, 190, 280, 0, '1000');
+
+
+  //  $this->writeHTMLCell($w='', $h='', $x='', $y='', $this->header, $border=0, $ln=0, $fill=0, $reseth=true, $align='L', $autopadding=true);
+       $this->SetLineStyle( array( 'width' => 0.80, 'color' => array(0, 0, 0)));
+
+       $this->Line(5, 5, $this->getPageWidth()-5, 5);
+
+       $this->Line($this->getPageWidth()-5, 5, $this->getPageWidth()-5,  $this->getPageHeight()-5);
+       $this->Line(5, $this->getPageHeight()-5, $this->getPageWidth()-5, $this->getPageHeight()-5);
+       $this->Line(5, 5, 5, $this->getPageHeight()-5);
  		// Logo
  		// $image_file = K_PATH_IMAGES.'logo_example.jpg';
  		// $this->Image($image_file, 10, 10, 15, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
@@ -193,15 +203,67 @@ Paradise is true, the Day of Judgement is coming without any doubt, and Allah (e
 <h2 style="text-align:center; font-family: times, serif;" >C.	FAMILY  DETAILS</h2>
 
 <p style="font-size:12; font-family: times, serif;">
-My family consists of:<br>';
+<span style="font-size:14; font-family: times, serif;" ><b>My family consists of:</b></span><br>';
+$Son_num = 0;
+$Daughter_num = 0;
+$Brother_num = 0;
+$Sister_num = 0;
 foreach($family_data as $family_data ) {
-    $html .= 'My '. $family_data->relationship . '&nbsp;'.$family_data->family_person_name.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$family_data->family_person_dob.'<br>'
+  if($family_data->relationship == 'Spouse'){
+    $html .= 'My '.$family_data->relationship.'&nbsp;'.$family_data->family_person_name.',&nbsp;DOB: '.$family_data->family_person_dob.'<br>';
+  }
 
-		;
+  if($family_data->relationship == 'Father'){
+    $html .= 'My '.$family_data->relationship.'&nbsp;'.$family_data->family_person_name.',&nbsp;DOB: '.$family_data->family_person_dob.'<br>';
+  }
+
+  if($family_data->relationship == 'Mother'){
+    $html .= '<span style="font-size:12; font-family: times, serif;" >My '.$family_data->relationship.'&nbsp;'.$family_data->family_person_name.',&nbsp;DOB: '.$family_data->family_person_dob.'</span><br>';
+  }
+
+  if($family_data->relationship == 'Son'){
+    $Son_num++;
+    if($Son_num == 1){
+      $html .= '<br><span style="font-size:14; font-family: times, serif;" ><b>My Son/s</b></span><br>';
+    }
+    $html .= $Son_num.'.&nbsp;'.$family_data->family_person_name.',&nbsp;DOB: '.$family_data->family_person_dob.'<br>';
+  }
+
+  if($family_data->relationship == 'Daughter'){
+    $Daughter_num++;
+    if($Daughter_num == 1){
+      $html .= '<br><span style="font-size:14; font-family: times, serif;" ><b>My Daughter/s</b></span><br>';
+    }
+    $html .= $Daughter_num.'.&nbsp;'.$family_data->family_person_name.',&nbsp;DOB: '.$family_data->family_person_dob.'<br>';
+  }
+
+  if($family_data->relationship == 'Brother'){
+    $Brother_num++;
+    if($Brother_num == 1){
+      $html .= '<br><span style="font-size:14; font-family: times, serif;" ><b>My Brother/s</b></span><br>';
+    }
+    $html .= $Brother_num.'.&nbsp;'.$family_data->family_person_name.',&nbsp;DOB: '.$family_data->family_person_dob.'<br>';
+  }
+
+  if($family_data->relationship == 'Sister'){
+    $Sister_num++;
+    if($Sister_num == 1){
+      $html .= '<br><span style="font-size:14; font-family: times, serif;" ><b>My Sister/s</b></span><br>';
+    }
+    $html .= $Sister_num.'.&nbsp;'.$family_data->family_person_name.',&nbsp;DOB: '.$family_data->family_person_dob.'<br>';
+  }
+
+  if($family_data->relationship == 'Grand Father'){
+    $html .= '<br>My '.$family_data->relationship.'&nbsp;'.$family_data->family_person_name.',&nbsp;DOB: '.$family_data->family_person_dob.'<br>';
+  }
+
+  if($family_data->relationship == 'Grand Mother'){
+    $html .= '<br>My '.$family_data->relationship.'&nbsp;'.$family_data->family_person_name.',&nbsp;DOB: '.$family_data->family_person_dob.'<br>';
+  }
+
 }
 
-$html .= '
-</p>
+$html .= '</p>
 <h2 style="text-align:center; font-family: times, serif;" >D. EXECUTOR </h2>';
 $i = 0;
 foreach($excutor_data as $excutor_data ) {
@@ -218,18 +280,11 @@ foreach($excutor_data as $excutor_data ) {
 			2.	In the event that he/she will be unwilling or unable to act as executor, I nominate and appoint,
 			namely Miss/Mr./Mrs '.$excutor_data->executor_name.'&nbsp; residing at &nbsp;'.$excutor_data->executor_address.'&nbsp;age &nbsp;'.$excutor_data->executor_age.',&nbsp;to be executor of this,
 			 my Last Will and Testament. I direct no bond or surety for any bond be required for my executor in the performance of his/her duties.
-		</p>
-		';
+		</p>';
 	}
-	//$html .= ' '
-	//;
 }
 
-$html .= '
-
-
-
-<p style="font-size:12; font-family: times, serif;"> a)	 I give my executor herein named power to settle any claim for or against my estate and power to sell any property, real, personal, or mixed,
+$html .= '<p style="font-size:12; font-family: times, serif;"> a)	 I give my executor herein named power to settle any claim for or against my estate and power to sell any property, real, personal, or mixed,
  in which I have an interest, without court order and without bond. I direct no bond or surety for any bond be required for my executor in
   the performance of his/her duties.</p>
 
@@ -304,10 +359,12 @@ $html .= '
   $html .= '
 	<p style="font-size:12; font-family: times, serif;">
 		'.$i++.') Therefore I appoint '.$family_data3->guardian_name.', residing at '.$family_data3->guardian_address.', to be the guardian of my '.$family_data3->relationship.'– '.$family_data3->family_person_name.', until he son attains 18 years of age only,
-		and if his mother, cannot take care of '.$family_data3->family_person_name.' either on account of personal, health, financial, or other reasons, , so long as said guardian remains a Muslim of sound mind and judgment. In the event he shall
-		be unwilling or unable to act as guardian. In the event he shall be unwilling or unable to act as guardian, I nominate and appoint ....................................................residing in ..................................
-		......................, to be the guardian.
+		and if his mother '.$family_data3->mother_of_minar.', cannot take care of '.$family_data3->family_person_name.' either on account of personal, health, financial, or other reasons, , so long as said guardian remains a Muslim of sound mind and judgment.';
+    if($family_data3->opt_guardian_name != ''){
+  $html .= ' In the event he shall be unwilling or unable to act as guardian. In the event he shall be unwilling or unable to act as guardian, I nominate and appoint '.$family_data3->opt_guardian_name.' residing in
+		'.$family_data3->opt_guardian_address.', to be the guardian.
 	</p>';
+}
   }
 }
 
@@ -318,134 +375,142 @@ $html .= '
 	  Will gives to any of my minor children shall be administered by their guardian in their best interest.
 	</p>';
 }
-  $html .= '	<p style="font-size:12; font-family: times, serif;"></p>
+$html .= '<p style="font-size:12; font-family: times, serif;"></p>
 		<h1 style="text-align:center; font-family: times, serif;" > H.DESCRIPTION OF PROPERTY </h1>';
 
-  $html .= '
-<h1 style="text-align:center; font-family: times, serif;" > My assets and properties – </h1>
+$html .= '<h1 style="text-align:center; font-family: times, serif;" > My assets and properties – </h1>';
+$assets_title = 'A';
+if($real_estate){
+  $html .= '<h1 style=" font-family: times, serif;" >'.$assets_title++.'. Immovable Property -  </h1>';
 
-<h1 style=" font-family: times, serif;" >A. 	Immovable Property -  </h1>
+  $html .= '<p style="font-size:12; font-family: times, serif;" >I own and possess and I am absolutely entitled to the following immovable property/properties</p>';
+}
 
-<p style="font-size:12; font-family: times, serif;" >&nbsp;&nbsp;&nbsp;I own and possess and I am absolutely entitled to the following immovable property/properties</p>
-';
 foreach($real_estate as $real_estate ) {
-    $html .= '<p style="font-size:12; font-family: times, serif;" >
-    	Whereas I am the owner of '. $real_estate->estate_type .' no. '. $real_estate->house_no .' having property bearing C.S. no.'. $real_estate->survey_number .' measuring about '.$real_estate->measurment_area.' '.$real_estate->measurment_unit .' of Second floor,
+    $html .= '<p style="font-size:12; font-family: times, serif;" >Whereas I am the owner of '. $real_estate->estate_type .' no. '. $real_estate->house_no .' having property bearing C.S. no.'. $real_estate->survey_number .' measuring about '.$real_estate->measurment_area.' '.$real_estate->measurment_unit .' of Second floor,
     	located at '. $real_estate->estate_address .', '. $real_estate->estate_city .', State – '. $real_estate->estate_state .', Pin code - '. $real_estate->estate_pin .'&nbsp;'. $real_estate->estate_country .'.
     </p>';
 }
 
-
-$html .= '<h1 style="font-family: times, serif;" > Bank Assets – </h1>
-
-' ;
-
-$i=0;
+if($bank_assets){$html .= '<h1 style="font-family: times, serif;" >'.$assets_title++.'. Bank Assets – </h1>';}
+$savings = 0;
+$current = 0;
+$Fixed = 0;
+$PPF = 0;
+$Locker = 0;
+$Mutual_Funds = 0;
+$Stock = 0;
+$Insurance = 0;
 foreach($bank_assets as $bank_assets ) {
 	if($bank_assets->assets_type == 'Savings A/c'){
-    $html .= '<h1 style=" font-family: times, serif; padding: 0px; margin:0px; >Savings in Bank Account  </h1>';
-		$html .= '<p style="font-size:12; font-family: times, serif; padding: 0px; margin:0px;" >
-			Bank balance of my savings A/c. No.'. $bank_assets->account_number .' with '. $bank_assets->bank_name .' , Branch – '. $bank_assets->branch_name .' State – '. $bank_assets->state .', Pin code - '. $bank_assets->pin_code .'.
-		</p>
+    $savings++;
+    if($savings == 1){
+      $html .= '<span style="font-size:14; font-family: times, serif;" ><b>Savings in Bank Account</b></span><br>';
+    }
+		$html .= '<span style="font-size:12; font-family: times, serif; padding: 0px; margin:0px;">'.$savings.') Bank balance of my savings A/c. No.'. $bank_assets->account_number .' with '. $bank_assets->bank_name .' , Branch – '. $bank_assets->branch_name .' State – '. $bank_assets->state .', Pin code - '. $bank_assets->pin_code .'.
+		</span><br>
 ';
 	}
 	elseif($bank_assets->assets_type == 'Current A/C'){
-    $html .= '<h1 style=" font-family: times, serif;" >Current Account</h1>';
-		$html .= '
-		<p style="font-size:12; font-family: times, serif;" >
-			Bank balance of my current A/c. No.'. $bank_assets->account_number .' with '. $bank_assets->bank_name .' , Branch - '. $bank_assets->branch_name .' State – '. $bank_assets->state .', Pin code - '. $bank_assets->pin_code .'.
-		</p>
+    $current++;
+    if($current == 1){
+      $html .= '<span style="font-size:14; font-family: times, serif;" ><b>Current Account</b></span><br>';
+    }
+		$html .= '<span style="font-size:12; font-family: times, serif;" >'.$current.') Bank balance of my current A/c. No.'. $bank_assets->account_number .' with '. $bank_assets->bank_name .' , Branch - '. $bank_assets->branch_name .' State – '. $bank_assets->state .', Pin code - '. $bank_assets->pin_code .'.</span><br>
 		';
 	}
-
 	elseif($bank_assets->assets_type == 'Fixed Deposits'){
+    $Fixed++;
+    if($Fixed == 1){
+      $html .= '<span style="font-size:14; font-family: times, serif;" ><b>Fixed Deposits</b></span><br>';
+    }
 		$html .= '
-		<h1 style=" font-family: times, serif;" >Fixed Deposits - </h1>
-		<p style="font-size:12; font-family: times, serif;" >
-			My bank fixed deposits with customer ID no. '. $bank_assets->account_number .' with '. $bank_assets->bank_name .' , Branch - '. $bank_assets->branch_name .' vide F.D. receipt no. '. $bank_assets->fd_recipt_No .' State – '. $bank_assets->state .', Pin code - '. $bank_assets->pin_code .'.
-		</p>
-		';
+		<span style="font-size:12; font-family: times, serif;">'.$Fixed.') My bank fixed deposits with customer ID no. '. $bank_assets->account_number .' with '. $bank_assets->bank_name .' , Branch - '. $bank_assets->branch_name .' vide F.D. receipt no. '. $bank_assets->fd_recipt_No .' State – '. $bank_assets->state .', Pin code - '. $bank_assets->pin_code .'.</span><br>
+    ';
 	}
 
 	elseif($bank_assets->assets_type == 'PPF'){
-		$html .= '
-		<h1 style=" font-family: times, serif;" >Public Provident Fund –</h1>
-		<p style="font-size:12; font-family: times, serif;" >
-			My PPF account having no. '. $bank_assets->account_number .' with '. $bank_assets->bank_name .' , located at --------------------------, Branch - '. $bank_assets->branch_name .' , State – '. $bank_assets->state .', Pin code - '. $bank_assets->pin_code .'
-		</p>
-		';
+    $PPF++;
+    if($PPF == 1){
+      $html .= '<span style="font-size:14; font-family: times, serif;" ><b>Public Provident Fund</b></span><br>';
+    }
+		$html .= '<span style="font-size:12; font-family: times, serif;" >'.$PPF.') My PPF account having no. '. $bank_assets->account_number .' with '. $bank_assets->bank_name .' , Branch - '. $bank_assets->branch_name .' located at --------------------------, State – '. $bank_assets->state .', Pin code - '. $bank_assets->pin_code .'</span><br>
+    ';
 	}
 
 	elseif($bank_assets->assets_type == 'Bank Locker'){
-		$html .= '
-		<h1 style=" font-family: times, serif;" >Bank Locker – </h1>
-		<p style="font-size:12; font-family: times, serif;" >
-			The contents of bank locker no.'. $bank_assets->account_number .' with key no. '. $bank_assets->key_number .' with '. $bank_assets->bank_name .' , branch – '. $bank_assets->branch_name .' , State – '. $bank_assets->state .', Pin code - '. $bank_assets->pin_code .'
-		</p>
-		';
+    $Locker++;
+    if($Locker == 1){
+      $html .= '<span style="font-size:14; font-family: times, serif;" ><b>Bank Locker</b></span><br>';
+    }
+		$html .= '<span style="font-size:12; font-family: times, serif;">'.$Locker.') The contents of bank locker no.'. $bank_assets->account_number .' with key no. '. $bank_assets->key_number .' with '. $bank_assets->bank_name .' , branch – '. $bank_assets->branch_name .' , State – '. $bank_assets->state .', Pin code - '. $bank_assets->pin_code .'</span><br>
+    ';
 	}
 
 	elseif($bank_assets->assets_type == 'Mutual Funds'){
-		$html .= '
-		<h1 style=" font-family: times, serif;" >Mutual Funds –  </h1>
-		<p style="font-size:12; font-family: times, serif;" >
-			My mutual fund investments with folio numbers '. $bank_assets->account_number .' with '. $bank_assets->bank_name .' .
-		</p>
-		';
+    $Mutual_Funds++;
+    if($Mutual_Funds){
+      $html .= '<span style="font-size:14; font-family: times, serif;" ><b>Mutual Funds</b></span><br>';
+    }
+		$html .= '<span style="font-size:12; font-family: times, serif;">'.$Mutual_Funds.') My mutual fund investments with folio numbers '. $bank_assets->account_number .' with '. $bank_assets->bank_name .'</p><br>
+    ';
 	}
 
 	elseif($bank_assets->assets_type == 'Stock Equities'){
-		$html .= '
-		<h1 style=" font-family: times, serif;" >Shares –  </h1>
-		<p style="font-size:12; font-family: times, serif;" >
-			My shares in '. $bank_assets->bank_name .' with account no. '. $bank_assets->account_number .' .
-		</p>
-		';
+    $Stock++;
+    if($Stock == 1){
+      $html .= '<span style="font-size:14; font-family: times, serif;" ><b>Shares</b></span><br>';
+    }
+		$html .= '<span style="font-size:12; font-family: times, serif;">'.$Stock.') My shares in '. $bank_assets->bank_name .' with account no. '. $bank_assets->account_number .'</span><br>
+    ';
 	}
 
 	elseif($bank_assets->assets_type == 'Insurance Policy'){
-		$html .= '
-		<h1 style=" font-family: times, serif;" >Insurance policies -  </h1>
-		<p style="font-size:12; font-family: times, serif;" >
-			My insurance policy '. $bank_assets->account_number .' from '. $bank_assets->bank_name .'  branch – '. $bank_assets->branch_name .'  for sum assurance of Rs. '. $bank_assets->i_rs .'/-.
-		</p>
-		';
+    $Insurance++;
+    if($Insurance == 1){
+      $html .= '<span style="font-size:14; font-family: times, serif;" ><b>Insurance policies</span>';
+    }
+		$html .= '<p style="font-size:12; font-family: times, serif;" >'.$Insurance.') My insurance policy '. $bank_assets->account_number .' from '. $bank_assets->bank_name .'  branch – '. $bank_assets->branch_name .'  for sum assurance of Rs. '. $bank_assets->i_rs .'/-.
+		</p>';
 	}
 }
-$html .= '
-<h1 style=" font-family: times, serif;" >Vehicles –  </h1>';
-foreach($vehicle as $vehicle ) {
-		$html .= '
-		<p style="font-size:12; font-family: times, serif;" >
-			My vehicle with registration no '. $vehicle->registration_number .'. make year '. $vehicle->vehicle_make_year .', vehicle company '. $vehicle->vehicle_company .' and model name '. $vehicle->vehicle_model .' .
-		</p>'
 
-		;
+$j = 0;
+foreach($vehicle as $vehicle ){
+  $j++;
+  if($j == 1){
+    $html .= '<h1 style=" font-family: times, serif;" >'.$assets_title++.'. Vehicles</h1>';
+  }
+		$html .= '<p style="font-size:12; font-family: times, serif;" >'.$j.') My vehicle with registration no '. $vehicle->registration_number .'. make year '. $vehicle->vehicle_make_year .', vehicle company '. $vehicle->vehicle_company .' and model name '. $vehicle->vehicle_model .' .
+		</p>';
 }
-$html .= '
-<h1 style="text-align:center; font-family: times, serif;" >Others gift -  </h1>';
+
+$k = 0;
+$Jewellery = 0;
+$Remained_Assets = 0;
 foreach($other_gift as $other_gift ) {
+  $k++;
+  if($k == 1){
+    $html .= '<h1 style="font-family: times, serif;" >'.$assets_title++.'. Others gift -  </h1>';
+  }
 	if($other_gift->gift_type == 'Jewellery and Valuables'){
-		$html .= '<h1 style=" font-family: times, serif;" >Jewelry and Ornaments –  </h1>
-		<p style="font-size:12; font-family: times, serif;" >
-			All the jewelry and ornaments '. $other_gift->gift_description .' .
-		</p>
-		';
+    $Jewellery++;
+    if($Jewellery == 1){
+      $html .= '<span style="font-size:14; font-family: times, serif;" ><b>Jewelry and Ornaments</span><br>';
+    }
+		$html .= '<span style="font-size:12; font-family: times, serif;" >'.$Jewellery.') All the jewelry and ornaments '. $other_gift->gift_description .' .
+		</span>';
 	}
 	elseif($other_gift->gift_type == 'Remained Assets'){
-		$html .= '
-		<h1 style=" font-family: times, serif;" >Remained assets -  </h1>
-		<p style="font-size:12; font-family: times, serif;" >
-		'. $other_gift->gift_description .'
+    $Remained_Assets++;
+    if($Remained_Assets == 1){
+      $html .= '<h1 style=" font-family: times, serif;" >Remained assets -  </h1>';
+    }
+		$html .= '<p style="font-size:12; font-family: times, serif;" >'.$Remained_Assets.') '. $other_gift->gift_description .'
 		</p>
 		';
 	}
-
 }
-
-$html .= '
-
-';
 
 if($personal_data->marital_status == 0){
 	$html .= '<h1 style="text-align:center; font-family: times, serif;" > I. DISTRIBUTION OF THE REMINDER OF MY ESTATE</h1>
@@ -456,12 +521,8 @@ if($personal_data->marital_status == 0){
 	';
 }
 
-
-
 $html .= '
 <h1 style="text-align:center; font-family: times, serif;" > SCHEDULE A – MAWARITH (INHERITANCE) </h1>
-
-
 
 <p style="font-size:12; font-family: times, serif;" >This schedule A is signed by me as a part of this Last Will and Testament.</p>
 <p>b.	I direct that no part of the residue and remainder of my estate shall be inherited by any non-Muslim relative,
@@ -510,7 +571,7 @@ whether he/she is a kin or an in-law, spouse, parent or child. I further direct 
  <p style="font-size:12; font-family: times, serif;" >4. I direct that no part of my estate shall be given to relatives whose relationship to me, ascending or descending, has occurred through non-Islamic and unlawful marriage, or through adoption.</p>
 
  <h1 style="text-align:center; font-family: times, serif;" >K. SEPARABILITY</h1>';
- $will_date = $will_data->will_date;
+$will_date = $will_data->will_date;
 $day = date('d', strtotime($will_date));
 $month = date('F', strtotime($will_date));
 $year = date('Y', strtotime($will_date));
@@ -546,7 +607,7 @@ Signature
 $i=0 ;
 foreach($witness as $witness ) {
 	$i++;
-		$html .= $i.'. &nbsp;'.$witness->witness_name.' of '.$witness->witness_address.'<br>';
+		$html .= ''.$i.'. &nbsp;'.$witness->witness_name.' of '.$witness->witness_address.'<br>';
 }
 // reset pointer to the last page
 $pdf->lastPage();

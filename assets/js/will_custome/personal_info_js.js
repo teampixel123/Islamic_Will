@@ -24,6 +24,7 @@ $(document).ready(function(){
     else if (title == 'Miss.') {
       $('#child_no').prop("checked", true);
       $('#gender_female').prop("checked", true);
+      $('#marital_status').val('Unmarried')
       $('.marital_status_div').hide();
       $('.have_child_div').hide();
   	}
@@ -201,6 +202,7 @@ $("#aadhar_no").blur(function(){
 
   //	save_personal_data
   $('#save_personal_data').click(function(){
+    var name_title = $('#name_title').val();
   	var full_name = $('#full_name').val();
   	var marital_status = $('#marital_status').val();
   	var is_have_child = $('#is_have_child').val();
@@ -269,7 +271,7 @@ $("#aadhar_no").blur(function(){
 			$('#error_aadhar_no').show();
 		}
 
-    if(full_name == '' || marital_status == '0' || is_have_child == '-1' || gender == '0' || age == '' || !mobile_format.test(mobile_no) || mobile_no == '' ||
+    if(full_name == '' || (name_title!= 'Miss' && marital_status == '0') || is_have_child == '-1' || gender == '0' || age == '' || !mobile_format.test(mobile_no) || mobile_no == '' ||
   !email_format.test(email) || email == '' || !address_format.test(address) || address == '' || !city_format.test(city) || city == '' || !state_format.test(state) ||
   state == '' || !country_format.test(country) || country == '' || !occupation_format.test(occupation) || occupation == '' || !pin_code_format.test(pin_code) ||
   pin_code == ''){

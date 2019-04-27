@@ -1,3 +1,4 @@
+$(document).ready(function(){
 var will_id = $('#will_id').val();
 // Fill up personal data on page load...
 $.ajax({
@@ -44,16 +45,139 @@ $('.table_family_member').DataTable({
     "url": base_url+"Table_controller/family_member_list",
     "dataType": "json",
     "type": "POST",
-    "data":{ 'will_id' : will_id  }
+    "data":{
+      'will_id' : will_id,
+      'page' : 'executor_info'
+    }
   },
 });
 // End Family Member Js....
+// get and fill up real_estate...
+$('.table_real_estate').dataTable({
+    'bDestroy': true
+}).fnDestroy(); // destroy table.
+
+var table_real_estate = $('.table_real_estate').DataTable({
+  "processing": true,
+  "serverSide": true,
+  "bFilter" : false,
+  "bLengthChange": false,
+  "bPaginate": false,
+  "bInfo": false,
+  "ajax":{
+    "url": base_url+"Table_controller/real_estate_list",
+    "dataType": "json",
+    "type": "POST",
+    "data":{
+      'will_id' : will_id,
+      'page' : 'witness_info'
+    }
+  },
+});
+$('.table_real_estate').on( 'draw.dt', function(){
+   if (! table_real_estate.data().any() ) {
+     $('.table_real_estate').hide();
+    }
+    else{
+      $('.table_real_estate').show();
+    }
+});
+// get and fill up bank_assets...
+$('.table_bank_assets').dataTable({
+    'bDestroy': true
+}).fnDestroy(); // destroy table.
+
+var table_bank_assets = $('.table_bank_assets').DataTable({
+  "processing": true,
+  "serverSide": true,
+  "bFilter" : false,
+  "bLengthChange": false,
+  "bPaginate": false,
+  "bInfo": false,
+  "ajax":{
+    "url": base_url+"Table_controller/bank_assets_list",
+    "dataType": "json",
+    "type": "POST",
+    "data":{
+      'will_id' : will_id,
+      'page' : 'witness_info'
+    }
+  },
+});
+$('.table_bank_assets').on( 'draw.dt', function(){
+   if (! table_bank_assets.data().any() ) {
+     $('.table_bank_assets').hide();
+    }
+    else{
+      $('.table_bank_assets').show();
+    }
+});
+// get and fill up Vehicle...
+$('.table_vehicle').dataTable({
+    'bDestroy': true
+}).fnDestroy(); // destroy table.
+
+var table_vehicle = $('.table_vehicle').DataTable({
+  "processing": true,
+  "serverSide": true,
+  "bFilter" : false,
+  "bLengthChange": false,
+  "bPaginate": false,
+  "bInfo": false,
+  "ajax":{
+    "url": base_url+"Table_controller/vehicle_list",
+    "dataType": "json",
+    "type": "POST",
+    "data":{
+      'will_id' : will_id,
+      'page' : 'witness_info'
+    }
+  },
+});
+$('.table_vehicle').on( 'draw.dt', function(){
+   if (! table_vehicle.data().any() ) {
+     $('.table_vehicle').hide();
+    }
+    else{
+      $('.table_vehicle').show();
+    }
+});
+// get and fill up Gift Info...
+$('.table_gift').dataTable({
+    'bDestroy': true
+}).fnDestroy(); // destroy table.
+
+var table_gift = $('.table_gift').DataTable({
+  "processing": true,
+  "serverSide": true,
+  "bFilter" : false,
+  "bLengthChange": false,
+  "bPaginate": false,
+  "bInfo": false,
+  "ajax":{
+    "url": base_url+"Table_controller/gift_list",
+    "dataType": "json",
+    "type": "POST",
+    "data":{
+      'will_id' : will_id,
+      'page' : 'witness_info'
+    }
+  },
+});
+$('.table_gift').on( 'draw.dt', function(){
+   if (! table_gift.data().any() ) {
+     $('.table_gift').hide();
+    }
+    else{
+      $('.table_gift').show();
+    }
+});
 // get and fill up executor...
 $('.table_executor').dataTable({
     'bDestroy': true
 }).fnDestroy(); // destroy table.
 
-$('.table_executor').DataTable({
+var table_executor = $('.table_executor').DataTable({
   "processing": true,
   "serverSide": true,
   "bFilter" : false,
@@ -64,16 +188,26 @@ $('.table_executor').DataTable({
     "url": base_url+"Table_controller/executor_list",
     "dataType": "json",
     "type": "POST",
-    "data":{ 'will_id' : will_id  }
+    "data":{
+      'will_id' : will_id,
+      'page' : 'executor_info'
+    }
   },
 });
-
+$('.table_executor').on( 'draw.dt', function(){
+   if (! table_executor.data().any() ) {
+     $('.table_executor').hide();
+    }
+    else{
+      $('.table_executor').show();
+    }
+});
 // get and fill up Funeral...
 $('.table_funeral').dataTable({
     'bDestroy': true
 }).fnDestroy(); // destroy table.
 
-$('.table_funeral').DataTable({
+var table_funeral = $('.table_funeral').DataTable({
   "processing": true,
   "serverSide": true,
   "bFilter" : false,
@@ -84,8 +218,19 @@ $('.table_funeral').DataTable({
     "url": base_url+"Table_controller/funeral_list",
     "dataType": "json",
     "type": "POST",
-    "data":{ 'will_id' : will_id  }
+    "data":{
+      'will_id' : will_id,
+      'page' : 'executor_info'
+    }
   },
+});
+$('.table_funeral').on( 'draw.dt', function(){
+   if (! table_funeral.data().any() ) {
+     $('.table_funeral').hide();
+    }
+    else{
+      $('.table_funeral').show();
+    }
 });
 //  strat validation asif
 $("#executor_name").blur(function(){
@@ -173,7 +318,7 @@ $('#add_executor').click(function(){
             'bDestroy': true
         }).fnDestroy(); // destroy table.
 
-        $('.table_executor').DataTable({
+      var table_executor =  $('.table_executor').DataTable({
           "processing": true,
           "serverSide": true,
           "bFilter" : false,
@@ -184,8 +329,19 @@ $('#add_executor').click(function(){
             "url": base_url+"Table_controller/executor_list",
             "dataType": "json",
             "type": "POST",
-            "data":{ 'will_id' : will_id  }
+            "data":{
+              'will_id' : will_id,
+              'page' : 'executor_info'
+            }
           },
+        });
+        $('.table_executor').on( 'draw.dt', function(){
+           if (! table_executor.data().any() ) {
+             $('.table_executor').hide();
+            }
+            else{
+              $('.table_executor').show();
+            }
         });
       }
     });
@@ -220,7 +376,7 @@ $('#add_funeral').click(function(){
               'bDestroy': true
           }).fnDestroy(); // destroy table.
 
-          $('.table_funeral').DataTable({
+          var table_funeral = $('.table_funeral').DataTable({
             "processing": true,
             "serverSide": true,
             "bFilter" : false,
@@ -231,11 +387,30 @@ $('#add_funeral').click(function(){
               "url": base_url+"Table_controller/funeral_list",
               "dataType": "json",
               "type": "POST",
-              "data":{ 'will_id' : will_id  }
+              "data":{
+                'will_id' : will_id,
+                'page' : 'executor_info'
+              }
             },
+          });
+          $('.table_funeral').on( 'draw.dt', function(){
+             if (! table_funeral.data().any() ) {
+               $('.table_funeral').hide();
+              }
+              else{
+                $('.table_funeral').show();
+              }
           });
         }
       });
   }
 });
+
+$('#executor_previous').click(function(){
+    window.location.href = base_url+"Will_controller/assets_info_view";
+});
+$('#executor_next').click(function(){
+    window.location.href = base_url+"Will_controller/witness_info_view";
+});
 // Executor & Funeral JS End........
+});

@@ -38,7 +38,11 @@
       $result = $this->Login_Model->check_valid_mob_email($mob_email);
 
       if($result){
-        $user_id = $result[0]['user_id'];
+        foreach ($result as $result) {
+        }
+        $mail_id = $result['user_email_id'];
+        $mobile_number = $result['user_email_id'];
+        $user_id = $result['user_id'];
         $otp = random_string('nozero',6);
         $current_date = date('d-m-Y');
         $current_time = date('H:i:s');
@@ -52,7 +56,44 @@
           'otp_end_time' => $end_time,
         );
         $this->Login_Model->update_otp($user_id,$update_otp_data);
+        //$this->send_mail($mail_id);
 
+
+        $fields = array(
+            "sender_id" => "FSTSMS",
+            "message" => "Islamic Will OTP: $otp",
+            "language" => "english",
+            "route" => "p",
+            "numbers" => "9021182154",
+        );
+
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => "https://www.fast2sms.com/dev/bulk",
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => "",
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 30,
+          CURLOPT_SSL_VERIFYHOST => 0,
+          CURLOPT_SSL_VERIFYPEER => 0,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => "POST",
+          CURLOPT_POSTFIELDS => json_encode($fields),
+          CURLOPT_HTTPHEADER => array(
+            "authorization: Bh5q8W1QZsOMXykx62ETzFJeGnlu93YimCdNKHIgjVbfUDLrv00qyONVJDaUcY8pR4QdnBbHkjxP13sI",
+            "accept: */*",
+            "cache-control: no-cache",
+            "content-type: application/json"
+          ),
+        ));
+        $res = curl_exec($curl);
+        $err = curl_error($curl);
+        curl_close($curl);
+        // if ($err) {
+        //   echo "cURL Error #:" . $err;
+        // } else {
+        //   echo $res;
+        // }
         $result['responce'] = 'Success';
         $result['user_id'] = $user_id;
         echo json_encode($result);
@@ -62,6 +103,29 @@
         echo json_encode($result);
       }
     }
+
+    public function send_mail($mail_id) {
+      $from_email = "datta@pixelbazar.com";
+      //$to_email = $this->input->post('email');
+      $to_email = $mail_id;
+      //Load email library
+      $this->load->library('email');
+
+      $this->email->from($from_email, 'Your Name');
+      $this->email->to($to_email);
+      $this->email->subject('Email Test');
+      $this->email->message('Testing the email class.');
+
+      //Send mail
+      if($this->email->send()){
+        $this->session->set_flashdata("email_sent","Email sent successfully.");
+      }
+      else{
+        $this->session->set_flashdata("email_sent","Error in sending Email.");
+        $this->load->view('email_form');
+      }
+    }
+
 
     public function login_user(){
       $user_id = $this->input->post('user_id');

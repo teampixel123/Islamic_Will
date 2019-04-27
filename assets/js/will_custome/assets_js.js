@@ -45,7 +45,10 @@ $('.table_family_member').DataTable({
     "url": base_url+"Table_controller/family_member_list",
     "dataType": "json",
     "type": "POST",
-    "data":{ 'will_id' : will_id  }
+    "data":{
+      'will_id' : will_id,
+      'page' : 'assets_info'
+    }
   },
 });
 // End Family Member Js....
@@ -66,7 +69,10 @@ var table_real = $('.table_real_estate').DataTable({
     "url": base_url+"Table_controller/real_estate_list",
     "dataType": "json",
     "type": "POST",
-    "data":{ 'will_id' : will_id  }
+    "data":{
+      'will_id' : will_id,
+      'page' : 'assets_info'
+    }
   },
 });
 
@@ -96,7 +102,10 @@ var table_bank_assets = $('.table_bank_assets').DataTable({
     "url": base_url+"Table_controller/bank_assets_list",
     "dataType": "json",
     "type": "POST",
-    "data":{ 'will_id' : will_id  }
+    "data":{
+      'will_id' : will_id,
+      'page' : 'assets_info'
+    }
   },
 });
 // Check Bank assets empty...
@@ -125,7 +134,10 @@ var table_vehicle = $('.table_vehicle').DataTable({
     "url": base_url+"Table_controller/vehicle_list",
     "dataType": "json",
     "type": "POST",
-    "data":{ 'will_id' : will_id  }
+    "data":{
+      'will_id' : will_id,
+      'page' : 'assets_info'
+    }
   },
 });
 // Check Vehicle assets empty...
@@ -153,7 +165,10 @@ var table_gift = $('.table_gift').DataTable({
     "url": base_url+"Table_controller/gift_list",
     "dataType": "json",
     "type": "POST",
-    "data":{ 'will_id' : will_id  }
+    "data":{
+      'will_id' : will_id,
+      'page' : 'assets_info'
+    }
   },
 });
 $('.table_gift').on( 'draw.dt', function(){
@@ -177,24 +192,24 @@ $('.table_gift, .table_vehicle, .table_bank_assets, .table_real_estate').on( 'dr
 });
 
 // get and fill up Witness Info...
-$('.table_witness').dataTable({
-    'bDestroy': true
-}).fnDestroy(); // destroy table.
-
-$('.table_witness').DataTable({
-  "processing": true,
-  "serverSide": true,
-  "bFilter" : false,
-  "bLengthChange": false,
-  "bPaginate": false,
-  "bInfo": false,
-  "ajax":{
-    "url": base_url+"Table_controller/witness_list",
-    "dataType": "json",
-    "type": "POST",
-    "data":{ 'will_id' : will_id  }
-  },
-});
+// $('.table_witness').dataTable({
+//     'bDestroy': true
+// }).fnDestroy(); // destroy table.
+//
+// $('.table_witness').DataTable({
+//   "processing": true,
+//   "serverSide": true,
+//   "bFilter" : false,
+//   "bLengthChange": false,
+//   "bPaginate": false,
+//   "bInfo": false,
+//   "ajax":{
+//     "url": base_url+"Table_controller/witness_list",
+//     "dataType": "json",
+//     "type": "POST",
+//     "data":{ 'will_id' : will_id  }
+//   },
+// });
 
 // Bank Assets Fields change by selection of Bank assets Type...
   $('#assets_type').change(function(){
@@ -208,12 +223,16 @@ $('.table_witness').DataTable({
 
       $('.hide_name').hide();
       $('#bank_nm').show();
+      $('#key_number').val('');
+      $('#fd_recipt_No').val('');
     }
     else if (assets_type == 'Current A/C') {
       $('.hide_num').hide();
       $('#account_no').show();
       $('.hide_name').hide();
       $('#bank_nm').show();
+      $('#key_number').val('');
+      $('#fd_recipt_No').val('');
     }
     else if (assets_type == 'Fixed Deposits') {
       $('.hide_num').hide();
@@ -221,12 +240,15 @@ $('.table_witness').DataTable({
       $('.hide_name').hide();
       $('#bank_nm').show();
       $('#fd_recipt_No_div').show();
+      $('#key_number').val('');
     }
     else if (assets_type == 'PPF') {
       $('.hide_num').hide();
       $('#customer_id').show();
       $('.hide_name').hide();
       $('#company_name').show();
+      $('#key_number').val('');
+      $('#fd_recipt_No').val('');
     }
     else if (assets_type == 'Bank Locker') {
       $('.hide_num').hide();
@@ -234,24 +256,31 @@ $('.table_witness').DataTable({
       $('.hide_name').hide();
       $('#bank_nm').show();
       $('#key_number_div').show();
+      $('#fd_recipt_No').val('');
     }
     else if (assets_type == 'Mutual Funds') {
       $('.hide_num').hide();
       $('#customer_id').show();
       $('.hide_name').hide();
       $('#company_name').show();
+      $('#key_number').val('');
+      $('#fd_recipt_No').val('');
     }
     else if (assets_type == 'Stock Equities') {
       $('.hide_num').hide();
       $('#serial_no').show();
       $('.hide_name').hide();
       $('#company_name').show();
+      $('#key_number').val('');
+      $('#fd_recipt_No').val('');
     }
     else if (assets_type == 'Insurance Policy') {
       $('.hide_num').hide();
       $('#policy_no').show();
       $('.hide_name').hide();
       $('#insurance_company').show();
+      $('#key_number').val('');
+      $('#fd_recipt_No').val('');
     }
     //alert(assets_type);
   });
@@ -530,7 +559,7 @@ $('.table_witness').DataTable({
            type: "post",
            url: base_url+"Will_controller/save_assets",
            success: function (data){
-
+              $("#success_save_real").show().delay(5000).fadeOut();
              $('.clear').val('');
              $('.clear_dr').val(0);
              // get and fill up Funeral...
@@ -549,7 +578,10 @@ $('.table_witness').DataTable({
                  "url": base_url+"Table_controller/real_estate_list",
                  "dataType": "json",
                  "type": "POST",
-                 "data":{ 'will_id' : will_id  }
+                 "data":{
+                   'will_id' : will_id,
+                   'page' : 'assets_info'
+                 }
                },
              });
              // Check Bank assets empty...
@@ -562,6 +594,95 @@ $('.table_witness').DataTable({
                    $('#error_add_assets').hide();
                    $('#assets_next').prop('disabled', false);
                  }
+             });
+           }
+         });
+    	}
+	});
+
+  //	Update Real Estate... Datta...
+	$('#update_real_estate').click(function(){
+     var estate_type = $('#estate_type').val();
+     var house_no = $('#house_no').val();
+     var survey_number = $('#survey_number').val();
+     var measurment_area = $('#measurment_area').val();
+     var measurment_unit = $('#measurment_unit').val();
+     var estate_address = $('#estate_address').val();
+     var estate_city = $('#estate_city').val();
+     var estate_pin = $('#estate_pin').val();
+     var estate_pin_format = /^[0-9]{6}$/;
+     var estate_country = $('#estate_country').val();
+     var estate_state = $('#estate_state').val();
+
+     if(estate_type == '0'){
+       $('#error_estate_type').show();
+     }
+     if(house_no == ''){
+       $('#error_house_no').show();
+     }
+     if(survey_number == ''){
+       $('#error_survey_number').show();
+     }
+     if(measurment_area == ''){
+       $('#error_measurment_area').show();
+     }
+     if(measurment_unit == '0'){
+       $('#error_measurment_unit').show();
+     }
+     if(estate_address == ''){
+       $('#error_estate_address').show();
+     }
+     if(estate_city == ''){
+       $('#error_estate_city').show();
+     }
+     if(estate_pin == ''){
+       $('#error_estate_pin').show();
+     }
+     if(estate_country == ''){
+       $('#error_estate_country').show();
+     }
+     if(estate_state == ''){
+       $('#error_estate_state').show();
+     }
+
+     if(estate_type == '0' || house_no == '' || survey_number == '' || measurment_area == '' || measurment_unit == '0' ||
+   estate_address == '' || estate_city == '' || estate_pin == '' || estate_country == '' || estate_state == ''){
+     // Blank....
+     }
+     else {
+  			 $('.valide').hide();
+         var form_data = $('#assets_form').serialize();
+         $.ajax({
+           data: form_data,
+           type: "post",
+           url: base_url+"Will_controller/update_real_estate",
+           success: function (data){
+             $("#success_update_real").show().delay(5000).fadeOut();
+             $('#add_assets').show();
+             $('#update_real_estate').addClass('d-none');
+             $('.clear').val('');
+             $('.clear_dr').val(0);
+             // get and fill up Funeral...
+             $('.table_real_estate').dataTable({
+                 'bDestroy': true
+             }).fnDestroy(); // destroy table.
+
+            var table_real = $('.table_real_estate').DataTable({
+               "processing": true,
+               "serverSide": true,
+               "bFilter" : false,
+               "bLengthChange": false,
+               "bPaginate": false,
+               "bInfo": false,
+               "ajax":{
+                 "url": base_url+"Table_controller/real_estate_list",
+                 "dataType": "json",
+                 "type": "POST",
+                 "data":{
+                   'will_id' : will_id,
+                   'page' : 'assets_info'
+                 }
+               },
              });
            }
          });
@@ -608,7 +729,7 @@ $('.table_witness').DataTable({
          type: "post",
          url: base_url+"Will_controller/save_bank_assets",
          success: function (data){
-
+           $("#success_save_bank").show().delay(5000).fadeOut();
             $('.clear').val('');
             $('.clear_dr').val(0);
             // get and fill up Funeral...
@@ -627,7 +748,10 @@ $('.table_witness').DataTable({
                "url": base_url+"Table_controller/bank_assets_list",
                "dataType": "json",
                "type": "POST",
-               "data":{ 'will_id' : will_id  }
+               "data":{
+                 'will_id' : will_id,
+                 'page' : 'assets_info'
+               }
              },
            });
            // Check Bank assets empty...
@@ -647,7 +771,80 @@ $('.table_witness').DataTable({
      }
 	});
 
-  //	Save/Add Bank Assets...
+  //	Update Bank Assets...
+  $('#update_bank_assets').click(function(){
+    var assets_type = $('#assets_type').val();
+    var account_number = $('#account_number').val();
+    var bank_name = $('#bank_name').val();
+    var branch_name = $('#branch_name').val();
+    var fd_recipt_No = $('#fd_recipt_No').val();
+    var key_number = $('#key_number').val();
+
+    if(assets_type == '0'){
+      $('#error_assets_type').show();
+    }
+    if(account_number == ''){
+      $('#error_account_number').show();
+    }
+    if(bank_name == ''){
+      $('#error_bank_name').show();
+    }
+    if(branch_name == ''){
+      $('#error_branch_name').show();
+    }
+     // if(assets_type == 'Bank Locker'){
+    // }
+    if(assets_type == '0' || account_number == '' || bank_name == '' || branch_name == ''){
+    }
+    else {
+      if(assets_type == 'Bank Locker' && key_number == ''){
+        $('#error_key_number').show();
+      }
+      else if(assets_type == 'Fixed Deposits' && fd_recipt_No == ''){
+        $('#error_fd_recipt_No').show();
+      }
+      else{
+        $('.valide').hide();
+        var form_data = $('#bank_assets_form').serialize();
+       $.ajax({
+         data: form_data,
+         type: "post",
+         url: base_url+"Will_controller/update_bank_assets",
+         success: function (data){
+           $("#success_update_bank").show().delay(5000).fadeOut();
+           $('#add_bank_assets').show();
+           $('#update_bank_assets').addClass('d-none');
+            $('.clear').val('');
+            $('.clear_dr').val(0);
+            // get and fill up Funeral...
+            $('.table_bank_assets').dataTable({
+               'bDestroy': true
+           }).fnDestroy(); // destroy table.
+
+            var table_bank_assets = $('.table_bank_assets').DataTable({
+              "processing": true,
+              "serverSide": true,
+              "bFilter" : false,
+              "bLengthChange": false,
+              "bPaginate": false,
+              "bInfo": false,
+              "ajax":{
+               "url": base_url+"Table_controller/bank_assets_list",
+               "dataType": "json",
+               "type": "POST",
+               "data":{
+                 'will_id' : will_id,
+                 'page' : 'assets_info'
+               }
+             },
+           });
+         }
+       });
+      }
+     }
+  });
+
+  //	Save/Add Vehicle Assets...
   $('#add_vehicle_assets').click(function(){
         var vehicle_model = $('#vehicle_model').val();
         var vehicle_make_year = $('#vehicle_make_year').val();
@@ -675,7 +872,7 @@ $('.table_witness').DataTable({
       type: "post",
       url: base_url+"Will_controller/save_vehicle_assets",
       success: function (data){
-
+        $("#success_save_vehicle").show().delay(5000).fadeOut();
         $('.clear').val('');
         $('.clear_dr').val(0);
         // get and fill up Vehicle...
@@ -694,7 +891,10 @@ $('.table_witness').DataTable({
             "url": base_url+"Table_controller/vehicle_list",
             "dataType": "json",
             "type": "POST",
-            "data":{ 'will_id' : will_id  }
+            "data":{
+              'will_id' : will_id,
+              'page' : 'assets_info'
+            }
           },
         });
         // Check Vehicle assets empty...
@@ -713,7 +913,67 @@ $('.table_witness').DataTable({
   }
   });
 
-  //	Save/Add Bank Assets...
+  //	Update Vehicle Assets...
+  $('#update_vehicle_assets').click(function(){
+        var vehicle_model = $('#vehicle_model').val();
+        var vehicle_make_year = $('#vehicle_make_year').val();
+        var registration_number = $('#registration_number').val();
+
+        if(vehicle_model == ''){
+          $('#error_vehicle_model').show();
+        }
+
+        if(vehicle_make_year == ''){
+          $('#error_vehicle_make_year').show();
+        }
+
+        if(registration_number == ''){
+          $('#error_registration_number').show();
+        }
+        if(vehicle_model == '' || vehicle_make_year == '' || registration_number == ''){
+          // Blank...
+        }
+        else {
+          $('.valide').hide();
+          var form_data = $('#vehicle_assets_form').serialize();
+          $.ajax({
+            data: form_data,
+            type: "post",
+            url: base_url+"Will_controller/update_vehicle_assets",
+            success: function (data){
+              $("#success_update_vehicle").show().delay(5000).fadeOut();
+              $('#add_vehicle_assets').show();
+              $('#update_vehicle_assets').addClass('d-none');
+              $('.clear').val('');
+              $('.clear_dr').val(0);
+              // get and fill up Vehicle...
+              $('.table_vehicle').dataTable({
+                  'bDestroy': true
+              }).fnDestroy(); // destroy table.
+
+            var table_vehicle =  $('.table_vehicle').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "bFilter" : false,
+                "bLengthChange": false,
+                "bPaginate": false,
+                "bInfo": false,
+                "ajax":{
+                  "url": base_url+"Table_controller/vehicle_list",
+                  "dataType": "json",
+                  "type": "POST",
+                  "data":{
+                    'will_id' : will_id,
+                    'page' : 'assets_info'
+                  }
+                },
+              });
+            }
+          });
+  }
+  });
+
+  //	Save/Add Gift Assets...
 	$('#add_other_gift_assets').click(function(){
     var gift_type = $('#gift_type').val();
     var gift_description = $('#gift_description').val();
@@ -738,7 +998,7 @@ $('.table_witness').DataTable({
   		type: "post",
   		url: base_url+"Will_controller/save_other_gift_assets",
   		success: function (data){
-
+        $("#success_save_gift").show().delay(5000).fadeOut();
         $('.clear').val('');
         $('.clear_dr').val(0);
         // get and fill up Gift Info...
@@ -757,7 +1017,10 @@ $('.table_witness').DataTable({
       			"url": base_url+"Table_controller/gift_list",
       			"dataType": "json",
       			"type": "POST",
-      			"data":{ 'will_id' : will_id  }
+            "data":{
+              'will_id' : will_id,
+              'page' : 'assets_info'
+            }
       		},
       	});
         $('.table_gift').on( 'draw.dt', function(){
@@ -777,6 +1040,63 @@ $('.table_witness').DataTable({
   }
 	});
 
+  //	Update Gift Assets...
+  $('#update_other_gift_assets').click(function(){
+    var gift_type = $('#gift_type').val();
+    var gift_description = $('#gift_description').val();
+
+    if(gift_type == '0'){
+      $('#error_gift_type').show();
+    }
+
+    if(gift_description == ''){
+      $('#error_gift_description').show();
+    }
+
+    if(gift_type == '0' || gift_description == ''){
+
+    }
+    else {
+    $('.valide').hide();
+    var form_data = $('#other_gift_assets_form').serialize();
+    $.ajax({
+      data: form_data,
+      type: "post",
+      url: base_url+"Will_controller/update_other_gift_assets",
+      success: function (data){
+        $("#success_update_gift").show().delay(5000).fadeOut();
+        $('.clear').val('');
+        $('.clear_dr').val(0);
+        // get and fill up Gift Info...
+        $('.table_gift').dataTable({
+            'bDestroy': true
+        }).fnDestroy(); // destroy table.
+
+        var table_gift = $('.table_gift').DataTable({
+          "processing": true,
+          "serverSide": true,
+          "bFilter" : false,
+          "bLengthChange": false,
+          "bPaginate": false,
+          "bInfo": false,
+          "ajax":{
+            "url": base_url+"Table_controller/gift_list",
+            "dataType": "json",
+            "type": "POST",
+            "data":{
+              'will_id' : will_id,
+              'page' : 'assets_info'
+            }
+          },
+        });
+      }
+    });
+  }
+  });
+
+  $('#assets_previous').click(function(){
+      window.location.href = base_url+"Will_controller/family_info_view";
+  });
   $('#assets_next').click(function(){
       window.location.href = base_url+"Will_controller/executor_funeral_view";
   });

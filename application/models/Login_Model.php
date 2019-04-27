@@ -5,7 +5,7 @@
       $this->db->insert('tbl_user',$register_data);
     }
     public function check_valid_mob_email($mob_email){
-      $this->db->select('user_id');
+      $this->db->select('*');
       $this->db->from('tbl_user');
       $this->db->where('user_mobile_number =',$mob_email);
       $this->db->or_where('user_email_id =',$mob_email);

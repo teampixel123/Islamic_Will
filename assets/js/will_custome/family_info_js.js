@@ -1,3 +1,4 @@
+$(document).ready(function(){
 var will_id = $('#will_id').val();
 // Fill up personal data on page load...
 $.ajax({
@@ -56,13 +57,12 @@ var table =  $('.table_family_member').DataTable({
       "url": base_url+"Table_controller/family_member_list",
       "dataType": "json",
       "type": "POST",
-      "data":{ 'will_id' : will_id  }
+      "data":{
+        'will_id' : will_id,
+        'page' : 'family_info'
+      }
     },
   });
-// Family Member Js....
-//var count_row = $('.table_family_member').DataTable().rows().any();
-//var count_row = table.data().count();
-//var count_row = $('#table_family_member >tbody >tr').length;
 
 $('.table_family_member').on( 'draw.dt', function(){
    if (! table.data().any() ) {
@@ -76,9 +76,6 @@ $('.table_family_member').on( 'draw.dt', function(){
       $('#error_add_member').hide();
     }
 });
-//alert(count_row);
-
-
 
 $('#family_person_dob').datetimepicker({
   format: 'dd-mm-yyyy',
@@ -93,8 +90,6 @@ $('#family_person_dob').datetimepicker({
 });
 
 $('#family_person_dob').datetimepicker().on('changeDate', function(ev){
-  // Get Today date...
-  //$('.datepicker').hide();
   var today = new Date();
   var dd = today.getDate();
   var mm = today.getMonth() + 1; //January is 0!
@@ -129,15 +124,14 @@ $('#family_person_dob').datetimepicker().on('changeDate', function(ev){
       $('#family_person_age_format').val('Month');
     }
 
-    if((title == 'Father' || title == 'Mother' || title == 'Spouse') && years < 18){
+    if((title == 'Father' || title == 'Mother' || title == 'Spouse' || title == 'Grand Father' || title == 'Grand Mother') && years < 18){
       $('#invalide_family_person_dob').show();
       $('#family_person_dob').val('');
       $('#age_div').hide();
     }
-    if((title == 'Father' || title == 'Mother' || title == 'Spouse') && years > 18){
+    if(years >= 18){
+      $('#is_minar').val('0');
       $('#invalide_family_person_dob').hide();
-    }
-    if(title == 'Father' || title == 'Mother' || title == 'Spouse' || years > 18){
       $('#guardian_name').val('');
       $('#guardian_address').val('');
       $('#mother_of_minar').val('');
@@ -174,7 +168,7 @@ $('#relationship').change(function(){
   $('#guardian_address').val('');
   $('#age_div').hide();
   $('#guardian_div').hide();
-  //alert();
+  $('#invalide_family_person_dob').hide();
 });
 
 //  strat ob blur validation asif
@@ -208,16 +202,6 @@ $("#family_person_age").blur(function(){
       $('#error_family_person_age').hide();
     }
 });
-
-// $("#family_person_dob").blur(function(){
-//   var family_person_dob = $('#family_person_dob').val();
-//   if(family_person_dob == ''){
-//     $('#error_family_person_dob').show();
-//   }
-//   else{
-//       $('#error_family_person_dob').hide();
-//     }
-// });
 
 $("#guardian_name").blur(function(){
   var guardian_name = $('#guardian_name').val();
@@ -265,11 +249,17 @@ $('#add_family_member').click(function(){
   if(family_person_dob == ''){
     $('#error_family_person_dob').show();
   }
-  if((relationship == 'Son' || relationship == 'Daughter' || relationship == 'Brother' || relationship == 'Sister') && guardian_name == '' && years < 18){
+  if((relationship == 'Son' || relationship == 'Daughter' || relationship == 'Brother' || relationship == 'Sister') && guardian_name == '' && family_person_age < 18){
     $('#error_guardian_name').show();
   }
-  if((relationship == 'Son' || relationship == 'Daughter' || relationship == 'Brother' || relationship == 'Sister') && (!guardian_name_format.test(guardian_name) || guardian_name == '')  && years < 18){
+
+  if((relationship == 'Son' || relationship == 'Daughter' || relationship == 'Brother' || relationship == 'Sister') && (!guardian_name_format.test(guardian_name) || guardian_name == '')  && family_person_age < 18){
     $('#error_guardian_name').show();
+  }
+
+  if(relationship == '0' || !family_person_name_format.test(family_person_name) || family_person_name == '' || family_person_dob == '' || family_person_age == '' ||
+(guardian_name == '' && family_person_age < 18)){
+
   }
   else {
      $('.valide').hide();
@@ -294,6 +284,7 @@ $('#add_family_member').click(function(){
          $('.clear').val('');
          $('.clear_dr').val(0);
          $('#guardian_div').hide();
+         $("#success_save_member").show().delay(5000).fadeOut();
 
          var will_id = $('#will_id').val();
          $('.table_family_member').dataTable({
@@ -311,7 +302,10 @@ $('#add_family_member').click(function(){
               "url": base_url+"Table_controller/family_member_list",
               "dataType": "json",
               "type": "POST",
-              "data":{ 'will_id' : will_id  }
+              "data":{
+                'will_id' : will_id,
+                'page' : 'family_info'
+              }
            },
          });
 
@@ -333,6 +327,84 @@ $('#add_family_member').click(function(){
     }
 });
 
+//	Update Family Member.. Datta...
+$('#update_family_member').click(function(){
+  var relationship = $('#relationship').val();
+  var family_person_name = $('#family_person_name').val();
+  var family_person_age = $('#family_person_age').val();
+  var family_person_dob = $('#family_person_dob').val();
+  var guardian_name = $('#guardian_name').val();
+  var guardian_address = $('#guardian_address').val();
+  var family_person_name_format =  /^[a-zA-Z ]*$/;
+  var guardian_name_format =  /^[a-zA-Z ]*$/;
+
+  if(relationship == '0'){
+    $('#error_relationship').show();
+  }
+  if(!family_person_name_format.test(family_person_name) || family_person_name == ''){
+    $('#error_family_person_name').show();
+  }
+  if(family_person_age == ''){
+    $('#error_family_person_age').show();
+  }
+  if(family_person_dob == ''){
+    $('#error_family_person_dob').show();
+  }
+  if((relationship == 'Son' || relationship == 'Daughter' || relationship == 'Brother' || relationship == 'Sister') && guardian_name == '' && family_person_age < 18){
+    $('#error_guardian_name').show();
+  }
+
+  if((relationship == 'Son' || relationship == 'Daughter' || relationship == 'Brother' || relationship == 'Sister') && (!guardian_name_format.test(guardian_name) || guardian_name == '')  && family_person_age < 18){
+    $('#error_guardian_name').show();
+  }
+
+  if(relationship == '0' || !family_person_name_format.test(family_person_name) || family_person_name == '' || family_person_dob == '' || family_person_age == '' ||
+(guardian_name == '' && family_person_age < 18)){
+
+  }
+  else {
+     $('.valide').hide();
+
+     var form_data = $('#family_member_form').serialize();
+     $.ajax({
+       data: form_data,
+       type: "post",
+       url: base_url+"Will_controller/update_family_member",
+       success: function (data){
+         $('.clear').val('');
+         $('.clear_dr').val(0);
+         $('#guardian_div').hide();
+         $('#update_family_member').addClass('d-none');
+         $('#add_family_member').show();
+         $("#success_update_member").show().delay(5000).fadeOut();
+
+         var will_id = $('#will_id').val();
+         $('.table_family_member').dataTable({
+             'bDestroy': true
+         }).fnDestroy(); // destroy table.
+
+         var table = $('.table_family_member').DataTable({
+           "processing": true,
+           "serverSide": true,
+           "bFilter" : false,
+           "bLengthChange": false,
+           "bPaginate": false,
+           "bInfo": false,
+           "ajax":{
+              "url": base_url+"Table_controller/family_member_list",
+              "dataType": "json",
+              "type": "POST",
+              "data":{
+                'will_id' : will_id,
+                'page' : 'family_info'
+              }
+           },
+         });
+       }
+     });
+    }
+});
+
 // Check For Miner child have or not... and set in tbl_will table...
 $('#family_next').click(function(){
   $.ajax({
@@ -341,6 +413,10 @@ $('#family_next').click(function(){
     success: function (data){
       window.location.href = base_url+"Will_controller/assets_info_view";
     }
+  });
+});
+$('#family_previous').click(function(){
+      window.location.href = base_url+"Will_controller/personal_info_view";
 });
 });
 

@@ -9,6 +9,11 @@
       $this->load->helper('string');
     }
 
+    public function demo_page(){
+      $this->session->sess_destroy();
+      $this->load->view('pages/demo_page');
+    }
+
     public function index(){
       $this->session->sess_destroy();
       $this->load->view('pages/start_will');
@@ -119,25 +124,6 @@
         header('Location:login');
       }
     }
-
-    /*public function store_start_info(){
-      $gender = $this->input->post('gender');
-      $is_married = $this->input->post('is_married');
-      $is_have_child = $this->input->post('is_have_child');
-
-      $start_will_info = array(
-                            'gender' => $gender,
-                            'is_married' => $is_married,
-                            'is_have_child' => $is_have_child,
-                          );
-      $this->session->set_userdata('start_will_info',$start_will_info);
-      header('Location: personal_info_view');
-    }*/
-
-    /**************************************************************/
-    /*            save personal info.... datta...                 */
-    /**************************************************************/
-
 
  public function pdf_view2(){
   $this->load->view('pages/pdf');
@@ -326,9 +312,35 @@
         $key = 1;
         $this->Will_Model->update_have_miner($will_id,$key);//is_have_minar_child
       }
-      //$list = $this->Will_Model->get_family_member_list($will_id);
-      //echo json_encode($list);
     }
+
+    /**************************************************************/
+    /*            Update Family Member... datta...             */
+    /**************************************************************/
+    public function update_family_member(){
+      $will_id = $this->session->userdata('will_id');
+      $memberId = $this->input->post('memberId');
+      $update_member_data = array(
+                  'relationship' => $this->input->post('relationship'),
+                  'family_person_name' => $this->input->post('family_person_name'),
+                  'family_person_dob' => $this->input->post('family_person_dob'),
+                  'family_person_age' => $this->input->post('family_person_age'),
+                  'family_person_age_format' => $this->input->post('family_person_age_format'),
+                  'is_minar' => $this->input->post('is_minar'),
+                  'mother_of_minar' => $this->input->post('mother_of_minar'),
+                  'guardian_name' => $this->input->post('guardian_name'),
+                  'guardian_address' => $this->input->post('guardian_address'),
+                  'opt_guardian_name' => $this->input->post('opt_guardian_name'),
+                  'opt_guardian_address' => $this->input->post('opt_guardian_address'),
+                );
+        //echo print_r($member_data);
+      $this->Will_Model->update_family_member($memberId,$will_id,$update_member_data);
+      if($this->input->post('is_minar') == 1){
+        $key = 1;
+        $this->Will_Model->update_have_miner($will_id,$key);//is_have_minar_child
+      }
+    }
+
 
     public function update_have_miner(){
       $will_id = $this->session->userdata('will_id');
@@ -424,6 +436,28 @@
     }
 
     /**************************************************************/
+    /*            Update Real Estate Assets... datta...             */
+    /**************************************************************/
+    public function update_real_estate(){
+      $will_id = $this->session->userdata('will_id');
+      $real_estateId = $this->input->post('real_estateId');
+      $update_assets_data = array(
+                  'estate_type' => $this->input->post('estate_type'),
+                  'house_no' => $this->input->post('house_no'),
+                  'survey_number' => $this->input->post('survey_number'),
+                  'measurment_area' => $this->input->post('measurment_area'),
+                  'measurment_unit' => $this->input->post('measurment_unit'),
+                  'estate_address' => $this->input->post('estate_address'),
+                  'estate_city' => $this->input->post('estate_city'),
+                  'estate_pin' => $this->input->post('estate_pin'),
+                  'estate_state' => $this->input->post('estate_state'),
+                  'estate_country' => $this->input->post('estate_country'),
+                );
+      $this->Will_Model->update_real_estate($real_estateId,$will_id,$update_assets_data);
+    }
+
+
+    /**************************************************************/
     /*            Delete Real Estate Assets... datta...             */
     /**************************************************************/
     public function delete_real_estate(){
@@ -469,6 +503,42 @@
       $this->Will_Model->save_bank_assets($bank_assets_data);
     }
 
+    /**************************************************************/
+    /*            Update Bank Assets... datta...             */
+    /**************************************************************/
+    public function update_bank_assets(){
+      $will_id = $this->session->userdata('will_id');
+      $assets_type = $this->input->post('assets_type');
+      $bank_assets_id = $this->input->post('bank_assets_id');
+      if($assets_type=='Fixed Deposits'){
+        $update_bank_assets_data = array(
+          'assets_type' => $this->input->post('assets_type'),
+          'account_number' => $this->input->post('account_number'),
+          'bank_name' => $this->input->post('bank_name'),
+          'branch_name' => $this->input->post('branch_name'),
+          'fd_recipt_No' => $this->input->post('fd_recipt_No'),
+        );
+      }
+      elseif ($assets_type=='Bank Locker') {
+        $update_bank_assets_data = array(
+          'assets_type' => $this->input->post('assets_type'),
+          'account_number' => $this->input->post('account_number'),
+          'bank_name' => $this->input->post('bank_name'),
+          'branch_name' => $this->input->post('branch_name'),
+          'key_number' => $this->input->post('key_number'),
+        );
+      }
+      else{
+        $update_bank_assets_data = array(
+          'assets_type' => $this->input->post('assets_type'),
+          'account_number' => $this->input->post('account_number'),
+          'bank_name' => $this->input->post('bank_name'),
+          'branch_name' => $this->input->post('branch_name'),
+        );
+      }
+      $this->Will_Model->update_bank_assets($bank_assets_id,$will_id,$update_bank_assets_data);
+    }
+
     public function delete_bank_assets(){
       $id = $this->input->post('id');
       $this->Will_Model->delete_bank_assets($id);
@@ -486,6 +556,20 @@
                   'registration_number' => $this->input->post('registration_number'),
                 );
       $this->Will_Model->save_vehicle_assets($vehicle_assets_data);
+    }
+
+    /**************************************************************/
+    /*            Update Vehicle... datta...             */
+    /**************************************************************/
+    public function update_vehicle_assets(){
+      $will_id = $this->session->userdata('will_id');
+      $vehicle_Id = $this->input->post('vehicle_Id');
+      $update_vehicle_data = array(
+                  'vehicle_model' => $this->input->post('vehicle_model'),
+                  'vehicle_make_year' => $this->input->post('vehicle_make_year'),
+                  'registration_number' => $this->input->post('registration_number'),
+                );
+      $this->Will_Model->update_vehicle_assets($vehicle_Id,$will_id,$update_vehicle_data);
     }
 
     /**************************************************************/
@@ -507,6 +591,19 @@
                   'gift_description' => $this->input->post('gift_description'),
                 );
       $this->Will_Model->save_other_gift_assets($other_gift_assets_data);
+    }
+
+    /**************************************************************/
+    /*            Update Gift Assets... datta...             */
+    /**************************************************************/
+    public function update_other_gift_assets(){
+      $will_id = $this->session->userdata('will_id');
+      $gift_Id = $this->input->post('gift_Id');
+      $other_gift_assets_data = array(
+                  'gift_type' => $this->input->post('gift_type'),
+                  'gift_description' => $this->input->post('gift_description'),
+                );
+      $this->Will_Model->update_other_gift_assets($gift_Id,$will_id,$other_gift_assets_data);
     }
 
     /**************************************************************/

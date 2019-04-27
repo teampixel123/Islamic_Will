@@ -95,6 +95,11 @@
     public function save_family_member($data){
       $this->db->insert('tbl_family_info',$data);
     }
+    public function update_family_member($memberId,$will_id,$update_member_data){
+      $this->db->where('id',$memberId);
+      $this->db->where('will_id',$will_id);
+      $this->db->update('tbl_family_info',$update_member_data);
+    }
     public function display_family_info(){
       $this->db->select('*');
       $this->db->from('tbl_family_info');
@@ -166,7 +171,12 @@
     public function save_assets($data){
       $this->db->insert('tbl_real_estate',$data);
     }
-
+    //	Update Real Estate Assets... Datta...
+    public function update_real_estate($real_estateId,$will_id,$update_assets_data){
+      $this->db->where('id',$real_estateId);
+      $this->db->where('will_id',$will_id);
+      $this->db->update('tbl_real_estate',$update_assets_data);
+    }
 
     // Delete Real Estate Assets...
     public function delete_real_estate($id){
@@ -177,7 +187,12 @@
     public function save_bank_assets($data){
       $this->db->insert('tbl_bank_assets',$data);
     }
-
+    //	Update Bank Assets... Datta...
+    public function update_bank_assets($bank_assets_id,$will_id,$update_bank_assets_data){
+      $this->db->where('id',$bank_assets_id);
+      $this->db->where('will_id',$will_id);
+      $this->db->update('tbl_bank_assets',$update_bank_assets_data);
+    }
     //	Delete Bank Assets...
     public function delete_bank_assets($id){
       $this->db->where('id',$id);
@@ -188,7 +203,12 @@
     public function save_other_gift_assets($data){
       $this->db->insert('tbl_other_gift',$data);
     }
-
+    //	Update Gift Assets... Datta...
+    public function update_other_gift_assets($gift_Id,$will_id,$other_gift_assets_data){
+      $this->db->where('id',$gift_Id);
+      $this->db->where('will_id',$will_id);
+      $this->db->update('tbl_other_gift',$other_gift_assets_data);
+    }
     //	Delete Gift Assets...
     public function delete_gift($id){
       $this->db->where('id',$id);
@@ -199,7 +219,12 @@
     public function save_vehicle_assets($data){
       $this->db->insert('tbl_vehicle',$data);
     }
-
+    //	Update vehicle Assets... Datta...
+    public function update_vehicle_assets($vehicle_Id,$will_id,$update_vehicle_data){
+      $this->db->where('id',$vehicle_Id);
+      $this->db->where('will_id',$will_id);
+      $this->db->update('tbl_vehicle',$update_vehicle_data);
+    }
     //	Delete Vehicle Assets...
     public function delete_vehicle($id){
       $this->db->where('id',$id);

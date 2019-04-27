@@ -27,7 +27,6 @@
 </ul>
 </div>
  <!-- end status bar -->
-
 <!-- family info containner start -->
 <?php $start_will_data = $this->session->userdata() ?>
 <div class="container">
@@ -35,12 +34,13 @@
 	<!--action="<?php echo base_url(); ?>/Will_controller/save_personal_info"-->
 <!-- <h1 class="heading">Family Information</h1> --><br>
   <div class="row">
-    <div class="col-md-6  ">
+    <div class="col-md-6">
   	<div id="box" class="personal_info1"style="margin-right: -15px;" >
   		<form class="" id="family_member_form" method="post">
+        <input type="hidden" name="is_minar" id="is_minar" class="form-control clear"  aria-describedby="emailHelp" >
+      <input type="hidden" id="memberId" name="memberId" value="" />
       <fieldset>
-        	<h3 class=" text-left">Family Information </h3><br>
-
+      <h3 class=" text-left">Family Information </h3><br>
       <div class="form-group">
         <div class="row text-center">
           <label class="col-md-3 text-right" for="exampleInputEmail1">Relation</label>
@@ -54,8 +54,8 @@
     					 <option id="Daugther">Daughter</option>
     					 <option>Brother</option>
     					 <option>Sister</option>
-    					 <option>Grand Mother</option>
     					 <option>Grand Father</option>
+    					 <option>Grand Mother</option>
   				 </select>
            <p id="error_relationship" style="color:red; display:none" class="text-left valide">*This field is required.</p>
           </div>
@@ -76,7 +76,7 @@
         <div class="row text-center">
           <label class="col-md-3 text-right" for="exampleInputEmail1">Date of Birth</label>
   				<div class="col-md-9">
-  					<input type="text" name="family_person_dob" id="family_person_dob" class="form-control clear"  aria-describedby="emailHelp" >
+  					<input type="text" name="family_person_dob" id="family_person_dob" class="form-control clear"  autocomplete="off" >
             <p id="error_family_person_dob" style="color:red; display:none" class="text-left valide">*This field is required.</p>
             <p id="invalide_family_person_dob" style="color:red; display:none" class="text-left valide">*Invalide Date For Father/Mother/Wife.</p>
           </div>
@@ -87,22 +87,21 @@
         <div class="row text-center">
           <label class="col-md-3 text-right" for="exampleInputEmail1">Age:</label>
           <div class="col-md-5">
-  					<input type="text" name="family_person_age" id="family_person_age" class="form-control clear"  aria-describedby="emailHelp" >
+  					<input type="text" name="family_person_age" id="family_person_age" class="form-control clear" readonly >
             <p id="error_family_person_age" style="color:red; display:none" class="text-left valide">*This field is required.</p>
           </div>
           <div class="col-md-4">
-  					<input type="text" name="family_person_age_format" id="family_person_age_format" class="form-control clear"  aria-describedby="emailHelp" readonly >
+  					<input type="text" name="family_person_age_format" id="family_person_age_format" class="form-control clear" readonly >
           </div>
         </div>
       </div>
 
       <div id="guardian_div" style="display:none">
-    		<input type="hidden" name="is_minar" id="is_minar" class="form-control clear"  aria-describedby="emailHelp" >
         <div class="form-group" id="">
           <div class="row text-center">
-            <label class="col-md-3 text-right" for="exampleInputEmail1">Mother of Minar</label>
+            <label class="col-md-3 text-right" for="exampleInputEmail1">Mother of Minor</label>
             <div class="col-md-9">
-              <input type="text" name="mother_of_minar" id="mother_of_minar" class="form-control clear" placeholder="Name of minar child's mother" >
+              <input type="text" name="mother_of_minar" id="mother_of_minar" class="form-control clear" placeholder="Name of minor child's mother" >
               <p id="error_mother_of_minar" style="color:red; display:none" class="text-left valide">*This field is required.</p>
             </div>
           </div>
@@ -158,11 +157,16 @@
       </div>
       </fieldset>
   		</form>
+
       <p>  <button  id="add_family_member" class="btn btn-success" >Add</button></p>
+      <p>  <button  id="update_family_member" class="btn btn-info float-right d-none" >Update</button></p>
       <br><br>
+      <p id="success_update_member" style="color:green; display:none" class="text-left valide">*Information updated successfully.</p>
+      <p id="success_save_member" style="color:green; display:none" class="text-left valide">*Information Saved successfully.</p>
   </div>
   <p id="error_add_member" style="color:red; display:none" class="text-left valide">*Add family information for next.</p>
-  <p>  <a href="<?php echo base_url() ?>/Will_controller/personal_info_view" type="button" id="family_previous" class="btn btn-info">Previous</a>
+
+  <p>  <button id="family_previous" class="btn btn-info">Previous</button>
   <!-- <button type="button" id="destroy" class="btn btn-danger">Clear session</button> -->
   <button id="family_next" class="btn btn-info" style="float:right;" >Next</button></p>
   </div>
@@ -174,7 +178,11 @@
         <table id="table_personal_info" class=" personal_data_dispaly table_personal_info">
           <thead>
             <tr>
-              <th>Personal Info <br>
+              <th>Personal Info
+                <button style="float:right;" type='button'  class='badge1 badge-pill' title='Delete Family Member'>
+                  <a id='per_info' href="<?php echo base_url(); ?>Will_controller/personal_info_view" class='badge1' title='Delete Family Member'><i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
+                </button>
+                <br>
                 <hr>
               </th>
             </tr>

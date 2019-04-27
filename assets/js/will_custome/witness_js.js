@@ -1,3 +1,4 @@
+$(document).ready(function(){
 var will_id = $('#will_id').val();
 // Fill up personal data on page load...
 $.ajax({
@@ -26,11 +27,6 @@ $('.table_personal_info').DataTable({
   "bLengthChange": false,
   "bPaginate": false,
   "bInfo": false,
-  //"aoColumns": [{"bSortable": false}, null],
-  // "bSortable": false,
-  // "bSearchable": false,
-  // "aoColumnDefs": [{ "bSortable": false, "aTargets": [ 0, 1, 2, 3 ] },
-  //               { "bSearchable": false, "aTargets": [ 0, 1, 2, 3 ] }
 });
 
 // get and fill up family member list...
@@ -49,7 +45,10 @@ var table = $('.table_family_member').DataTable({
     "url": base_url+"Table_controller/family_member_list",
     "dataType": "json",
     "type": "POST",
-    "data":{ 'will_id' : will_id  }
+    "data":{
+      'will_id' : will_id,
+      'page' : 'witness_info'
+    }
   },
 });
 $('.table_family_member').on( 'draw.dt', function(){
@@ -77,7 +76,10 @@ var table_executor = $('.table_executor').DataTable({
     "url": base_url+"Table_controller/executor_list",
     "dataType": "json",
     "type": "POST",
-    "data":{ 'will_id' : will_id  }
+    "data":{
+      'will_id' : will_id,
+      'page' : 'witness_info'
+    }
   },
 });
 $('.table_executor').on( 'draw.dt', function(){
@@ -104,7 +106,10 @@ var table_funeral = $('.table_funeral').DataTable({
     "url": base_url+"Table_controller/funeral_list",
     "dataType": "json",
     "type": "POST",
-    "data":{ 'will_id' : will_id  }
+    "data":{
+      'will_id' : will_id,
+      'page' : 'witness_info'
+    }
   },
 });
 $('.table_funeral').on( 'draw.dt', function(){
@@ -131,7 +136,10 @@ var table_real_estate = $('.table_real_estate').DataTable({
     "url": base_url+"Table_controller/real_estate_list",
     "dataType": "json",
     "type": "POST",
-    "data":{ 'will_id' : will_id  }
+    "data":{
+      'will_id' : will_id,
+      'page' : 'witness_info'
+    }
   },
 });
 $('.table_real_estate').on( 'draw.dt', function(){
@@ -158,7 +166,10 @@ var table_bank_assets = $('.table_bank_assets').DataTable({
     "url": base_url+"Table_controller/bank_assets_list",
     "dataType": "json",
     "type": "POST",
-    "data":{ 'will_id' : will_id  }
+    "data":{
+      'will_id' : will_id,
+      'page' : 'witness_info'
+    }
   },
 });
 $('.table_bank_assets').on( 'draw.dt', function(){
@@ -185,7 +196,10 @@ var table_vehicle = $('.table_vehicle').DataTable({
     "url": base_url+"Table_controller/vehicle_list",
     "dataType": "json",
     "type": "POST",
-    "data":{ 'will_id' : will_id  }
+    "data":{
+      'will_id' : will_id,
+      'page' : 'witness_info'
+    }
   },
 });
 $('.table_vehicle').on( 'draw.dt', function(){
@@ -212,7 +226,10 @@ var table_gift = $('.table_gift').DataTable({
     "url": base_url+"Table_controller/gift_list",
     "dataType": "json",
     "type": "POST",
-    "data":{ 'will_id' : will_id  }
+    "data":{
+      'will_id' : will_id,
+      'page' : 'witness_info'
+    }
   },
 });
 $('.table_gift').on( 'draw.dt', function(){
@@ -239,7 +256,10 @@ var table_witness = $('.table_witness').DataTable({
     "url": base_url+"Table_controller/witness_list",
     "dataType": "json",
     "type": "POST",
-    "data":{ 'will_id' : will_id  }
+    "data":{
+      'will_id' : will_id,
+      'page' : 'witness_info'
+    }
   },
 });
 $('.table_witness').on( 'draw.dt', function(){
@@ -315,7 +335,7 @@ $('#add_witness').click(function(){
             'bDestroy': true
         }).fnDestroy(); // destroy table.
 
-        $('.table_witness').DataTable({
+        var table_witness = $('.table_witness').DataTable({
           "processing": true,
           "serverSide": true,
           "bFilter" : false,
@@ -326,8 +346,19 @@ $('#add_witness').click(function(){
              "url": base_url+"Table_controller/witness_list",
              "dataType": "json",
              "type": "POST",
-             "data":{ 'will_id' : will_id  }
+             "data":{
+               'will_id' : will_id,
+               'page' : 'witness_info'
+             }
           },
+        });
+        $('.table_witness').on( 'draw.dt', function(){
+           if (! table_witness.data().any() ) {
+             $('.table_witness').hide();
+            }
+            else{
+              $('.table_witness').show();
+            }
         });
       }
     });
@@ -383,5 +414,9 @@ $('#add_date_place').click(function(){
       }
     });
   }
+});
 
+$('#witness_previous').click(function(){
+    window.location.href = base_url+"Will_controller/executor_funeral_view";
+});
 });
