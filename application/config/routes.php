@@ -50,5 +50,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'Will_controller';
+$route['About-Us'] = 'Website/about';
+$route['Pricing'] = 'Website/pricing';
+$route["FAQ"] = 'Website/faqs';
+$route['Contact'] = 'Website/contact';
+$route["Terms-and-Conditions"] = 'Website/terms';
+$route['Privacy-Policy'] = 'Website/privacy';
+$route['Login'] = 'Will_controller/login';
+
+
+$route['Start-Will'] = 'Will_controller/start_will_view';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
