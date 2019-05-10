@@ -47,15 +47,15 @@ include('include/login_header.php'); ?>
                  <input type="hidden" name="will_id" id="will_id" value="<?php echo $will_list->will_id; ?>" />
                </form>
                <a type="button" id="btn_will_details" class="btn btn-sm btn-success no-margin"><i class="fa fa-eye"></i>View</a> -->
-               <form id="form_will_edit" action="<?php echo base_url(); ?>/Will_controller/load_login_personal_info" method="post">
+               <form id="form_will_edit" action="<?php echo base_url(); ?>Will_controller/load_login_start_info" method="post">
                  <input type="hidden" name="will_id" id="will_id" value="<?php echo $will_list->will_id; ?>" />
                </form>
-               <form id="form_will_pdf" action="<?php echo base_url(); ?>/Pdf_controller/final_pdf" method="post">
+               <form id="form_will_pdf" action="<?php echo base_url(); ?>Pdf_controller/final_pdf" method="post">
                  <input type="hidden" name="will_id" id="will_id" value="<?php echo $will_list->will_id; ?>" />
                </form>
-               <a id="btn_will_edit" type="button" class="btn btn-sm btn-info no-margin"><i class="fa fa-edit"></i></i>Edit</a>
-               <a type="button" class="btn btn-sm btn-danger no-margin"><i class="fa fa-trash"></i>Delete</a>
-               <a id="btn_will_pdf" type="button" class="btn btn-sm btn-success no-margin"><i class="fa fa-pdf"></i>PDF</a>
+               <button id="btn_will_edit" type="button" class="btn btn-sm btn-info no-margin"><i class="fa fa-edit"></i></i> Edit</button>
+               <button type="button" class="btn btn-sm btn-danger no-margin"><i class="fa fa-trash"></i> Delete</button>
+               <button id="btn_will_pdf" type="button" class="btn btn-sm btn-success no-margin"><i class="fa fa-file-pdf-o"></i> PDF</button>
            </tr>
            <?php
               }

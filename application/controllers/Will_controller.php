@@ -25,8 +25,16 @@
   	}
 
     public function start_will_view(){
+      $is_login = $this->session->userdata('user_is_login');
+      $user_id = $this->session->userdata('user_id');
+      if($is_login && $user_id){
+        $user_data = $this->Will_Model->get_user_data($user_id);
+        $this->load->view('pages/start_will',['user_data'=>$user_data]);
+      }
+      else{
       $this->session->sess_destroy();
       $this->load->view('pages/start_will');
+    }
     }
 
     public function personal_info_view(){
@@ -41,12 +49,12 @@
       }
   	}
 
-    public function load_login_personal_info(){
+    public function load_login_start_info(){
       $is_login = $this->session->userdata('user_is_login');
       if($is_login && $this->input->post('will_id')){
         $will_id = $this->input->post('will_id');
         $this->session->set_userdata('will_id',$will_id);
-        header('location:personal_info_view');
+        header('location:start_will_view');
       }
       else{
         header('location:login');
@@ -133,60 +141,22 @@
   $this->load->view('pages/final_pdf');
  }
 
-
  /**************************************************************/
- /*            Save personal info.... datta...                 */
+ /*            Save Will Start info.... datta...               */
  /**************************************************************/
- public function save_personal_info(){
+ public function save_start_info(){
    $will_date = date('d-m-Y');
    $will_id = random_string('nozero',8);
    $user_id = random_string('nozero',8);
    $name_title = $this->input->post('name_title');
 
-   if($name_title == 'Miss.'){
-     $marital_status = 'Unmarried';
-     $is_have_child = '0';
+   if($name_title == 'Miss.' || $name_title == 'Mrs.'){
+     $gender = "Female";
    }
-   else {
-     $marital_status = $this->input->post('marital_status');
-     $is_have_child = $this->input->post('is_have_child');
+   else{
+     $gender = "Male";
    }
 
-   if($marital_status == 'Unmarried'){
-     $is_have_child = '0';
-   }
-
-   $will_data = array(
-               'will_id' => $will_id,
-               'will_date' => $will_date,
-               'will_user_id' => $user_id,
-             );
-    $user_data = array(
-      'user_id'=>$user_id,
-      'user_fullname'=>$this->input->post('full_name'),
-      'user_mobile_number'=>$this->input->post('mobile_no'),
-      'user_email_id'=>$this->input->post('email'),
-      'reg_date' => $will_date,
-    );
-   $personal_data = array(
-             'will_id' => $will_id,
-             'name_title'=>$this->input->post('name_title'),
-             'full_name'=>$this->input->post('full_name'),
-             'address'=>$this->input->post('address'),
-             'city'=>$this->input->post('city'),
-             'pin_code'=>$this->input->post('pin_code'),
-             'state'=>$this->input->post('state'),
-             'country'=>$this->input->post('country'),
-             'mobile_no'=>$this->input->post('mobile_no'),
-             'email'=>$this->input->post('email'),
-             'occupation'=>$this->input->post('occupation'),
-             'aadhar_no'=>$this->input->post('aadhar_no'),
-             'pan_no'=>$this->input->post('pan_no'),
-             'gender'=>$this->input->post('gender'),
-             'age'=>$this->input->post('age'),
-             'marital_status'=>$marital_status,
-             'is_have_child'=>$is_have_child,
-           );
      $check_mail = $this->Will_Model->check_mail_id($this->input->post('email'));
      $check_mobile = $this->Will_Model->check_mobile_no($this->input->post('mobile_no'));
 
@@ -199,8 +169,32 @@
        echo json_encode($error);
      }
      else{
+        $will_data = array(
+          'will_id' => $will_id,
+          'will_date' => $will_date,
+          'will_user_id' => $user_id,
+        );
+       $user_data = array(
+         'user_id'=>$user_id,
+         'user_fullname'=>$this->input->post('full_name'),
+         'user_mobile_number'=>$this->input->post('mobile_no'),
+         'user_email_id'=>$this->input->post('email'),
+         'reg_date' => $will_date,
+       );
+        $start_data = array(
+          'will_id' => $will_id,
+          'name_title'=>$this->input->post('name_title'),
+          'full_name'=>$this->input->post('full_name'),
+          'mobile_no'=>$this->input->post('mobile_no'),
+          'email'=>$this->input->post('email'),
+          'gender'=>$gender,
+          'marital_status'=>$this->input->post('marital_status'),
+          'is_have_child'=>$this->input->post('is_have_child'),
+        );
+
        $this->Will_Model->save_user($user_data);
-       $this->Will_Model->save_personal_info($personal_data);
+       $this->Will_Model->save_start_info($start_data);
+       // $this->Will_Model->save_personal_info($personal_data);
        $this->Will_Model->save_will_data($will_data);
 
        $session_data = array('will_start' => 'yes','will_id' =>$will_id);
@@ -208,9 +202,107 @@
 
        $get_personal_data = $this->Will_Model->get_personal_data($will_id);
        echo json_encode($get_personal_data);
-       //header('Location: display_personal_info');
      }
  }
+
+ public function update_start_data(){
+   $will_id = $this->input->post('will_id');
+   if($name_title == 'Miss.' || $name_title == 'Mrs.'){
+     $gender = "Female";
+   }
+   else{
+     $gender = "Male";
+   }
+   $start_data = array(
+     'name_title'=>$this->input->post('name_title'),
+     'full_name'=>$this->input->post('full_name'),
+     'mobile_no'=>$this->input->post('mobile_no'),
+     'email'=>$this->input->post('email'),
+     'gender'=>$gender,
+     'marital_status'=>$this->input->post('marital_status'),
+     'is_have_child'=>$this->input->post('is_have_child'),
+   );
+   $this->Will_Model->update_start_data($will_id,$start_data);
+
+ }
+
+ /**************************************************************/
+ /*            Save personal info.... datta...                 */
+ /**************************************************************/
+ // public function save_personal_info(){
+ //   $will_date = date('d-m-Y');
+ //   $will_id = random_string('nozero',8);
+ //   $user_id = random_string('nozero',8);
+ //   $name_title = $this->input->post('name_title');
+ //
+ //   if($name_title == 'Miss.'){
+ //     $marital_status = 'Unmarried';
+ //     $is_have_child = '0';
+ //   }
+ //   else {
+ //     $marital_status = $this->input->post('marital_status');
+ //     $is_have_child = $this->input->post('is_have_child');
+ //   }
+ //
+ //   if($marital_status == 'Unmarried'){
+ //     $is_have_child = '0';
+ //   }
+ //
+ //   $will_data = array(
+ //               'will_id' => $will_id,
+ //               'will_date' => $will_date,
+ //               'will_user_id' => $user_id,
+ //             );
+ //    $user_data = array(
+ //      'user_id'=>$user_id,
+ //      'user_fullname'=>$this->input->post('full_name'),
+ //      'user_mobile_number'=>$this->input->post('mobile_no'),
+ //      'user_email_id'=>$this->input->post('email'),
+ //      'reg_date' => $will_date,
+ //    );
+ //   $personal_data = array(
+ //             'will_id' => $will_id,
+ //             'name_title'=>$this->input->post('name_title'),
+ //             'full_name'=>$this->input->post('full_name'),
+ //             'address'=>$this->input->post('address'),
+ //             'city'=>$this->input->post('city'),
+ //             'pin_code'=>$this->input->post('pin_code'),
+ //             'state'=>$this->input->post('state'),
+ //             'country'=>$this->input->post('country'),
+ //             'mobile_no'=>$this->input->post('mobile_no'),
+ //             'email'=>$this->input->post('email'),
+ //             'occupation'=>$this->input->post('occupation'),
+ //             'aadhar_no'=>$this->input->post('aadhar_no'),
+ //             'pan_no'=>$this->input->post('pan_no'),
+ //             'gender'=>$this->input->post('gender'),
+ //             'age'=>$this->input->post('age'),
+ //             'marital_status'=>$marital_status,
+ //             'is_have_child'=>$is_have_child,
+ //           );
+ //     $check_mail = $this->Will_Model->check_mail_id($this->input->post('email'));
+ //     $check_mobile = $this->Will_Model->check_mobile_no($this->input->post('mobile_no'));
+ //
+ //    if($check_mobile > 0) {
+ //      $error = 'Mobile_Exist';
+ //      echo json_encode($error);
+ //     }
+ //     elseif ($check_mail > 0) {
+ //       $error = 'Email_Exist';
+ //       echo json_encode($error);
+ //     }
+ //     else{
+ //       $this->Will_Model->save_user($user_data);
+ //       $this->Will_Model->save_personal_info($personal_data);
+ //       $this->Will_Model->save_will_data($will_data);
+ //
+ //       $session_data = array('will_start' => 'yes','will_id' =>$will_id);
+ //       $temp_will_id =  $this->session->set_userdata($session_data);
+ //
+ //       $get_personal_data = $this->Will_Model->get_personal_data($will_id);
+ //       echo json_encode($get_personal_data);
+ //       //header('Location: display_personal_info');
+ //     }
+ // }
 
 
  /**************************************************************/
@@ -229,48 +321,41 @@
 
 
     /**************************************************************/
-    /*            Update personal info.... datta...                 */
+    /*        Save    Update personal info.... datta...                 */
     /**************************************************************/
     public function update_personal_info(){
-      $will_date = date('d-m-Y');
-      $name_title = $this->input->post('name_title');
-
-      if($name_title == 'Miss.'){
-        $marital_status = 'Unmarried';
-        $is_have_child = '0';
-        $gender = 'Female';
-      }
-      else {
-        $marital_status = $this->input->post('marital_status');
-        $is_have_child = $this->input->post('is_have_child');
-        $gender = $this->input->post('gender');
-      }
-
-      if($marital_status == 'Unmarried'){
-        $is_have_child = '0';
-      }
+      // $will_date = date('d-m-Y');
+      // $name_title = $this->input->post('name_title');
+      //
+      // if($name_title == 'Miss.'){
+      //   $marital_status = 'Unmarried';
+      //   $is_have_child = '0';
+      //   $gender = 'Female';
+      // }
+      // else {
+      //   $marital_status = $this->input->post('marital_status');
+      //   $is_have_child = $this->input->post('is_have_child');
+      //   $gender = $this->input->post('gender');
+      // }
+      //
+      // if($marital_status == 'Unmarried'){
+      //   $is_have_child = '0';
+      // }
 
       $will_id =  $this->session->userdata('will_id');
       $personal_data_update = array(
-                'name_title'=>$this->input->post('name_title'),
-                'full_name'=>$this->input->post('full_name'),
                 'address'=>$this->input->post('address'),
                 'city'=>$this->input->post('city'),
                 'pin_code'=>$this->input->post('pin_code'),
                 'state'=>$this->input->post('state'),
                 'country'=>$this->input->post('country'),
-                'mobile_no'=>$this->input->post('mobile_no'),
-                'email'=>$this->input->post('email'),
                 'occupation'=>$this->input->post('occupation'),
                 'aadhar_no'=>$this->input->post('aadhar_no'),
                 'pan_no'=>$this->input->post('pan_no'),
-                'gender'=>$gender,
                 'age'=>$this->input->post('age'),
-                'marital_status'=>$marital_status,
-                'is_have_child'=>$is_have_child,
               );
-        $check_mail = $this->Will_Model->check_mail_id($this->input->post('email'));
-        $check_mobile = $this->Will_Model->check_mobile_no($this->input->post('mobile_no'));
+        // $check_mail = $this->Will_Model->check_mail_id($this->input->post('email'));
+        // $check_mobile = $this->Will_Model->check_mobile_no($this->input->post('mobile_no'));
 
        /*if ($check_mail > 0) {
           echo "Email Exist";

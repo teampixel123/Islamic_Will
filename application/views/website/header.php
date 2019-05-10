@@ -31,7 +31,6 @@
             <div class="container">
                 <!-- Classy Menu -->
                 <nav class="classy-navbar justify-content-between" id="akameNav">
-
                     <!-- Logo -->
                     <a class="nav-brand" href="index.html"><img src="<?php echo base_url(); ?>assets/website/img/core-img/logo.svg" alt=""></a>
 
@@ -39,7 +38,6 @@
                     <div class="classy-navbar-toggler">
                         <span class="navbarToggler"><span></span><span></span><span></span></span>
                     </div>
-
                     <!-- Menu -->
                     <div class="classy-menu">
                         <!-- Menu Close Button -->

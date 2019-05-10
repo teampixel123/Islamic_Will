@@ -39,6 +39,16 @@
       return $result;
     }
 
+    // Save start Will Info...
+    public function save_start_info($data){
+      $this->db->insert('tbl_personal_info',$data);
+    }
+    //Update start Data..
+    public function update_start_data($will_id,$start_data){
+      $this->db->where('will_id',$will_id);
+      $this->db->update('tbl_personal_info',$start_data);
+    }
+
     // Save personal Info...
     public function save_personal_info($data){
       $this->db->insert('tbl_personal_info',$data);

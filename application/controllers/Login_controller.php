@@ -64,7 +64,7 @@
             "message" => "Islamic Will OTP: $otp",
             "language" => "english",
             "route" => "p",
-            "numbers" => "9021182154",
+            "numbers" => "9673454383",
         );
 
         $curl = curl_init();

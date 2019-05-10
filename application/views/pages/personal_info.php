@@ -38,7 +38,7 @@ include('include/head.php');
 		<form class="" id="personal_info_form" method="post">
   <fieldset>
 		<h3 class=" text-left">Personal Information </h3><br>
-    <div class="form-group">
+    <!-- <div class="form-group">
       <div class="row text-center">
         <label class="col-md-2 text-right" for="exampleInputEmail1">Full Name</label>
 				<div class="col-md-3">
@@ -53,9 +53,9 @@ include('include/head.php');
 					<p id="error_name" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
 				</div>
       </div>
-    </div>
+    </div> -->
 
-		<div class="form-group" id="" >
+		<!-- <div class="form-group" id="" >
       <div class="row text-center">
 			<div class="col-md-2 marital_status1 marital_status_div" >
         <label class=" text-right" for="exampleInputEmail1">Marital status</label>
@@ -71,9 +71,6 @@ include('include/head.php');
 				 <p id="error_marital_status" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
         </div>
 
-			<!-- <div class="" id="have_child_div">
-
-			</div> -->
 			<div class="col-md-2 have_child_div">
 				<label class=" text-right" for="exampleInputEmail1">Child</label>
 			</div>
@@ -91,11 +88,11 @@ include('include/head.php');
 				 <p id="error_is_have_child" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
 				</div>
       </div>
-    </div>
+    </div> -->
 
 		<div class="form-group" id="">
       <div class="row text-center">
-        <label class="col-md-2 text-right" for="exampleInputEmail1">Gender</label>
+        <!-- <label class="col-md-2 text-right" for="exampleInputEmail1">Gender</label>
 				<div class="col-md-4">
 					<div class="row">
 						<div class="custom-control custom-radio col-md-6">
@@ -108,12 +105,8 @@ include('include/head.php');
 					  </div>
 					</div>
 				 <p id="error_gender" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
-        </div>
-				<label class="col-md-2 text-right" for="exampleInputEmail1">Age</label>
-				<div class="col-md-4">
-					<input type="number" name="age" class="form-control empty   " id="age" aria-describedby="emailHelp" required >
-					<p id="error_age" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
-				</div>
+        </div> -->
+
       </div>
     </div>
 
@@ -170,7 +163,7 @@ include('include/head.php');
       </div>
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
       <div class="row text-center">
         <div class="col-md-2 text-right">
           <label for="exampleInputEmail1">Mobile No</label>
@@ -189,10 +182,16 @@ include('include/head.php');
         </div>
 
       </div>
-    </div>
+    </div> -->
 
     <div class="form-group">
       <div class="row text-center">
+				<label class="col-md-2 text-right" for="exampleInputEmail1">Age</label>
+				<div class="col-md-4">
+					<input type="number" name="age" class="form-control empty   " id="age" aria-describedby="emailHelp" required >
+					<p id="error_age" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
+				</div>
+
         <div class="col-md-2 text-right">
           <label for="exampleInputEmail1">Occupation</label>
         </div>
@@ -201,6 +200,13 @@ include('include/head.php');
 					<p id="error_occupation" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
         </div>
 
+
+
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row text-center">
 				<div class="col-md-2 text-right">
           <label for="exampleInputEmail1">Aadhar No</label>
         </div>
@@ -208,12 +214,6 @@ include('include/head.php');
           <input type="number" name="aadhar_no" class="form-control" id="aadhar_no" aria-describedby="emailHelp" >
 					<p id="error_aadhar_no" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
         </div>
-
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="row text-center">
         <div class="col-md-2 text-right">
           <label for="exampleInputEmail1">PAN No</label>
         </div>
@@ -227,7 +227,8 @@ include('include/head.php');
 <p id="error_mobile_exist" style="color:red; display:none;" class="text-left invalide_mob_mail">*This mobile number is exist. Please go to <a href="<?php echo base_url(); ?>Will_controller/login"><b>Login</b></a></p>
 <p id="error_email_exist" style="color:red; display:none;" class="text-left invalide_mob_mail">*This email id is exist. Please go to <a href="<?php echo base_url(); ?>Will_controller/login"><b>Login</b></a></p>
     <button type="submit" id="save_personal_data" class="btn btn-success" style="float:right;">Save & Next</button>
-		<button type="button" id="update_personal_data" class="btn btn-info" style="float:right;">Update & Next</button>
+		<p style="float:right;"><button type="button" id="update_personal_data" class="btn btn-info" >Update</button>
+		<button type="button" id="next_page" class="btn btn-info" >Next</button></p>
 		<button type="button" id="destroy" class="btn btn-danger">Clear session</button>
 		<!--a href="<?php echo base_url() ?>/Will_controller/family_info_view" type="button" id="personal_next" class="btn btn-info">Next</a-->
   </fieldset>
@@ -254,7 +255,7 @@ include('include/head.php');
 		        <label class="col-md-4 text-right" for="exampleInputEmail1">Email :</label>
 						<label class="col-md-8 text-left" id="lbl_email"></label>
 		      </div>
-		      <div class="row text-center">
+		      <!-- <div class="row text-center">
 		        <label class="col-md-4 text-right" for="exampleInputEmail1">Address :</label>
 						<label class="col-md-8 text-left" id="lbl_address"></label>
 		      </div>
@@ -269,7 +270,7 @@ include('include/head.php');
 		      <div class="row text-center">
 		        <label class="col-md-4 text-right" for="exampleInputEmail1">PAN No :</label>
 						<label class="col-md-8 text-left" id="lbl_pan"></label>
-		      </div>
+		      </div> -->
 			</form>
     </div>
   </div>
@@ -287,16 +288,10 @@ include('include/head.php');
 <!-- <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js" type="text/javascript"></script> -->
 
-
-<?php
-// Fill Up form data on page load if session is set...
-	if ($this->session->userdata('will_id')) {
-?>
-
 <script>
 $(document).ready(function(){
-  $('#save_personal_data').hide();
-  $('#update_personal_data').show();
+  //$('#save_personal_data').hide();
+  //$('#update_personal_data').show();
 
   var will_id = $('#will_id').val();
 
@@ -309,14 +304,14 @@ $(document).ready(function(){
       $('#lbl_name').text(info[0]['full_name']);
       $('#lbl_mobile').text(info[0]['mobile_no']);
       $('#lbl_email').text(info[0]['email']);
-      $('#lbl_address').text(info[0]['address']+', '+info[0]['city']+'-'+info[0]['pin_code']+', '+info[0]['state']+', '+info[0]['country']);
-      $('#lbl_occupation').text(info[0]['occupation']);
-      $('#lbl_aadhar').text(info[0]['aadhar_no']);
-      $('#lbl_pan').text(info[0]['pan_no']);
+      // $('#lbl_address').text(info[0]['address']+', '+info[0]['city']+'-'+info[0]['pin_code']+', '+info[0]['state']+', '+info[0]['country']);
+      // $('#lbl_occupation').text(info[0]['occupation']);
+      // $('#lbl_aadhar').text(info[0]['aadhar_no']);
+      // $('#lbl_pan').text(info[0]['pan_no']);
 
-      $('#full_name').val(info[0]['full_name']);
-      $('#mobile_no').val(info[0]['mobile_no']);
-      $('#email').val(info[0]['email']);
+      // $('#full_name').val(info[0]['full_name']);
+      // $('#mobile_no').val(info[0]['mobile_no']);
+      // $('#email').val(info[0]['email']);
       $('#address').val(info[0]['address']);
       $('#city').val(info[0]['city']);
       $('#pin_code').val(info[0]['pin_code']);
@@ -325,59 +320,57 @@ $(document).ready(function(){
       $('#occupation').val(info[0]['occupation']);
       $('#aadhar_no').val(info[0]['aadhar_no']);
       $('#pan_no').val(info[0]['pan_no']);
-      $('#name_title').val(info[0]['name_title']);
-      $('#marital_status').val(info[0]['marital_status']);
+      // $('#name_title').val(info[0]['name_title']);
+      // $('#marital_status').val(info[0]['marital_status']);
       $('#age').val(info[0]['age']);
-      $('#save_personal_data').hide(); // Hide Save Button...
-      $('#update_personal_data').show(); //Display Update Button...
+			if(info){
+				  $('#save_personal_data').hide();
+			}
+			else{
+				  $('#update_personal_data').show();
+			}
+     // Hide Save Button...
+    //Display Update Button...
 
 			// show div by data....
 
-			var marital_status1 = $('#marital_status').val();
-		  if(marital_status1 == 0 || marital_status1 == 'Unmarried'){
-		    $('#have_child_div').hide();
-		  }
-		  else{
-		    $('#have_child_div').show();
-		  }
-
-		  var name_title = $('#name_title').val();
-		  if(name_title == 0 || name_title == 'Miss.'){
-		    $('#marital_status_div').hide();
-		  }
-		  else{
-		    $('#marital_status_div').show();
-		  }
-
-			var gender = info[0]['gender'];
-			if(gender == "Male"){
-				$('#gender_male').prop("checked", true);
-			}
-			else{
-				$('#gender_female').prop("checked", true);
-			}
-
-			var have_child = info[0]['is_have_child'];
-			if(have_child == "1"){
-				$('#child_yes').prop("checked", true);
-			}
-			else{
-				$('#child_no').prop("checked", true);
-			}
+			// var marital_status1 = $('#marital_status').val();
+		  // if(marital_status1 == 0 || marital_status1 == 'Unmarried'){
+		  //   $('#have_child_div').hide();
+		  // }
+		  // else{
+		  //   $('#have_child_div').show();
+		  // }
+			//
+		  // var name_title = $('#name_title').val();
+		  // if(name_title == 0 || name_title == 'Miss.'){
+		  //   $('#marital_status_div').hide();
+		  // }
+		  // else{
+		  //   $('#marital_status_div').show();
+		  // }
+			//
+			// var gender = info[0]['gender'];
+			// if(gender == "Male"){
+			// 	$('#gender_male').prop("checked", true);
+			// }
+			// else{
+			// 	$('#gender_female').prop("checked", true);
+			// }
+			//
+			// var have_child = info[0]['is_have_child'];
+			// if(have_child == "1"){
+			// 	$('#child_yes').prop("checked", true);
+			// }
+			// else{
+			// 	$('#child_no').prop("checked", true);
+			// }
 			//alert(gender);
     }
   });
 });
 </script>
-<?php }
-else{ ?>
-	<script>
-	$(document).ready(function(){
-		$('#save_personal_data').show();
-		$('#update_personal_data').hide();
-	});
-	</script>
-<?php } ?>
+
 <script type="text/javascript">var base_url = "<?php echo base_url() ?>";</script>
 <script src="<?php echo base_url(); ?>assets/js/will_custome/personal_info_js.js" type="text/javascript"></script>
 </body>
