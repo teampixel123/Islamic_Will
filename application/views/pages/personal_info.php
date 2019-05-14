@@ -304,14 +304,7 @@ $(document).ready(function(){
       $('#lbl_name').text(info[0]['full_name']);
       $('#lbl_mobile').text(info[0]['mobile_no']);
       $('#lbl_email').text(info[0]['email']);
-      // $('#lbl_address').text(info[0]['address']+', '+info[0]['city']+'-'+info[0]['pin_code']+', '+info[0]['state']+', '+info[0]['country']);
-      // $('#lbl_occupation').text(info[0]['occupation']);
-      // $('#lbl_aadhar').text(info[0]['aadhar_no']);
-      // $('#lbl_pan').text(info[0]['pan_no']);
 
-      // $('#full_name').val(info[0]['full_name']);
-      // $('#mobile_no').val(info[0]['mobile_no']);
-      // $('#email').val(info[0]['email']);
       $('#address').val(info[0]['address']);
       $('#city').val(info[0]['city']);
       $('#pin_code').val(info[0]['pin_code']);
@@ -329,43 +322,7 @@ $(document).ready(function(){
 			else{
 				  $('#update_personal_data').show();
 			}
-     // Hide Save Button...
-    //Display Update Button...
-
-			// show div by data....
-
-			// var marital_status1 = $('#marital_status').val();
-		  // if(marital_status1 == 0 || marital_status1 == 'Unmarried'){
-		  //   $('#have_child_div').hide();
-		  // }
-		  // else{
-		  //   $('#have_child_div').show();
-		  // }
-			//
-		  // var name_title = $('#name_title').val();
-		  // if(name_title == 0 || name_title == 'Miss.'){
-		  //   $('#marital_status_div').hide();
-		  // }
-		  // else{
-		  //   $('#marital_status_div').show();
-		  // }
-			//
-			// var gender = info[0]['gender'];
-			// if(gender == "Male"){
-			// 	$('#gender_male').prop("checked", true);
-			// }
-			// else{
-			// 	$('#gender_female').prop("checked", true);
-			// }
-			//
-			// var have_child = info[0]['is_have_child'];
-			// if(have_child == "1"){
-			// 	$('#child_yes').prop("checked", true);
-			// }
-			// else{
-			// 	$('#child_no').prop("checked", true);
-			// }
-			//alert(gender);
+     
     }
   });
 });
