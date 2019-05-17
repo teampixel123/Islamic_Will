@@ -79,7 +79,7 @@
 
       		<div class="form-group" id="">
             <div class="row text-center">
-              <label class="col-md-3 text-right" for="exampleInputEmail1">House No / Flat NO : </label>
+              <label class="col-md-3 text-right" for="exampleInputEmail1">Number: </label>
       				<div class="col-md-9">
       					<input type="text" name="house_no" id="house_no" class="form-control clear"  aria-describedby="emailHelp" >
                 <p id="error_house_no" style="color:red; display:none" class="text-left valide">*This field is required.</p>
@@ -89,7 +89,7 @@
 
           <div class="form-group" id="">
             <div class="row text-center">
-              <label class="col-md-3 text-right" for="exampleInputEmail1">Survey number: </label>
+              <label class="col-md-3 text-right" for="exampleInputEmail1">Survey number / CTS No : </label>
       				<div class="col-md-9">
       					<input type="text" name="survey_number" id="survey_number" class="form-control clear"  aria-describedby="emailHelp" >
                 <p id="error_survey_number" style="color:red; display:none" class="text-left valide">*This field is required.</p>
@@ -211,6 +211,7 @@
                 <div id="serial_no" class="hide_num" style="display:none;">ISIN/Serial Number: </div>
                 <div id="policy_no" class="hide_num" style="display:none;">Policy Number: </div>
                 <div id="account_no" class="hide_num" >Account Number: </div>
+                <!-- <div id="amount" class="hide_num" >Some amount: </div> -->
               </label>
       				<div class="col-md-9">
       					<input type="text" name="account_number" id="account_number" class="form-control clear"  aria-describedby="emailHelp" >
@@ -239,6 +240,36 @@
       				<div class="col-md-9">
       					<input type="text" name="branch_name" id="branch_name" class="form-control clear"  aria-describedby="emailHelp" >
                 <p id="error_branch_name" style="color:red; display:none" class="text-left valide">*This field is required.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group" id="b_state_div" style="display:none;">
+            <div class="row text-center">
+              <label class="col-md-3 text-right" for="exampleInputEmail1">state</label>
+      				<div class="col-md-9">
+      					<input type="text" name="b_state" id="b_state" class="form-control clear"  aria-describedby="emailHelp" >
+                <p id="error_b_state" style="color:red; display:none" class="text-left valide">*This field is required.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group" id="b_pin_code_div" style="display:none;">
+            <div class="row text-center">
+              <label class="col-md-3 text-right" for="exampleInputEmail1">Pin Code  </label>
+      				<div class="col-md-9">
+      					<input type="text" name="b_pin_code" id="b_pin_code" class="form-control clear"  aria-describedby="emailHelp" >
+                <p id="error_b_pin_code" style="color:red; display:none" class="text-left valide">*This field is required.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group" id="b_sum_amount_div" style="display:none;">
+            <div class="row text-center">
+              <label class="col-md-3 text-right" for="exampleInputEmail1">Sum Assurance Amount  </label>
+              <div class="col-md-9">
+                <input type="text" name="b_sum_amount" id="b_sum_amount" class="form-control clear"  aria-describedby="emailHelp" >
+                <p id="error_b_sum_amount" style="color:red; display:none" class="text-left valide">*This field is required.</p>
               </div>
             </div>
           </div>
@@ -367,7 +398,7 @@
   <div class="col-md-6">
   	<input type="hidden" name="will_id" id="will_id" value="<?php echo $start_will_data['will_id']; ?>">
 
-    <div class="container">
+    <!-- <div class="container">
     	<div class="" style="">
         <table id="table_personal_info" class="personal_data_dispaly table_personal_info">
           <thead>
@@ -415,9 +446,9 @@
           </tbody>
         </table>
       </div>
-    </div>
+    </div> -->
 
-    <div class="container" style="background-color:white;">
+    <!-- <div class="container" style="background-color:white;">
     <table id="table_family_member" class="personal_data_dispaly table_family_member" style=" width:100%;">
       <thead>
         <tr>
@@ -431,7 +462,7 @@
       <tbody>
       </tbody>
     </table>
-    </div>
+    </div> -->
 
     <div class="container" style="background-color:white;">
       <b>Assets Information</b>
@@ -480,6 +511,13 @@
   </div>
 <!-- </div> -->
 </div>
+
+<!-- Border -->
+
+		<div class="border-top mt-3"></div>
+
+
+<?php include('include/footer.php') ?>
 <!-- personal info containner end -->
 <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/js/jquery-3.3.0.min.js" type="text/javascript"></script>

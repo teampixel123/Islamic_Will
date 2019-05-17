@@ -225,6 +225,9 @@ $('.table_gift, .table_vehicle, .table_bank_assets, .table_real_estate').on( 'dr
       $('#bank_nm').show();
       $('#key_number').val('');
       $('#fd_recipt_No').val('');
+      $('#b_state_div').show();
+      $('#b_pin_code_div').show();
+      $('#b_sum_amount_div').hide();
     }
     else if (assets_type == 'Current A/C') {
       $('.hide_num').hide();
@@ -233,6 +236,9 @@ $('.table_gift, .table_vehicle, .table_bank_assets, .table_real_estate').on( 'dr
       $('#bank_nm').show();
       $('#key_number').val('');
       $('#fd_recipt_No').val('');
+      $('#b_state_div').show();
+      $('#b_pin_code_div').show();
+      $('#b_sum_amount_div').hide();
     }
     else if (assets_type == 'Fixed Deposits') {
       $('.hide_num').hide();
@@ -241,30 +247,46 @@ $('.table_gift, .table_vehicle, .table_bank_assets, .table_real_estate').on( 'dr
       $('#bank_nm').show();
       $('#fd_recipt_No_div').show();
       $('#key_number').val('');
+      $('#b_state_div').show();
+      $('#b_pin_code_div').show();
+      $('#b_sum_amount_div').hide();
     }
     else if (assets_type == 'PPF') {
       $('.hide_num').hide();
-      $('#customer_id').show();
+      $('#account_no').show();
+      // $('#customer_id').show();
       $('.hide_name').hide();
-      $('#company_name').show();
+    //  $('#company_name').show();
+      $('#bank_nm').show();
       $('#key_number').val('');
       $('#fd_recipt_No').val('');
+      $('#b_state_div').show();
+      $('#b_pin_code_div').show();
+      $('#b_sum_amount_div').hide();
     }
     else if (assets_type == 'Bank Locker') {
       $('.hide_num').hide();
-      $('#folio_no').show();
+      // $('#folio_no').show();
+      $('#locker_no').show();
       $('.hide_name').hide();
       $('#bank_nm').show();
       $('#key_number_div').show();
+      $('#b_state_div').show();
+      $('#b_pin_code_div').show();
       $('#fd_recipt_No').val('');
+      $('#b_sum_amount_div').hide();
     }
     else if (assets_type == 'Mutual Funds') {
       $('.hide_num').hide();
-      $('#customer_id').show();
+      //$('#customer_id').show();
+      $('#folio_no').show();
       $('.hide_name').hide();
       $('#company_name').show();
       $('#key_number').val('');
       $('#fd_recipt_No').val('');
+      $('#b_state_div').hide();
+      $('#b_pin_code_div').hide();
+      $('#b_sum_amount_div').hide();
     }
     else if (assets_type == 'Stock Equities') {
       $('.hide_num').hide();
@@ -273,6 +295,9 @@ $('.table_gift, .table_vehicle, .table_bank_assets, .table_real_estate').on( 'dr
       $('#company_name').show();
       $('#key_number').val('');
       $('#fd_recipt_No').val('');
+      $('#b_state_div').hide();
+      $('#b_pin_code_div').hide();
+      $('#b_sum_amount_div').hide();
     }
     else if (assets_type == 'Insurance Policy') {
       $('.hide_num').hide();
@@ -281,6 +306,11 @@ $('.table_gift, .table_vehicle, .table_bank_assets, .table_real_estate').on( 'dr
       $('#insurance_company').show();
       $('#key_number').val('');
       $('#fd_recipt_No').val('');
+      $('#b_sum_amount_div').show();
+      $('#b_state_div').hide();
+      $('#b_pin_code_div').hide();
+      // $('.hide_num').hide();
+      // $('#amount').val('');
     }
     //alert(assets_type);
   });
@@ -499,6 +529,42 @@ $('.table_gift, .table_vehicle, .table_bank_assets, .table_real_estate').on( 'dr
     }
     else{
         $('#error_gift_description').hide();
+      }
+  });
+
+  $("#b_state").blur(function(){
+    var b_state = $('#b_state').val();
+    var b_state_format =  /^[a-zA-Z ]*$/;
+
+    if(!b_state_format.test(b_state) || b_state == ''){
+      $('#error_b_state').show();
+    }
+    else{
+        $('#error_b_state').hide();
+      }
+  });
+
+  $("#b_pin_code").blur(function(){
+    var b_pin_code = $('#b_pin_code').val();
+    var b_pin_code_format = /^[0-9]{6}$/;
+
+    if(!b_pin_code_format.test(b_pin_code) || b_pin_code == ''){
+      $('#error_b_pin_code').show();
+    }
+    else{
+        $('#error_b_pin_code').hide();
+      }
+  });
+
+  $("#b_sum_amount").blur(function(){
+    var b_sum_amount = $('#b_sum_amount').val();
+    var b_sum_amount_format = /^[0-9]*$/;
+
+    if(!b_sum_amount_format.test(b_sum_amount) || b_sum_amount == ''){
+      $('#error_b_sum_amount').show();
+    }
+    else{
+        $('#error_b_sum_amount').hide();
       }
   });
 

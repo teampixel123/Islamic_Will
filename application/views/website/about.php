@@ -1,6 +1,15 @@
 <?php include('head.php') ?>
 <body>
-    <?php include('header.php') ?>
+  <?php
+    $is_login = $this->session->userdata('user_is_login');
+    if($is_login){
+      include('login_header.php');
+    }
+    else{
+      include('header.php');
+    }
+   ?>
+    <?php //include('header.php') ?>
     <!-- Breadcrumb Area Start -->
     <section class="breadcrumb-area section-padding-80">
         <div class="container">
@@ -34,7 +43,7 @@
                     </div>
                 </div>
 
-                <div class="col-12 col-lg-8">
+                <div class="col-12 col-lg-8 ">
                     <div class="about--us--content mb-80">
                         <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#" target="_blank"> <strong>www.islamicwill.com </strong></a> started with object to provide user friendly and cost effective online platform for
                            easy documentation to fulfil your needs. Our central principles are the understanding that each user’s
@@ -61,18 +70,23 @@
                         </p>
 
                     </div>
+                    <div class="text-center">
+                        <a href="<?php echo base_url(); ?>Start-Will" class="btn active akame-btn" data-animation="fadeInUp" data-delay="700ms">Make Your Will</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- Akame About Area End -->
-
+    <div class="container">
+        <div class="border-top mt-3"></div>
+    </div>
     <!-- Akame About Area Start -->
-    <section class="akame--about--area">
+    <section class="akame--about--area" id="important">
         <div class="container">
-            <div class="row">
+            <div class="row margin_1">
                 <!-- Section Heading -->
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-lg-6 about--us--content1">
                   <div class="about--us--content mb-80">
                     <h3> Importance Islamic Wills </h3>
                       <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The object of Wills according to the tradition of the Prophet is to provide for the maintenance of
@@ -101,7 +115,7 @@
                   </div>
                 </div>
 
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-lg-6 about--us--content1">
                     <div class="about--us--content mb-80">
                       <br><br>
 
@@ -113,6 +127,9 @@
                           appointment of guardian for one’s children and so on. In countries where the intestate succession law is different from Islamic law
                            it becomes absolutely necessary to write a will.</p>
 
+
+                        <div class="border-top mt-3"></div>
+                        <br>
                       <h3>A will is important as:-</h3>
                       <p>•	It can help the testator to ensure that his/her property is distributed among family members as per his/her wish.</p>
                       <p>•	It can assist in avoiding conflict/ turmoil for the persons after his/her demise.</p>
@@ -125,13 +142,15 @@
         </div>
     </section>
     <!-- Akame About Area End -->
-
+    <div class="container">
+        <div class="border-top mt-3"></div>
+    </div>
     <!-- Akame About Area Start -->
-    <section class="akame--about--area">
+    <section class="akame--about--area" id="benefit">
         <div class="container">
-            <div class="row">
+            <div class="row margin_1">
                 <!-- Section Heading -->
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-lg-6 about--us--content1">
                   <div class="about--us--content mb-80">
                     <h3> Benefits Of Using </h3>
                       <p>•	Our Website Leads To a More Balanced and Optimistic Outlook On Using Online Websites.
@@ -154,14 +173,10 @@
                       </p>
                       <p>•	To create a Wasiyat (wasiyya) with us is made simple, easy, hassles free, which is ultimately saving precious time and money.
                       </p>
-
-
-
-
                   </div>
                 </div>
 
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-lg-6 about--us--content1">
                     <div class="about--us--content mb-80">
                       <br><br>
 
@@ -177,21 +192,22 @@
 
                       <p>•	Probate has lesser formalities, thus avoiding possible erosion of the value of the estate.
                       </p>
-
-
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- Akame About Area End -->
+    <div class="container">
+        <div class="border-top mt-3"></div>
+    </div>
 
     <!-- Akame About Area Start -->
     <section class="akame--about--area">
         <div class="container">
-            <div class="row">
+            <div class="row margin_1">
                 <!-- Section Heading -->
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-lg-6 about--us--content1">
                   <div class="about--us--content mb-80">
                     <h3> Our Vision</h3>
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -211,6 +227,9 @@
                        We provide our users a prepared format of will testament document according to the Islam rules and norms. Our vision is to
                        provide our clients with skilled service in a timely and efficient manner.   We strive to handle each matter with accountability and responsiveness, as if we were representing ourselves. We focus our attention on the aspects of our client’s requirements with regard to wasiyyat. Our vision reflects our values: integrity, service, excellence and teamwork.
                     </p>
+
+                        <div class="border-top mt-3"></div><br>
+
                     <h3>Our Mission</h3>
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       The website’s mission is to provide a high quality, creative, and result – oriented services to individuals and serve as a primary
@@ -228,7 +247,7 @@
                   </div>
                 </div>
 
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-lg-6 about--us--content1">
                     <div class="about--us--content mb-80">
                       <br><br>
                       <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -242,6 +261,7 @@
                         We believe we must develop that understanding so we can provide our client with full value. Otherwise, we could be providing advice that solves
                         a specific issue, only to face one or more new issues down the road that might have been avoided had we understood the fuller picture.
                       </p>
+                      <div class="border-top mt-3"></div><br>
                       <h3>Goal</h3>
                       <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         The primary goal of www.wasihat.com is to provide will document by entering information by user that will directly benefit them. Some of these services are already
@@ -264,13 +284,15 @@
         </div>
     </section>
     <!-- Akame About Area End -->
-
+    <div class="text-center">
+        <a href="<?php echo base_url(); ?>Start-Will" class="btn active akame-btn" data-animation="fadeInUp" data-delay="700ms">Make Your Will</a>
+    </div>
     <!-- Akame About Area Start -->
     <section class="akame--about--area">
         <div class="container">
             <div class="row">
                 <!-- Section Heading -->
-                <div class="col-12 col-lg-12">
+                <!-- <div class="col-12 col-lg-12 about--us--content1">
                   <div class="about--us--content mb-80">
                     <h3>Quotes</h3>
                     <p>1.	‘’From what is left by parents and those nearest related-there is a share for men and a share for
@@ -286,7 +308,7 @@
                      </p>
 
                   </div>
-                </div>
+                </div> -->
 
                 <!-- <div class="col-12 col-lg-6">
                     <div class="about--us--content mb-80">
@@ -301,9 +323,7 @@
     <!-- Akame About Area End -->
 
     <!-- Border -->
-     <div class="container">
-        <div class="border-top mt-3"></div>
-    </div>
+      <div class="border-top mt-3"></div>
     <!-- Footer Area Start -->
     <?php include('footer.php') ?>
 

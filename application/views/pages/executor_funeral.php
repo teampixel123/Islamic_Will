@@ -46,7 +46,16 @@
       <div class="form-group" id="">
         <div class="row text-center">
           <label class="col-md-3 text-right" for="exampleInputEmail1">Executor Name: </label>
-  				<div class="col-md-9">
+          <div class="col-md-3">
+  					<select class="form-control" name="e_name_title" id="e_name_title">
+  					 <option value="0">select</option>
+  					 <option>Mr.</option>
+  					 <option>Miss.</option>
+  					 <option>Mrs.</option>
+  				 </select>
+  				 <p id="error_e_name_title" style="color:red; display:none" class="text-left invalide m-0">*This field is required.</p>
+          </div>
+  				<div class="col-md-6">
   					<input type="text" name="executor_name" id="executor_name" class="form-control clear"  aria-describedby="emailHelp" >
             <p id="error_executor_name" style="color:red; display:none" class="text-left valide">*This field is required.</p>
           </div>
@@ -78,19 +87,23 @@
     </div>
       <!-- Executor Information End  -->
       <!-- Funeral and Burial Information Start  -->
-      <div class="personal_info1 " style=" margin-right: -18px;" >
-      <form class="" id="funeral_form" method="post">
-      <fieldset>
-      <h3 class=" text-left">Funeral and Burial: </h3>
-      <div class="form-group" id="">
-        <div class="row text-center">
-          <label class="col-md-3 text-right" for="exampleInputEmail1">Funeral and Burial Person Name: </label>
-  				<div class="col-md-9">
-  					<input type="text" name="funeral_name" id="funeral_name" class="form-control clear"  aria-describedby="emailHelp" >
-            <p id="error_funeral_name" style="color:red; display:none" class="text-left valide">*This field is required.</p>
+      <div class="" style="display:none;">
+        <div class="personal_info1 " style=" margin-right: -18px;" >
+        <form class="" id="funeral_form" method="post">
+        <fieldset>
+        <h3 class=" text-left">Funeral and Burial: </h3>
+        <div class="form-group" id="">
+          <div class="row text-center">
+            <label class="col-md-3 text-right" for="exampleInputEmail1">Funeral and Burial Person Name: </label>
+    				<div class="col-md-9">
+    					<input type="text" name="funeral_name" id="funeral_name" class="form-control clear"  aria-describedby="emailHelp" >
+              <p id="error_funeral_name" style="color:red; display:none" class="text-left valide">*This field is required.</p>
+            </div>
           </div>
         </div>
+
       </div>
+
 
   		<div class="form-group" id="">
         <div class="row text-center">
@@ -116,7 +129,7 @@
   <div class="col-md-6 col-sm-12">
   	<input type="hidden" name="will_id" id="will_id" value="<?php echo $start_will_data['will_id']; ?>">
 
-    <div class="container" style="background-color:white;">
+    <!-- <div class="container" style="background-color:white;">
     	<div class="" style="">
         <table id="table_personal_info" class="personal_data_dispaly table_personal_info">
           <thead>
@@ -164,9 +177,9 @@
           </tbody>
         </table>
       </div>
-    </div>
+    </div> -->
 
-    <div class="container" style="background-color:white;">
+    <!-- <div class="container" style="background-color:white;">
     <table id="table_family_member" class="personal_data_dispaly table_family_member" style=" width:100%;">
       <thead>
         <tr>
@@ -180,9 +193,9 @@
       <tbody>
       </tbody>
     </table>
-    </div>
+    </div> -->
 
-    <div class="container" style="background-color:white;">
+    <!-- <div class="container" style="background-color:white;">
       <b>Assets Information</b>
     <table id="table_real_estate" class="personal_data_dispaly table_real_estate" style=" width:100%;">
       <thead>
@@ -239,7 +252,7 @@
       <tbody>
       </tbody>
     </table>
-    </div>
+    </div> -->
 
     <div class="container" style="background-color:white;">
     <table id="table_executor" class="personal_data_dispaly table_executor" style=" width:100%;">
@@ -271,6 +284,13 @@
   </div>
 <!-- </div> -->
 </div>
+
+<!-- Border -->
+
+		<div class="border-top mt-3"></div>
+
+
+<?php include('include/footer.php') ?>
 <!-- personal info containner end -->
 
 <script src="<?php echo base_url(); ?>assets/js/jquery-3.3.0.min.js" type="text/javascript"></script>

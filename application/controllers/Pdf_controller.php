@@ -15,8 +15,23 @@
   		//$will_id = $this->session->userdata('will_id');
       $this->session->sess_destroy();
       $will_id = $this->input->post('will_id');
-  		$personal_data = $this->Will_Model->get_personal_data($will_id);
-  		$this->load->view('welcome_message',['data'=>$personal_data]);
+      $data['personal_data']=$this->Will_Model->get_personal_data($will_id);
+      $data['family_data']= $this->Table_Model->getAllFamilyMembarDataAjax($will_id);
+      $data['family_data2']= $this->Table_Model->getAllFamilyMembarDataAjax($will_id);
+      $data['family_data3']= $this->Table_Model->getAllFamilyMembarDataAjax($will_id);
+      $data['excutor_data']= $this->Table_Model->getAllExecutorDataAjax($will_id);
+      $data['funeral_data']= $this->Table_Model->getAllFuneralDataAjax($will_id);
+      $data['real_estate']= $this->Table_Model->getAllRealEstateDataAjax($will_id);
+      $data['bank_assets']= $this->Table_Model->getAllBankAssetsDataAjax($will_id);
+      $data['vehicle']= $this->Table_Model->getAllVehicleAjax($will_id);
+      $data['other_gift']= $this->Table_Model->getAllGiftAjax($will_id);
+      $data['witness']= $this->Table_Model->getAllWitnessAjax($will_id);
+      $data['will_data']= $this->Will_Model->get_will_data($will_id);
+
+      $this->load->view('welcome_message',$data);
+  		//$personal_data = $this->Will_Model->get_personal_data($will_id);
+
+  		// $this->load->view('welcome_message',['data'=>$personal_data]);
   	}
 
     public function final_pdf(){

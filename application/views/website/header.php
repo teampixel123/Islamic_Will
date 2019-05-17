@@ -61,6 +61,7 @@
 
                             <!-- Book Icon -->
                             <div class="book-now-btn ml-5 mt-4 mt-lg-0 ml-md-4">
+                                <a href="<?php echo base_url(); ?>Login_controller/register_user_view" class="btn akame-btn">Register</a>
                                 <a href="<?php echo base_url(); ?>Login" class="btn akame-btn">Log In</a>
                             </div>
                         </div>

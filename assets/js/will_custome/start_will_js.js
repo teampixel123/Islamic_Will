@@ -160,7 +160,7 @@ $(document).ready(function(){
           var info = JSON.parse(data);
           if(info == 'Mobile_Exist'){
             $('#error_mobile_exist').show();
-            invalide_mob_mail//alert('Mobile_Exist');
+            // invalide_mob_mail//alert('Mobile_Exist');
           }
           else if(info == 'Email_Exist'){
             $('#error_email_exist').show();

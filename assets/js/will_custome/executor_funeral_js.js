@@ -233,6 +233,7 @@ $('.table_funeral').on( 'draw.dt', function(){
     }
 });
 //  strat validation asif
+
 $("#executor_name").blur(function(){
   var executor_name = $('#executor_name').val();
   var executor_name_format =  /^[a-zA-Z ]*$/;
@@ -241,6 +242,17 @@ $("#executor_name").blur(function(){
   }
   else{
       $('#error_executor_name').hide();
+    }
+});
+
+$("#e_name_title").blur(function(){
+  var e_name_title = $('#e_name_title').val();
+  if(e_name_title == 'select'){
+    
+    $('#error_e_name_title').show();
+  }
+  else{
+      $('#error_e_name_title').hide();
     }
 });
 
@@ -286,6 +298,7 @@ $("#funeral_address").blur(function(){
       $('#error_funeral_address').hide();
     }
 });
+
 //  end validation asif
 
 //	Save/Add Executor... Datta...

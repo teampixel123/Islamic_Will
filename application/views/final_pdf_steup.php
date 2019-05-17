@@ -118,8 +118,9 @@ $pdf->AddPage();
 //$pdf->RoundedRect(10, 05, 200, 290, 00, '1000', ' ', array(400, 400, 400));
 //page end border
 
-$html = '<br><br><br><br><br><br><br> <h1 style="text-align:center; font-family: times, serif; " > In the Name of Allah the Most Gracious, the most Merciful
-ISLAMIC LAST Will and Testament</h1>
+$html = '<br><br> <h1 style="text-align:center; font-family: times, serif; font-size:24px; " > In the Name of Allah the Most Gracious,<br> the most Merciful <br><br><br><br><br><br>
+<br><br><br>
+ISLAMIC LAST Will  AND TESTAMENT </h1>
 ';
 
 $pdf->Image('application\img\title.png', 20, 180, 170, 45, '', '', '', 72);
@@ -166,7 +167,7 @@ testament revoking all wills and codicils and testamentary dispositions at any t
 
 <p style="font-size:12; font-family: times, serif;">AND WHEREAS I fully understand what is right and wrong, I wish to make necessary and proper arrangements in
 respect of enjoyment
- and distribution of my assets and properties after my life time. So that unnecessary y misunderstanding and consequential wasteful
+ and distribution of my assets and properties after my life time. So that unnecessary misunderstanding and consequential wasteful
   litigation or unpleasantness between the members of my family may be avoided. </p>
 
 
@@ -270,7 +271,7 @@ foreach($excutor_data as $excutor_data ) {
 	$i++;
 	if($i == 1){
 		$html .= '<p style="font-size:12; font-family: times, serif;">
-	1.	I '.$i.' hereby nominate and appoint, namely Miss/Mr./Mrs '.$excutor_data->executor_name.' presently residing
+	1.	I  hereby nominate and appoint, namely Miss/Mr./Mrs '.$excutor_data->executor_name.' presently residing
 	at &nbsp;'.$excutor_data->executor_address.', age &nbsp;'.$excutor_data->executor_age.', to be the executor/s of my Last Will and Testament.
 </p>';
 	}
@@ -295,10 +296,7 @@ c)	I hereby direct that the Executors and Administrators of my Estate proceed wi
  as commanded by Islamic Law of Succession:
 </p>
 
-<p style="font-size:12; font-family: times, serif;">
-	d)	I hereby direct that the Executors and Administrators of my Estate proceed with the distribution of my Estate in the following order of
-	priority as commanded by Islamic Law of Succession:
-</p>
+
 
 <p style="font-size:12; font-family: times, serif;">
 I.	Payment of my funeral expenses.<br>
@@ -470,7 +468,7 @@ foreach($bank_assets as $bank_assets ) {
     if($Insurance == 1){
       $html .= '<span style="font-size:14; font-family: times, serif;" ><b>Insurance policies</span>';
     }
-		$html .= '<p style="font-size:12; font-family: times, serif;" >'.$Insurance.') My insurance policy '. $bank_assets->account_number .' from '. $bank_assets->bank_name .'  branch – '. $bank_assets->branch_name .'  for sum assurance of Rs. '. $bank_assets->i_rs .'/-.
+		$html .= '<p style="font-size:12; font-family: times, serif;" >'.$Insurance.') My insurance policy '. $bank_assets->account_number .' from '. $bank_assets->bank_name .'  branch – '. $bank_assets->branch_name .'  for sum assurance of Rs. '. $bank_assets->assurance_amount .'/-.
 		</p>';
 	}
 }
@@ -491,7 +489,7 @@ $Remained_Assets = 0;
 foreach($other_gift as $other_gift ) {
   $k++;
   if($k == 1){
-    $html .= '<h1 style="font-family: times, serif;" >'.$assets_title++.'. Others gift -  </h1>';
+    $html .= '<h1 style="font-family: times, serif;" >'.$assets_title++.'. Other gifts -  </h1>';
   }
 	if($other_gift->gift_type == 'Jewellery and Valuables'){
     $Jewellery++;
@@ -584,16 +582,22 @@ $year = date('Y', strtotime($will_date));
  </p>
  <p style="font-size:12; font-family: times, serif;" >This is my last and final will, which I have laid out.</p>';
 
- $html .= '<ul>
- 	<li>PLACE: '.$will_data->will_place.'</li><br>
-	<li>Dated: '.$will_data->will_date.'</li>
- </ul>
+ $html .= '
+ <p>PLACE: '.$will_data->will_place.'</p>
+ <p>Dated: '.$will_data->will_date.'</p>
  <p style="font-size:12; font-family: times, serif;" >L.  TESTATOR’S SIGNATURE </p>
  <p style="font-size:12; font-family: times, serif;" >
  	In witness whereof, I have hereunto set my hand and seal on this: '.$day.' day of '.$month.', '.$year.'.
  </p>
- <p >______________________
-Signature
+
+ <p >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ Signature______________________
+
 </p>
 
 <h1 style="text-align:center; font-family: times, serif;" >M.  WITNESSES</h1>

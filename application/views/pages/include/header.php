@@ -1,4 +1,4 @@
-<div class="container-fluid" style="padding:0;">
+<!-- <div class="container-fluid" style="padding:0;">
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,6 +30,80 @@
       <input class="form-control mr-sm-2" type="text" placeholder="Search">
       <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
     </form> -->
-  </div>
+	<!-- </div>
 </nav>
-</div>
+</div> -->
+
+
+<!-- Preloader -->
+<!-- <div id="preloader">
+    <div class="loader"></div>
+</div> -->
+<!-- /Preloader -->
+
+<!-- Header Area Start -->
+<header class="header-area">
+  <!-- Top Header Area Start -->
+  <div class="top-header-area">
+      <div class="container h-100">
+          <div class="row h-100 align-items-center">
+              <div class="col-8">
+                  <div class="top-header-content text-right">
+                      <p>Welcome to Islamic_will</p>
+                  </div>
+              </div>
+              <div class="col-4">
+                  <div class="top-header-content text-right">
+                      <p> <i class="fa fa-phone" aria-hidden="true"></i> Call us: (+91)-9545-465-656</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Top Header Area End -->
+
+    <!-- Main Header Start -->
+    <div class="main-header-area">
+        <div class="classy-nav-container breakpoint-off">
+            <div class="container">
+                <!-- Classy Menu -->
+                <nav class="classy-navbar justify-content-between" id="akameNav">
+
+                    <!-- Logo -->
+                    <a class="nav-brand" href="<?php echo base_url(); ?>website"><img src="<?php echo base_url(); ?>assets/website/img/core-img/logo.svg" alt=""></a>
+
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+
+                    <!-- Menu -->
+                    <div class="classy-menu">
+                        <!-- Menu Close Button -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul id="nav">
+                                <li id="accordion"><a href="<?php echo base_url(); ?>website">Home</a></li>
+                                <li id="accordion"><a href="<?php echo base_url(); ?>About-Us">About Us</a></li>
+                                  <li id="accordion"><a href="<?php echo base_url(); ?>Pricing">Pricing</a></li>
+                                <li id="accordion"><a href="<?php echo base_url(); ?>FAQ">FAQ's</a></li>
+                                <li id="accordion"><a href="<?php echo base_url(); ?>Contact">Contact</a></li>
+                            </ul>
+
+                            <!-- Book Icon -->
+                            <div class="book-now-btn ml-5 mt-4 mt-lg-0 ml-md-4" >
+                                <a href="<?php echo base_url(); ?>Login_controller/register_user_view" class="btn akame-btn">Register</a>
+																<a href="<?php echo base_url(); ?>Login" class="btn akame-btn">Log In</a>
+                            </div>
+                        </div>
+                        <!-- Nav End -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Header Area End -->

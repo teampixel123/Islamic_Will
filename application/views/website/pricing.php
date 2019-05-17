@@ -1,6 +1,14 @@
 <?php include('head.php') ?>
 <body>
-    <?php include('header.php') ?>
+  <?php
+    $is_login = $this->session->userdata('user_is_login');
+    if($is_login){
+      include('login_header.php');
+    }
+    else{
+      include('header.php');
+    }
+   ?>
     <!-- Breadcrumb Area Start -->
     <section class="breadcrumb-area section-padding-80">
         <div class="container">
@@ -44,7 +52,10 @@
               <li><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>User can fill details up to 30 days from payment</li>
               <!-- <li class="text-muted"><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>Monthly Status Reports</li> -->
             </ul>
-            <a href="#" class="btn btn-block active  akame-btn text-uppercase" style="padding: 0rem !important;">Get Started</a>
+            <div class="text-center">
+                <a href="#" class="btn btn-block active  akame-btn text-uppercase" style="padding: 0rem !important; width:auto;">Get Started</a>
+            </div>
+
           </div>
         </div>
       </div>
@@ -68,7 +79,9 @@
               <li><span class="fa-li"></span>same package will of user’s Spouse, Real Sister, Mother, Father, Son, Daughter’s is at 1500 + GST @ 18%</li>
               <li><span class="fa-li"></span>Final will delivery by E mail or Courier at user’s choice.</li>
             </ul>
-            <a href="#" class="btn btn-block active  akame-btn text-uppercase " style="padding: 0rem !important;">Get Started</a>
+            <div class="text-center">
+                <a href="#" class="btn btn-block active  akame-btn text-uppercase" style="padding: 0rem !important; width:auto;">Get Started</a>
+            </div>
           </div>
         </div>
       </div>
@@ -103,9 +116,9 @@
 
 
     <!-- Border -->
-     <div class="container">
+
         <div class="border-top mt-3"></div>
-    </div>
+  
     <!-- Footer Area Start -->
   <?php include('footer.php') ?>
 </body>

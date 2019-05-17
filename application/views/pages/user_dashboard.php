@@ -18,5 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	   <h1 class="display-3 text-center">User Dashboard</h1>
   </div>
 </div>
+<br><br><br><br>
+<?php include('include/footer.php') ?>
 </body>
 <?php } ?>

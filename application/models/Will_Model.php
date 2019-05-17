@@ -24,6 +24,18 @@
       return $num;
     }
 
+    public function check_forget($reg_mob_email){
+      $this->db->select('*');
+      $this->db->from('tbl_user');
+      $this->db->where("user_email_id = '$reg_mob_email' or user_mobile_number = '$reg_mob_email'");
+      // $this->db->where('user_id =',$user_id);
+      $query = $this->db->get();
+       $last = $this->db->last_query();
+      $result = $query->result_array();
+      return $result;
+
+    }
+
     // Save User... Datta...
     public function save_user($data){
       $this->db->insert('tbl_user',$data);
@@ -38,6 +50,8 @@
       $result = $query->result();
       return $result;
     }
+
+
 
     // Save start Will Info...
     public function save_start_info($data){

@@ -1,6 +1,14 @@
 <?php include('head.php') ?>
 <body>
-    <?php include('header.php') ?>
+  <?php
+    $is_login = $this->session->userdata('user_is_login');
+    if($is_login){
+      include('login_header.php');
+    }
+    else{
+      include('header.php');
+    }
+   ?>
     <!-- Contact Information Area Start -->
     <section class="contact-information-area section-padding-80-0">
         <div class="container">
@@ -65,20 +73,20 @@
                                 <input type="email" name="email" id="email" class="form-control mb-30" placeholder="Email"  >
                             </div>
                             <div class="col-12">
-                                <textarea name="message" id="message" class=" form-control mb-30 " placeholder="Start the discussion..."></textarea>
+                                <textarea name="message" id="message" class=" form-control mb-30 " placeholder="Type Your Message..."></textarea>
                             </div>
 
                         </div>
                     </form>
                     <div class="col-12 text-center">
-                        <button type="submit" id="btn_contact" class="btn akame-btn btn-3 mt-15 active">Post Comment</button>
+                        <button type="submit" id="btn_contact" class="btn akame-btn btn-3 mt-15 active">Send</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- Contact Area End -->
-
+<div class="border-top mt-3"></div>
     <!-- Footer Area Start -->
 
     <?php include('footer.php') ?>

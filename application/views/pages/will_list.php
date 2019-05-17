@@ -65,6 +65,9 @@ include('include/login_header.php'); ?>
      </div>
   </div>
 </div>
+<br><br><br><br><br><br><br><br><br>
+<div class="border-top mt-3"></div>
+<?php include('include/footer.php') ?>
 
 <?php include('include/script_files.php') ?>
 <script>

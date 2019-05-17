@@ -23,6 +23,15 @@
       $this->session->sess_destroy();
       $this->load->view('pages/login');
   	}
+    public function logout(){
+      $this->session->sess_destroy();
+      header('location:login');
+  	}
+
+    public function forget_pass(){
+      $this->session->sess_destroy();
+      $this->load->view('pages/forget_pass');
+    }
 
     public function start_will_view(){
       $is_login = $this->session->userdata('user_is_login');
@@ -157,30 +166,30 @@
      $gender = "Male";
    }
 
-     $check_mail = $this->Will_Model->check_mail_id($this->input->post('email'));
-     $check_mobile = $this->Will_Model->check_mobile_no($this->input->post('mobile_no'));
+     // $check_mail = $this->Will_Model->check_mail_id($this->input->post('email'));
+     // $check_mobile = $this->Will_Model->check_mobile_no($this->input->post('mobile_no'));
 
-    if($check_mobile > 0) {
-      $error = 'Mobile_Exist';
-      echo json_encode($error);
-     }
-     elseif ($check_mail > 0) {
-       $error = 'Email_Exist';
-       echo json_encode($error);
-     }
-     else{
+    // if($check_mobile > 0) {
+    //   $error = 'Mobile_Exist';
+    //   echo json_encode($error);
+    //  }
+    //  elseif ($check_mail > 0) {
+    //    $error = 'Email_Exist';
+    //    echo json_encode($error);
+    //  }
+     // else{
         $will_data = array(
           'will_id' => $will_id,
           'will_date' => $will_date,
           'will_user_id' => $user_id,
         );
-       $user_data = array(
-         'user_id'=>$user_id,
-         'user_fullname'=>$this->input->post('full_name'),
-         'user_mobile_number'=>$this->input->post('mobile_no'),
-         'user_email_id'=>$this->input->post('email'),
-         'reg_date' => $will_date,
-       );
+       // $user_data = array(
+       //   'user_id'=>$user_id,
+       //   'user_fullname'=>$this->input->post('full_name'),
+       //   'user_mobile_number'=>$this->input->post('mobile_no'),
+       //   'user_email_id'=>$this->input->post('email'),
+       //   'reg_date' => $will_date,
+       // );
         $start_data = array(
           'will_id' => $will_id,
           'name_title'=>$this->input->post('name_title'),
@@ -192,7 +201,7 @@
           'is_have_child'=>$this->input->post('is_have_child'),
         );
 
-       $this->Will_Model->save_user($user_data);
+       // $this->Will_Model->save_user($user_data);
        $this->Will_Model->save_start_info($start_data);
        // $this->Will_Model->save_personal_info($personal_data);
        $this->Will_Model->save_will_data($will_data);
@@ -202,7 +211,7 @@
 
        $get_personal_data = $this->Will_Model->get_personal_data($will_id);
        echo json_encode($get_personal_data);
-     }
+     // }
  }
 
  public function update_start_data(){
@@ -564,6 +573,9 @@
           'bank_name' => $this->input->post('bank_name'),
           'branch_name' => $this->input->post('branch_name'),
           'fd_recipt_No' => $this->input->post('fd_recipt_No'),
+          'state' => $this->input->post('b_state'),
+          'pin_code' => $this->input->post('b_pin_code'),
+
         );
       }
       elseif ($assets_type=='Bank Locker') {
@@ -574,8 +586,21 @@
           'bank_name' => $this->input->post('bank_name'),
           'branch_name' => $this->input->post('branch_name'),
           'key_number' => $this->input->post('key_number'),
+          'state' => $this->input->post('b_state'),
+          'pin_code' => $this->input->post('b_pin_code'),
         );
       }
+      // elseif ($assets_type=='Savings A/c' || $assets_type=='Current  A/C' || $assets_type=='PPF') {
+      //   $bank_assets_data = array(
+      //     'will_id' => $will_id,
+      //     'assets_type' => $this->input->post('assets_type'),
+      //     'account_number' => $this->input->post('account_number'),
+      //     'bank_name' => $this->input->post('bank_name'),
+      //     'branch_name' => $this->input->post('branch_name'),
+      //     'state' => $this->input->post('b_state'),
+      //     'pin_code' => $this->input->post('b_pin_code'),
+      //   );
+      // }
       else{
         $bank_assets_data = array(
           'will_id' => $will_id,
@@ -583,6 +608,9 @@
           'account_number' => $this->input->post('account_number'),
           'bank_name' => $this->input->post('bank_name'),
           'branch_name' => $this->input->post('branch_name'),
+          'state' => $this->input->post('b_state'),
+          'pin_code' => $this->input->post('b_pin_code'),
+          'assurance_amount' => $this->input->post('b_sum_amount'),
         );
       }
       $this->Will_Model->save_bank_assets($bank_assets_data);
@@ -602,6 +630,8 @@
           'bank_name' => $this->input->post('bank_name'),
           'branch_name' => $this->input->post('branch_name'),
           'fd_recipt_No' => $this->input->post('fd_recipt_No'),
+          'state' => $this->input->post('b_state'),
+          'pin_code' => $this->input->post('b_pin_code'),
         );
       }
       elseif ($assets_type=='Bank Locker') {
@@ -611,6 +641,8 @@
           'bank_name' => $this->input->post('bank_name'),
           'branch_name' => $this->input->post('branch_name'),
           'key_number' => $this->input->post('key_number'),
+          'state' => $this->input->post('b_state'),
+          'pin_code' => $this->input->post('b_pin_code'),
         );
       }
       else{
@@ -619,6 +651,9 @@
           'account_number' => $this->input->post('account_number'),
           'bank_name' => $this->input->post('bank_name'),
           'branch_name' => $this->input->post('branch_name'),
+          'state' => $this->input->post('b_state'),
+          'pin_code' => $this->input->post('b_pin_code'),
+          'assurance_amount' => $this->input->post('b_sum_amount'),
         );
       }
       $this->Will_Model->update_bank_assets($bank_assets_id,$will_id,$update_bank_assets_data);

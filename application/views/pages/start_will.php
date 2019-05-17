@@ -12,7 +12,7 @@ include('include/head.php');
 			include('include/header.php');
 		}
 	 ?>
-<h3 class="display-4 text-center">Start Your Will Now</h3>
+<h3 id="head1" class="display-4 text-center">Start Your Will Now</h3>
  <!-- end status bar -->
 <!-- personal info containner start  asif change -->
 <?php $start_will_data = $this->session->userdata() ?>
@@ -40,7 +40,7 @@ include('include/head.php');
 				 <p id="error_name_title" style="color:red; display:none" class="text-left invalide m-0">*This field is required.</p>
         </div>
         <div class="col-md-4">
-					<input type="text" name="full_name"  id="full_name"class="form-control empty" id="exampleInputEmail1" placeholder="Firstname Middlename Lastname" >
+					<input type="text" name="full_name"  id="full_name"class="form-control empty" id="exampleInputEmail1" placeholder="Full Name" >
 					<p id="error_name" style="color:red; display:none" class="text-left invalide  m-0">*This field is required.</p>
 				</div>
       </div>
@@ -93,7 +93,7 @@ include('include/head.php');
           <label for="exampleInputEmail1">Mobile No</label>
         </div>
         <div class="col-md-4">
-          <input type="number" name="mobile_no" class="form-control" id="mobile_no" aria-describedby="emailHelp" >
+          <input type="number" name="mobile_no" class="form-control" id="mobile_no" aria-describedby="emailHelp" placeholder="Mobile No" >
 					<p id="error_mobile_no" style="color:red; display:none" class="text-left invalide  m-0">*Please enter a valid number.</p>
         </div>
       </div>
@@ -106,7 +106,7 @@ include('include/head.php');
           <label for="exampleInputEmail1">Email</label>
         </div>
         <div class="col-md-4">
-          <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" >
+          <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="email">
 					<p id="error_email" style="color:red; display:none" class="text-left invalide  m-0">*Please enter a valid email address.</p>
         </div>
       </div>
@@ -121,8 +121,9 @@ include('include/head.php');
   </fieldset>
 </div>
 </div>
-</div>
-
+</div><br><br><br>
+<div class="border-top mt-3"></div>
+<?php include('include/footer.php') ?>
 <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/js/jquery-3.3.0.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/js/jquery-ui.min.js" type="text/javascript"></script>

@@ -123,29 +123,36 @@ tag must be prepared as an array and encoded with the
 serializeTCPDFtagParameters() method (see the example below).
 
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
- foreach ($data as $data) {
- //	$pdf->Write(0, 'Image Clipping using geometric functions'.$data->full_name, '', 0, 'C', 1, 0, false, false, 0);
+//  foreach ($data as $data) {
+//  //	$pdf->Write(0, 'Image Clipping using geometric functions'.$data->full_name, '', 0, 'C', 1, 0, false, false, 0);
+// }
+
+foreach ($will_data as $will_data) {
+}
+
+foreach ($personal_data as $personal_data) {
 }
 
 //page  start border
 $pdf->RoundedRect(05, 05, 200, 290, 00, '1000');
 //page end border
 
-$html = '<h1 style="text-align:center; font-family: times, serif;"> ISLAMIC LAST Will and Testament</h1>
-<h2 style="text-align:center; font-family: times, serif;" >of........................................</h2>
+$html .= '<br><h1 style="text-align:center; font-family: times, serif;"> ISLAMIC LAST Will and Testament</h1>
+<br><br>
+<h2 style="text-align:center; font-family: times, serif;" >of '.$personal_data->name_title.' '.$personal_data->full_name.'</h2>
 
-<p style="font-size:14px; font-family:Candara; ">I Miss/Mr./Mrs    '.$data->full_name.'    a Muslim, presently resident of
-	        '.$data->address.'       , Age - ..........., Occupation –     '.$data->occupation.'      , having my
-Aadhar No.       '.$data->aadhar_no.'        being sound mind and memory declare that the following is my
+<p style="font-size:12; font-family: times, serif; text-align: justify; ">I '.$personal_data->name_title.' '.$personal_data->full_name.' a Muslim, presently resident of
+'.$personal_data->address.', Age- '.$personal_data->age.', Occupation – '.$personal_data->occupation.', having my
+Aadhar No. '.$personal_data->aadhar_no.' being sound mind and memory declare that the following is my
 Islamic last Will and Testament (wasiyyat).</p>
 
-<p style="font-size:14px;">WHEREAS I do hereby make, publish and declare this is to be my last will and
+<p style="font-size:12; font-family: times, serif; text-align: justify; ">WHEREAS I do hereby make, publish and declare this is to be my last will and
 testament revoking all wills and codicils and testamentary dispositions at any time heretofore made by me.</p>
 
-<p style="font-size:14px;">AND WHEREAS I am maintaining good health and I am of sound mind. This will is made by me of my own independent
+<p style="font-size:12; font-family: times, serif;">AND WHEREAS I am maintaining good health and I am of sound mind. This will is made by me of my own independent
  decision, my free mind and volition and in sound health without any persuasion, influence or coercion and out of my independent decision only. </p>
 
-<p style="font-size:14px;">AND WHEREAS I fully understand what is right and wrong, I wish to make necessary and proper arrangements in
+<p style="font-size:12; font-family: times, serif;">AND WHEREAS I fully understand what is right and wrong, I wish to make necessary and proper arrangements in
 respect of enjoyment
  and distribution of my assets and properties after my life time. So that unnecessary y misunderstanding and consequential wasteful
   litigation or unpleasantness between the members of my family may be avoided. </p>
@@ -623,44 +630,45 @@ $pdf->AddPage();
 //page  start border
 
 
-$html = '<h1 style="text-align:center; font-family: times, serif;">K. SEPARABILITY</h1>
+$html = '<h1 style="text-align:center; font-family: times, serif;" >K. SEPARABILITY</h1>';
+$will_date = $will_data->will_date;
+$day = date('d', strtotime($will_date));
+$month = date('F', strtotime($will_date));
+$year = date('Y', strtotime($will_date));
 
-<p style="font-size:12; font-family: times, serif;" >In case  one or more of the provisions contained in this/ any part of this Last Will and Testament is determined invalid by a court of competent jurisdiction I direct and ordain that other remaining provisions
+$html .= '<p style="font-size:12; font-family: times, serif;">In case  one or more of the provisions contained in this/ any part of this Last Will and Testament is determined invalid by a court of competent jurisdiction I direct and ordain that other remaining provisions
 shall remain valid and enforceable and effective.</p>
-<p style="font-family: times, serif;" >
-I subscribe my name to this Will this day ______ of ____________, 201-- at ________ am/pm and do hereby declare that I sign and execute this instrument as my last Will and that I sign it willingly, that I execute it as my
+<p style="font-size:12; font-family: times, serif;" >
+I subscribe my name to this Will this day '.$day.' of '.$month.', '.$year.' at '.$will_data->will_time.' am/pm and do hereby declare that I sign and execute this instrument as my last Will and that I sign it willingly, that I execute it as my
  free and voluntary act for the purposes therein expressed, and that I am of age or otherwise legally empowered to make a Will, under no constraint or undue influence
 </p>
-<p style="font-size:12; font-family: times, serif;" >This is my last and final will, which I have laid out.</p>
-<ul>
+<p style="font-size:12; font-family: times, serif;" >This is my last and final will, which I have laid out.</p>';
 
-
- <li>PLACE: ____________</li><br>
- <li>Dated:____________</li>
+$html .= '<ul>
+ <li>PLACE: '.$will_data->will_place.'</li><br>
+ <li>Dated: '.$will_data->will_date.'</li>
 </ul>
-<h1 style="text-align:center; font-family: times, serif;">L.  TESTATOR’S SIGNATURE </h1>
+<p style="font-size:12; font-family: times, serif;" >L.  TESTATOR’S SIGNATURE </p>
 <p style="font-size:12; font-family: times, serif;" >
- In witness whereof, I have hereunto set my hand and seal on this: _________ day of _______, 2___.
+ In witness whereof, I have hereunto set my hand and seal on this: '.$day.' day of '.$month.', '.$year.'.
 </p>
-<p>______________________
+<p >______________________
 Signature
 </p>
 
 <h1 style="text-align:center; font-family: times, serif;" >M.  WITNESSES</h1>
-<p style="font-size:12; font-family: times, serif;" >
- We hereby certify that the foregoing instrument was on the date thereof, signed, Published, and declared by
- the Testator _______________ ______________, as and for His/her Last Will and Testament, in our presence, who at
- his/her request and in his/her Presence, and in the presence of each other, have hereunto subscribed our names as
- Witnesses thereto, believing said Testator at the time of the signing to be of sound mind and memory.
-</p>
-<ul>
- <li>
- 1. _________________________ of ___________________________</li>
-<li>  2. _________________________ of ___________________________</li>
+<p style="font-family: times, serif;" >
+We hereby certify that the foregoing instrument was on the date thereof, signed, Published, and declared by
+the Testator '.$personal_data->full_name.', as and for His/her Last Will and Testament, in our presence, who at
+his/her request and in his/her Presence, and in the presence of each other, have hereunto subscribed our names as
+Witnesses thereto, believing said Testator at the time of the signing to be of sound mind and memory.
 
-
-</ul>';
-
+</p>';
+$i=0 ;
+foreach($witness as $witness ) {
+ $i++;
+   $html .= ''.$i.'. &nbsp;'.$witness->witness_name.' of '.$witness->witness_address.'<br>';
+}
 $pdf->Image('application\img\logo.png', 60, 25, 100, 30, '', '', '', true, 72);
 $pdf->Image('application\img\logo.png', 60, 125, 100, 30, '', '', '', true, 72);
 $pdf->Image('application\img\logo.png', 60, 225, 100, 30, '', '', '', true, 72);

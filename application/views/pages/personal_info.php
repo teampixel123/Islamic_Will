@@ -227,9 +227,12 @@ include('include/head.php');
 <p id="error_mobile_exist" style="color:red; display:none;" class="text-left invalide_mob_mail">*This mobile number is exist. Please go to <a href="<?php echo base_url(); ?>Will_controller/login"><b>Login</b></a></p>
 <p id="error_email_exist" style="color:red; display:none;" class="text-left invalide_mob_mail">*This email id is exist. Please go to <a href="<?php echo base_url(); ?>Will_controller/login"><b>Login</b></a></p>
     <button type="submit" id="save_personal_data" class="btn btn-success" style="float:right;">Save & Next</button>
-		<p style="float:right;"><button type="button" id="update_personal_data" class="btn btn-info" >Update</button>
-		<button type="button" id="next_page" class="btn btn-info" >Next</button></p>
-		<button type="button" id="destroy" class="btn btn-danger">Clear session</button>
+		<p style="float:right;"><button type="button" id="update_personal_data" class="btn btn-success" >Save & Next</button>
+		<!-- <button type="button" id="next_page" class="btn btn-info" >Next</button></p> -->
+		<div class="text-left">
+			<button type="button" id="destroy" class="btn btn-danger " >Clear session</button>
+		</div>
+
 		<!--a href="<?php echo base_url() ?>/Will_controller/family_info_view" type="button" id="personal_next" class="btn btn-info">Next</a-->
   </fieldset>
 </div>
@@ -240,7 +243,7 @@ include('include/head.php');
 <?php } ?>
   <div class="container personal_data_dispaly " >
   	<div class="" >
-			<form>
+			<form style="font-family: 'Roboto Slab'!important ; font-size:12px;">
 		      <div class="row text-center">
 		        <label class="col-md-4 text-right" for="exampleInputEmail1" >Name :</label>
 						<label class="col-md-8 text-left" id="lbl_name" style="font-weight:600;"></label>
@@ -279,6 +282,13 @@ include('include/head.php');
 
 <!-- </div> -->
 </div>
+
+<!-- Border -->
+
+		<div class="border-top mt-3"></div>
+
+
+<?php include('include/footer.php') ?>
 <!-- personal info containner end  asif change -->
 
 <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js" type="text/javascript"></script>
@@ -322,7 +332,7 @@ $(document).ready(function(){
 			else{
 				  $('#update_personal_data').show();
 			}
-     
+
     }
   });
 });

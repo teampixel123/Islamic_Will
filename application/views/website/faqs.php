@@ -1,6 +1,14 @@
 <?php include('head.php') ?>
 <body>
-    <?php include('header.php') ?>
+  <?php
+    $is_login = $this->session->userdata('user_is_login');
+    if($is_login){
+      include('login_header.php');
+    }
+    else{
+      include('header.php');
+    }
+   ?>
     <!-- Breadcrumb Area Start -->
     <section class="breadcrumb-area section-padding-80">
         <div class="container">
@@ -26,7 +34,7 @@
         <div class="container">
             <div class="row">
                 <!-- Section Heading -->
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-lg-6 about--us--content1">
                     <div class="about--us--content mb-80">
                       <h3>Q.	What is an Islamic Will?</h3>
                       <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; An Islamic Will is a legal document that is prepared to ensure that
@@ -40,15 +48,20 @@
                         which are set out in your Will and generally look after your estate after you die. Your Will details
                         who you wish to leave something to and what you want to leave to them.
                       </p>
+                        <div class="border-top mt-3"></div><br>
                       <h3>Q.	What is the purpose of an Islamic Will?</h3>
 
                       <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The main purpose of an Islamic Will is to ensure that your estate is dealt with in accordance with Islamic law;
                         that it is distributed amongst specific family members in specific shares.</p>
 
+                        <div class="border-top mt-3"></div><br>
+
                         <h3>Q.	Who can make an Islamic Will?</h3>
 
                         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Every Muslim major person who is sane and not feeble-minded squanderer may make a will to
                           dispose of his property, which must have made with free will and choice.</p>
+
+                          <div class="border-top mt-3"></div><br>
 
                           <h3>Q. What are requiremenrts  of wasi?</h3>
                           <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; He should be a mukallaf, i.e. a sane adult, because a lunatic and a minor do not have authority over themselves;
@@ -104,6 +117,8 @@
                             incapacity will be compensated by the supervision of the hakim; i.e. the judge himself will supervise his
                              dispositions, or appoint a capable, trustworthy person to cooperate with the executor.
                          </p>
+                         <div class="border-top mt-3"></div><br>
+
                          <h3>Q. Why should I make an Islamic Will?</h3>
                          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As a Muslim, you should make an Islamic Will to clearly demonstrate that you wish your estate to be dealt
                             with in accordance with Islamic law. Making an Islamic Will ensures that your financial affairs are in order
@@ -115,6 +130,8 @@
                           <p>
                             A person who creates a will is called as “Testator”.
                           </p>
+                          <div class="border-top mt-3"></div><br>
+
                             <h3>Q.  Do I need to prepare a Declaration of Faith?</h3>
                           <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yes, this is encouraged amongst Muslims whilst finalising your wishes in your Will.
                             This can be prepared free of charge as part and parcel of preparing your Will.</p>
@@ -127,10 +144,14 @@
                             <p>•	That paradise is true and hell is true</p>
                             <p>•	That the Day of Judgment is true and shall come, and where Allah shall resurrect the dead</p>
 
+                            <div class="border-top mt-3"></div><br>
+
                             <h3>Q.  Can my Funeral wishes be included in my Will?</h3>
                             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yes, your funeral and burial wishes can be specified in your Will, however, it is recommended that
                               the funeral and burial wishes are discussed with the family beforehand, as the Will, sometimes, does not
                               come to light until after the funeral takes places.</p>
+
+                              <div class="border-top mt-3"></div><br>
 
                             <h3>Q.  Who will be my Executors and what do they do?</h3>
                             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your Executors will be the persons you wish to deal with the administration of your estate after your death.
@@ -155,7 +176,7 @@
                     </div>
                 </div>
 
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-lg-6 about--us--content1">
                     <div class="about--us--content mb-80">
 
                       <h3>Q. Who is appointed as Guardian in Islamic law?</h3>
@@ -171,6 +192,9 @@
                        of their religion. Such guardians are also called Statutory Guardian. It may be noted that no provision
                        has been made under this act for the guardianship for the marriage.
                      </p>
+
+                     <div class="border-top mt-3"></div><br>
+
                      <h3>Q.  When can I amend or revoke my AL- WASIYYA?  (Islamic Will)</h3>
 
                      <p>
@@ -187,6 +211,9 @@
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; When a new Will is written the old will should be destroyed to avoid any confusion at a later date.
                      </p>
 
+                     <div class="border-top mt-3"></div><br>
+
+
                       <h3>Q. What is a codicil?</h3>
                       <p>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	Codicil means and instrument made in relation to a will and explaining, altering or
@@ -200,6 +227,9 @@
                           However, at our competitive low cost fixed fee for an Islamic Will it usually makes more sense to have
                           it re-written, as it is likely to be quicker and cheaper for you.
                       </p>
+
+                      <div class="border-top mt-3"></div><br>
+
                       <h3>Q.  Can my Islamic Will be challenged?</h3>
                       <p>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Yes, despite preparing a Will, it is possible for certain persons to make a claim on your estate
@@ -211,6 +241,9 @@
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  If it was anticipated that such a claim could arise it might be advisable to
                         leave a letter to your Executor setting out any special circumstances relevant to any possible claim.
                       </p>
+
+                        <div class="border-top mt-3"></div><br>
+
                       <h3>
                         Q.  What happens if I do not make an Islamic Will?
                       </h3>
@@ -233,12 +266,18 @@
                          and possibly not the personal representatives which you would have appointed.
                          If potential beneficiaries cannot be found then your estate will go to the Crown!
                       </p>
+
+                      <div class="border-top mt-3"></div><br>
+
                       <h3>Q.  How do I protect my family home?</h3>
                       <p>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  You can have a specialist Will drafted to protect your family home after death but if you wish to protect your
                          family home during your life, especially from the local authority and / or other creditors, you can do by
                          setting up a Home Protection Trust. For further information please contact us to speak to one of our specialist team.
                       </p>
+
+                      <div class="border-top mt-3"></div><br>
+
                       <h3>Q. Do I need to prepare a Declaration Of Faith?</h3>
                       <p>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  This is encouraged amongst Muslims whilst finalizing the wishes in their Will. A declaration of faith
@@ -252,6 +291,9 @@
                       <p>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  That the Day of Judgment is true and shall come, and where Allah shall resurrect the dead
                       </p>
+
+                      <div class="border-top mt-3"></div><br>
+
                       <h3> Q.	Who will be my Executor? [Al-wasi Al-Mukhtar]</h3>
                       <p>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Under pure Islamic law a person who is to give effect to a will is called Executor (wasi).
@@ -261,6 +303,9 @@
                          a testator to appoint guardian or an administrator for his or her children, except when it is apprehended
                           that their property may perish
                       </p>
+
+                      <div class="border-top mt-3"></div><br>
+
                       <h3>  Q. 	When can I amend or revoke my Islamic will?</h3>
                       <p>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  You can amend or revoke your Will at any time before your death. However,
@@ -275,6 +320,9 @@
                          death, marriage, divorce, separation, or moving house. We recommend that Wills are reviewed in order
                           to incorporate the changes.
                       </p>
+
+                      <div class="border-top mt-3"></div><br>
+
                       <h3>Q.	 What about joint assets?</h3>
                       <p>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	Joint assets are usually held either as ‘Joint Tenants’ or ‘Tenants in Common’.
@@ -283,12 +331,17 @@
                            assets are held as Tenants in Common, then your share of those assets shall be passed
                            to beneficiaries in accordance with your Islamic Will.
                       </p>
+                      <div class="border-top mt-3"></div><br>
+
                       <h3>Q. What is the majority age of testator according to Shariat law in India?</h3>
                       <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Under Hanafi law majority is arraigned on attaining the age of fifteen years.
                         If a bequest is made by a person under puberty, even though he is nearing puberty,
                         the will is unlawful but under Shafii law a will made by a person who has not attained
                         puberty would be valid if the will is made to a discrete or advisable purpose.
                       </p>
+
+                      <div class="border-top mt-3"></div><br>
+
                       <h3>Q. What Asset Cannot be Willed ?</h3>
                       <p>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Life Insurance policies held under Section 166 of the Insurance Act 1996 with nominees named.
@@ -308,9 +361,9 @@
 
 
     <!-- Border -->
-     <div class="container">
+
         <div class="border-top mt-3"></div>
-    </div>
+  
     <!-- Footer Area Start --> -->
     <?php include('footer.php') ?>
 </body>

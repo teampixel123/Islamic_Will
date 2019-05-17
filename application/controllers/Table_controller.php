@@ -64,6 +64,7 @@
             <a id='family_member_delete".$id."' class='badge1 '  title='Delete Family Member' > <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>".$edit_button."
             </button>
             </div></div>
+            <hr>
             <script>
               $('#family_member_delete".$id."').click(function(e){
           			$.ajax({
@@ -178,6 +179,7 @@
             <!--a id='executor_edit".$id."'  class='badge1 badge-pill '  title='Edit Family Member'> <i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a-->
             </button>
             </div></div>
+            <hr>
             <script>
               $('#executor_delete".$id."').click(function(e){
                 //alert();
@@ -370,6 +372,7 @@
             ".$edit_button."
               </button>
             </div></div>
+            <hr>
             <script>
               $('#real_estate_delete".$id."').click(function(e){
                 //alert();
@@ -528,6 +531,7 @@
             ".$edit_button."
             </button>
             </div></div>
+            <hr>
             <script>
               $('#bank_assets_delete".$id."').click(function(e){
                 //alert();
@@ -711,6 +715,7 @@
             ".$edit_button."
             </button>
             </div></div>
+            <hr>
             <script>
               $('#vehicle_delete".$id."').click(function(e){
                 //alert();
@@ -920,6 +925,7 @@
 
           </button>
             </div></div>
+            <hr>
             <script>
               $('#witness_delete".$id."').click(function(e){
                 //alert();

@@ -96,23 +96,27 @@
                             <!-- Book Icon -->
                             <div class="book-now-btn ml-5 mt-4 mt-lg-0 ml-md-4">
                                 <a href="<?php echo base_url(); ?>Will_controller/logout" class="btn akame-btn">Logout</a>
+																<!-- <a href="<?php echo base_url(); ?>Login" class="btn akame-btn">Log In</a> -->
                             </div>
-
-                            <div class="classynav">
+                            <!-- login user name-->
+                            <!-- <div class="classynav">
                               <ul id="nav">
-                                  <li><a href="#"><?php echo $user_data->user_fullname; ?></a>
+                                  <li><a href="#">as</a><li>
                                   <ul class="dropdown">
-                                    <li><a href="<?php echo base_url(); ?>Start-Will">- Make A Will</a></li>
-                                    <li><a href="<?php echo base_url() ?>/User_controller/will_list">- Will List</a></li>
-                                    <li><a href="./service.html">- Youer Profile</a></li>
-                                    <li><a href="<?php echo base_url(); ?>Will_controller/logout">- Logout</a></li>
-
+                                  <li><a href="<?php echo base_url(); ?>Start-Will">- Make A Will</a></li>
+                                  <li><a href="<?php echo base_url() ?>/User_controller/will_list">- Will List</a></li>
+                                  <li><a href="./service.html">- Youer Profile</a></li>
+                                  <li><a href="<?php echo base_url(); ?>Will_controller/logout">- Logout</a></li>
                                     </ul>
                                   </ul>
-                            </div>
+                            </div> -->
+                            <!-- log user -->
+                            <!-- Cart Icon -->
 
+                            <div>
                         </div>
                         <!-- Nav End -->
+
                     </div>
                 </nav>
             </div>

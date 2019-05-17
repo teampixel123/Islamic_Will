@@ -69,7 +69,7 @@
         <div class="row text-center">
           <label class="col-md-3 text-right" for="exampleInputEmail1">Date of Signature</label>
   				<div class="col-md-9">
-  					<input type="text" name="will_date" id="will_date" class="form-control clear"  aria-describedby="emailHelp" >
+  					<input type="text"  readonly name="will_date" id="will_date" class="form-control clear"  aria-describedby="emailHelp" >
             <p id="error_will_date" style="color:red; display:none" class="text-left valide">*This field is required.</p>
           </div>
         </div>
@@ -79,7 +79,7 @@
         <div class="row text-center">
           <label class="col-md-3 text-right" for="exampleInputEmail1">Time</label>
   				<div class="col-md-9"> -->
-  					<input type="hidden" name="will_time" id="will_time" value="<?php echo date("h:i:s A"); ?>" class="form-control clear">
+  					<input type="hidden"  name="will_time" id="will_time" value="<?php echo date("h:i:s A"); ?>" class="form-control clear">
           <!-- </div>
         </div>
       </div> -->
@@ -121,7 +121,7 @@
   <div class="col-md-6 col-sm-12">
   	<input type="hidden" name="will_id" id="will_id" value="<?php echo $start_will_data['will_id']; ?>">
 
-    <div class="container" style="background-color:white;">
+    <!-- <div class="container" style="background-color:white;">
     	<div class="" style="">
         <table id="table_personal_info" class="personal_data_dispaly table_personal_info">
           <thead>
@@ -169,9 +169,9 @@
           </tbody>
         </table>
       </div>
-    </div>
+    </div> -->
 
-    <div class="container" style="background-color:white;">
+    <!-- <div class="container" style="background-color:white;">
     <table id="table_family_member" class="personal_data_dispaly table_family_member" style=" width:100%;">
       <thead>
         <tr>
@@ -185,9 +185,9 @@
       <tbody>
       </tbody>
     </table>
-    </div>
+    </div> -->
 
-    <div class="container" style="background-color:white;">
+    <!-- <div class="container" style="background-color:white;">
       <b>Assets Information</b>
     <table id="table_real_estate" class="personal_data_dispaly table_real_estate" style=" width:100%;">
       <thead>
@@ -244,9 +244,9 @@
       <tbody>
       </tbody>
     </table>
-    </div>
+    </div> -->
 
-    <div class="container" style="background-color:white;">
+    <!-- <div class="container" style="background-color:white;">
     <table id="table_executor" class="personal_data_dispaly table_executor" style=" width:100%;">
       <thead>
         <tr>
@@ -260,10 +260,10 @@
       <tbody>
       </tbody>
     </table>
-    </div>
+    </div> -->
 
 
-    <div class="container" style="background-color:white;">
+    <!-- <div class="container" style="background-color:white;">
     <table id="table_funeral" class="personal_data_dispaly table_funeral" style=" width:100%;">
       <thead>
         <tr>
@@ -277,7 +277,7 @@
       <tbody>
       </tbody>
     </table>
-    </div>
+    </div> -->
 
     <div class="container" style="background-color:white;">
     <table id="table_witness" class="personal_data_dispaly table_witness" style=" width:100%;">
@@ -312,12 +312,19 @@
     <div class="row" >
       <div class="col-md-12 text center">
     	<div class="personal_info1">
-        <p>Your 'Will' is created successfully. <a href="<?php echo base_url(); ?>Will_controller/login">Login</a> for complete download.</p>
+        <p>Your 'Will' is created successfully. <a href="<?php echo base_url(); ?>Login_controller/register_user_view">Register</a> for complete download.</p>
       </div>
       </div>
       </div>
       </div>
 </div>
+
+<!-- Border -->
+
+		<div class="border-top mt-3"></div>
+
+
+<?php include('include/footer.php') ?>
 <!-- personal info containner end -->
 <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/js/jquery-3.3.0.min.js" type="text/javascript"></script>

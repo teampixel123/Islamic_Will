@@ -1,6 +1,14 @@
 <?php include('head.php') ?>
 <body>
-    <?php include('header.php') ?>
+  <?php
+    $is_login = $this->session->userdata('user_is_login');
+    if($is_login){
+      include('login_header.php');
+    }
+    else{
+      include('header.php');
+    }
+   ?>
 
     <!-- Breadcrumb Area Start -->
     <section class="breadcrumb-area section-padding-80">
@@ -29,7 +37,7 @@
         <div class="container">
             <div class="row">
                 <!-- Section Heading -->
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-lg-6 about--us--content1">
                   <div class="about--us--content mb-80">
                       <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  By using the Website <a href="wasihat.com/islamicwill.in" target="_blank"> <strong>wasihat.com/islamicwill.in </strong></a> you agree to be legally bound by these terms of use,
                         which shall take effect from your first use of the Website. If these Terms and Conditions are not accepted in full,
@@ -37,7 +45,7 @@
                          including, without limitation, text, video, graphics and audio, published on the Website, whether copyright of
                          Islamic will.
                        </p>
-
+                         <div class="border-top mt-3"></div><br>
                        <h3>1.	Use Of Content / Website</h3>
 
                        <p>
@@ -60,7 +68,7 @@
                              derivative works from, distribute, have distributed, transmit and assign such content in any form, in all media now known
                               or hereinafter created, anywhere in the world.
                        </p>
-
+                         <div class="border-top mt-3"></div><br>
                        <h3>2.	Service Interruption</h3>
 
                        <p>
@@ -77,7 +85,7 @@
                          Our services are used at your own risk. We accept no liability for any loss or damage to your hardware and/or software resulting from your access and/or use of the website.
                           Your statutory rights are not affected at all by these terms and conditions.
                        </p>
-
+                         <div class="border-top mt-3"></div><br>
                        <h3>4.	Unlawful Use</h3>
 
                        <p>
@@ -85,7 +93,7 @@
                          all things arising from your use of this site.  You may not submit, publish, distribute or transmit any defamatory, offensive, infringing, obscene,indecent,or otherwise unlawful or objectionable
                           material or information.
                        </p>
-
+                         <div class="border-top mt-3"></div><br>
                        <h3>5.	Indemnity</h3>
 
                        <p>
@@ -94,7 +102,7 @@
                           limitation reasonable legal fees, which we may suffer from your activities on or use of the site, including without limitation
                           any breach by you of this Agreement or any charges or complaints made by other parties against you.
                        </p>
-
+                         <div class="border-top mt-3"></div><br>
                        <h3>
                         6.	Governing Law
                        </h3>
@@ -103,7 +111,7 @@
                          The terms and conditions shall be governed and construed in accordance with the Shariat Law India.
                           Any disputes shall be subject to the courts of India
                        </p>
-
+                         <div class="border-top mt-3"></div><br>
                        <h3>
                         7.	 Availability
                        </h3>
@@ -119,13 +127,14 @@
                        <p>
                          The terms and conditions shall be governed and construed in accordance with the Shariat Law India. Any disputes shall be subject to the courts of India
                        </p>
-
+                         <div class="border-top mt-3"></div><br>
                        <h3>8.	Links To This Website</h3>
                         <p>
                           You may not create a link to any page of this website without our prior written consent. If you do create a link to a page of this
                            website you do so at your own risk and
                           the exclusions and limitations set out above will apply to your use of this website by linking to it.
                         </p>
+                          <div class="border-top mt-3"></div><br>
                         <h3>99.	Links From This Website</h3>
 
                         <p>
@@ -139,6 +148,7 @@
                               responsibility for any loss or damage in whatever manner, howsoever caused, resulting from your disclosure
                               to third parties of personal information.
                         </p>
+                          <div class="border-top mt-3"></div><br>
                         <h3>10.	Registration </h3>
                         <p>
                           As part of the registration process, the User will select a password and a Member ID. The User also has to give us certain
@@ -146,6 +156,7 @@
                            of another person with the intent to impersonate that person; user is not allowed to use a registration ID in which
                             another person has rights without such person's authorization.
                         </p>
+                          <div class="border-top mt-3"></div><br>
                         <h3>11.	License Of Your Content To Provider</h3>
                         <p>
                           By uploading content to or submitting any materials for use on the Web Site, you grant (or warrant that the owner of such rights has expressly granted)
@@ -153,12 +164,13 @@
                            translate, create derivative works from and distribute such materials or incorporate such materials into any form, medium,
                             or technology now known or later developed throughout the universe.
                         </p>
-
+                          <div class="border-top mt-3"></div><br>
                         <h3>•	Errors and Corrections</h3>
                         <p>Provider does not represent or warrant that the Web Site will be error-free, free of viruses or other harmful components,
                           or that defects will be corrected. Provider does not warrant or represent that the information available on or through the
                            Web Site will be correct, accurate, timely, or otherwise reliable. Provider may make improvements and/or changes.
                          </p>
+                           <div class="border-top mt-3"></div><br>
                          <h3>•	Unlawful Activity </h3>
 
                          <p>Provider reserves the right to investigate complaints or reported violations of the Terms of Use and to take any action
@@ -166,7 +178,7 @@
                              regulators, or other third parties and disclosing any information necessary or appropriate to such persons or entities
                               relating to user profiles, e-mail addresses, usage history, posted materials, IP addresses and traffic information.
                             </p>
-
+                              <div class="border-top mt-3"></div><br>
                             <h3>•	Remedies for Violations</h3>
 
                             <p>
@@ -174,7 +186,7 @@
                               including but not limited to the right to block access from a particular Internet address to the Provider's
                               Web sites and their features.
                             </p>
-
+                              <div class="border-top mt-3"></div><br>
                             <h3>12.	We Provide High Standards Of Service</h3>
 
                             <p>
@@ -193,7 +205,7 @@
                   </div>
                 </div>
 
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-lg-6 about--us--content1">
                     <div class="about--us--content mb-80">
                       <h3>13.	Anti-Corruption</h3>
                       <p>
@@ -215,6 +227,7 @@
                          We do not want to represent clients based on their review of any portion of this website that does not comply
                           with legal or ethical requirements.
                       </p>
+                        <div class="border-top mt-3"></div><br>
                         <h3>15.	Fees And Expenses</h3>
                         <p>
                           We will do our best at the outset to give you an estimate of the likely overall cost in relation to a matter.
@@ -247,7 +260,7 @@
                            subject matter involved.  Accordingly, the rate may be increased if, for example, the matter becomes more complex than expected.
                             If the scope of the work changes or our assumptions change, we will discuss a revised fee arrangement or estimate with you.
                         </p>
-
+                          <div class="border-top mt-3"></div><br>
                         <h3>16. 	Raising Queries Or Concerns With Us</h3>
                         <p>
                           We are committed to providing a high quality service in all respects and keeping you advised regularly of the progress of your matter.
@@ -255,10 +268,11 @@
                            first instance with the Client Partner.  We have a procedure in place which details how we handle complaints, which is available on our website or upon request.
                             We have eight weeks to consider your complaint. We can resolve it as soon as possible.
                         </p>
+                          <div class="border-top mt-3"></div><br>
                         <h3>17.	  Acknowledgement</h3>
                         <p>By using <a href="wasihat.com/islamicwill.in" target="_blank"> <strong>wasihat.com/islamicwill.in </strong></a> service or accessing the <a href="wasihat.com/islamicwill.in" target="_blank"> <strong>wasihat.com/islamicwill.in </strong></a> site or applications, you acknowledge that you have read
                           these terms of use and agree to be bound by them.</p>
-
+                            <div class="border-top mt-3"></div><br>
                           <h3>18.	  Cookies</h3>
 
                           <p>
@@ -266,6 +280,7 @@
                              Cookies are used in some areas of our site to enable the functionality of this area and ease of use for those people visiting.
                               Some of our affiliate partners may also use cookies.
                           </p>
+                            <div class="border-top mt-3"></div><br>
                           <h3>•	How we use cookies</h3>
 
                           <p>
@@ -273,19 +288,20 @@
                             Cookies measure how many people use our website so that we can make it easier to use and ensure there’s
                              enough capacity to make pages load quickly.
                           </p>
+                            <div class="border-top mt-3"></div><br>
                           <h3>19.	 Severance</h3>
                           <p>
                             If any of these Terms and Conditions should be deemed invalid, illegal or unenforceable for any given reason by any court of competent jurisdiction,
                             then that certain Term or Condition shall be demolished but the remaining Terms and Conditions shall survive and remain in full force and effect and
                              continue to be binding and enforceable.
                           </p>
-
+                            <div class="border-top mt-3"></div><br>
                           <h3>20.	  Waiver</h3>
                           <p>
                             If you violate these Conditions of Use and we happen to take no action against it, we will still be entitled to use our rights and remedies
                              in any further situations where you violate these Conditions of Use.
                           </p>
-
+                            <div class="border-top mt-3"></div><br>
                           <h3>
                           21.	  Security
                           </h3>
@@ -293,6 +309,7 @@
                             We are committed to ensuring that your information is secure. In order to prevent unauthorized access or disclosure we have put in place suitable
                              technical and organisational measures to safeguard and secure the information we collect online.
                           </p>
+                            <div class="border-top mt-3"></div><br>
                           <h3>
                             22.	  Liability
                           </h3>
@@ -344,9 +361,9 @@
 
 
     <!-- Border -->
-     <div class="container">
+
         <div class="border-top mt-3"></div>
-    </div>
+    
     <!-- Footer Area Start --> -->
     <?php include('footer.php') ?>
 </body>

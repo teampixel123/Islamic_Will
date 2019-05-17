@@ -76,7 +76,7 @@
         <div class="row text-center">
           <label class="col-md-3 text-right" for="exampleInputEmail1">Date of Birth</label>
   				<div class="col-md-9">
-  					<input type="text" name="family_person_dob" id="family_person_dob" class="form-control clear"  autocomplete="off" >
+  					<input type="text" readonly name="family_person_dob" id="family_person_dob" class="form-control clear"  autocomplete="off" >
             <p id="error_family_person_dob" style="color:red; display:none" class="text-left valide">*This field is required.</p>
             <p id="invalide_family_person_dob" style="color:red; display:none" class="text-left valide">*Invalide Date For Father/Mother/Wife.</p>
           </div>
@@ -173,7 +173,7 @@
 
   <div class="col-md-6  personal_data_dispaly1  ">
   	<input type="hidden" name="will_id" id="will_id" value="<?php echo $start_will_data['will_id']; ?>">
-    <div class="container" style="background-color:white;">
+    <!-- <div class="container" style="background-color:white;">
     	<div class="" style="">
         <table id="table_personal_info" class=" personal_data_dispaly table_personal_info">
           <thead>
@@ -225,8 +225,8 @@
           <div class="row" id="f_member">
           </div>
           <!-- Family Memer List -->
-      </div>
-    </div>
+      <!--</div>
+    </div> -->
     <div class="container  " style="background-color:white;">
     <table id="table_family_member" class=" personal_data_dispaly table_family_member"  style=" width:100%;">
       <thead>
@@ -245,6 +245,12 @@
   </div>
 <!-- </div> -->
 </div>
+<!-- Border -->
+
+		<div class="border-top mt-3"></div>
+
+
+<?php include('include/footer.php') ?>
 <!-- personal info containner end -->
 <script src="<?php echo base_url(); ?>assets/js/jquery-3.3.0.min.js" type="text/javascript"></script>
  <script src="<?php echo base_url(); ?>assets/js/jquery-ui.min.js" type="text/javascript"></script>

@@ -21,13 +21,14 @@
       $this->db->update('tbl_user',$update_otp_data);
     }
 
-    public function validate_otp($user_id,$otp){
+    public function validate_otp($mob_email,$user_password){
       $this->db->select('*');
       $this->db->from('tbl_user');
-      $this->db->where('user_id =',$user_id);
-      $this->db->where('otp =',$otp);
+      $this->db->where("user_email_id = '$mob_email' or user_mobile_number = '$mob_email'");
+      // $this->db->where('user_id =',$user_id);
+      $this->db->where('user_password =',$user_password);
       $query = $this->db->get();
-      //$last = $this->db->last_query();
+      // $last = $this->db->last_query();
       $result = $query->result_array();
       return $result;
     }

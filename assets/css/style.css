@@ -12,7 +12,10 @@ margin-left: 600px;
 .btn{
   margin: 20px;
 }
-
+.badge-danger {
+    /* color: #fff; */
+     background-color: #fff !important;
+}
 
 
 .content{
@@ -24,6 +27,9 @@ margin-left: 600px;
     margin: 0px !important;
 }
 
+#head1{
+  padding-top: 63px;
+}
 .jumbotron {
   background-color: #fff !important;
   display: flex;
@@ -68,7 +74,7 @@ margin-left: 600px;
   border-radius: 8px;
   padding: 15px 15px 10px;
   position: relative;
-  font-family: Helvetica,Arial,sans-serif;
+  font-family :"Roboto", Arial, Helvetica, sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.61803;
@@ -89,13 +95,18 @@ margin-left: 600px;
   position: relative;
   font-family: Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.61803;
+  /* font-weight: 400; */
+  /* line-height: 1.61803; */
   /* font-weight: 700;
   padding-right: 10px; */
   clear: left;
   float: left;
   margin-right: -15px !important;
+  font-weight: 300;
+  line-height: 1.65;
+  letter-spacing: .3px;
+  font-style: normal;
+  color: #1b334b;
 
 }
 
