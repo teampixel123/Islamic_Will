@@ -13,7 +13,7 @@
     public function pdf(){
   		//$this->load->library('Pdf');
   		//$will_id = $this->session->userdata('will_id');
-      $this->session->sess_destroy();
+      //$this->session->sess_destroy();
       $will_id = $this->input->post('will_id');
       $data['personal_data']=$this->Will_Model->get_personal_data($will_id);
       $data['family_data']= $this->Table_Model->getAllFamilyMembarDataAjax($will_id);

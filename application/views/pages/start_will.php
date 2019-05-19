@@ -7,6 +7,7 @@ include('include/head.php');
 		$is_login = $this->session->userdata('user_is_login');
 	  if($is_login){
 			include('include/login_header.php');
+			$this->session->unset_userdata('will_id');
 		}
 		else{
 			include('include/header.php');
@@ -131,7 +132,7 @@ include('include/head.php');
 <?php $is_login = $this->session->userdata('user_is_login');
 	if($is_login){
 ?>
-<script>
+<!-- <script>
 $(document).ready(function(){
 	$('#update_start_data').show();
   var will_id = $('#will_id').val();
@@ -181,8 +182,9 @@ $(document).ready(function(){
     }
   });
 });
-</script>
+</script> -->
 <?php } ?>
+
 <script type="text/javascript">var base_url = "<?php echo base_url() ?>";</script>
 <script src="<?php echo base_url(); ?>assets/js/will_custome/start_will_js.js" type="text/javascript"></script>
 </body>

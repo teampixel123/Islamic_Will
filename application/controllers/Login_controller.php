@@ -131,8 +131,14 @@
 
 
         if ($otp == $otp2 ) {
+
           $date = date('d-m-Y');
           $user_id = random_string('nozero',8);
+
+          if ($this->session->userdata('will_id')){
+            $will_id=$this->session->userdata('will_id');
+                $this->Login_Model->update_will_user($will_id,$user_id);
+          }
           if ($contact_type == 'mobile_number') {
             $register_data = array(
               'user_id' => $user_id,
@@ -273,6 +279,11 @@
       if($get_data){
 
          $user_id = $get_data[0]['user_id'];
+
+         if ($this->session->userdata('will_id')){
+           $will_id=$this->session->userdata('will_id');
+               $this->Login_Model->update_will_user($will_id,$user_id);
+         }
            $session_data = array('user_is_login' => 'YES','user_id' =>$user_id);
            $this->session->set_userdata($session_data);
            $result['responce'] = 'Success';

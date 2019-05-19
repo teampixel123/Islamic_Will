@@ -47,15 +47,17 @@ include('include/login_header.php'); ?>
                  <input type="hidden" name="will_id" id="will_id" value="<?php echo $will_list->will_id; ?>" />
                </form>
                <a type="button" id="btn_will_details" class="btn btn-sm btn-success no-margin"><i class="fa fa-eye"></i>View</a> -->
-               <form id="form_will_edit" action="<?php echo base_url(); ?>Will_controller/load_login_start_info" method="post">
-                 <input type="hidden" name="will_id" id="will_id" value="<?php echo $will_list->will_id; ?>" />
-               </form>
+
                <form id="form_will_pdf" action="<?php echo base_url(); ?>Pdf_controller/final_pdf" method="post">
                  <input type="hidden" name="will_id" id="will_id" value="<?php echo $will_list->will_id; ?>" />
+								 <button id="btn_will_pdf" type="submit" class="btn btn-sm btn-success no-margin"><i class="fa fa-file-pdf-o"></i> PDF</button>
                </form>
-               <button id="btn_will_edit" type="button" class="btn btn-sm btn-info no-margin"><i class="fa fa-edit"></i></i> Edit</button>
+							 <form id="form_will_edit" action="<?php echo base_url(); ?>Will_controller/load_login_start_info" method="post">
+                 <input type="hidden" name="will_id" id="will_id" value="<?php echo $will_list->will_id; ?>" />
+								 <button id="btn_will_edit" type="submit" class="btn btn-sm btn-info no-margin"><i class="fa fa-edit"></i></i> Edit</button>
+               </form>
+
                <button type="button" class="btn btn-sm btn-danger no-margin"><i class="fa fa-trash"></i> Delete</button>
-               <button id="btn_will_pdf" type="button" class="btn btn-sm btn-success no-margin"><i class="fa fa-file-pdf-o"></i> PDF</button>
            </tr>
            <?php
               }
@@ -76,18 +78,26 @@ $(document).ready(function(){
 		$('#will_list').DataTable({
     });
 
-    $('#btn_will_details').click(function(){
-      $('#form_will_details').submit();
-    });
+    // $('#btn_will_details').click(function(){
+    //   $('#form_will_details').submit();
+    // });
+		//
+    // $('#btn_will_edit').click(function(){
+		// 	var will_id = $('#will_id').val();
+		//   $.ajax({
+		//     data: { 'will_id' : will_id  },
+		//     type: "post",
+		//     url: "<?php echo base_url(); ?>/Will_controller/get_personal_info",
+		//     success: function (data){
+    //   $('#form_will_edit').submit();
+		// }
+    // });
+		//
+    // $('#btn_will_pdf').click(function(){
+    //   $('#form_will_pdf').submit();
+    // });
+});});
 
-    $('#btn_will_edit').click(function(){
-      $('#form_will_edit').submit();
-    });
-
-    $('#btn_will_pdf').click(function(){
-      $('#form_will_pdf').submit();
-    });
-});
 </script>
 </body>
 <?php } ?>

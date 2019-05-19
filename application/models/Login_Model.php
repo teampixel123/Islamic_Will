@@ -32,5 +32,11 @@
       $result = $query->result_array();
       return $result;
     }
+
+    public function update_will_user($will_id,$user_id){
+      $user_id2 = array('will_user_id' => $user_id );
+      $this->db->where('will_id',$will_id);
+      $this->db->update('tbl_will',$user_id2);
+    }
   }
 ?>

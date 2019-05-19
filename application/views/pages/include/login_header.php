@@ -104,7 +104,7 @@
                                   <ul class="dropdown">
                                     <li><a href="<?php echo base_url(); ?>Start-Will">- Make A Will</a></li>
                                     <li><a href="<?php echo base_url() ?>/User_controller/will_list">- Will List</a></li>
-                                    <li><a href="./service.html">- Youer Profile</a></li>
+                                    <li><a href="./service.html">- Your Profile</a></li>
                                     <li><a href="<?php echo base_url(); ?>Will_controller/logout">- Logout</a></li>
 
                                     </ul>

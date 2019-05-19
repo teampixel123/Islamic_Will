@@ -29,7 +29,7 @@
                     <div class="single-contact-information mb-80">
                         <i class="icon_mail"></i>
                         <h4>Email</h4>
-                        <p style="text-align:center;" >info@easywillindia.com/p>
+                        <p style="text-align:center;" >info@easywillindia.com</p>
                     </div>
                 </div>
             </div>

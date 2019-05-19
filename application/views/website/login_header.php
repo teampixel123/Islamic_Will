@@ -1,6 +1,6 @@
-<!-- <?php foreach($user_data as $user_data){
+<?php foreach($user_data as $user_data){
 
-} ?> -->
+} ?>
 <!-- <div class="container-fluid">
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#"><?php echo $user_data->user_fullname; ?></a>
@@ -99,17 +99,18 @@
 																<!-- <a href="<?php echo base_url(); ?>Login" class="btn akame-btn">Log In</a> -->
                             </div>
                             <!-- login user name-->
-                            <!-- <div class="classynav">
+                            <div class="classynav">
                               <ul id="nav">
-                                  <li><a href="#">as</a><li>
+                                  <li><a href="#"><?php echo $user_data->user_fullname; ?></a>
                                   <ul class="dropdown">
-                                  <li><a href="<?php echo base_url(); ?>Start-Will">- Make A Will</a></li>
-                                  <li><a href="<?php echo base_url() ?>/User_controller/will_list">- Will List</a></li>
-                                  <li><a href="./service.html">- Youer Profile</a></li>
-                                  <li><a href="<?php echo base_url(); ?>Will_controller/logout">- Logout</a></li>
+                                    <li><a href="<?php echo base_url(); ?>Start-Will">- Make A Will</a></li>
+                                    <li><a href="<?php echo base_url() ?>/User_controller/will_list">- Will List</a></li>
+                                    <li><a href="./service.html">- Your Profile</a></li>
+                                    <li><a href="<?php echo base_url(); ?>Will_controller/logout">- Logout</a></li>
+
                                     </ul>
                                   </ul>
-                            </div> -->
+                            </div>
                             <!-- log user -->
                             <!-- Cart Icon -->
 

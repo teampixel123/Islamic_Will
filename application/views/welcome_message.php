@@ -510,7 +510,7 @@ $auto_page_break = $pdf->getAutoPageBreak();
 $pdf->SetAutoPageBreak(false, 0);
 // set bacground image
 $img_file = K_PATH_IMAGES.'3.gif';
-$pdf->Image($img_file, 0, 0, 210, 297, '', '', '', false, 300, '', false, false, 0);
+$pdf->Image('application\img\3.gif', 0, 0, 210, 297, '', '', '', false, 300, '', false, false, 0);
 // restore auto-page-break status
 $pdf->SetAutoPageBreak($auto_page_break, $bMargin);
 // set the starting point for the page content
@@ -529,7 +529,7 @@ $auto_page_break = $pdf->getAutoPageBreak();
 $pdf->SetAutoPageBreak(false, 0);
 // set bacground image
 $img_file = K_PATH_IMAGES.'3.gif';
-$pdf->Image($img_file, 0, 0, 210, 297, '', '', '', false, 300, '', false, false, 0);
+$pdf->Image('application\img\3.gif', 0, 0, 210, 297, '', '', '', false, 300, '', false, false, 0);
 // restore auto-page-break status
 $pdf->SetAutoPageBreak($auto_page_break, $bMargin);
 // set the starting point for the page content
@@ -547,7 +547,7 @@ $auto_page_break = $pdf->getAutoPageBreak();
 $pdf->SetAutoPageBreak(false, 0);
 // set bacground image
 $img_file = K_PATH_IMAGES.'3.gif';
-$pdf->Image($img_file, 0, 0, 210, 297, '', '', '', false, 300, '', false, false, 0);
+$pdf->Image('application\img\3.gif', 0, 0, 210, 297, '', '', '', false, 300, '', false, false, 0);
 // restore auto-page-break status
 $pdf->SetAutoPageBreak($auto_page_break, $bMargin);
 // set the starting point for the page content
@@ -565,7 +565,7 @@ $auto_page_break = $pdf->getAutoPageBreak();
 $pdf->SetAutoPageBreak(false, 0);
 // set bacground image
 $img_file = K_PATH_IMAGES.'3.gif';
-$pdf->Image($img_file, 0, 0, 210, 297, '', '', '', false, 300, '', false, false, 0);
+$pdf->Image('application\img\3.gif', 0, 0, 210, 297, '', '', '', false, 300, '', false, false, 0);
 // restore auto-page-break status
 $pdf->SetAutoPageBreak($auto_page_break, $bMargin);
 // set the starting point for the page content
@@ -583,7 +583,7 @@ $auto_page_break = $pdf->getAutoPageBreak();
 $pdf->SetAutoPageBreak(false, 0);
 // set bacground image
 $img_file = K_PATH_IMAGES.'3.gif';
-$pdf->Image($img_file, 0, 0, 210, 297, '', '', '', false, 300, '', false, false, 0);
+$pdf->Image('application\img\3.gif', 0, 0, 210, 297, '', '', '', false, 300, '', false, false, 0);
 // restore auto-page-break status
 $pdf->SetAutoPageBreak($auto_page_break, $bMargin);
 // set the starting point for the page content
@@ -601,7 +601,7 @@ $auto_page_break = $pdf->getAutoPageBreak();
 $pdf->SetAutoPageBreak(false, 0);
 // set bacground image
 $img_file = K_PATH_IMAGES.'3.gif';
-$pdf->Image($img_file, 0, 0, 210, 297, '', '', '', false, 300, '', false, false, 0);
+$pdf->Image('application\img\3.gif', 0, 0, 210, 297, '', '', '', false, 300, '', false, false, 0);
 // restore auto-page-break status
 $pdf->SetAutoPageBreak($auto_page_break, $bMargin);
 // set the starting point for the page content
@@ -619,7 +619,7 @@ $auto_page_break = $pdf->getAutoPageBreak();
 $pdf->SetAutoPageBreak(false, 0);
 // set bacground image
 $img_file = K_PATH_IMAGES.'3.gif';
-$pdf->Image($img_file, 0, 0, 210, 297, '', '', '', false, 300, '', false, false, 0);
+$pdf->Image('application\img\3.gif', 0, 0, 210, 297, '', '', '', false, 300, '', false, false, 0);
 // restore auto-page-break status
 $pdf->SetAutoPageBreak($auto_page_break, $bMargin);
 // set the starting point for the page content

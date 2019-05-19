@@ -53,12 +53,21 @@
               <!-- <li class="text-muted"><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>Monthly Status Reports</li> -->
             </ul>
             <div class="text-center">
-                <a href="#" class="btn btn-block active  akame-btn text-uppercase" style="padding: 0rem !important; width:auto;">Get Started</a>
+                <!-- <a href="#" class="btn btn-block active akame-btn text-uppercase" id="btn_silver" style="padding: 0rem !important; width:auto;">Get Started</a> -->
             </div>
+
+            <form class="" action="<?php base_url() ?>Payment_Gateway/payment" method="post">
+                    <!-- <input type="hidden" name="amount" id="amount" value="1" >
+                    <input type="hidden" name="name" id="name" value="<?php echo $user_data->user_fullname; ?>" >
+                    <input type="hidden" name="email" id="email" value="<?php echo $user_data->user_email_id; ?>" >
+                    <input type="hidden" name="mobile" id="mobile" value="<?php echo $user_data->user_mobile_number; ?>" >-->
+                    <input type="submit" class="btn btn-block active akame-btn text-uppercase" value="Payment Now" />
+            </form>
 
           </div>
         </div>
       </div>
+
       <!-- Plus Tier -->
       <div class="col-lg-5">
         <div class="card mb-5 mb-lg-0">
@@ -118,9 +127,16 @@
     <!-- Border -->
 
         <div class="border-top mt-3"></div>
-  
+
     <!-- Footer Area Start -->
   <?php include('footer.php') ?>
 </body>
+<script>
+$(document).ready(function(){
+$('#btn_silver').click(function(){
+
+});
+});
+</script>
 
 </html>

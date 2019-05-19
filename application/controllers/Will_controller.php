@@ -20,7 +20,7 @@
   	}
 
     public function login(){
-      $this->session->sess_destroy();
+      //$this->session->sess_destroy();
       $this->load->view('pages/login');
   	}
     public function logout(){
@@ -38,7 +38,8 @@
       $user_id = $this->session->userdata('user_id');
       if($is_login && $user_id){
         $user_data = $this->Will_Model->get_user_data($user_id);
-        $this->load->view('pages/start_will',['user_data'=>$user_data]);
+        // $this->load->view('pages/start_will',['user_data'=>$user_data]);
+         $this->load->view('pages/start_will',['user_data'=>$user_data]);
       }
       else{
       $this->session->sess_destroy();
@@ -156,7 +157,7 @@
  public function save_start_info(){
    $will_date = date('d-m-Y');
    $will_id = random_string('nozero',8);
-   $user_id = random_string('nozero',8);
+   // $user_id = random_string('nozero',8);
    $name_title = $this->input->post('name_title');
 
    if($name_title == 'Miss.' || $name_title == 'Mrs.'){
@@ -166,30 +167,41 @@
      $gender = "Male";
    }
 
-     // $check_mail = $this->Will_Model->check_mail_id($this->input->post('email'));
-     // $check_mobile = $this->Will_Model->check_mobile_no($this->input->post('mobile_no'));
+   $is_login = $this->session->userdata('user_is_login');
+   if($is_login){
+     $user_id = $this->session->userdata('user_id');
 
-    // if($check_mobile > 0) {
-    //   $error = 'Mobile_Exist';
-    //   echo json_encode($error);
-    //  }
-    //  elseif ($check_mail > 0) {
-    //    $error = 'Email_Exist';
-    //    echo json_encode($error);
-    //  }
-     // else{
+     $will_data = array(
+       'will_id' => $will_id,
+       'will_date' => $will_date,
+       'will_user_id' => $user_id,
+     );
+     $start_data = array(
+       'will_id' => $will_id,
+       'name_title'=>$this->input->post('name_title'),
+       'full_name'=>$this->input->post('full_name'),
+       'mobile_no'=>$this->input->post('mobile_no'),
+       'email'=>$this->input->post('email'),
+       'gender'=>$gender,
+       'marital_status'=>$this->input->post('marital_status'),
+       'is_have_child'=>$this->input->post('is_have_child'),
+     );
+
+    $this->Will_Model->save_start_info($start_data);
+    $this->Will_Model->save_will_data($will_data);
+
+    $session_data = array('will_start' => 'yes','will_id' =>$will_id);
+    $temp_will_id =  $this->session->set_userdata($session_data);
+
+    $get_personal_data = $this->Will_Model->get_personal_data($will_id);
+    echo json_encode($get_personal_data);
+   }
+
+     else{
         $will_data = array(
           'will_id' => $will_id,
           'will_date' => $will_date,
-          'will_user_id' => $user_id,
         );
-       // $user_data = array(
-       //   'user_id'=>$user_id,
-       //   'user_fullname'=>$this->input->post('full_name'),
-       //   'user_mobile_number'=>$this->input->post('mobile_no'),
-       //   'user_email_id'=>$this->input->post('email'),
-       //   'reg_date' => $will_date,
-       // );
         $start_data = array(
           'will_id' => $will_id,
           'name_title'=>$this->input->post('name_title'),
@@ -201,9 +213,7 @@
           'is_have_child'=>$this->input->post('is_have_child'),
         );
 
-       // $this->Will_Model->save_user($user_data);
        $this->Will_Model->save_start_info($start_data);
-       // $this->Will_Model->save_personal_info($personal_data);
        $this->Will_Model->save_will_data($will_data);
 
        $session_data = array('will_start' => 'yes','will_id' =>$will_id);
@@ -211,8 +221,8 @@
 
        $get_personal_data = $this->Will_Model->get_personal_data($will_id);
        echo json_encode($get_personal_data);
-     // }
- }
+     }
+  }
 
  public function update_start_data(){
    $will_id = $this->input->post('will_id');
@@ -830,6 +840,57 @@
 
                  }
 
+                 public function gotopayment(){
+
+                      //print_r($_POST);
+
+
+                      extract($_POST);
+
+                      $ch = curl_init();
+                      //curl_setopt($ch, CURLOPT_URL, 'https://www.instamojo.com/api/1.1/payment-requests/');
+                      curl_setopt($ch, CURLOPT_URL, 'https://www.instamojo.com/api/1.1/payment-requests/');
+                      curl_setopt($ch, CURLOPT_HEADER, FALSE);
+                      curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+                      curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
+                      curl_setopt($ch, CURLOPT_HTTPHEADER,
+                                 /* array("X-Api-Key:d82016f839e13cd0a79afc0ef5",
+                                        "X-Auth-Token:3827881f669c11e8dad8a023fd1108c2s"));
+                      			*/
+                      		array("X-Api-Key:0ec75dd4bc3c0555c6a7b7d07089d75a",
+                                        "X-Auth-Token:842e107de7debf82f826b4c9ed4b398d"));
+                      $payload = Array(
+                          'purpose' => 'Will Payment',
+                          'amount' => $amount,
+                          'phone' => $phone,
+                          'buyer_name' => $name,
+                          'redirect_url' => $surl,
+                          'send_email' => true,
+                          'webhook' => '',
+                          'send_sms' => true,
+                          'email' => $email,
+                          'allow_repeated_payments' => false
+                      );
+
+                      //print_r($payload);
+
+                      curl_setopt($ch, CURLOPT_POST, true);
+                      curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($payload));
+                      $response = curl_exec($ch);
+                      curl_close($ch);
+
+                      //echo $response;
+
+                      $json_decode = json_decode($response, true);
+                      $longurl = $json_decode['payment_request']['longurl'];
+
+
+
+                      header('location:'.$longurl);
+                      echo "<>window.location=".$longurl."</script>";
+
+
+               }
 
 
   }
