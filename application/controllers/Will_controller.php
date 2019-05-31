@@ -512,11 +512,18 @@
       $e_name_title = $this->input->post('e_name_title');
       $executor_name1 = $this->input->post('executor_name');
       $executor_name= $e_name_title.' '.$executor_name1;
+      if($e_name_title=='Mr.'){
+        $gender='Male';
+      }
+      else {
+        $gender='Female';
+      }
       $executor_data = array(
                   'will_id' => $will_id,
                   'executor_name' => $executor_name,
                   'executor_age' => $this->input->post('executor_age'),
                   'executor_address' => $this->input->post('executor_address'),
+                  'executor_gender'=>$gender,
                 );
       $this->Will_Model->save_executor($executor_data);
     }
