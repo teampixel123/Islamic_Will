@@ -61,10 +61,10 @@
           <h4 class=" text-left">Real Estate : </h4></br>
           <div class="form-group" id="">
             <div class="row text-center">
-              <label class="col-md-3 text-right" for="exampleInputEmail1">Estate Types: </label>
+              <label class="col-md-3 text-right" for="exampleInputEmail1" placeholder="Select Estate Type">Estate Types: </label>
       				<div class="col-md-9">
                 <select class="form-control clear_dr" name="estate_type" id="estate_type">
-                  <option value="0">Select Estate Type</option>
+                  <option value="0" disabled selected>Select Estate Type</option>
       					  <option>Flat</option>
       					  <option>Shop</option>
       					  <option>Land</option>
@@ -246,7 +246,7 @@
 
           <div class="form-group" id="b_state_div" style="display:none;">
             <div class="row text-center">
-              <label class="col-md-3 text-right" for="exampleInputEmail1">state</label>
+              <label class="col-md-3 text-right" for="exampleInputEmail1">State</label>
       				<div class="col-md-9">
       					<input type="text" name="b_state" id="b_state" class="form-control clear"  aria-describedby="emailHelp" >
                 <p id="error_b_state" style="color:red; display:none" class="text-left valide">*This field is required.</p>

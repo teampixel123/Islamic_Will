@@ -76,7 +76,7 @@
         <div class="row text-center">
           <label class="col-md-3 text-right" for="exampleInputEmail1">Date of Birth</label>
   				<div class="col-md-9">
-  					<input type="text" readonly name="family_person_dob" id="family_person_dob" class="form-control clear"  autocomplete="off" >
+  					<input type="text" readonly style="background-color:#fff;" name="family_person_dob" id="family_person_dob" class="form-control clear"  autocomplete="off" >
             <p id="error_family_person_dob" style="color:red; display:none" class="text-left valide">*This field is required.</p>
             <p id="invalide_family_person_dob" style="color:red; display:none" class="text-left valide">*Invalide Date For Father/Mother/Wife.</p>
           </div>

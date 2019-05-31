@@ -275,7 +275,7 @@
       // $current_time = date('H:i:s');
 
        $get_data = $this->Login_Model->validate_otp($mob_email,$user_password);
-      // echo $get_data;
+       //echo print_r($get_data);
       if($get_data){
 
          $user_id = $get_data[0]['user_id'];

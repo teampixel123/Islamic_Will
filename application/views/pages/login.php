@@ -144,6 +144,24 @@ $(document).ready(function(){
 	 $('#btn_login').click(function(){
 		 var mob_email = $('#mob_email').val();
 		 var user_password = $('#user_password').val();
+    // var mob_email = $('#mob_email').val();
+   		var mobile_format = /^[6-9][0-9]{9}$/;
+   		var email_format = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;;
+   		if(mob_email == ''){
+   			$('#error_required').show();
+   		}
+   		else if(mobile_format.test(mob_email)) {
+   			var validate = 'mobile_number';
+   			$('.invalide').hide();
+   		}
+   		else if(email_format.test(mob_email)){
+   			var validate = 'email';
+   			$('.invalide').hide();
+   		}
+   		else{
+   			$('#error_invalide').show();
+   		}
+
 		 $.ajax({
 			 data:{
 				 'mob_email' : mob_email,

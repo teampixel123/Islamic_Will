@@ -12,5 +12,14 @@
       $result = $query->result();
       return $result;
     }
+
+    public function update_user($update_user,$user_id){
+      $this->db->where('user_id',$user_id);
+      $this->db->update('tbl_user',$update_user);
+    }
+    public function update_password($update_password,$user_id){
+      $this->db->where('user_id',$user_id);
+      $this->db->update('tbl_user',$update_password);
+    }
   }
 ?>

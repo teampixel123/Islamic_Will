@@ -13,7 +13,7 @@
           <div class="row h-100 align-items-center">
               <div class="col-8">
                   <div class="top-header-content text-right">
-                      <p>Welcome to Islamic_will</p>
+                      <p>Welcome to Islamic will</p>
                   </div>
               </div>
               <div class="col-4">
@@ -54,7 +54,6 @@
                                 <li id="accordion"><a href="<?php echo base_url(); ?>FAQ">FAQ's</a></li>
                                 <li id="accordion"><a href="<?php echo base_url(); ?>Contact">Contact</a></li>
                             </ul>
-
                             <!-- Cart Icon -->
                             <!-- <div class="cart-icon ml-5 mt-4 mt-lg-0">
                                 <a href="#"><i class="icon_cart"></i></a>

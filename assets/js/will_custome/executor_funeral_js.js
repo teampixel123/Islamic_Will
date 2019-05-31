@@ -196,9 +196,11 @@ var table_executor = $('.table_executor').DataTable({
 });
 $('.table_executor').on( 'draw.dt', function(){
    if (! table_executor.data().any() ) {
+      $('#executor_next').prop('disabled', true);
      $('.table_executor').hide();
     }
     else{
+       $('#executor_next').prop('disabled', false);
       $('.table_executor').show();
     }
 });
@@ -248,7 +250,7 @@ $("#executor_name").blur(function(){
 $("#e_name_title").blur(function(){
   var e_name_title = $('#e_name_title').val();
   if(e_name_title == 'select'){
-    
+
     $('#error_e_name_title').show();
   }
   else{
@@ -350,9 +352,11 @@ $('#add_executor').click(function(){
         });
         $('.table_executor').on( 'draw.dt', function(){
            if (! table_executor.data().any() ) {
+             $('#executor_next').prop('disabled', true);
              $('.table_executor').hide();
             }
             else{
+                $('#executor_next').prop('disabled', false);
               $('.table_executor').show();
             }
         });
@@ -408,9 +412,11 @@ $('#add_funeral').click(function(){
           });
           $('.table_funeral').on( 'draw.dt', function(){
              if (! table_funeral.data().any() ) {
+                // $('#executor_next').prop('disabled', true);
                $('.table_funeral').hide();
               }
               else{
+                  // $('#executor_next').prop('disabled', false);
                 $('.table_funeral').show();
               }
           });

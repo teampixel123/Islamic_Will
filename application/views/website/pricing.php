@@ -40,7 +40,7 @@
         <div class="card mb-5 mb-lg-0">
           <div class="card-body">
             <h3 class="card-title text-muted text-uppercase text-center" style="color: #05748e!important;">Silver</h3>
-            <h6 class="card-price text-center">Rs. 1250 <span class="period">/  + GST @18%</span></h6>
+            <h6 class="card-price text-center">Rs. 2000 <span class="period">/  + GST @18%</span></h6>
             <hr>
             <ul class="fa-ul">
               <li><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span><strong>Standard online services </strong></li>
@@ -73,7 +73,7 @@
         <div class="card mb-5 mb-lg-0">
           <div class="card-body">
             <h5 class="card-title text-muted text-uppercase text-center" style="color: #05748e!important;">Plus</h5>
-            <h6 class="card-price text-center">Rs. 3000<span class="period">/  + GST @18%</span></h6>
+            <h6 class="card-price text-center">Rs. 4000<span class="period">/  + GST @18%</span></h6>
             <hr>
             <ul class="fa-ul">
               <li><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span><strong>Executive  online services</strong></li>

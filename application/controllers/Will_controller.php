@@ -33,10 +33,23 @@
       $this->load->view('pages/forget_pass');
     }
 
+  public function make_will_view(){
+    $is_login = $this->session->userdata('user_is_login');
+    $user_id = $this->session->userdata('user_id');
+    if($is_login && $user_id){
+      $this->session->unset_userdata('will_id');
+        header('location:start_will_view');
+    }
+    else {
+      $this->session->sess_destroy();
+      header('location:login');
+    }
+  }
     public function start_will_view(){
       $is_login = $this->session->userdata('user_is_login');
       $user_id = $this->session->userdata('user_id');
       if($is_login && $user_id){
+
         $user_data = $this->Will_Model->get_user_data($user_id);
         // $this->load->view('pages/start_will',['user_data'=>$user_data]);
          $this->load->view('pages/start_will',['user_data'=>$user_data]);
@@ -131,17 +144,17 @@
       }
     }
 
-    public function will_list(){
-      $is_login = $this->session->userdata('user_is_login');
-      if($is_login){
-        $user_id = $this->session->userdata('user_id');
-        $user_data = $this->Will_Model->get_user_data($user_id);
-        $this->load->view('pages/will_list',['user_data'=>$user_data]);
-      }
-      else{
-        header('Location:login');
-      }
-    }
+    // public function will_list(){
+    //   $is_login = $this->session->userdata('user_is_login');
+    //   if($is_login){
+    //     $user_id = $this->session->userdata('user_id');
+    //     $user_data = $this->Will_Model->get_user_data($user_id);
+    //     $this->load->view('pages/will_list_table',['user_data'=>$user_data]);
+    //   }
+    //   else{
+    //     header('Location:login');
+    //   }
+    // }
 
  public function pdf_view2(){
   $this->load->view('pages/pdf');
@@ -149,6 +162,23 @@
 
  public function pdf_view(){
   $this->load->view('pages/final_pdf');
+ }
+
+ /**************************************************************/
+ /*            delete Will  .... dhananjay...               */
+ /**************************************************************/
+ public function delete_will(){
+   $is_login = $this->session->userdata('user_is_login');
+   $user_id = $this->session->userdata('user_id');
+   if($is_login && $user_id ){
+       $will_id = $this->input->post('will_id');
+       $user_data = $this->Will_Model->delete_will($will_id);
+
+     header('Location:'.base_url().'User_controller/will_list');
+   }
+   else{
+     $this->load->view('pages/personal_info');
+   }
  }
 
  /**************************************************************/
@@ -479,9 +509,12 @@
     /**************************************************************/
     public function save_executor(){
       $will_id = $this->session->userdata('will_id');
+      $e_name_title = $this->input->post('e_name_title');
+      $executor_name1 = $this->input->post('executor_name');
+      $executor_name= $e_name_title.' '.$executor_name1;
       $executor_data = array(
                   'will_id' => $will_id,
-                  'executor_name' => $this->input->post('executor_name'),
+                  'executor_name' => $executor_name,
                   'executor_age' => $this->input->post('executor_age'),
                   'executor_address' => $this->input->post('executor_address'),
                 );

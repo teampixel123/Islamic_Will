@@ -35,13 +35,7 @@
 
 
   //  $this->writeHTMLCell($w='', $h='', $x='', $y='', $this->header, $border=0, $ln=0, $fill=0, $reseth=true, $align='L', $autopadding=true);
-       $this->SetLineStyle( array( 'width' => 0.80, 'color' => array(0, 0, 0)));
 
-       $this->Line(5, 5, $this->getPageWidth()-5, 5);
-
-       $this->Line($this->getPageWidth()-5, 5, $this->getPageWidth()-5,  $this->getPageHeight()-5);
-       $this->Line(5, $this->getPageHeight()-5, $this->getPageWidth()-5, $this->getPageHeight()-5);
-       $this->Line(5, 5, 5, $this->getPageHeight()-5);
  		// Logo
  		// $image_file = K_PATH_IMAGES.'logo_example.jpg';
  		// $this->Image($image_file, 10, 10, 15, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
@@ -49,19 +43,38 @@
  		// $this->SetFont('helvetica', 'B', 20);
  		// // Title
  		// $this->Cell(0, 15, '<< TCPDF Example 003 >>', 0, false, 'C', 0, '', 0, false, 'M', 'M');
+
+
+    $this->SetY(-15);
+
+    $this->SetFont('helvetica', 'I', 8);
+   // Page number
+   $this->Cell(20, 0, 'Page '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
+    // Set font
+    $this->SetFont('helvetica', 'I', 12);
+      $this->Cell(250, 12, ' Signature.................. ', 0, false, 'C', 0, '', 0, false, 'M', 'M');
  	}
 
  	// Page footer
  	public function Footer() {
  		// Position at 15 mm from bottom
- 		$this->SetY(-15);
+ 		// $this->SetY(-15);
+   //
+		// $this->SetFont('helvetica', 'I', 8);
+	 // // Page number
+	 // $this->Cell(20, 10, 'Page '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
+ 		// // Set font
+ 		// $this->SetFont('helvetica', 'I', 12);
+ 		// 	$this->Cell(275, 15, ' Signature.................. ', 0, false, 'C', 0, '', 0, false, 'M', 'M');
 
-		$this->SetFont('helvetica', 'I', 8);
-	 // Page number
-	 $this->Cell(20, 10, 'Page '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
- 		// Set font
- 		$this->SetFont('helvetica', 'I', 12);
- 			$this->Cell(275, 15, ' Signature.................. ', 0, false, 'C', 0, '', 0, false, 'M', 'M');
+
+    $this->SetLineStyle( array( 'width' => 0.80, 'color' => array(0, 0, 0)));
+
+    $this->Line(10, 10, $this->getPageWidth()-10, 10);
+
+    $this->Line($this->getPageWidth()-10, 10, $this->getPageWidth()-10,  $this->getPageHeight()-10);
+    $this->Line(10, $this->getPageHeight()-10, $this->getPageWidth()-10, $this->getPageHeight()-10);
+    $this->Line(10, 10, 10, $this->getPageHeight()-10);
  	}
  }
 
@@ -86,7 +99,7 @@
  $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
  // set margins
- $pdf->SetMargins(20, 20, 20);
+ $pdf->SetMargins(25, 25, 25);
  $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
  $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 
@@ -111,16 +124,19 @@ $pdf->SetFont('helvetica', '', 10);
 // $pdf->RoundedRect(05, 05, 200, 290, 6.50, '1000');
 // //page end border
 
-
+$pdf->SetPrintHeader(false);
+$pdf->SetPrintFooter(false);
 // add a page
 $pdf->AddPage();
 //page  start border
 //$pdf->RoundedRect(10, 05, 200, 290, 00, '1000', ' ', array(400, 400, 400));
 //page end border
 
-$html = '<br><br> <h1 style="text-align:center; font-family: times, serif; font-size:24px; " > In the Name of Allah the Most Gracious,<br> the most Merciful <br><br><br><br><br><br>
-<br><br><br>
-ISLAMIC LAST Will  AND TESTAMENT </h1>
+$html = '<br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br> <h1 style="text-align:center; font-family: times, serif; font-size:20px; ">
+In The Name Of Allah the Most Gracious, the Most Merciful <br>
+Islamic Last Will and Testament
+ </h1>
 ';
 
 $pdf->Image('application\img\title.png', 20, 180, 170, 45, '', '', '', 72);
@@ -128,6 +144,9 @@ $pdf->Image('application\img\title.png', 20, 180, 170, 45, '', '', '', 72);
 //$pdf->Image('application\img\logo.png', 50, 225, 100, 30, '', '', '', true, 52);
 // output the HTML content
 $pdf->writeHTML($html, true, 0, true, 0);
+
+$pdf->SetPrintHeader(true);
+$pdf->SetPrintFooter(true);
 // add a page
 $pdf->AddPage();
 
@@ -150,25 +169,26 @@ $html ='<style>
 				</style>
 ';
 
-$html .= '<br><h1 style="text-align:center; font-family: times, serif;"> ISLAMIC LAST Will and Testament</h1>
-<br><br>
-<h2 style="text-align:center; font-family: times, serif;" >of '.$personal_data->name_title.' '.$personal_data->full_name.'</h2>
+$html .= '<br><h1 style="text-align:center; font-family: times, serif; line-height:0px;"> Islamic Last Will and Testament</h1>
 
-<p style="font-size:12; font-family: times, serif; text-align: justify; ">I '.$personal_data->name_title.' '.$personal_data->full_name.' a Muslim, presently resident of
-'.$personal_data->address.', Age- '.$personal_data->age.', Occupation – '.$personal_data->occupation.', having my
+<h2 style="text-align:center; font-family: times, serif;text-transform: capitalize;" >of <br>'.$personal_data->name_title.' '.$personal_data->full_name.'</h2>
+
+<p style="font-size:12; font-family: times, serif; text-align: center; ">This Islamic Last Will and Testament is made, entered and executed  <br>at '.$personal_data->address.'</p>
+<p style="font-size:12; text-indent:40px; font-family: times, serif; text-align: justify; ">I <span style="text-transform: capitalize; font-weight:bold;">'.$personal_data->name_title.' '.$personal_data->full_name.'</span> Age- '.$personal_data->age.', Occupation – '.$personal_data->occupation.', a Muslim, presently resident of
+'.$personal_data->address.',   having my
 Aadhar No. '.$personal_data->aadhar_no.' being sound mind and memory declare that the following is my
 Islamic last Will and Testament (wasiyyat).</p>
 
-<p style="font-size:12; font-family: times, serif; text-align: justify; ">WHEREAS I do hereby make, publish and declare this is to be my last will and
+<p style="font-size:12; text-indent:40px; font-family: times, serif; text-align: justify; ">WHEREAS I do hereby make, publish and declare this is to be my last will and
 testament revoking all wills and codicils and testamentary dispositions at any time heretofore made by me.</p>
 
-<p style="font-size:12; font-family: times, serif;">AND WHEREAS I am maintaining good health and I am of sound mind. This will is made by me of my own independent
+<p style="font-size:12; text-indent:40px; font-family: times, serif;">AND WHEREAS I am maintaining good health and I am of sound mind. This will is made by me of my own independent
  decision, my free mind and volition and in sound health without any persuasion, influence or coercion and out of my independent decision only. </p>
 
-<p style="font-size:12; font-family: times, serif;">AND WHEREAS I fully understand what is right and wrong, I wish to make necessary and proper arrangements in
+<p style="font-size:12; text-indent:40px; font-family: times, serif;">AND WHEREAS I fully understand what is right and wrong, I wish to make necessary and proper arrangements in
 respect of enjoyment
  and distribution of my assets and properties after my life time. So that unnecessary misunderstanding and consequential wasteful
-  litigation or unpleasantness between the members of my family may be avoided. </p>
+  litigation or unpleasantness between the members of my family may be avoided.<br><br></p>
 
 
 
@@ -176,30 +196,29 @@ respect of enjoyment
 
 <h2 style="text-align:center; font-family: times, serif;">THE SHAHDAH – TESTIMONY OF FAITH</h2>
 
-<h2 style="text-align:center; font-family: times, serif;">Ash-hadu ann la ilaha illallahu, waash-hadu anna Muhammadan abduhu WaRasulullah</h2>
+<h2 style="text-align:center; font-family: times, serif;">Ash-hadu ann la ilaha illallahu, waash-hadu anna Muhammadan abduhu Wa-Rasulullah</h2>
 
-<p style="font-size:12; font-family: times, serif;">I bear witness that there is no deity but Allah, the One, the Merciful,
-the Almighty Creator of the heavens and the earth and I put my trust entirely in Him. I beg for His Help
+<p style="font-size:12; text-indent:40px; font-family: times, serif;">I bear witness that there is no deity but Allah, the One, the Merciful,
+the Almighty Creator of the heavens and the earth and I put my trust entirely upon Him. I beg for His Help
 and His Forgiveness. I seek refuge in Allah from Shaitan and the evils of the world and the evils of my deeds. I ask Him
 to Guide me, those whom Allah Guides no one can mislead, and those whom Allah leaves to stray, no one can guide. I testify
 that there is no deity except Allah, He is one and has no partners, and I testify that Mohammad is Allah’s last Messenger
 (Peace and Blessings of Allah be on him).  I bear witness that Allah’s promises are true and we will certainty meet with Him,
-Paradise is true, the Day of Judgement is coming without any doubt, and Allah (exalted be He) will surely resurrect those in the graves. </p><br><br>
+Paradise is true, the Day of Judgement is coming without any doubt, and Allah (exalted be He) will surely resurrect those in the graves.<br><br><br><br> </p>
 
 <h2 style="text-align:center; font-family: times, serif;" >B. REVOCATION</h2>
-<p style="font-size:12; font-family: times, serif;">
+<p style="font-size:12; text-indent:40px; font-family: times, serif;">
 	I do hereby revoke any and all former wills and codicils that I have previously made. I ask all my relatives,
 	friends, and others, whether they be Muslims or non-Muslims, to honour my right to be a Muslim. I ask them to honour
 	the spirit and letter of this document and not to try to obstruct or change it in any way. I ordain that under no circumstances
 	should the contents of this will be changed voluntarily.
 </p>
 
-<p style="font-size:12; font-family: times, serif;">
+<p style="font-size:12;text-indent:40px;  font-family: times, serif;">
 	I request all of my immediate relatives and any others involved in the procedures surrounding my death and burial, whether they be
 	Muslims or non-Muslims, to honor my human and Constitutional right and choice to be a Muslim. I ask them to also honor the spirit as well as
 	letter of this document and to not obstruct or change it in any way. Let them see to it that I am buried as a Muslim, and my property divided and
- disperse as I ordered, according to the Sunni Muslim Islamic Law (hereafter referred to Shariah). Under no circumstances does anyone have the
- authority to change the contents of this Will.
+ disperse as I ordered, according to the Sunni Muslim Islamic Law (hereafter referred to Shariah).<br><br>
 </p>
 <h2 style="text-align:center; font-family: times, serif;" >C.	FAMILY  DETAILS</h2>
 
@@ -264,28 +283,28 @@ foreach($family_data as $family_data ) {
 
 }
 
-$html .= '</p>
-<h2 style="text-align:center; font-family: times, serif;" >D. EXECUTOR </h2>';
+$html .= ' <br><br></p>
+<h2 style="text-align:center; font-family: times, serif;" >D. EXECUTOR/S </h2>';
 $i = 0;
 foreach($excutor_data as $excutor_data ) {
 	$i++;
 	if($i == 1){
 		$html .= '<p style="font-size:12; font-family: times, serif;">
-	1.	I  hereby nominate and appoint, namely Miss/Mr./Mrs '.$excutor_data->executor_name.' presently residing
-	at &nbsp;'.$excutor_data->executor_address.', age &nbsp;'.$excutor_data->executor_age.', to be the executor/s of my Last Will and Testament.
+	1.	I  hereby nominate and appoint, namely  '.$excutor_data->executor_name.' Age &nbsp;'.$excutor_data->executor_age.', presently Residing
+	at &nbsp;'.$excutor_data->executor_address.',  to be the executor/s of my Last Will and Testament.
 </p>';
 	}
 	elseif($i == 2){
 		$html .= '
 		<p style="font-size:12; font-family: times, serif;">
 			2.	In the event that he/she will be unwilling or unable to act as executor, I nominate and appoint,
-			namely Miss/Mr./Mrs '.$excutor_data->executor_name.'&nbsp; residing at &nbsp;'.$excutor_data->executor_address.'&nbsp;age &nbsp;'.$excutor_data->executor_age.',&nbsp;to be executor of this,
+			namely '.$excutor_data->executor_name.'&nbsp;Age &nbsp;'.$excutor_data->executor_age.', residing at &nbsp;'.$excutor_data->executor_address.'&nbsp;&nbsp;to be executor of this,
 			 my Last Will and Testament. I direct no bond or surety for any bond be required for my executor in the performance of his/her duties.
 		</p>';
 	}
 }
 
-$html .= '<p style="font-size:12; font-family: times, serif;"> a)	 I give my executor herein named power to settle any claim for or against my estate and power to sell any property, real, personal, or mixed,
+$html .= '<p style="font-size:12; text-indent:40px; font-family: times, serif;"> a)	 I give my executor herein named power to settle any claim for or against my estate and power to sell any property, real, personal, or mixed,
  in which I have an interest, without court order and without bond. I direct no bond or surety for any bond be required for my executor in
   the performance of his/her duties.</p>
 

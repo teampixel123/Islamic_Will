@@ -51,6 +51,14 @@
       return $result;
     }
 
+    // delete will  Dhananjay...
+    public function delete_will($will_id){
+      $tables = array('tbl_will', 'tbl_witness', 'tbl_vehicle','tbl_real_estate', 'tbl_personal_info',
+                        'tbl_other_gift','tbl_guardian', 'tbl_funeral', 'tbl_family_info','tbl_executor','tbl_bank_assets');
+      $this->db->where('will_id',$will_id);
+      $del=$this->db->delete($tables);
+      return $del;
+    }
 
 
     // Save start Will Info...

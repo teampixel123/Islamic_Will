@@ -67,9 +67,9 @@
       <h3 class=" text-left">Date and Place </h3><br>
   		<div class="form-group" id="">
         <div class="row text-center">
-          <label class="col-md-3 text-right" for="exampleInputEmail1">Date of Signature</label>
+          <label class="col-md-3 text-right"  for="exampleInputEmail1">Date of Signature</label>
   				<div class="col-md-9">
-  					<input type="text"  readonly name="will_date" id="will_date" class="form-control clear"  aria-describedby="emailHelp" >
+  					<input type="text" style="background-color:#fff;"  readonly name="will_date" id="will_date" class="form-control clear"  aria-describedby="emailHelp" >
             <p id="error_will_date" style="color:red; display:none" class="text-left valide">*This field is required.</p>
           </div>
         </div>

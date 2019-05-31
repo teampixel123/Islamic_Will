@@ -49,7 +49,7 @@
           <div class="row h-100 align-items-center">
               <div class="col-8">
                   <div class="top-header-content text-right">
-                      <p>Welcome to Islamic_will</p>
+                      <p>Welcome to Islamic will</p>
                   </div>
               </div>
               <div class="col-4">
@@ -102,9 +102,10 @@
                               <ul id="nav">
                                   <li><a href="#"><?php echo $user_data->user_fullname; ?></a>
                                   <ul class="dropdown">
-                                    <li><a href="<?php echo base_url(); ?>Start-Will">- Make A Will</a></li>
+                                    <li><a href="<?php echo base_url(); ?>Will_controller/make_will_view">- Make A Will</a></li>
                                     <li><a href="<?php echo base_url() ?>/User_controller/will_list">- Will List</a></li>
-                                    <li><a href="./service.html">- Your Profile</a></li>
+                                    <li><a href="<?php echo base_url() ?>/User_controller/user_profile">- Your Profile</a></li>
+                                    <li><a href="<?php echo base_url(); ?>User_controller/user_dashboard">- Dashboard</a></li>
                                     <li><a href="<?php echo base_url(); ?>Will_controller/logout">- Logout</a></li>
 
                                     </ul>

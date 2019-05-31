@@ -209,9 +209,11 @@
                       });
                       $('.table_executor').on( 'draw.dt', function(){
                          if (! table_executor.data().any() ) {
+                           $('#executor_next').prop('disabled', true);
                            $('.table_executor').hide();
                           }
                           else{
+                            $('#executor_next').prop('disabled', false);
                             $('.table_executor').show();
                           }
                       });
@@ -362,7 +364,7 @@
 
           $nestedData = array();
 
-            $nestedData[] = "<div class='row'><div class='col-md-9'>".$id.") Estate Types: ".$estate_type.", House No / Flat NO: ".$house_no."
+            $nestedData[] = "<div class='row'><div class='col-md-9'>".$id.") Estate Types: ".$estate_type.", ".$estate_type." NO: ".$house_no."
             Survey number: ".$survey_number.", Measurement: ".$measurment_area." ".$measurment_unit.",
             Address: ".$estate_address.",".$estate_city.", ".$estate_state.", ".$estate_country.", Pin:".$estate_pin."
             </div>
@@ -480,6 +482,8 @@
           $branch_name = $post->branch_name;
           $fd_recipt_No = $post->fd_recipt_No;
           $key_number = $post->key_number;
+          $b_state =$post->state;
+          $b_pin_code=$post->pin_code;
           if($page == 'assets_info'){
             $edit_button = "<a id='bank_assets_edit".$id."'  class='badge1 badge-pill '  title='Edit Real Estate'> <i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>";
           }
@@ -592,6 +596,8 @@
                 $('#branch_name').val('$branch_name');
                 $('#fd_recipt_No').val('$fd_recipt_No');
                 $('#key_number').val('$key_number');
+                $('#b_state').val('$b_state');
+                $('#b_pin_code').val('$b_pin_code');
 
                 $('#fd_recipt_No_div').hide();
                 $('#key_number_div').hide();

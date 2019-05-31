@@ -24,22 +24,8 @@
             <div class="col-12 col-sm-6 col-md-4 col-xl-3">
                 <div class="single-footer-widget mb-80">
                     <!-- Widget Title -->
-                    <h4 class="widget-title">Social media</h4>
 
-                    <!-- Open Times -->
-                    <!-- <div class="open-time">
-                        <p>Monday: Friday: 10.00 - 23.00</p>
-                        <p>Saturday: 10.00 - 19.00</p>
-                    </div> -->
-
-                    <!-- Social Info -->
-                    <div class="social-info">
-                        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                        <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
-                        <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-                    </div>
-                    <hr>
+                    
                     <div class="f_nav ">
                       <ul class="text-left">
                         <!-- <li><a href="./index.html">• Home</a></li>
@@ -67,6 +53,22 @@
                         <p>Tel: (+91) 9545-465-656</p>
                         <p>E-mail:info@easywillindia.com</p>
 
+                    </div>
+                    <hr>
+                    <h4 class="widget-title">Social media</h4>
+
+                    <!-- Open Times -->
+                    <!-- <div class="open-time">
+                        <p>Monday: Friday: 10.00 - 23.00</p>
+                        <p>Saturday: 10.00 - 19.00</p>
+                    </div> -->
+
+                    <!-- Social Info -->
+                    <div class="social-info">
+                        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+                        <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
                     </div>
                 </div>
             </div>

@@ -48,7 +48,7 @@
           <label class="col-md-3 text-right" for="exampleInputEmail1">Executor Name: </label>
           <div class="col-md-3">
   					<select class="form-control" name="e_name_title" id="e_name_title">
-  					 <option value="0">select</option>
+
   					 <option>Mr.</option>
   					 <option>Miss.</option>
   					 <option>Mrs.</option>
