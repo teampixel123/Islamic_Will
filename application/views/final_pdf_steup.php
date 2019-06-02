@@ -45,14 +45,14 @@
  		// $this->Cell(0, 15, '<< TCPDF Example 003 >>', 0, false, 'C', 0, '', 0, false, 'M', 'M');
 
 
-    $this->SetY(-15);
+    $this->SetY(-20);
 
     $this->SetFont('helvetica', 'I', 8);
    // Page number
    $this->Cell(20, 0, 'Page '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
     // Set font
     $this->SetFont('helvetica', 'I', 12);
-      $this->Cell(250, 12, ' Signature.................. ', 0, false, 'C', 0, '', 0, false, 'M', 'M');
+      $this->Cell(245, 20, ' Signature.................. ', 0, false, 'C', 0, '', 0, false, 'M', 'M');
  	}
 
  	// Page footer
@@ -179,8 +179,8 @@ $html .= '<br><h1 style="text-align:center; font-family: times, serif; line-heig
 Aadhar No. '.$personal_data->aadhar_no.' being sound mind and memory declare that the following is my
 Islamic last Will and Testament (wasiyyat).</p>
 
-<p style="font-size:12; text-indent:40px; font-family: times, serif; text-align: justify; ">WHEREAS I do hereby make, publish and declare this is to be my last will and
-testament revoking all wills and codicils and testamentary dispositions at any time heretofore made by me.</p>
+<p style="font-size:12; text-indent:40px; font-family: times, serif; text-align: justify; ">WHEREAS I do hereby make, publish and declare this is to be my
+Islamic Last Will and Testament revoking all wills and codicils and testamentary dispositions at any time heretofore made by me.</p>
 
 <p style="font-size:12; text-indent:40px; font-family: times, serif;">AND WHEREAS I am maintaining good health and I am of sound mind. This will is made by me of my own independent
  decision, my free mind and volition and in sound health without any persuasion, influence or coercion and out of my independent decision only. </p>
@@ -215,10 +215,9 @@ Paradise is true, the Day of Judgement is coming without any doubt, and Allah (e
 </p>
 
 <p style="font-size:12;text-indent:40px;  font-family: times, serif;">
-	I request all of my immediate relatives and any others involved in the procedures surrounding my death and burial, whether they be
-	Muslims or non-Muslims, to honor my human and Constitutional right and choice to be a Muslim. I ask them to also honor the spirit as well as
-	letter of this document and to not obstruct or change it in any way. Let them see to it that I am buried as a Muslim, and my property divided and
- disperse as I ordered, according to the Sunni Muslim Islamic Law (hereafter referred to Shariah).<br><br>
+	I request all of my immediate relatives and any others involved in the procedures surrounding my death and burial, whether they be Muslims or non-Muslims,
+  to honour my human and Constitutional right and choice to be a Muslim. Let them see to it that I am buried as a Muslim, and my property divided and disperse
+   as I ordered, according to the Sunni Muslim Islamic Law (hereafter referred to Shari’ah). <br><br>
 </p>
 <h2 style="text-align:center; font-family: times, serif;" >C.	FAMILY  DETAILS</h2>
 
@@ -288,25 +287,33 @@ $html .= ' <br><br></p>
 $i = 0;
 foreach($excutor_data as $excutor_data ) {
 	$i++;
+  $gender=$excutor_data->executor_gender;
+  if($gender=='Male'){
+    $key_1='he';
+    $key_2='his';
+  }else{
+    $key_1='she';
+    $key_2='her';
+  }
 	if($i == 1){
 		$html .= '<p style="font-size:12; font-family: times, serif;">
-	1.	I  hereby nominate and appoint, namely  '.$excutor_data->executor_name.' Age &nbsp;'.$excutor_data->executor_age.', presently Residing
+	1.	I  hereby nominate and appoint, namely  '.$excutor_data->executor_name.' Age - &nbsp;'.$excutor_data->executor_age.', presently Residing
 	at &nbsp;'.$excutor_data->executor_address.',  to be the executor/s of my Last Will and Testament.
 </p>';
 	}
 	elseif($i == 2){
+
 		$html .= '
 		<p style="font-size:12; font-family: times, serif;">
-			2.	In the event that he/she will be unwilling or unable to act as executor, I nominate and appoint,
-			namely '.$excutor_data->executor_name.'&nbsp;Age &nbsp;'.$excutor_data->executor_age.', residing at &nbsp;'.$excutor_data->executor_address.'&nbsp;&nbsp;to be executor of this,
-			 my Last Will and Testament. I direct no bond or surety for any bond be required for my executor in the performance of his/her duties.
+			2.	In the event that  '.$key_1.' will be unwilling or unable to act as executor, I nominate and appoint,
+			namely '.$excutor_data->executor_name.'&nbsp;Age - &nbsp;'.$excutor_data->executor_age.', residing at &nbsp;'.$excutor_data->executor_address.'&nbsp;&nbsp;to be executor of this,
+			 my Last Will and Testament. I direct no bond or surety for any bond be required for my executor in the performance of '.$key_2.' duties.
 		</p>';
 	}
 }
 
-$html .= '<p style="font-size:12; text-indent:40px; font-family: times, serif;"> a)	 I give my executor herein named power to settle any claim for or against my estate and power to sell any property, real, personal, or mixed,
- in which I have an interest, without court order and without bond. I direct no bond or surety for any bond be required for my executor in
-  the performance of his/her duties.</p>
+$html .= '<p style="font-size:12;  font-family: times, serif;"> a)  I give my executor/s herein named power to settle any claim for or against my estate and power to sell any property,
+real, personal, or mixed, in which I have an interest, without court order and without bond. </p>
 
 	<p style="font-size:12; font-family: times, serif;">b)	I hereby grant to the Executors of my Estate all such powers as allowed by Law, especially the power of assumption.
 		</p>
@@ -324,13 +331,13 @@ III.	Payment of the Wasiyyah (Islamic Bequest).<br>
 IV.	Distribution of the residue of my Estate to my Islamic heirs in accordance with the Islamic Law of Succession.<br>
 
 </p>
-<p style="font-size:12; font-family: times, serif;" >e)	The executor is to pay such religious taxes {like khums(Khums is paid on the surplus to annual expenses of a person, i.e.
-	one has to pay one-fifth of what has remained from his income after subtracting his own expenses ) and kaffarah(religious donation of
-	money or food made to help those in need)}  and other expenses for hiring people to do qaza prayers and fasts;</p>
+<p style="font-size:12; font-family: times, serif;" >d)	The executor is to pay such religious taxes {like khums(Khums is paid on the surplus to annual expenses of a person, i.e.
+	one has to pay one-fifth of what has remained from '.$key_2.' income after subtracting '.$key_2.' own expenses ) and kaffarah(religious donation of
+	money or food made to help those in need)}  and other expenses for hiring people to do qaza prayers and fasts. <br><br></p>
 
-<h1 style="text-align:center; font-family: times, serif;" >D.	FUNERAL AND BURIAL RIGHTS </h2>
+<h1 style="text-align:center; font-family: times, serif;" >E.	FUNERAL AND BURIAL RIGHTS </h2>
 
-<p style="font-size:12; font-family: times, serif;">I direct my executor surviving relatives and friends to ensure that i have a funeral strictly in accordance with Islamic law. That must include Ghusl
+<p style="font-size:12; font-family: times, serif;">I direct my executor/s surviving relatives and friends to ensure that i have a funeral strictly in accordance with Islamic law. That must include Ghusl
  (washing), Janaza (funeral prayer) and Dafn (burial). In particular i do not wish for an autopsy to be performed on my body and request that my body be
   released for burial immediately upon death or as soon as practical. </p>
 
@@ -338,44 +345,33 @@ IV.	Distribution of the residue of my Estate to my Islamic heirs in accordance w
 		I ordain that absolutely no non-Islamic religious service or observance shall be conducted upon my death or on my body. I ordain that my grave
 		shall be dug deep into the ground in complete accordance with the specifications of Islamic practice and that it face the direction of Qiblah
 		(the Direction of the city of Mecca in the Arabian Peninsula, towards which Muslims face for prayer).
-	</p>
+	<br><br></p>
 
 	<h1 style="text-align:center; font-family: times, serif;" >F.  DEBTS AND EXPENSES	</h1>
 	<p style="font-size:12; font-family: times, serif;">
-		I direct that my executor apply first, the assets of my estate to the payment of all my legal debts - including such expenses incurred by my
-		last illness and burial as well as the expenses of administrating my estate. I direct the said executor to pay any "obligations to Allah" (Huquq Allah) which are binding on me, such as unpaid Zakah, Kaffarat, or unperformed pilgrimage (Hajj).
+		I direct that my executor/s apply first, the assets of my estate to the payment of all my legal debts - including such expenses incurred by my
+		last illness and burial as well as the expenses of administrating my estate. I direct the said executor to pay any "obligations to Allah" (Huquq Allah) which are binding on me, such as unpaid Zakaat, Kaffarat, or unperformed pilgrimage (Hajj).
 	</p>
 
 	<p style="font-size:12; font-family: times, serif;">
 		 I direct that all inheritance, state, and succession taxes (including interest and other penalties thereon) payable by reason of my death shall be paid out of and be charged generally against the principal of my
 		 residuary estate (Any portion of the testator &apos s estate that is not specifically devised to someone in the will), without reimbursement from any person; except that this provision shall not be construed as a waiver of any right which my executor has,
 		  by law or otherwise, to claim reimbursement for any such taxes which become payable on account of property, if any, over which I have a power of appointment.
-	</p>';
+	<br><br></p>';
 
 
 
   if($will_data->is_have_minar_child == 1) {
 
 
-$html .= '
-	<h1 style="text-align:center; font-family: times, serif;" >G.	GUARDIANSHIP </h1>
-	<p style="font-size:12; font-family: times, serif;">
-	I appoint Miss/Mr./Mrs ';
-  foreach($family_data2 as $family_data2 ) {
-    if($family_data2->is_minar == 1){
-         $html .= ''.$family_data2->guardian_name.' '.$family_data2->guardian_address.', ';
-    }
-
-  } $html .= 'to be the Guardian/s of my children who are under the age of eighteen (18) at the time of my
-	death with the view to take care of their education, health, and fulfill their/his/her all other necessary requirements with the passage of time.
-	<p>';
+$html .= '<h1 style="text-align:center; font-family: times, serif;" >G.	GUARDIANSHIP </h1>
+	';
   $i = 1;
   foreach($family_data3 as $family_data3 ) {
     if($family_data3->is_minar == 1){
-
   $html .= '
 	<p style="font-size:12; font-family: times, serif;">
-		'.$i++.') Therefore I appoint '.$family_data3->guardian_name.', residing at '.$family_data3->guardian_address.', to be the guardian of my '.$family_data3->relationship.'– '.$family_data3->family_person_name.', until he son attains 18 years of age only,
+		'.$i++.') I appoint and nominate  '.$family_data3->guardian_name_title.''.$family_data3->guardian_name.', Age - '.$family_data3->guardian_age.', presently Residing at '.$family_data3->guardian_address.', to be the guardian of my '.$family_data3->relationship.'– '.$family_data3->family_person_name.', until he son attains 18 years of age only,
 		and if his mother '.$family_data3->mother_of_minar.', cannot take care of '.$family_data3->family_person_name.' either on account of personal, health, financial, or other reasons, , so long as said guardian remains a Muslim of sound mind and judgment.';
     if($family_data3->opt_guardian_name != ''){
   $html .= ' In the event he shall be unwilling or unable to act as guardian. In the event he shall be unwilling or unable to act as guardian, I nominate and appoint '.$family_data3->opt_guardian_name.' residing in
@@ -386,27 +382,32 @@ $html .= '
 }
 
 
-	$html .= '<p style="font-size:12; font-family: times, serif;">
+	$html .= '<p style="font-size:12; text-indent:40px; font-family: times, serif;">
 	In such case, I urge that all my minor children be raised to be practicing Sunni Muslims and not in any way be indoctrinated into any other
 	 faith, religion, or sect of Islam. I direct that no bond be required of any personal guardian. Any property or other inheritance that this
 	  Will gives to any of my minor children shall be administered by their guardian in their best interest.
-	</p>';
+    <br><br> The person or persons who is/are guardian (s) named herein, only if the mother of my siblings is unable or unwilling to keep my siblings, will receive and is free to spend all funds due to my siblings on my siblings and whatever is left from their share, should be deposited into a bank for the siblings as and when they reach 18 years of age. It is my express desire, that any such funds deposited in the bank for my siblings should be spent for either education or investment purposes and not for day-to-day expenses.
+	<br><br></p>
+
+  ';
 }
 $html .= '<p style="font-size:12; font-family: times, serif;"></p>
-		<h1 style="text-align:center; font-family: times, serif;" > H.DESCRIPTION OF PROPERTY </h1>';
+		<h1 style="text-align:center; font-family: times, serif;" > H.DESCRIPTION OF PROPERTY / ASSETS </h1>';
 
-$html .= '<h1 style="text-align:center; font-family: times, serif;" > My assets and properties – </h1>';
-$assets_title = 'A';
+//$html .= '<h1 style="text-align:center; font-family: times, serif;" > My assets and properties – </h1>';
+$assets_title = '1';
 if($real_estate){
-  $html .= '<h1 style=" font-family: times, serif;" >'.$assets_title++.'. Immovable Property -  </h1>';
+  $html .= '<h1 style=" font-family: times, serif;" >'.$assets_title++.'. Real Estate  -  </h1>';
 
-  $html .= '<p style="font-size:12; font-family: times, serif;" >I own and possess and I am absolutely entitled to the following immovable property/properties</p>';
+  $html .= '<p style="font-size:12; text-indent:40px; font-family: times, serif;" >I own and possess and I am absolutely entitled to the following immovable property/properties</p>';
 }
-
+$assets_real_title = 'a';
 foreach($real_estate as $real_estate ) {
-    $html .= '<p style="font-size:12; font-family: times, serif;" >Whereas I am the owner of '. $real_estate->estate_type .' no. '. $real_estate->house_no .' having property bearing C.S. no.'. $real_estate->survey_number .' measuring about '.$real_estate->measurment_area.' '.$real_estate->measurment_unit .' of Second floor,
+
+    $html .= '<p style="font-size:12; text-indent:40px; font-family: times, serif;" > '.$assets_real_title.') Whereas I am the owner of '. $real_estate->estate_type .' no. '. $real_estate->house_no .' having property bearing C.S. no. / R. S. No'. $real_estate->survey_number .' measuring about '.$real_estate->measurment_area.' '.$real_estate->measurment_unit .'
     	located at '. $real_estate->estate_address .', '. $real_estate->estate_city .', State – '. $real_estate->estate_state .', Pin code - '. $real_estate->estate_pin .'&nbsp;'. $real_estate->estate_country .'.
-    </p>';
+    <br></p>';
+    $assets_real_title++;
 }
 
 if($bank_assets){$html .= '<h1 style="font-family: times, serif;" >'.$assets_title++.'. Bank Assets – </h1>';}
@@ -418,77 +419,83 @@ $Locker = 0;
 $Mutual_Funds = 0;
 $Stock = 0;
 $Insurance = 0;
+$account_type_list='a';
 foreach($bank_assets as $bank_assets ) {
 	if($bank_assets->assets_type == 'Savings A/c'){
     $savings++;
     if($savings == 1){
-      $html .= '<span style="font-size:14; font-family: times, serif;" ><b>Savings in Bank Account</b></span><br>';
+      $html .= '<span style="font-size:14; font-family: times, serif;" ><b>'.$account_type_list.' ) Saving Accounts &nbsp;– </b></span>';
+      $account_type_list++;
     }
-		$html .= '<span style="font-size:12; font-family: times, serif; padding: 0px; margin:0px;">'.$savings.') Bank balance of my savings A/c. No.'. $bank_assets->account_number .' with '. $bank_assets->bank_name .' , Branch – '. $bank_assets->branch_name .' State – '. $bank_assets->state .', Pin code - '. $bank_assets->pin_code .'.
-		</span><br>
-';
+		$html .= '<p style="font-size:12; text-indent:40px; font-family: times, serif; ">Bank balance of my savings A/c. No.'. $bank_assets->account_number .' with '. $bank_assets->bank_name .' , Branch – '. $bank_assets->branch_name .' State – '. $bank_assets->state .', Pin code - '. $bank_assets->pin_code .'.<br></p>';
 	}
 	elseif($bank_assets->assets_type == 'Current A/C'){
     $current++;
     if($current == 1){
-      $html .= '<span style="font-size:14; font-family: times, serif;" ><b>Current Account</b></span><br>';
+      $html .= '<span style="font-size:14; font-family: times, serif; " ><b>'.$account_type_list.' ) Current Account &nbsp;– </b></span>';
+      $account_type_list++;
     }
-		$html .= '<span style="font-size:12; font-family: times, serif;" >'.$current.') Bank balance of my current A/c. No.'. $bank_assets->account_number .' with '. $bank_assets->bank_name .' , Branch - '. $bank_assets->branch_name .' State – '. $bank_assets->state .', Pin code - '. $bank_assets->pin_code .'.</span><br>
-		';
+		$html .= '<p style="font-size:12; text-indent:40px; font-family: times, serif;" > Bank balance of my current A/c. No.'. $bank_assets->account_number .' with '. $bank_assets->bank_name .' , Branch - '. $bank_assets->branch_name .' State – '. $bank_assets->state .', Pin code - '. $bank_assets->pin_code .'.<br><br></p>';
 	}
 	elseif($bank_assets->assets_type == 'Fixed Deposits'){
     $Fixed++;
     if($Fixed == 1){
-      $html .= '<span style="font-size:14; font-family: times, serif;" ><b>Fixed Deposits</b></span><br>';
+      $html .= '<span style="font-size:14; font-family: times, serif;" ><b>'.$account_type_list.' )Fixed Deposits &nbsp;–</b></span>';
+      $account_type_list++;
     }
 		$html .= '
-		<span style="font-size:12; font-family: times, serif;">'.$Fixed.') My bank fixed deposits with customer ID no. '. $bank_assets->account_number .' with '. $bank_assets->bank_name .' , Branch - '. $bank_assets->branch_name .' vide F.D. receipt no. '. $bank_assets->fd_recipt_No .' State – '. $bank_assets->state .', Pin code - '. $bank_assets->pin_code .'.</span><br>
+		<p style="font-size:12; text-indent:40px; font-family: times, serif;" > My bank fixed deposits with customer ID no. '. $bank_assets->account_number .' with '. $bank_assets->bank_name .' , Branch - '. $bank_assets->branch_name .' vide F.D. receipt no. '. $bank_assets->fd_recipt_No .'  State – '. $bank_assets->state .', Pin code - '. $bank_assets->pin_code .'.<br></p>
     ';
 	}
 
 	elseif($bank_assets->assets_type == 'PPF'){
     $PPF++;
     if($PPF == 1){
-      $html .= '<span style="font-size:14; font-family: times, serif;" ><b>Public Provident Fund</b></span><br>';
+      $html .= '<span style="font-size:14; font-family: times, serif;" ><b> '.$account_type_list.' )Public Provident Fund &nbsp;– </b></span>';
+      $account_type_list++;
     }
-		$html .= '<span style="font-size:12; font-family: times, serif;" >'.$PPF.') My PPF account having no. '. $bank_assets->account_number .' with '. $bank_assets->bank_name .' , Branch - '. $bank_assets->branch_name .' located at --------------------------, State – '. $bank_assets->state .', Pin code - '. $bank_assets->pin_code .'</span><br>
+		$html .= '<p style="font-size:12; text-indent:40px; font-family: times, serif;" > My PPF account having no. '. $bank_assets->account_number .' with '. $bank_assets->bank_name .' , Branch - '. $bank_assets->branch_name . ' State – '. $bank_assets->state .', Pin code - '. $bank_assets->pin_code .'<br></p>
     ';
 	}
 
 	elseif($bank_assets->assets_type == 'Bank Locker'){
     $Locker++;
     if($Locker == 1){
-      $html .= '<span style="font-size:14; font-family: times, serif;" ><b>Bank Locker</b></span><br>';
+      $html .= '<span style="font-size:14; font-family: times, serif;" ><b>'.$account_type_list.' )Bank Locker &nbsp;–</b></span>';
+      $account_type_list++;
     }
-		$html .= '<span style="font-size:12; font-family: times, serif;">'.$Locker.') The contents of bank locker no.'. $bank_assets->account_number .' with key no. '. $bank_assets->key_number .' with '. $bank_assets->bank_name .' , branch – '. $bank_assets->branch_name .' , State – '. $bank_assets->state .', Pin code - '. $bank_assets->pin_code .'</span><br>
+		$html .= '<p style="font-size:12; text-indent:40px; font-family: times, serif;" > The contents of bank locker no.'. $bank_assets->account_number .' with key no. '. $bank_assets->key_number .' with '. $bank_assets->bank_name .' , branch – '. $bank_assets->branch_name .' ,  State – '. $bank_assets->state .', Pin code - '. $bank_assets->pin_code .'<br></p>
     ';
 	}
 
 	elseif($bank_assets->assets_type == 'Mutual Funds'){
     $Mutual_Funds++;
     if($Mutual_Funds){
-      $html .= '<span style="font-size:14; font-family: times, serif;" ><b>Mutual Funds</b></span><br>';
+      $html .= '<span style="font-size:14; font-family: times, serif;" ><b>'.$account_type_list.' ) Mutual Funds &nbsp;–</b></span>';
+      $account_type_list++;
     }
-		$html .= '<span style="font-size:12; font-family: times, serif;">'.$Mutual_Funds.') My mutual fund investments with folio numbers '. $bank_assets->account_number .' with '. $bank_assets->bank_name .'</p><br>
+		$html .= '<p style="font-size:12; text-indent:40px; font-family: times, serif;" > My mutual fund investments with folio numbers '. $bank_assets->account_number .' with '. $bank_assets->bank_name .'<br></p>
     ';
 	}
 
 	elseif($bank_assets->assets_type == 'Stock Equities'){
     $Stock++;
     if($Stock == 1){
-      $html .= '<span style="font-size:14; font-family: times, serif;" ><b>Shares</b></span><br>';
+      $html .= '<span style="font-size:14; font-family: times, serif;" ><b>'.$account_type_list.' )Shares &nbsp;–</b></span>';
+      $account_type_list++;
     }
-		$html .= '<span style="font-size:12; font-family: times, serif;">'.$Stock.') My shares in '. $bank_assets->bank_name .' with account no. '. $bank_assets->account_number .'</span><br>
+		$html .= '<p style="font-size:12; text-indent:40px; font-family: times, serif;" > My shares in '. $bank_assets->bank_name .' with account no. '. $bank_assets->account_number .'<br></p>
     ';
 	}
 
 	elseif($bank_assets->assets_type == 'Insurance Policy'){
     $Insurance++;
     if($Insurance == 1){
-      $html .= '<span style="font-size:14; font-family: times, serif;" ><b>Insurance policies</span>';
+      $html .= '<span style="font-size:14; font-family: times, serif;" ><b>'.$account_type_list.' )Insurance policies &nbsp;– </span>';
+      $account_type_list++;
     }
-		$html .= '<p style="font-size:12; font-family: times, serif;" >'.$Insurance.') My insurance policy '. $bank_assets->account_number .' from '. $bank_assets->bank_name .'  branch – '. $bank_assets->branch_name .'  for sum assurance of Rs. '. $bank_assets->assurance_amount .'/-.
-		</p>';
+		$html .= '<p style="font-size:12; text-indent:40px; font-family: times, serif;" > My insurance policy '. $bank_assets->account_number .' from '. $bank_assets->bank_name .'  branch – '. $bank_assets->branch_name .'  for sum assurance of Rs. '. $bank_assets->assurance_amount .'/-.
+		<br></p>';
 	}
 }
 
@@ -499,7 +506,7 @@ foreach($vehicle as $vehicle ){
     $html .= '<h1 style=" font-family: times, serif;" >'.$assets_title++.'. Vehicles</h1>';
   }
 		$html .= '<p style="font-size:12; font-family: times, serif;" >'.$j.') My vehicle with registration no '. $vehicle->registration_number .'. make year '. $vehicle->vehicle_make_year .', vehicle company '. $vehicle->vehicle_company .' and model name '. $vehicle->vehicle_model .' .
-		</p>';
+		<br></p>';
 }
 
 $k = 0;
@@ -530,62 +537,49 @@ foreach($other_gift as $other_gift ) {
 }
 
 if($personal_data->marital_status == 0){
-	$html .= '<h1 style="text-align:center; font-family: times, serif;" > I. DISTRIBUTION OF THE REMINDER OF MY ESTATE</h1>
-	<p style="font-size:12; font-family: times, serif;" > a.	I direct, devise and bequest all the residue and remainder of my estate after making provision for payment of
+	$html .= '<br><br><h1 style="text-align:center; font-family: times, serif;" > I. DISTRIBUTION OF THE REMINDER OF MY ESTATE</h1>
+	<p style="font-size:12;  font-family: times, serif;" > a.	I direct, devise and bequest all the residue and remainder of my estate after making provision for payment of
 	my obligations and distributions provided above to only my Muslim heirs whose relation to me, whether ascending or descending,
 	has occurred through Islamic or lawful marriage at each and every point. The distribution of the residue and remainder of my estate shall
-	be made strictly in accordance with.</p>
+	be made strictly in accordance with.<br><br></p>
 	';
 }
 
 $html .= '
 <h1 style="text-align:center; font-family: times, serif;" > SCHEDULE A – MAWARITH (INHERITANCE) </h1>
 
-<p style="font-size:12; font-family: times, serif;" >This schedule A is signed by me as a part of this Last Will and Testament.</p>
-<p>b.	I direct that no part of the residue and remainder of my estate shall be inherited by any non-Muslim relative,
+<p style="font-size:12; text-indent:50px; font-family: times, serif;" >This schedule A is signed by me as a part of this Last Will and Testament.</p>
+<p style="font-size:12;  font-family: times, serif;" >b.&nbsp;	I direct that no part of the residue and remainder of my estate shall be inherited by any non-Muslim relative,
 whether he/she is a kin or an in-law, spouse, parent or child. I further direct or ordain that any non-Muslim relative be disregarded and
  disqualified in the application of the named schedule.</p>
 
  <p style="font-size:12; font-family: times, serif;">
- 	d.	I direct that no part of my estate shall be given to relatives whose relationship to me, ascending or descending has
-	occurred through non-Islamic and unlawful marriage or through adoption, at each and every point, except the following.
+ 	c.	I direct that no part of my estate shall be given to relatives whose relationship to me, ascending or descending has
+	occurred through non-Islamic and unlawful marriage or through adoption.
  </p>
- <ul>
- <li>
- 1.	Legatees specifically named in Charitable Contributions and testamentary transfer.
- </li>
- <li>
- 		2.	A relative who is related to me through his/her biological mother.
- </li>
-</ul>
 
-<h2 style="text-align:center; font-family: times, serif;" >
-	* Schedule A has been prepared by .............................. and made a ---------------- by him for the service of Muslims in India,
-	may Allah shower his soul with mercy and forgiveness.
-</h2>
+ <h1 style="text-align:left; font-family: times, serif; " >d. Distribution of 1/3 Share</h1>
+ <h1 style="text-align:left; font-family: times, serif;line-height:14px;" >-	According to Mohammedan law</h1>
+ <h1 style="text-align:left; font-family: times, serif; line-height:14px;" >-	The 1/3 rule Hadith: Sa`ad ibn Abi Waqqas said:</h1>
+ <p style="font-size:12; text-indent:40px; font-family: times, serif;"> The Prophet came to visit me in my sickness I said to the Prophet, “O Prophet! I am wealthy and my only heir is my daughter.
+ Permit me that I make a will of my entire property.” He said, “No”. I said, “Should I make a will of two-thirds of my property?”
+ He said, “No”. I said, “Permit me for a third.” The Prophet replied, “You may make a will of a third, although this is also too
+ much. To leave after you your heirs well to do is better than you leave them poor and in want whilst others meet their needs.”</p>
+
+ <p style="font-size:12; text-indent:40px; font-family: times, serif;">Accordingly I ordain that my executor/s shall asses all assets and out of which he/she shall pass my 1/3 assets share of remained estate shall go strictly to the person mentioned herein.<br><br>
+I would give my 1/3 share to -<br><br>
+1.	My friend ---------------------- age----------- presently Residing at------------------percentage of share---------%.<br>
+2.	My relative ---------------------- age------------ presently Residing at------------------- percentage of share------------%.<br><br>
+	Also it is my wish that all my legal heirs/legatees should support to the executor for execution of this Will with their full co-operation without any hindrance.
+<br><br></p>
 
 
-<p style="font-size:12; font-family: times, serif;" >
-	e.	I direct and devise that any foetus, conceived before my death, whose relationship to me qualifies it to be an heir according to this Article,
-	shall be considered as an heir if the following condition is fulfilled, the foetus should be born alive within 365 days of my death. I further direct
-	and devise that whatever there exists a foetus who may become an heir according to this section, the whole distribution of the residue and remainder
-  of my estate after the execution of above (debts and expenses and charitable contributions) be delayed until after the birth of the foetus, or
-	that the largest potential share of the foetus be set aside until its birth alive. Should the foetus be born alive, but quality for a lesser
-		share, or should it not be born alive within the 365 days, any surplus of the set aside amount must be returned to the estate and distributed
-			according to Schedule A.
-</p>
-<p style="font-size:12; font-family: times, serif;">
-	f.	I direct, devise, and bequest all the residue and remainder of my estate of every nature and kind and whenever situated after making provisions for payments
-	 of my obligations and distribution of my estate as provided in above para no. D and E. I further direct, devise and ordain that any portion of my estate disclaimed
-	  of refused to be received by any of the legatees named or referred to in this Last will and Testament, or the remainder of my estate in the event of non-existence
-		of my Islamic heirs, shall be given to the Islamic society of India, as a contribution for establishing Islamic schools, centres, mosques and other activities in India.
-</p>
 <h1 style="text-align:center; font-family: times, serif;" >J. Announcement</h1>
 <p style="font-size:12; font-family: times, serif;">1. If I die as a result of murder, I direct that the adjured murderer, principal or accessory in the murder shall be disqualified to receive any part of my estate. </p>
 <p style="font-size:12; font-family: times, serif;" >2. I direct that no part of my estate shall be given to relatives whose relationship to me, ascending or descending, has occurred through non-Islamic and unlawful marriage, or through adoption</p>
 <p style="font-size:12; font-family: times, serif;" >3. I direct that no part of the residue and remainder of my estate shall be inherited by any non-Muslim relative, whether he/she is a kin or in-law, spouse, parent or child. I further direct and ordain
  that a non-Muslim relative be disregarded and disqualified.</p>
- <p style="font-size:12; font-family: times, serif;" >4. I direct that no part of my estate shall be given to relatives whose relationship to me, ascending or descending, has occurred through non-Islamic and unlawful marriage, or through adoption.</p>
+ <p style="font-size:12; font-family: times, serif;" >4. I direct that no part of my estate shall be given to relatives whose relationship to me, ascending or descending, has occurred through non-Islamic and unlawful marriage, or through adoption.<br><br></p>
 
  <h1 style="text-align:center; font-family: times, serif;" >K. SEPARABILITY</h1>';
 $will_date = $will_data->will_date;
@@ -603,21 +597,16 @@ $year = date('Y', strtotime($will_date));
 
  $html .= '
  <p>PLACE: '.$will_data->will_place.'</p>
- <p>Dated: '.$will_data->will_date.'</p>
- <p style="font-size:12; font-family: times, serif;" >L.  TESTATOR’S SIGNATURE </p>
+ <p>Dated: '.$will_data->will_date.' <br><br></p>
+ <h1 style="text-align:center; font-family: times, serif;" >L.  TESTATOR’S SIGNATURE </h1>
  <p style="font-size:12; font-family: times, serif;" >
  	In witness whereof, I have hereunto set my hand and seal on this: '.$day.' day of '.$month.', '.$year.'.
  </p>
 
- <p >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- Signature______________________
+ <p style=" font-size:12; text-align:right; font-family: times, serif; line-height:25px;" >
+ ______________________ <br>
+ Signature &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br><br></p>
 
-</p>
 
 <h1 style="text-align:center; font-family: times, serif;" >M.  WITNESSES</h1>
 <p style="font-family: times, serif;" >
@@ -626,11 +615,13 @@ $year = date('Y', strtotime($will_date));
  his/her request and in his/her Presence, and in the presence of each other, have hereunto subscribed our names as
  Witnesses thereto, believing said Testator at the time of the signing to be of sound mind and memory.
 
-</p>';
+</p>
+<h1 style="text-align:left; font-family: times, serif;" >  Witnesses: </h1>
+';
 $i=0 ;
 foreach($witness as $witness ) {
 	$i++;
-		$html .= ''.$i.'. &nbsp;'.$witness->witness_name.' of '.$witness->witness_address.'<br>';
+		$html .= '<p style="font-size:12; font-family: times, serif; margin-left:40px;">'.$i.'. &nbsp; Sign-------------------<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name &nbsp;' .$witness->witness_name.'<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add&nbsp;&nbsp;&nbsp;&nbsp; '.$witness->witness_address.'<br></p>';
 }
 // reset pointer to the last page
 $pdf->lastPage();
