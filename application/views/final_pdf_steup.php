@@ -295,7 +295,9 @@ foreach($excutor_data as $excutor_data ) {
     $key_1='she';
     $key_2='her';
   }
+
 	if($i == 1){
+    $frist_executor=$key_1;
 		$html .= '<p style="font-size:12; font-family: times, serif;">
 	1.	I  hereby nominate and appoint, namely  '.$excutor_data->executor_name.' Age - &nbsp;'.$excutor_data->executor_age.', presently Residing
 	at &nbsp;'.$excutor_data->executor_address.',  to be the executor/s of my Last Will and Testament.
@@ -305,8 +307,8 @@ foreach($excutor_data as $excutor_data ) {
 
 		$html .= '
 		<p style="font-size:12; font-family: times, serif;">
-			2.	In the event that  '.$key_1.' will be unwilling or unable to act as executor, I nominate and appoint,
-			namely '.$excutor_data->executor_name.'&nbsp;Age - &nbsp;'.$excutor_data->executor_age.', residing at &nbsp;'.$excutor_data->executor_address.'&nbsp;&nbsp;to be executor of this,
+			2.	In the event that '.$frist_executor.' will be unwilling or unable to act as executor, I nominate and appoint,
+			namely '.$excutor_data->executor_name.'&nbsp;Age - &nbsp;'.$excutor_data->executor_age.', presently Residing  at &nbsp;'.$excutor_data->executor_address.'&nbsp;&nbsp;to be executor of this
 			 my Last Will and Testament. I direct no bond or surety for any bond be required for my executor in the performance of '.$key_2.' duties.
 		</p>';
 	}
@@ -337,23 +339,23 @@ IV.	Distribution of the residue of my Estate to my Islamic heirs in accordance w
 
 <h1 style="text-align:center; font-family: times, serif;" >E.	FUNERAL AND BURIAL RIGHTS </h2>
 
-<p style="font-size:12; font-family: times, serif;">I direct my executor/s surviving relatives and friends to ensure that i have a funeral strictly in accordance with Islamic law. That must include Ghusl
+<p style="font-size:12; text-indent:40px; font-family: times, serif;">I direct my executor/s surviving relatives and friends to ensure that i have a funeral strictly in accordance with Islamic law. That must include Ghusl
  (washing), Janaza (funeral prayer) and Dafn (burial). In particular i do not wish for an autopsy to be performed on my body and request that my body be
   released for burial immediately upon death or as soon as practical. </p>
 
-	<p style="font-size:12; font-family: times, serif;">
+	<p style="font-size:12; text-indent:40px; font-family: times, serif;">
 		I ordain that absolutely no non-Islamic religious service or observance shall be conducted upon my death or on my body. I ordain that my grave
 		shall be dug deep into the ground in complete accordance with the specifications of Islamic practice and that it face the direction of Qiblah
 		(the Direction of the city of Mecca in the Arabian Peninsula, towards which Muslims face for prayer).
 	<br><br></p>
 
 	<h1 style="text-align:center; font-family: times, serif;" >F.  DEBTS AND EXPENSES	</h1>
-	<p style="font-size:12; font-family: times, serif;">
+	<p style="font-size:12; text-indent:40px; font-family: times, serif;">
 		I direct that my executor/s apply first, the assets of my estate to the payment of all my legal debts - including such expenses incurred by my
 		last illness and burial as well as the expenses of administrating my estate. I direct the said executor to pay any "obligations to Allah" (Huquq Allah) which are binding on me, such as unpaid Zakaat, Kaffarat, or unperformed pilgrimage (Hajj).
 	</p>
 
-	<p style="font-size:12; font-family: times, serif;">
+	<p style="font-size:12; text-indent:40px; font-family: times, serif;">
 		 I direct that all inheritance, state, and succession taxes (including interest and other penalties thereon) payable by reason of my death shall be paid out of and be charged generally against the principal of my
 		 residuary estate (Any portion of the testator &apos s estate that is not specifically devised to someone in the will), without reimbursement from any person; except that this provision shall not be construed as a waiver of any right which my executor has,
 		  by law or otherwise, to claim reimbursement for any such taxes which become payable on account of property, if any, over which I have a power of appointment.
@@ -545,10 +547,11 @@ if($personal_data->marital_status == 0){
 	';
 }
 
-$html .= '
-<h1 style="text-align:center; font-family: times, serif;" > SCHEDULE A – MAWARITH (INHERITANCE) </h1>
+$html .= '<div style="border: 1px solid #000; ">
+<h1 style="text-align:center; font-family: times, serif; padding-top:50px; line-height:50px" >  SCHEDULE A – MAWARITH (INHERITANCE) </h1>
 
 <p style="font-size:12; text-indent:50px; font-family: times, serif;" >This schedule A is signed by me as a part of this Last Will and Testament.</p>
+</div>
 <p style="font-size:12;  font-family: times, serif;" >b.&nbsp;	I direct that no part of the residue and remainder of my estate shall be inherited by any non-Muslim relative,
 whether he/she is a kin or an in-law, spouse, parent or child. I further direct or ordain that any non-Muslim relative be disregarded and
  disqualified in the application of the named schedule.</p>
