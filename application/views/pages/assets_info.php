@@ -13,12 +13,10 @@
       include('include/header.php');
     }
    ?>
-
 <!-- status bar satrt -->
 <div class="container-fluid">
 <br /><br />
 <ul class="list-unstyled multi-steps">
-
 	<li  >Personal Information</li>
 	<li >Family Information</li>
 	<li class="is-active">Assets</li>
@@ -28,7 +26,6 @@
 </div>
  <!-- end status bar -->
 
-
 <!-- family info containner start -->
 <?php $start_will_data = $this->session->userdata() ?>
 <div class="container">
@@ -36,7 +33,7 @@
     <div class="col-md-6 ">
   	<div id="box" class="personal_info1" >
       <!-- Executor Information Start  -->
-      	<h3 class=" text-left">Assets Info </h3><br>
+      <h3 class=" text-left">Assets Info </h3><br>
       <ul class="nav nav-tabs">
         <li class="nav-item" style="width:25%;">
           <a id="real_estate_tab" class="nav-link active rem_class" data-toggle="tab" href="#real_estate"><i class="fa fa-home fa-2x" ></i></br> Real Estate</a>
@@ -76,7 +73,6 @@
                 <p id="error_estate_type" style="color:red; display:none" class="text-left valide">*This field is required.</p>
             </div>
           </div>
-
       		<div class="form-group" id="">
             <div class="row text-center">
               <label class="col-md-3 text-right" for="exampleInputEmail1">Number: </label>
@@ -86,7 +82,6 @@
               </div>
             </div>
           </div>
-
           <div class="form-group" id="">
             <div class="row text-center">
               <label class="col-md-3 text-right" for="exampleInputEmail1">Survey number / CTS No : </label>
@@ -96,12 +91,11 @@
               </div>
             </div>
           </div>
-
           <div class="form-group" id="">
             <div class="row text-center">
               <label class="col-md-3 text-right" for="exampleInputEmail1">Measurement Area: </label>
       				<div class="col-md-5">
-      					<input type="text" name="measurment_area" id="measurment_area" class="form-control clear"  aria-describedby="emailHelp" >
+      					<input type="number" name="measurment_area" id="measurment_area" class="form-control clear"  aria-describedby="emailHelp" >
                 <p id="error_measurment_area" style="color:red; display:none" class="text-left valide">*This field is required.</p>
               </div>
               <div class="col-md-4">
@@ -113,10 +107,8 @@
       				 </select>
                <p id="error_measurment_unit" style="color:red; display:none" class="text-left valide">*This field is required.</p>
               </div>
-
             </div>
           </div>
-
           <div class="form-group" id="">
             <div class="row text-center">
               <label class="col-md-3 text-right" for="exampleInputEmail1">Address : </label>
@@ -126,7 +118,6 @@
               </div>
             </div>
           </div>
-
           <div class="form-group" id="">
             <div class="row text-center">
               <label class="col-md-3 text-right" for="exampleInputEmail1">City : </label>
@@ -136,17 +127,15 @@
               </div>
             </div>
           </div>
-
           <div class="form-group" id="">
             <div class="row text-center">
               <label class="col-md-3 text-right" for="exampleInputEmail1">PIN/ZIP Code: </label>
       				<div class="col-md-9">
-      					<input type="text" name="estate_pin" id="estate_pin" class="form-control clear"  aria-describedby="emailHelp" >
+      					<input type="number" name="estate_pin" id="estate_pin" class="form-control clear"  aria-describedby="emailHelp" >
                 <p id="error_estate_pin" style="color:red; display:none" class="text-left valide">*This field is required.</p>
               </div>
             </div>
           </div>
-
           <div class="form-group" id="">
             <div class="row text-center">
               <label class="col-md-3 text-right" for="exampleInputEmail1">Country: </label>
@@ -156,7 +145,6 @@
               </div>
             </div>
           </div>
-
           <div class="form-group" id="">
             <div class="row text-center">
               <label class="col-md-3 text-right" for="exampleInputEmail1">State: </label>
@@ -167,14 +155,12 @@
             </div>
           </div>
           </fieldset>
-
       		</form>
           <p id="success_update_real" style="color:green; display:none" class="text-left valide">*Information updated successfully.</p>
           <p id="success_save_real" style="color:green; display:none" class="text-left valide">*Information Saved successfully.</p>
           <p style="float:right;">  <button type="button" id="add_assets" class="btn btn-success"  >Add</button></p>
           <p>  <button type="button" id="update_real_estate" class="btn btn-info float-right d-none" >Update</button></p>
         </div>
-
 
         <div class="tab-pane fade rem_class" id="bank_assets">
           <form class="" id="bank_assets_form" method="post">
@@ -201,7 +187,6 @@
               </div>
             </div>
           </div>
-
       		<div class="form-group" id="">
             <div class="row text-center">
               <label class="col-md-3 text-right" for="exampleInputEmail1">
@@ -219,7 +204,6 @@
               </div>
             </div>
           </div>
-
           <div class="form-group" id="">
             <div class="row text-center">
               <label class="col-md-3 text-right" for="exampleInputEmail1">
@@ -233,7 +217,6 @@
               </div>
             </div>
           </div>
-
           <div class="form-group" id="">
             <div class="row text-center">
               <label class="col-md-3 text-right" for="exampleInputEmail1">Branch  </label>
@@ -243,8 +226,7 @@
               </div>
             </div>
           </div>
-
-          <div class="form-group" id="b_state_div" style="display:none;">
+          <div class="form-group" id="b_state_div" >
             <div class="row text-center">
               <label class="col-md-3 text-right" for="exampleInputEmail1">State</label>
       				<div class="col-md-9">
@@ -253,27 +235,24 @@
               </div>
             </div>
           </div>
-
-          <div class="form-group" id="b_pin_code_div" style="display:none;">
+          <div class="form-group" id="b_pin_code_div" >
             <div class="row text-center">
               <label class="col-md-3 text-right" for="exampleInputEmail1">Pin Code  </label>
       				<div class="col-md-9">
-      					<input type="text" name="b_pin_code" id="b_pin_code" class="form-control clear"  aria-describedby="emailHelp" >
+      					<input type="number" name="b_pin_code" id="b_pin_code" class="form-control clear"  aria-describedby="emailHelp" >
                 <p id="error_b_pin_code" style="color:red; display:none" class="text-left valide">*This field is required.</p>
               </div>
             </div>
           </div>
-
           <div class="form-group" id="b_sum_amount_div" style="display:none;">
             <div class="row text-center">
               <label class="col-md-3 text-right" for="exampleInputEmail1">Sum Assurance Amount  </label>
               <div class="col-md-9">
-                <input type="text" name="b_sum_amount" id="b_sum_amount" class="form-control clear"  aria-describedby="emailHelp" >
+                <input type="number" name="b_sum_amount" id="b_sum_amount" class="form-control clear"  aria-describedby="emailHelp" >
                 <p id="error_b_sum_amount" style="color:red; display:none" class="text-left valide">*This field is required.</p>
               </div>
             </div>
           </div>
-
           <div class="form-group hiden_div" id="fd_recipt_No_div" style="display:none;">
             <div class="row text-center">
               <label class="col-md-3 text-right" for="exampleInputEmail1">FD Receipt No  </label>
@@ -283,7 +262,6 @@
               </div>
             </div>
           </div>
-
           <div class="form-group hiden_div" id="key_number_div" style="display:none;">
             <div class="row text-center">
               <label class="col-md-3 text-right" for="exampleInputEmail1">Key Number  </label>
@@ -322,7 +300,7 @@
             <div class="row text-center">
               <label class="col-md-3 text-right" for="exampleInputEmail1">Make Year: </label>
       				<div class="col-md-9">
-      					<input type="text" name="vehicle_make_year" id="vehicle_make_year" class="form-control clear"  aria-describedby="emailHelp" >
+      					<input type="number" name="vehicle_make_year" id="vehicle_make_year" class="form-control clear"  aria-describedby="emailHelp" >
                   <p id="error_vehicle_make_year" style="color:red; display:none" class="text-left valide">*This field is required.</p>
               </div>
             </div>

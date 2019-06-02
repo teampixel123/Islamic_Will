@@ -24,92 +24,20 @@ include('include/head.php');
 </ul>
 </div>
  <!-- end status bar -->
-
-
 <!-- personal info containner start  asif change -->
 <?php $start_will_data = $this->session->userdata() ?>
 <div class="container">
-	<!-- <div class="jumbotron "> -->
-	<!-- <h1 class="heading">Personal Information</h1>
-			<!--action="<?php echo base_url(); ?>/Will_controller/save_personal_info"--> <br>
+<br>
 <div class="row ">
   <div class="col-md-7 personal_info1 " >
 	<div id="box">
 		<form class="" id="personal_info_form" method="post">
   <fieldset>
 		<h3 class=" text-left">Personal Information </h3><br>
-    <!-- <div class="form-group">
-      <div class="row text-center">
-        <label class="col-md-2 text-right" for="exampleInputEmail1">Full Name</label>
-				<div class="col-md-3">
-					<select class="form-control" name="name_title" id="name_title">
-					 <option>Mr.</option>
-					 <option>Miss.</option>
-					 <option>Mrs.</option>
-				 </select>
-        </div>
-        <div class="col-md-7">
-					<input type="text" name="full_name"  id="full_name"class="form-control empty" id="exampleInputEmail1" placeholder="Firstname Middlename Lastname" >
-					<p id="error_name" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
-				</div>
-      </div>
-    </div> -->
-
-		<!-- <div class="form-group" id="" >
-      <div class="row text-center">
-			<div class="col-md-2 marital_status1 marital_status_div" >
-        <label class=" text-right" for="exampleInputEmail1">Marital status</label>
-			</div>
-				<div class="col-md-4 marital_status_div">
-					<select class="form-control" name="marital_status" id="marital_status">
-					<option value="0">select </option>
-					 <option>Married</option>
-					 <option>Unmarried</option>
-					 <option id="Widove">Widove</option>
-					 <option>Divorcee</option>
-				 </select>
-				 <p id="error_marital_status" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
-        </div>
-
-			<div class="col-md-2 have_child_div">
-				<label class=" text-right" for="exampleInputEmail1">Child</label>
-			</div>
-				<div class="col-md-4 have_child_div">
-					<div class="row">
-					<div class="custom-control custom-radio col-md-6">
-			      <input type="radio" id="child_yes" name="is_have_child" class="custom-control-input" value="1" checked="">
-			      <label class="custom-control-label" for="child_yes">Yes</label>
-			    </div>
-					<div class="custom-control custom-radio col-md-6">
-			      <input type="radio" id="child_no" name="is_have_child" value="0" class="custom-control-input">
-			      <label class="custom-control-label" for="child_no">No</label>
-			    </div>
-				</div>
-				 <p id="error_is_have_child" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
-				</div>
-      </div>
-    </div> -->
-
 		<div class="form-group" id="">
       <div class="row text-center">
-        <!-- <label class="col-md-2 text-right" for="exampleInputEmail1">Gender</label>
-				<div class="col-md-4">
-					<div class="row">
-						<div class="custom-control custom-radio col-md-6">
-					    <input type="radio" id="gender_male" name="gender" class="custom-control-input" value="Male" checked="">
-					    <label class="custom-control-label" for="gender_male">Male</label>
-					  </div>
-					  <div class="custom-control custom-radio col-md-6">
-					    <input type="radio" id="gender_female" name="gender" class="custom-control-input" value="Female">
-					    <label class="custom-control-label" for="gender_female">Female</label>
-					  </div>
-					</div>
-				 <p id="error_gender" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
-        </div> -->
-
       </div>
     </div>
-
     <div class="form-group">
       <div class="row text-center">
         <div class="col-md-2 text-right">
@@ -121,17 +49,15 @@ include('include/head.php');
         </div>
       </div>
     </div>
-
     <div class="form-group">
       <div class="row text-center">
         <div class="col-md-2 text-right">
           <label for="exampleInputEmail1">City</label>
         </div>
         <div class="col-md-4">
-          <input type="text" name="city" class="form-control  " id="city" aria-describedby="emailHelp" >
+          <input type="text" name="city" class="form-control" id="city" aria-describedby="emailHelp" >
 					<p id="error_city" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
         </div>
-
 				<div class="col-md-2 text-right marital_status1">
           <label for="exampleInputEmail1">Pin Code</label>
         </div>
@@ -141,7 +67,6 @@ include('include/head.php');
         </div>
       </div>
     </div>
-
     <div class="form-group">
       <div class="row text-center">
 				<div class="col-md-2 text-right">
@@ -151,7 +76,6 @@ include('include/head.php');
           <input type="text" name="state" class="form-control" id="state" aria-describedby="emailHelp" >
 					<p id="error_state" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
         </div>
-
 				<div class="col-md-2 text-right">
           <label for="exampleInputEmail1">Country</label>
         </div>
@@ -159,31 +83,8 @@ include('include/head.php');
           <input type="text" name="country" class="form-control" id="country" aria-describedby="emailHelp" >
 					<p id="error_country" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
         </div>
-
       </div>
     </div>
-
-    <!-- <div class="form-group">
-      <div class="row text-center">
-        <div class="col-md-2 text-right">
-          <label for="exampleInputEmail1">Mobile No</label>
-        </div>
-        <div class="col-md-4">
-          <input type="number" name="mobile_no" class="form-control" id="mobile_no" aria-describedby="emailHelp" >
-					<p id="error_mobile_no" style="color:red; display:none" class="text-left invalide">*Please enter a valid number.</p>
-        </div>
-
-				<div class="col-md-2 text-right">
-          <label for="exampleInputEmail1">Email</label>
-        </div>
-        <div class="col-md-4">
-          <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" >
-					<p id="error_email" style="color:red; display:none" class="text-left invalide">*Please enter a valid email address.</p>
-        </div>
-
-      </div>
-    </div> -->
-
     <div class="form-group">
       <div class="row text-center">
 				<label class="col-md-2 text-right" for="exampleInputEmail1">Age</label>
@@ -199,9 +100,6 @@ include('include/head.php');
           <input type="text" name="occupation" class="form-control " id="occupation" aria-describedby="emailHelp" >
 					<p id="error_occupation" style="color:red; display:none" class="text-left invalide">*This field is required.</p>
         </div>
-
-
-
       </div>
     </div>
 
@@ -232,7 +130,6 @@ include('include/head.php');
 		<div class="text-left">
 			<button type="button" id="destroy" class="btn btn-danger " >Clear session</button>
 		</div>
-
 		<!--a href="<?php echo base_url() ?>/Will_controller/family_info_view" type="button" id="personal_next" class="btn btn-info">Next</a-->
   </fieldset>
 </div>
@@ -248,49 +145,25 @@ include('include/head.php');
 		        <label class="col-md-4 text-right" for="exampleInputEmail1" >Name :</label>
 						<label class="col-md-8 text-left" id="lbl_name" style="font-weight:600;"></label>
 		      </div>
-
 		      <div class="row text-center">
 		        <label class="col-md-4 text-right" for="exampleInputEmail1">Mobile :</label>
 						<label class="col-md-8 text-left" id="lbl_mobile"></label>
 		      </div>
-
 		      <div class="row text-center">
 		        <label class="col-md-4 text-right" for="exampleInputEmail1">Email :</label>
 						<label class="col-md-8 text-left" id="lbl_email"></label>
 		      </div>
-		      <!-- <div class="row text-center">
-		        <label class="col-md-4 text-right" for="exampleInputEmail1">Address :</label>
-						<label class="col-md-8 text-left" id="lbl_address"></label>
-		      </div>
-		      <div class="row text-center">
-		        <label class="col-md-4 text-right" for="exampleInputEmail1">Occupation :</label>
-						<label class="col-md-8 text-left" id="lbl_occupation"></label>
-		      </div>
-		      <div class="row text-center">
-		        <label class="col-md-4 text-right" for="exampleInputEmail1">Aadhar No :</label>
-						<label class="col-md-8 text-left" id="lbl_aadhar"></label>
-		      </div>
-		      <div class="row text-center">
-		        <label class="col-md-4 text-right" for="exampleInputEmail1">PAN No :</label>
-						<label class="col-md-8 text-left" id="lbl_pan"></label>
-		      </div> -->
 			</form>
     </div>
   </div>
 </div>
 </div>
-
 <!-- </div> -->
 </div>
-
 <!-- Border -->
-
-		<div class="border-top mt-3"></div>
-
-
+<div class="border-top mt-3"></div>
 <?php include('include/footer.php') ?>
 <!-- personal info containner end  asif change -->
-
 <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/js/jquery-3.3.0.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/js/jquery-ui.min.js" type="text/javascript"></script>
@@ -302,9 +175,7 @@ include('include/head.php');
 $(document).ready(function(){
   //$('#save_personal_data').hide();
   //$('#update_personal_data').show();
-
   var will_id = $('#will_id').val();
-
   $.ajax({
     data: { 'will_id' : will_id  },
     type: "post",
@@ -323,8 +194,6 @@ $(document).ready(function(){
       $('#occupation').val(info[0]['occupation']);
       $('#aadhar_no').val(info[0]['aadhar_no']);
       $('#pan_no').val(info[0]['pan_no']);
-      // $('#name_title').val(info[0]['name_title']);
-      // $('#marital_status').val(info[0]['marital_status']);
       $('#age').val(info[0]['age']);
 			if(info){
 				  $('#save_personal_data').hide();

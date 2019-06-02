@@ -1,4 +1,13 @@
 $(document).ready(function(){
+  $("#city,#state,#country").keypress(function(event){
+        var inputValue = event.which;
+        //alert(inputValue);
+        // allow letters and whitespaces only.
+        if(!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
+            event.preventDefault();
+        }
+    });
+
 
   $('#next_page').click(function(){
     window.location.href = base_url+"Will_controller/family_info_view";
@@ -6,7 +15,7 @@ $(document).ready(function(){
 
   $("#age").blur(function(){
     var age = $('#age').val();
-    var age_format = /^[0-9]*$/;
+    var age_format = /^[0-9]{3}$/;
     if(!age_format.test(age) || age == '' || age == 0)
     {
       $('#error_age').show();

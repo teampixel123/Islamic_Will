@@ -17,10 +17,9 @@
 <div class="container-fluid">
 <br /><br />
 <ul class="list-unstyled multi-steps">
-
-	<li  >Personal Information</li>
-	<li >Family Information</li>
-	<li >Assets</li>
+	<li>Personal Information</li>
+	<li>Family Information</li>
+	<li>Assets</li>
 	<li class="is-active">Executor</li>
 	<li>Witness</li>
 </ul>
@@ -31,8 +30,6 @@
 <!-- family info containner start -->
 <?php $start_will_data = $this->session->userdata() ?>
 <div class="container">
-	<!-- <div class="jumbotron "> -->
-	<!--action="<?php echo base_url(); ?>/Will_controller/save_personal_info"-->
 <br>
   <div class="row">
     <div class="col-md-6">
@@ -48,7 +45,6 @@
           <label class="col-md-3 text-right" for="exampleInputEmail1">Executor Name: </label>
           <div class="col-md-3">
   					<select class="form-control" name="e_name_title" id="e_name_title">
-
   					 <option>Mr.</option>
   					 <option>Miss.</option>
   					 <option>Mrs.</option>

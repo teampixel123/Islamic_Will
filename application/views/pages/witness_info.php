@@ -3,9 +3,7 @@
  defined('BASEPATH') OR exit('No direct script access allowed');
  include('include/head.php');
 ?>
-
 <body>
-
   <?php
     $is_login = $this->session->userdata('user_is_login');
     if($is_login){
@@ -28,7 +26,6 @@
 </ul>
 </div>
  <!-- end status bar -->
-
 <!-- family info containner start -->
 <?php $start_will_data = $this->session->userdata() ?>
 <div class="container">

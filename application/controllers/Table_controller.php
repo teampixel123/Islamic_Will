@@ -605,7 +605,8 @@
                 if(assets_type == 'Savings A/c'){
                   $('.hide_num').hide();
                   $('#account_no').show();
-
+                  $('#b_state_div').show();
+                  $('#b_pin_code_div').show();
                   $('.hide_name').hide();
                   $('#bank_nm').show();
                   $('#key_number').val('');
@@ -614,6 +615,8 @@
                 else if (assets_type == 'Current A/C') {
                   $('.hide_num').hide();
                   $('#account_no').show();
+                  $('#b_state_div').show();
+                  $('#b_pin_code_div').show();
                   $('.hide_name').hide();
                   $('#bank_nm').show();
                   $('#key_number').val('');
@@ -622,6 +625,8 @@
                 else if (assets_type == 'Fixed Deposits') {
                   $('.hide_num').hide();
                   $('#customer_id').show();
+                  $('#b_state_div').show();
+                  $('#b_pin_code_div').show();
                   $('.hide_name').hide();
                   $('#bank_nm').show();
                   $('#fd_recipt_No_div').show();
@@ -630,6 +635,8 @@
                 else if (assets_type == 'PPF') {
                   $('.hide_num').hide();
                   $('#customer_id').show();
+                  $('#b_state_div').show();
+                  $('#b_pin_code_div').show();
                   $('.hide_name').hide();
                   $('#company_name').show();
                   $('#key_number').val('');
@@ -638,6 +645,8 @@
                 else if (assets_type == 'Bank Locker') {
                   $('.hide_num').hide();
                   $('#folio_no').show();
+                  $('#b_state_div').show();
+                  $('#b_pin_code_div').show();
                   $('.hide_name').hide();
                   $('#bank_nm').show();
                   $('#key_number_div').show();
@@ -646,6 +655,8 @@
                 else if (assets_type == 'Mutual Funds') {
                   $('.hide_num').hide();
                   $('#customer_id').show();
+                  $('#b_state_div').hide();
+                  $('#b_pin_code_div').hide();
                   $('.hide_name').hide();
                   $('#company_name').show();
                   $('#key_number').val('');
@@ -654,6 +665,8 @@
                 else if (assets_type == 'Stock Equities') {
                   $('.hide_num').hide();
                   $('#serial_no').show();
+                  $('#b_state_div').hide();
+                  $('#b_pin_code_div').hide();
                   $('.hide_name').hide();
                   $('#company_name').show();
                   $('#key_number').val('');
@@ -662,6 +675,8 @@
                 else if (assets_type == 'Insurance Policy') {
                   $('.hide_num').hide();
                   $('#policy_no').show();
+                  $('#b_state_div').hide();
+                  $('#b_pin_code_div').hide();
                   $('.hide_name').hide();
                   $('#insurance_company').show();
                   $('#key_number').val('');

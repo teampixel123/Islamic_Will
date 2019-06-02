@@ -1,5 +1,12 @@
 $(document).ready(function(){
-var will_id = $('#will_id').val();
+  var will_id = $('#will_id').val();
+  $("#estate_city,#estate_country,#estate_state,#bank_name,#b_state").keypress(function(event){
+    var inputValue = event.which;
+    // allow letters and whitespaces only.
+    if(!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
+        event.preventDefault();
+    }
+  });
 // Fill up personal data on page load...
 $.ajax({
   data: { 'will_id' : will_id  },

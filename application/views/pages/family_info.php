@@ -30,9 +30,6 @@
 <!-- family info containner start -->
 <?php $start_will_data = $this->session->userdata() ?>
 <div class="container">
-	<!-- <div class="jumbotron "> -->
-	<!--action="<?php echo base_url(); ?>/Will_controller/save_personal_info"-->
-<!-- <h1 class="heading">Family Information</h1> --><br>
   <div class="row">
     <div class="col-md-6">
   	<div id="box" class="personal_info1"style="margin-right: -15px;" >

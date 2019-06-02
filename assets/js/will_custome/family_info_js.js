@@ -1,5 +1,13 @@
 $(document).ready(function(){
-var will_id = $('#will_id').val();
+  var will_id = $('#will_id').val();
+  $("#family_person_name,#mother_of_minar,#guardian_name,#opt_guardian_name").keypress(function(event){
+    var inputValue = event.which;
+    //alert(inputValue);
+    // allow letters and whitespaces only.
+    if(!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
+        event.preventDefault();
+    }
+  });
 // Fill up personal data on page load...
 $.ajax({
   data: { 'will_id' : will_id  },
