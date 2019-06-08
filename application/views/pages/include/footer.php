@@ -81,6 +81,7 @@
 <script src="<?php echo base_url(); ?>assets/website/js/akame.bundle.js"></script>
 <!-- Active -->
 <script src="<?php echo base_url(); ?>assets/website/js/default-assets/active.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/will_custome/will.js" type="text/javascript"></script>
 
 <script>
 $(document).ready(function(){

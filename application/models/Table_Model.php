@@ -19,6 +19,24 @@
       $result = $query->result();
       return $result;
     }
+    // 1/3 share data table... datta...
+    public function countShareRows($will_id){
+      $this->db->select('id');
+      $this->db->from('tbl_share');
+      $this->db->where('will_id',$will_id);
+      $query = $this->db->get();
+      $num = $query->num_rows();
+      return $num;
+    }
+
+    public function getAllShareDataAjax($will_id){
+      $this->db->select('*');
+      $this->db->from('tbl_share');
+      $this->db->where('will_id',$will_id);
+      $query = $this->db->get();
+      $result = $query->result();
+      return $result;
+    }
 
     public function countExecutorRows($will_id){
       $this->db->select('id');

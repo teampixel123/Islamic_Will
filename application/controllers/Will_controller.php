@@ -6,6 +6,7 @@
     function __construct(){
       parent::__construct();
       $this->load->Model('Will_Model');
+      $this->load->Model('Table_Model');
       $this->load->helper('string');
     }
 
@@ -426,26 +427,49 @@
     /**************************************************************/
     public function save_family_member(){
       $will_id = $this->session->userdata('will_id');
-      $member_data = array(
-                  'will_id' => $will_id,
-                  'relationship' => $this->input->post('relationship'),
-                  'family_person_name' => $this->input->post('family_person_name'),
-                  'family_person_dob' => $this->input->post('family_person_dob'),
-                  'family_person_age' => $this->input->post('family_person_age'),
-                  'family_person_age_format' => $this->input->post('family_person_age_format'),
-                  'is_minar' => $this->input->post('is_minar'),
-                  'mother_of_minar' => $this->input->post('mother_of_minar'),
-                  'guardian_name' => $this->input->post('guardian_name'),
-                  'guardian_address' => $this->input->post('guardian_address'),
-                  'opt_guardian_name' => $this->input->post('opt_guardian_name'),
-                  'opt_guardian_address' => $this->input->post('opt_guardian_address'),
-                );
-        //echo print_r($member_data);
-      $this->Will_Model->save_family_member($member_data);
-      if($this->input->post('is_minar') == 1){
-        $key = 1;
-        $this->Will_Model->update_have_miner($will_id,$key);//is_have_minar_child
+      $input_relationship = $this->input->post('relationship');
+
+      $posts = $this->Table_Model->getAllFamilyMembarDataAjax($will_id);
+      $i = 0; $j = 0;
+      foreach ($posts as $posts) {
+        $relationship = $posts->relationship;
+        if($relationship == 'Father'){ $i++; }
+        if($relationship == 'Mother'){ $j++; }
       }
+
+
+        if($i==1 && $input_relationship == 'Father'){
+          $error = 'max_father';
+        }
+        elseif($j==4 && $input_relationship == 'Mother'){
+          $error = 'max_mother';
+        }
+        else{
+          $member_data = array(
+            'will_id' => $will_id,
+            'relationship' => $this->input->post('relationship'),
+            'family_person_name' => $this->input->post('family_person_name'),
+            'family_person_age' => $this->input->post('family_person_age'),
+            'is_minar' => $this->input->post('is_minar'),
+            'mother_of_minar' => $this->input->post('mother_of_minar'),
+            'guardian_name_title' => $this->input->post('guardian_name_title'),
+            'guardian_name' => $this->input->post('guardian_name'),
+            'guardian_age' => $this->input->post('guardian_age'),
+            'guardian_address' => $this->input->post('guardian_address'),
+            'guardian_name_title' => $this->input->post('opt_guardian_name_title'),
+            'opt_guardian_name' => $this->input->post('opt_guardian_name'),
+            'opt_guardian_age' => $this->input->post('opt_guardian_age'),
+            'opt_guardian_address' => $this->input->post('opt_guardian_address'),
+          );
+          $this->Will_Model->save_family_member($member_data);
+          if($this->input->post('is_minar') == 1){
+            $key = 1;
+            $this->Will_Model->update_have_miner($will_id,$key);//is_have_minar_child
+          }
+          $error = 'success';
+        }
+        echo json_encode($error);
+
     }
 
     /**************************************************************/
@@ -504,6 +528,54 @@
       $this->Will_Model->delete_family_member($id);
     }
 
+    /**************************************************************/
+    /*            Save/Add Distribution of 1/3 Share... datta...  */
+    /**************************************************************/
+    public function save_share_distribution(){
+      $will_id = $this->session->userdata('will_id');
+      $posts = $this->Table_Model->getAllShareDataAjax($will_id);
+      $percentage = 0;
+      $share_percentage = $this->input->post('share_percentage');
+      foreach ($posts as $posts) {
+        $per = $posts->share_percentage;
+        $percentage = $percentage + $per;
+      }
+
+      $total_per = $percentage + $share_percentage;
+      if($total_per > 100){
+        $responce['status'] = 'error';
+        $responce['percentage'] = $percentage;
+      }
+      else{
+        $share_data = array(
+          'will_id' => $will_id,
+          'share_relation' => $this->input->post('share_relation'),
+          'share_name' => $this->input->post('share_name'),
+          'share_address' => $this->input->post('share_address'),
+          'share_age' => $this->input->post('share_age'),
+          'share_percentage' => $this->input->post('share_percentage'),
+        );
+        $this->Will_Model->save_share_distribution($share_data);
+        $posts = $this->Table_Model->getAllShareDataAjax($will_id);
+        $percentage = 0;
+        foreach ($posts as $posts) {
+          $per = $posts->share_percentage;
+          $percentage = $percentage + $per;
+        }
+        $responce['status'] = 'success';
+        $responce['percentage'] = $percentage;
+      }
+
+
+      echo json_encode($responce);
+    }
+    /**************************************************************/
+    /*            Delete Share... datta...             */
+    /**************************************************************/
+    public function delete_share(){
+      $id = $this->input->post('id');
+      $this->Will_Model->delete_share($id);
+    }
     /**************************************************************/
     /*            Save/Add Executor... datta...             */
     /**************************************************************/

@@ -156,7 +156,15 @@
       $this->db->where('id',$id);
       $this->db->delete('tbl_family_info');
     }
-
+    //	Save/Add Share Distribution...
+    public function save_share_distribution($data){
+      $this->db->insert('tbl_share',$data);
+    }
+    //	delete Share Distribution...
+    public function delete_share($id){
+      $this->db->where('id',$id);
+      $this->db->delete('tbl_share');
+    }
     //	Save/Add executor...
     public function save_executor($data){
       $this->db->insert('tbl_executor',$data);

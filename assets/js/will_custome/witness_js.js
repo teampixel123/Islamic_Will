@@ -426,4 +426,20 @@ $('#add_date_place').click(function(){
 $('#witness_previous').click(function(){
     window.location.href = base_url+"Will_controller/executor_funeral_view";
 });
+
+$('.personal-tab').click(function(){
+  window.location.href = base_url+"Will_controller/personal_info_view";
+});
+$('.family-tab').click(function(){
+  window.location.href = base_url+"Will_controller/family_info_view";
+});
+$('.assets-tab').click(function(){
+  window.location.href = base_url+"Will_controller/assets_info_view";
+});
+$('.executor-tab').click(function(){
+  window.location.href = base_url+"Will_controller/executor_funeral_view";
+});
+$('.witness-tab').click(function(){
+  window.location.href = base_url+"Will_controller/witness_info_view";
+});
 });

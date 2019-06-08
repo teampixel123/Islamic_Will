@@ -16,13 +16,12 @@
 <div class="" id="witness_page_div">
 <!-- status bar satrt -->
 <div class="container-fluid">
-<br /><br />
-<ul class="list-unstyled multi-steps">
-	<li  >Personal Information</li>
-	<li >Family Information</li>
-	<li >Assets</li>
-	<li >Executor</li>
-	<li class="is-active">Witness</li>
+<ul class="list-unstyled multi-steps m-0 pt-3 pb-3">
+  <li class="personal-tab" >Personal Information</li>
+	<li class="family-tab">Family Information</li>
+	<li class="assets-tab">Assets</li>
+	<li class="executor-tab">Executor</li>
+	<li class="witness-tab is-active">Witness</li>
 </ul>
 </div>
  <!-- end status bar -->
@@ -31,16 +30,15 @@
 <div class="container">
   <div class="row" >
     <div class="col-md-6 col-sm-12">
-  	<div id="box" class="personal_info1">
+  	<div id="box" class="personal_info1 p-3">
   		<form class="" id="witness_form" method="post">
       <fieldset>
-      <h3 class=" text-left">Witness Information </h3><br>
+      <h3 class=" text-left">Witness Information </h3>
   		<div class="form-group" id="">
         <div class="row text-center">
           <label class="col-md-3 text-right" for="exampleInputEmail1">Witness Name</label>
   				<div class="col-md-9">
-  					<input type="text" name="witness_name" id="witness_name" class="form-control clear"  aria-describedby="emailHelp" >
-            <p id="error_witness_name" style="color:red; display:none" class="text-left valide">*This field is required.</p>
+  					<input type="text" name="witness_name" id="witness_name" class="form-control form-control-sm clear"  aria-describedby="emailHelp" >
           </div>
         </div>
       </div>
@@ -49,25 +47,23 @@
         <div class="row text-center">
           <label class="col-md-3 text-right" for="exampleInputEmail1">Witness Address</label>
   				<div class="col-md-9">
-  					<input type="text" name="witness_address" id="witness_address" class="form-control clear"  aria-describedby="emailHelp" >
-            <p id="error_witness_address" style="color:red; display:none" class="text-left valide">*This field is required.</p>
+  					<input type="text" name="witness_address" id="witness_address" class="form-control form-control-sm clear"  aria-describedby="emailHelp" >
           </div>
         </div>
       </div>
       </fieldset>
   		</form>
-      <p>  <button type="button" id="add_witness" class="btn btn-success" style="float:right;" >Add</button></p>
+    <button type="button" id="add_witness" class="btn btn-success" style="float:right;" >Add</button>
       <br><br><hr>
 
       <form class="" id="date_place_form" method="post">
       <fieldset>
-      <h3 class=" text-left">Date and Place </h3><br>
+      <h3 class=" text-left">Date and Place </h3>
   		<div class="form-group" id="">
         <div class="row text-center">
           <label class="col-md-3 text-right"  for="exampleInputEmail1">Date of Signature</label>
   				<div class="col-md-9">
-  					<input type="text" style="background-color:#fff;"  readonly name="will_date" id="will_date" class="form-control clear"  aria-describedby="emailHelp" >
-            <p id="error_will_date" style="color:red; display:none" class="text-left valide">*This field is required.</p>
+  					<input type="text" style="background-color:#fff;"  readonly name="will_date" id="will_date" class="form-control form-control-sm clear"  aria-describedby="emailHelp" >
           </div>
         </div>
       </div>
@@ -85,15 +81,14 @@
         <div class="row text-center">
           <label class="col-md-3 text-right" for="exampleInputEmail1">Place</label>
   				<div class="col-md-9">
-  					<input type="text" name="will_place" id="will_place" class="form-control clear"  aria-describedby="emailHelp" >
-            <p id="error_will_place" style="color:red; display:none" class="text-left valide">*This field is required.</p>
+  					<input type="text" name="will_place" id="will_place" class="form-control form-control-sm clear"  aria-describedby="emailHelp" >
           </div>
         </div>
       </div>
       </fieldset>
   		</form>
       <p>  <button type="button" id="add_date_place" class="btn btn-success" style="float:right;" >Add</button></p>
-      <br><br>
+      <br>
 
   </div>
 

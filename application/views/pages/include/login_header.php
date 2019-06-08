@@ -44,7 +44,7 @@
 <!-- Header Area Start -->
 <header class="header-area">
   <!-- Top Header Area Start -->
-  <div class="top-header-area">
+  <!-- <div class="top-header-area">
       <div class="container h-100">
           <div class="row h-100 align-items-center">
               <div class="col-8">
@@ -59,7 +59,7 @@
               </div>
           </div>
       </div>
-  </div>
+  </div> -->
   <!-- Top Header Area End -->
 
     <!-- Main Header Start -->

@@ -16,14 +16,12 @@
 
 <!-- status bar satrt -->
 <div class="container-fluid">
-<br /><br />
-<ul class="list-unstyled multi-steps">
-
-	<li  >Personal Information</li>
-	<li class="is-active">Family Information</li>
-	<li >Assets</li>
-	<li >Executor</li>
-	<li>Witness</li>
+<ul class="list-unstyled multi-steps m-0 pt-3 pb-3">
+  <li class="personal-tab" >Personal Information</li>
+  <li class="family-tab is-active">Family Information</li>
+  <li class="assets-tab">Assets</li>
+  <li class="executor-tab">Executor</li>
+  <li class="witness-tab">Witness</li>
 </ul>
 </div>
  <!-- end status bar -->
@@ -32,19 +30,19 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-  	<div id="box" class="personal_info1"style="margin-right: -15px;" >
+  	<div id="box" class="personal_info1 p-3"style="margin-right: -15px;" >
   		<form class="" id="family_member_form" method="post">
-        <input type="hidden" name="is_minar" id="is_minar" class="form-control clear"  aria-describedby="emailHelp" >
+        <input type="hidden" name="is_minar" id="is_minar" class="form-control clear form-control-sm"  aria-describedby="emailHelp" >
       <input type="hidden" id="memberId" name="memberId" value="" />
       <fieldset>
-      <h3 class=" text-left">Family Information </h3><br>
+      <h3 class=" text-left">Family Information </h3>
       <div class="form-group">
         <div class="row text-center">
           <label class="col-md-3 text-right" for="exampleInputEmail1">Relation</label>
   				<div class="col-md-6">
-  					<select class="form-control clear_dr" name="relationship" id="relationship">
-              <option value="0">Select Relationship</option>
-  					  <option>Father</option>
+  					<select class="required form-control clear_dr form-control-sm" name="relationship" id="relationship">
+              <option value="0" disabled selected>Select Relationship</option>
+  					  <option id="Father">Father</option>
     					 <option>Mother</option>
     					 <option id="Spouse">Spouse</option>
     					 <option id="Son">Son</option>
@@ -54,7 +52,7 @@
     					 <option>Grand Father</option>
     					 <option>Grand Mother</option>
   				 </select>
-           <p id="error_relationship" style="color:red; display:none" class="text-left valide">*This field is required.</p>
+           <!-- <p id="error_relationship" style="color:red; display:none" class="text-left valide">*This field is required.</p> -->
           </div>
         </div>
       </div>
@@ -63,13 +61,13 @@
         <div class="row text-center">
           <label class="col-md-3 text-right" for="exampleInputEmail1">Name</label>
   				<div class="col-md-9">
-  					<input type="text" name="family_person_name" id="family_person_name" class="form-control clear"  aria-describedby="emailHelp" >
-            	<p id="error_family_person_name" style="color:red; display:none" class="text-left valide">*This field is required.</p>
+  					<input type="text" name="family_person_name" id="family_person_name" class="text required form-control form-control-sm clear" placeholder="Firstname Middlename Lastname" >
+            	<!-- <p id="error_family_person_name" style="color:red; display:none" class="text-left valide">*This field is required.</p> -->
           </div>
         </div>
       </div>
 
-  		<div class="form-group" id="">
+  		<!-- <div class="form-group" id="">
         <div class="row text-center">
           <label class="col-md-3 text-right" for="exampleInputEmail1">Date of Birth</label>
   				<div class="col-md-9">
@@ -78,18 +76,18 @@
             <p id="invalide_family_person_dob" style="color:red; display:none" class="text-left valide">*Invalide Date For Father/Mother/Wife.</p>
           </div>
         </div>
-      </div>
+      </div> -->
 
-      <div class="form-group" id="age_div" style="display:none">
+      <div class="form-group" id="age_div" >
         <div class="row text-center">
           <label class="col-md-3 text-right" for="exampleInputEmail1">Age:</label>
-          <div class="col-md-5">
-  					<input type="text" name="family_person_age" id="family_person_age" class="form-control clear" readonly >
-            <p id="error_family_person_age" style="color:red; display:none" class="text-left valide">*This field is required.</p>
+          <div class="col-md-6">
+  					<input type="number" name="family_person_age" id="family_person_age" class="required form-control form-control-sm clear" placeholder="Age in Years">
+            <!-- <p id="error_family_person_age" style="color:red; display:none" class="text-left valide">*This field is required.</p> -->
           </div>
-          <div class="col-md-4">
+          <!-- <div class="col-md-4">
   					<input type="text" name="family_person_age_format" id="family_person_age_format" class="form-control clear" readonly >
-          </div>
+          </div> -->
         </div>
       </div>
 
@@ -98,27 +96,38 @@
           <div class="row text-center">
             <label class="col-md-3 text-right" for="exampleInputEmail1">Mother of Minor</label>
             <div class="col-md-9">
-              <input type="text" name="mother_of_minar" id="mother_of_minar" class="form-control clear" placeholder="Name of minor child's mother" >
-              <p id="error_mother_of_minar" style="color:red; display:none" class="text-left valide">*This field is required.</p>
+              <input type="text" name="mother_of_minar" id="mother_of_minar" class="text required form-control form-control-sm minor clear" placeholder="Name of minor child's mother" >
             </div>
           </div>
         </div>
         <div class="form-group" id="">
           <div class="row text-center">
             <label class="col-md-3 text-right" for="exampleInputEmail1">Guardian Name</label>
-            <div class="col-md-9">
-              <input type="text" name="guardian_name" id="guardian_name" class="form-control clear"  aria-describedby="emailHelp" >
-              <p id="error_guardian_name" style="color:red; display:none" class="text-left valide">*This field is required.</p>
+            <div class="col-md-2 pr-0">
+              <select class="required form-control form-control-sm" name="guardian_name_title" id="guardian_name_title">
+    					  <option>Mr.</option>
+      					 <option>Mrs.</option>
+      					 <option>Miss.</option>
+    				 </select>
+            </div>
+            <div class="col-md-7">
+              <input type="text" name="guardian_name" id="guardian_name" class="text required form-control form-control-sm minor clear"  aria-describedby="emailHelp" >
             </div>
           </div>
         </div>
-
+        <div class="form-group" id="">
+          <div class="row text-center">
+            <label class="col-md-3 text-right" for="exampleInputEmail1">Guardian Age</label>
+            <div class="col-md-6">
+              <input type="number" name="guardian_age" id="guardian_age" class="required form-control form-control-sm minor clear age-major"  aria-describedby="emailHelp" >
+            </div>
+          </div>
+        </div>
         <div class="form-group" id="">
           <div class="row text-center">
             <label class="col-md-3 text-right" for="exampleInputEmail1">Address</label>
             <div class="col-md-9">
-              <input type="text" name="guardian_address" id="guardian_address" class="form-control clear"  aria-describedby="emailHelp" >
-              <p id="error_guardian_address" style="color:red; display:none" class="text-left valide">*This field is required.</p>
+              <input type="text" name="guardian_address" id="guardian_address" class="required form-control form-control-sm minor clear"  aria-describedby="emailHelp" >
             </div>
           </div>
         </div>
@@ -135,19 +144,31 @@
         <div class="form-group" id="">
           <div class="row text-center">
             <label class="col-md-3 text-right" for="exampleInputEmail1">Optional Guardian Name</label>
-            <div class="col-md-9">
-              <input type="text" name="opt_guardian_name" id="opt_guardian_name" class="form-control clear"  aria-describedby="emailHelp" >
-              <p id="error_opt_guardian_name" style="color:red; display:none" class="text-left valide">*This field is required.</p>
+            <div class="col-md-2 pr-0">
+              <select class="required form-control form-control-sm" name="opt_guardian_name_title" id="opt_guardian_name_title">
+    					  <option>Mr.</option>
+      					 <option>Mrs.</option>
+      					 <option>Miss.</option>
+    				 </select>
+            </div>
+            <div class="col-md-7">
+              <input type="text" name="opt_guardian_name" id="opt_guardian_name" class="text required form-control form-control-sm minor clear"  aria-describedby="emailHelp" >
             </div>
           </div>
         </div>
-
+        <div class="form-group" id="">
+          <div class="row text-center">
+            <label class="col-md-3 text-right" for="exampleInputEmail1">Guardian Age</label>
+            <div class="col-md-6">
+              <input type="number" name="opt_guardian_age" id="opt_guardian_age" class="required form-control form-control-sm minor clear age-major"  aria-describedby="emailHelp" >
+            </div>
+          </div>
+        </div>
         <div class="form-group" id="">
           <div class="row text-center">
             <label class="col-md-3 text-right" for="exampleInputEmail1">Address</label>
             <div class="col-md-9">
-              <input type="text" name="opt_guardian_address" id="opt_guardian_address" class="form-control clear"  aria-describedby="emailHelp" >
-              <p id="error_opt_guardian_address" style="color:red; display:none" class="text-left valide">*This field is required.</p>
+              <input type="text" name="opt_guardian_address" id="opt_guardian_address" class="required form-control form-control-sm minor clear"  aria-describedby="emailHelp" >
             </div>
           </div>
         </div>
@@ -155,11 +176,11 @@
       </fieldset>
   		</form>
 
-      <p>  <button  id="add_family_member" class="btn btn-success" >Add</button></p>
-      <p>  <button  id="update_family_member" class="btn btn-info float-right d-none" >Update</button></p>
+      <button  id="add_family_member" class="btn btn-success" >Add</button>
+      <button  id="update_family_member" class="btn btn-info float-right d-none" >Update</button>
       <br><br>
       <p id="success_update_member" style="color:green; display:none" class="text-left valide">*Information updated successfully.</p>
-      <p id="success_save_member" style="color:green; display:none" class="text-left valide">*Information Saved successfully.</p>
+      <p id="success_save_member" style="display:none; font-weight:600;" class="text-left"></p>
   </div>
   <p id="error_add_member" style="color:red; display:none" class="text-left valide">*Add family information for next.</p>
 
@@ -224,7 +245,7 @@
           <!-- Family Memer List -->
       <!--</div>
     </div> -->
-    <div class="container  " style="background-color:white;">
+    <div class="container family-tbl" style="background-color:white;">
     <table id="table_family_member" class=" personal_data_dispaly table_family_member"  style=" width:100%;">
       <thead>
         <tr>

@@ -15,75 +15,133 @@
    ?>
 <!-- status bar satrt -->
 <div class="container-fluid">
-<br /><br />
-<ul class="list-unstyled multi-steps">
-	<li>Personal Information</li>
-	<li>Family Information</li>
-	<li>Assets</li>
-	<li class="is-active">Executor</li>
-	<li>Witness</li>
+<ul class="list-unstyled multi-steps m-0 pt-3 pb-3">
+  <li class="personal-tab" >Personal Information</li>
+	<li class="family-tab">Family Information</li>
+	<li class="assets-tab">Assets</li>
+	<li class="executor-tab is-active">Executor</li>
+	<li class="witness-tab">Witness</li>
 </ul>
 </div>
  <!-- end status bar -->
-
-
 <!-- family info containner start -->
 <?php $start_will_data = $this->session->userdata() ?>
 <div class="container">
-<br>
   <div class="row">
     <div class="col-md-6">
-  	<div id="box" >
+      <!-- Distribution of 1/3 Share  -->
+    <div id="box">
+      <div class="personal_info1 p-3" style="margin-right: -18px;">
+    		<form class="" id="share_form" method="post">
+          <input type="hidden" name="will_id" id="will_id" value="<?php echo $start_will_data['will_id']; ?>">
+          <fieldset>
+            <h3 class=" text-left">Distribution of 1/3 Share: </h3>
+            <div class="form-group" id="">
+              <div class="row text-center">
+                <label class="col-md-3 text-right" for="exampleInputEmail1">Share To: </label>
+                <div class="col-md-3">
+        						<input type="radio" id="person" name="share_type" class="" value="Person" checked="">
+        						<label class="" for="person">Person</label>
+        					</div>
+        					<div class="col-md-3">
+        						<input type="radio" id="organization" name="share_type" value="Organization" class="">
+        						<label class="" for="organization">Organization</label>
+        					</div>
+                </div>
+            </div>
+            <div class="form-group" id="relation_div">
+              <div class="row text-center">
+                <label class="col-md-3 text-right" for="exampleInputEmail1">Relation: </label>
+                <div class="col-md-9">
+        					<input type="text" name="share_relation" id="share_relation" class="text required form-control form-control-sm clear" placeholder="Enter relationship of person with you"  aria-describedby="emailHelp" >
+                </div>
+              </div>
+            </div>
+            <div class="form-group" id="">
+              <div class="row text-center">
+                <label class="col-md-3 text-right" for="exampleInputEmail1">Name: </label>
+                <div class="col-md-9">
+        					<input type="text" name="share_name" id="share_name" class="text required form-control form-control-sm clear" placeholder="Firstname Middlename Lastname" >
+                </div>
+              </div>
+            </div>
+            <div class="form-group" id="">
+              <div class="row text-center">
+                <label class="col-md-3 text-right" for="exampleInputEmail1">Address: </label>
+                <div class="col-md-9">
+                  <input type="text" name="share_address" id="share_address" class="required form-control form-control-sm clear" placeholder="Enter Address" >
+                </div>
+              </div>
+            </div>
+            <div class="form-group" id="age_div">
+              <div class="row text-center">
+                <label class="col-md-3 text-right" for="exampleInputEmail1">Age: </label>
+                <div class="col-md-6">
+        					<input type="number" name="share_age" id="share_age" class="required form-control form-control-sm clear"  placeholder="Enter age in year" >
+                </div>
+              </div>
+            </div>
+            <div class="form-group" id="">
+              <div class="row text-center">
+                <label class="col-md-3 text-right" for="exampleInputEmail1">Percentage of Share: </label>
+                <div class="col-md-6">
+        					<input type="number" name="share_percentage" id="share_percentage" class="required form-control form-control-sm clear" placeholder="%" >
+                </div>
+                <label id="rem_per" class="col-md-3 text-left"></label>
+              </div>
+              <p id="success_note" style="display:none; font-weight:600;" class="text-left"></p>
+            </div>
+          <button type="button" id="add_share" class="btn btn-success" >Add</button>
+          </fieldset>
+    		</form>
+    </div>
+    </div>
+
       <!-- Executor Information Start  -->
-      <div class="personal_info1" style=" margin-right: -18px;">
-  		<form class="" id="executor_form" method="post">
-      <input type="hidden" name="will_id" id="will_id" value="<?php echo $start_will_data['will_id']; ?>">
-      <fieldset>
-      <h3 class=" text-left">Executor: </h3>
-      <div class="form-group" id="">
-        <div class="row text-center">
-          <label class="col-md-3 text-right" for="exampleInputEmail1">Executor Name: </label>
-          <div class="col-md-3">
-  					<select class="form-control" name="e_name_title" id="e_name_title">
-  					 <option>Mr.</option>
-  					 <option>Miss.</option>
-  					 <option>Mrs.</option>
-  				 </select>
-  				 <p id="error_e_name_title" style="color:red; display:none" class="text-left invalide m-0">*This field is required.</p>
-          </div>
-  				<div class="col-md-6">
-  					<input type="text" name="executor_name" id="executor_name" class="form-control clear"  aria-describedby="emailHelp" >
-            <p id="error_executor_name" style="color:red; display:none" class="text-left valide">*This field is required.</p>
-          </div>
-        </div>
-      </div>
-
-  		<div class="form-group" id="">
-        <div class="row text-center">
-          <label class="col-md-3 text-right" for="exampleInputEmail1">Address: </label>
-  				<div class="col-md-9">
-  					<input type="text" name="executor_address" id="executor_address" class="form-control clear"  aria-describedby="emailHelp" >
-            <p id="error_executor_address" style="color:red; display:none" class="text-left valide">*This field is required.</p>
-          </div>
-        </div>
-      </div>
-
-  		<div class="form-group" id="">
-        <div class="row text-center">
-          <label class="col-md-3 text-right" for="exampleInputEmail1">Age: </label>
-  				<div class="col-md-9">
-  					<input type="number" name="executor_age" id="executor_age" class="form-control clear"  aria-describedby="emailHelp" placeholder="Enter executor age in year" >
-            <p id="error_executor_age" style="color:red; display:none" class="text-left valide">*This field is required.</p>
-          </div>
-        </div>
-      </div>
-        <p>  <button type="button" id="add_executor" class="btn btn-success" >Add</button></p>
-      </fieldset>
-  		</form>
+  	<div id="box">
+      <div class="personal_info1 p-3" style=" margin-right: -18px;">
+    		<form class="" id="executor_form" method="post">
+          <input type="hidden" name="will_id" id="will_id" value="<?php echo $start_will_data['will_id']; ?>">
+          <fieldset>
+            <h3 class=" text-left">Executor: </h3>
+            <div class="form-group" id="">
+              <div class="row text-center">
+                <label class="col-md-3 text-right" for="exampleInputEmail1">Executor Name: </label>
+                <div class="col-md-3">
+        					<select class="form-control form-control-sm" name="e_name_title" id="e_name_title">
+        					 <option>Mr.</option>
+        					 <option>Miss.</option>
+        					 <option>Mrs.</option>
+        				 </select>
+                </div>
+        				<div class="col-md-6">
+        					<input type="text" name="executor_name" id="executor_name" class="text required form-control form-control-sm clear"  aria-describedby="emailHelp" >
+                </div>
+              </div>
+            </div>
+        		<div class="form-group" id="">
+              <div class="row text-center">
+                <label class="col-md-3 text-right" for="exampleInputEmail1">Address: </label>
+        				<div class="col-md-9">
+        					<input type="text" name="executor_address" id="executor_address" class="required form-control form-control-sm clear"  aria-describedby="emailHelp" >
+                </div>
+              </div>
+            </div>
+        		<div class="form-group" id="">
+              <div class="row text-center">
+                <label class="col-md-3 text-right" for="exampleInputEmail1">Age: </label>
+        				<div class="col-md-9">
+        					<input type="number" name="executor_age" id="executor_age" class="age-major required form-control form-control-sm clear"  aria-describedby="emailHelp" placeholder="Enter executor age in year" >
+                </div>
+              </div>
+            </div>
+            <button type="button" id="add_executor" class="btn btn-success" >Add</button>
+          </fieldset>
+    		</form>
     </div>
       <!-- Executor Information End  -->
       <!-- Funeral and Burial Information Start  -->
-      <div class="" style="display:none;">
+      <!-- <div class="" style="display:none;">
         <div class="personal_info1 " style=" margin-right: -18px;" >
         <form class="" id="funeral_form" method="post">
         <fieldset>
@@ -97,10 +155,7 @@
             </div>
           </div>
         </div>
-
       </div>
-
-
   		<div class="form-group" id="">
         <div class="row text-center">
           <label class="col-md-3 text-right" for="exampleInputEmail1">Address: </label>
@@ -111,15 +166,15 @@
         </div>
       </div>
       </fieldset>
-      <p>  <button type="button" id="add_funeral" class="btn btn-success"  >Add</button></p>
+      <p><button type="button" id="add_funeral" class="btn btn-success"  >Add</button></p>
   		</form>
-      <!-- Funeral and Burial Information End  -->
       <br><br>
+    </div> -->
   </div>
-  <p>  <button id="executor_previous" class="btn btn-info">Previous</button>
-  <button style="float:right;" id="executor_next" class="btn btn-info" >Next</button></p>
-
-</div>
+<p>
+    <button id="executor_previous" class="btn btn-info">Previous</button>
+    <button style="float:right;" id="executor_next" class="btn btn-info" >Next</button>
+</p>
   </div>
 
   <div class="col-md-6 col-sm-12">
@@ -251,20 +306,32 @@
     </div> -->
 
     <div class="container" style="background-color:white;">
-    <table id="table_executor" class="personal_data_dispaly table_executor" style=" width:100%;">
-      <thead>
-        <tr>
-          <th>Executor Info
-            <br> <hr> </th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
+      <table id="table_share" class="personal_data_dispaly table_share" style=" width:100%;">
+        <thead>
+          <tr>
+            <th>Distribution of 1/3 Share
+              <br> <hr> </th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+      </div>
+<div class="container" style="background-color:white;">
+      <table id="table_executor" class="personal_data_dispaly table_executor" style=" width:100%;">
+        <thead>
+          <tr>
+            <th>Executor Info
+              <br> <hr> </th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
     </div>
 
 
-    <div class="container" style="background-color:white;">
+    <!-- <div class="container" style="background-color:white;">
     <table id="table_funeral" class="personal_data_dispaly table_funeral" style=" width:100%;">
       <thead>
         <tr>
@@ -275,15 +342,14 @@
       <tbody>
       </tbody>
     </table>
-    </div>
+    </div> -->
   </div>
   </div>
 <!-- </div> -->
 </div>
 
 <!-- Border -->
-
-		<div class="border-top mt-3"></div>
+<div class="border-top mt-3"></div>
 
 
 <?php include('include/footer.php') ?>

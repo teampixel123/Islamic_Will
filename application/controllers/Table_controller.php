@@ -49,12 +49,12 @@
           else{
             $info = "";
           }
-          if($page == 'family_info'){
+          //if($page == 'family_info'){
             $edit_button = "<a id='family_member_edit".$id."'  class='badge1 badge-pill '  title='Edit Family Member'> <i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>";
-          }
-          else{
-            $edit_button = "";
-          }
+        //  }
+        //  else{
+        //    $edit_button = "";
+        //  }
 
           $nestedData = array();
           //if($is_minar == 0){
@@ -146,6 +146,99 @@
 			echo json_encode($json_data);
     }
 
+  // 1/3 share distribution list.
+  public function share_list(){
+    $columns = array(
+        0 =>'`id`',
+    );
+    $limit = $this->input->post('length');
+    $start = $this->input->post('start');
+    $order = $columns[$this->input->post('order')[0]['column']];
+    $dir = $this->input->post('order')[0]['dir'];
+    $will_id = $this->input->post('will_id');
+    $totalData = $this->Table_Model->countShareRows($will_id);
+    $totalFiltered = $totalData;
+    $posts = $this->Table_Model->getAllShareDataAjax($will_id);
+    $data = array();
+    if(!empty($posts))
+    {
+      $id=$start;
+      foreach ($posts as $post)
+      {
+        $id++;
+        $memberId = $post->id;
+        $share_relation = $post->share_relation;
+        $share_name = $post->share_name;
+        $share_age = $post->share_age;
+        $share_address = $post->share_address;
+        $share_percentage = $post->share_percentage;
+        if($share_relation == 'Organization'){
+          $age = '';
+        }else{
+          $age = ' Age: '.$share_age.'';
+        }
+        $nestedData = array();
+          $nestedData[] = "<div class='row'><div class='col-md-9'>".$id.") <b>".$share_relation."</b>: ".$share_name.", ".$age.", Address: ".$share_address.", share: <span class='percent'>".$share_percentage."<span>%
+          </div><div class='col-md-3'><button type='button' style='width:80%;' class='badge1 badge-pill badge-danger'>
+          <a id='share_delete".$id."' class='badge1 '  title='Delete Family Member' > <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
+
+          </button>
+          </div></div>
+          <hr>
+          <script>
+            $('#share_delete".$id."').click(function(e){
+              //alert();
+                $.ajax({
+                  data:{ 'id' : ".$memberId."  },
+                  type: 'post',
+                  url: '".base_url()."Will_controller/delete_share',
+                  success: function (data){
+
+                    $('.table_share').dataTable({
+                          'bDestroy': true
+                      }).fnDestroy(); // destroy table.
+
+                    var table_share = $('.table_share').DataTable({
+                      'processing': true,
+                      'serverSide': true,
+                      'bFilter' : false,
+                      'bLengthChange': false,
+                      'bPaginate': false,
+                      'bInfo': false,
+                      'ajax':{
+                         'url': '".base_url()."Table_controller/share_list',
+                         'dataType': 'json',
+                         'type': 'POST',
+                         'data':{ 'will_id' : ".$will_id."  }
+                        },
+                    });
+                    $('.table_share').on( 'draw.dt', function(){
+                       if (! table_share.data().any() ) {
+                         $('#executor_next').prop('disabled', true);
+                         $('.table_share').hide();
+                        }
+                        else{
+                          $('#executor_next').prop('disabled', false);
+                          $('.table_share').show();
+                        }
+                    });
+                  }
+                });
+            });
+          </script>
+          ";
+        $data[] = $nestedData;
+      }
+    }
+    $json_data = array(
+          "draw"            => intval($this->input->post('draw')),
+          "recordsTotal"    => intval($totalData),
+          "recordsFiltered" => intval($totalFiltered),
+          "data"            => $data
+          );
+    echo json_encode($json_data);
+  }
+
 // executor List Table...
     public function executor_list(){
       $columns = array(
@@ -173,7 +266,7 @@
 
           $nestedData = array();
 
-            $nestedData[] = "<div class='row'><div class='col-md-9'>".$id.") Executor Name: ".$executor_name.",Age: ".$executor_age.", Address: ".$executor_address."
+            $nestedData[] = "<div class='row'><div class='col-md-9'>".$id.") Executor Name: ".$executor_name.", Age: ".$executor_age.", Address: ".$executor_address."
             </div><div class='col-md-3'><button type='button' style='width:80%;' class='badge1 badge-pill badge-danger'>
             <a id='executor_delete".$id."' class='badge1 '  title='Delete Family Member' > <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
             <!--a id='executor_edit".$id."'  class='badge1 badge-pill '  title='Edit Family Member'> <i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a-->
@@ -355,12 +448,12 @@
           $estate_state = $post->estate_state;
           $estate_country = $post->estate_country;
           //echo print_r($estate_type) or die();
-          if($page == 'assets_info'){
+          // if($page == 'assets_info'){
             $edit_button = "<a id='real_estate_edit".$id."'  class='badge1 badge-pill '  title='Edit Real Estate'> <i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>";
-          }
-          else{
-            $edit_button = "";
-          }
+          // }
+          // else{
+          //   $edit_button = "";
+          // }
 
           $nestedData = array();
 
@@ -484,12 +577,12 @@
           $key_number = $post->key_number;
           $b_state =$post->state;
           $b_pin_code=$post->pin_code;
-          if($page == 'assets_info'){
+          // if($page == 'assets_info'){
             $edit_button = "<a id='bank_assets_edit".$id."'  class='badge1 badge-pill '  title='Edit Real Estate'> <i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>";
-          }
-          else{
-            $edit_button = "";
-          }
+          // }
+          // else{
+          //   $edit_button = "";
+          // }
           if($assets_type == 'Savings A/c' || $assets_type == 'Current  A/C'){
             $name = 'Bank Name';
             $acc_no = 'Account Number';
@@ -722,12 +815,12 @@
           $vehicle_model = $post->vehicle_model;
           $vehicle_make_year = $post->vehicle_make_year;
           $registration_number = $post->registration_number;
-          if($page == 'assets_info'){
+          // if($page == 'assets_info'){
             $edit_button = "<a id='vehicle_edit".$id."'  class='badge1 badge-pill '  title='Edit Vehicle Information'> <i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>";
-          }
-          else{
-            $edit_button = "";
-          }
+          // }
+          // else{
+          //   $edit_button = "";
+          // }
           $nestedData = array();
 
             $nestedData[] = "<div class='row'><div class='col-md-9'>".$id.") Vehicle Model: ".$vehicle_model.", Make Year: ".$vehicle_make_year.", Registration Number: ".$registration_number."
@@ -832,12 +925,12 @@
           $memberId = $post->id;
           $gift_type = $post->gift_type;
           $gift_description = $post->gift_description;
-          if($page == 'assets_info'){
+          // if($page == 'assets_info'){
             $edit_button = "<a id='gift_edit".$id."'  class='badge1 badge-pill '  title='Edit Gift Information'> <i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>";
-          }
-          else{
-            $edit_button = "";
-          }
+          // }
+          // else{
+          //   $edit_button = "";
+          // }
           $nestedData = array();
 
             $nestedData[] = "<div class='row'><div class='col-md-9'>".$id.") Gift Type: ".$gift_type.", Description: ".$gift_description."

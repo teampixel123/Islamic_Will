@@ -6,6 +6,7 @@
 
  <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
  <link href="<?php echo base_url('assets/css/style.css');?>" rel="stylesheet">
+ <link href="<?php echo base_url('assets/css/will_style.css');?>" rel="stylesheet">
  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/website/style.css">
  <!-- bootstrap-datetimepicker -->
  <link href="<?php echo base_url();?>assets/datetimepicker3/bootstrap-datetimepicker.min.css" rel="stylesheet">
