@@ -400,6 +400,8 @@
       return $result;
     }
 
+
+
     public function get_witness($will_id){
       $this->db->select('*');
       $this->db->from('tbl_witness');
@@ -412,6 +414,15 @@
     public function get_will_data($will_id){
       $this->db->select('*');
       $this->db->from('tbl_will');
+      $this->db->where('will_id',$will_id);
+      $query = $this->db->get();
+      $result = $query->result();
+      return $result;
+    }
+
+    public function display_share_info($will_id){
+      $this->db->select('*');
+      $this->db->from('tbl_share');
       $this->db->where('will_id',$will_id);
       $query = $this->db->get();
       $result = $query->result();

@@ -51,6 +51,7 @@
     		$data['other_gift']= $this->Table_Model->getAllGiftAjax($will_id);
     		$data['witness']= $this->Table_Model->getAllWitnessAjax($will_id);
     		$data['will_data']= $this->Will_Model->get_will_data($will_id);
+        $data['share']=$this->Will_Model->display_share_info($will_id);
         //echo print_r($data['bank_assets']);
 
     		$this->load->view('final_pdf_steup',$data);

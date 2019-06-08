@@ -95,8 +95,11 @@ $pdf->AddPage();
 
 //page end border
 
-$html = '<br><br><br><br><br><br><br> <h1 style="text-align:center; font-family: times, serif; " > In the Name of Allah the Most Gracious, the most Merciful
-ISLAMIC LAST Will and Testament</h1>
+$html = '<br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br> <h1 style="text-align:center; font-family: times, serif; font-size:20px; ">
+In The Name Of Allah the Most Gracious, the Most Merciful <br>
+Islamic Last Will and Testament
+ </h1>
 ';
 
 $pdf->Image('application\img\title.png', 10, 150, 190, 50, '', '', '', 72);
@@ -136,26 +139,33 @@ foreach ($personal_data as $personal_data) {
 //page  start border
 $pdf->RoundedRect(05, 05, 200, 290, 00, '1000');
 //page end border
+$html ='<style>
+							p{
+								text-align: justify;
+							}
+				</style>
+';
 
-$html .= '<br><h1 style="text-align:center; font-family: times, serif;"> ISLAMIC LAST Will and Testament</h1>
-<br><br>
-<h2 style="text-align:center; font-family: times, serif;" >of '.$personal_data->name_title.' '.$personal_data->full_name.'</h2>
+$html .= '<br><h1 style="text-align:center; font-family: times, serif; line-height:0px;"> Islamic Last Will and Testament</h1>
 
-<p style="font-size:12; font-family: times, serif; text-align: justify; ">I '.$personal_data->name_title.' '.$personal_data->full_name.' a Muslim, presently resident of
-'.$personal_data->address.', Age- '.$personal_data->age.', Occupation – '.$personal_data->occupation.', having my
+<h2 style="text-align:center; font-family: times, serif;text-transform: capitalize;" >of <br>'.$personal_data->name_title.' '.$personal_data->full_name.'</h2>
+
+<p style="font-size:12; font-family: times, serif; text-align: center; ">This Islamic Last Will and Testament is made, entered and executed  <br>at '.$personal_data->address.'</p>
+<p style="font-size:12; text-indent:40px; font-family: times, serif; text-align: justify; ">I <span style="text-transform: capitalize; font-weight:bold;">'.$personal_data->name_title.' '.$personal_data->full_name.'</span> Age- '.$personal_data->age.', Occupation – '.$personal_data->occupation.', a Muslim, presently resident of
+'.$personal_data->address.',   having my
 Aadhar No. '.$personal_data->aadhar_no.' being sound mind and memory declare that the following is my
 Islamic last Will and Testament (wasiyyat).</p>
 
-<p style="font-size:12; font-family: times, serif; text-align: justify; ">WHEREAS I do hereby make, publish and declare this is to be my last will and
-testament revoking all wills and codicils and testamentary dispositions at any time heretofore made by me.</p>
+<p style="font-size:12; text-indent:40px; font-family: times, serif; text-align: justify; ">WHEREAS I do hereby make, publish and declare this is to be my
+Islamic Last Will and Testament revoking all wills and codicils and testamentary dispositions at any time heretofore made by me.</p>
 
-<p style="font-size:12; font-family: times, serif;">AND WHEREAS I am maintaining good health and I am of sound mind. This will is made by me of my own independent
+<p style="font-size:12; text-indent:40px; font-family: times, serif;">AND WHEREAS I am maintaining good health and I am of sound mind. This will is made by me of my own independent
  decision, my free mind and volition and in sound health without any persuasion, influence or coercion and out of my independent decision only. </p>
 
-<p style="font-size:12; font-family: times, serif;">AND WHEREAS I fully understand what is right and wrong, I wish to make necessary and proper arrangements in
+<p style="font-size:12; text-indent:40px; font-family: times, serif;">AND WHEREAS I fully understand what is right and wrong, I wish to make necessary and proper arrangements in
 respect of enjoyment
- and distribution of my assets and properties after my life time. So that unnecessary y misunderstanding and consequential wasteful
-  litigation or unpleasantness between the members of my family may be avoided. </p>
+ and distribution of my assets and properties after my life time. So that unnecessary misunderstanding and consequential wasteful
+  litigation or unpleasantness between the members of my family may be avoided.<br><br></p>
 
 
 
@@ -163,15 +173,15 @@ respect of enjoyment
 
 <h2 style="text-align:center; font-family: times, serif;">THE SHAHDAH – TESTIMONY OF FAITH</h2>
 
-<h2 style="text-align:center; font-family: times, serif;">Ash-hadu ann la ilaha illallahu, waash-hadu anna Muhammadan abduhu WaRasulullah</h2>
+<h2 style="text-align:center; font-family: times, serif;">Ash-hadu ann la ilaha illallahu, waash-hadu anna Muhammadan abduhu Wa-Rasulullah</h2>
 
-<p style="font-size:14px;">I bear witness that there is no deity but Allah, the One, the Merciful,
-the Almighty Creator of the heavens and the earth and I put my trust entirely in Him. I beg for His Help
+<p style="font-size:12; text-indent:40px; font-family: times, serif;">I bear witness that there is no deity but Allah, the One, the Merciful,
+the Almighty Creator of the heavens and the earth and I put my trust entirely upon Him. I beg for His Help
 and His Forgiveness. I seek refuge in Allah from Shaitan and the evils of the world and the evils of my deeds. I ask Him
 to Guide me, those whom Allah Guides no one can mislead, and those whom Allah leaves to stray, no one can guide. I testify
 that there is no deity except Allah, He is one and has no partners, and I testify that Mohammad is Allah’s last Messenger
 (Peace and Blessings of Allah be on him).  I bear witness that Allah’s promises are true and we will certainty meet with Him,
-Paradise is true, the Day of Judgement is coming without any doubt, and Allah (exalted be He) will surely resurrect those in the graves. </p><br><br>
+Paradise is true, the Day of Judgement is coming without any doubt, and Allah (exalted be He) will surely resurrect those in the graves.<br><br><br><br> </p>
 
 ';
 
@@ -644,17 +654,18 @@ I subscribe my name to this Will this day '.$day.' of '.$month.', '.$year.' at '
 </p>
 <p style="font-size:12; font-family: times, serif;" >This is my last and final will, which I have laid out.</p>';
 
-$html .= '<ul>
- <li>PLACE: '.$will_data->will_place.'</li><br>
- <li>Dated: '.$will_data->will_date.'</li>
-</ul>
-<p style="font-size:12; font-family: times, serif;" >L.  TESTATOR’S SIGNATURE </p>
+$html .= '
+<p>PLACE: '.$will_data->will_place.'</p>
+<p>Dated: '.$will_data->will_date.' <br><br></p>
+<h1 style="text-align:center; font-family: times, serif;" >L.  TESTATOR’S SIGNATURE </h1>
 <p style="font-size:12; font-family: times, serif;" >
  In witness whereof, I have hereunto set my hand and seal on this: '.$day.' day of '.$month.', '.$year.'.
 </p>
-<p >______________________
-Signature
-</p>
+
+<p style=" font-size:12; text-align:right; font-family: times, serif; line-height:25px;" >
+______________________ <br>
+Signature &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br><br></p>
+
 
 <h1 style="text-align:center; font-family: times, serif;" >M.  WITNESSES</h1>
 <p style="font-family: times, serif;" >
@@ -663,11 +674,13 @@ the Testator '.$personal_data->full_name.', as and for His/her Last Will and Tes
 his/her request and in his/her Presence, and in the presence of each other, have hereunto subscribed our names as
 Witnesses thereto, believing said Testator at the time of the signing to be of sound mind and memory.
 
-</p>';
+</p>
+<h1 style="text-align:left; font-family: times, serif;" >  Witnesses: </h1>
+';
 $i=0 ;
 foreach($witness as $witness ) {
  $i++;
-   $html .= ''.$i.'. &nbsp;'.$witness->witness_name.' of '.$witness->witness_address.'<br>';
+   $html .= '<p style="font-size:12; font-family: times, serif; margin-left:40px;">'.$i.'. &nbsp; Sign-------------------<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name &nbsp;' .$witness->witness_name.'<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add&nbsp;&nbsp;&nbsp;&nbsp; '.$witness->witness_address.'<br></p>';
 }
 $pdf->Image('application\img\logo.png', 60, 25, 100, 30, '', '', '', true, 72);
 $pdf->Image('application\img\logo.png', 60, 125, 100, 30, '', '', '', true, 72);

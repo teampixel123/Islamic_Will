@@ -28,18 +28,19 @@ class Welcome extends CI_Controller {
 
 	}
 
-	public function final_pdf(){
-		$data['personal_data']=$this->Will_Model->display_personal_info();
-		$data['family_data']= $this->Will_Model->display_family_info();
-	 	$data['excutor_data']= $this->Will_Model->display_excutor_info();
-		$data['real_estate']= $this->Will_Model->display_real_estate_info();
-		$data['bank_assets']= $this->Will_Model->display_bank_assets_info();
-		$data['vehicle']= $this->Will_Model->display_vehicle_info();
-		$data['other_gift']= $this->Will_Model->display_other_gift_info();
-		$data['witness']= $this->Will_Model->display_witness_info();
-		$this->load->view('final_pdf_steup',$data);
-
-	}
+	// public function final_pdf(){
+	// 	$data['personal_data']=$this->Will_Model->display_personal_info();
+	// 	$data['family_data']= $this->Will_Model->display_family_info();
+	//  	$data['excutor_data']= $this->Will_Model->display_excutor_info();
+	// 	$data['real_estate']= $this->Will_Model->display_real_estate_info();
+	// 	$data['bank_assets']= $this->Will_Model->display_bank_assets_info();
+	// 	$data['vehicle']= $this->Will_Model->display_vehicle_info();
+	// 	$data['other_gift']= $this->Will_Model->display_other_gift_info();
+	// 	$data['witness']= $this->Will_Model->display_witness_info();
+	//
+	// 	$this->load->view('final_pdf_steup',$data);
+	//
+	// }
 
 	// generate PDF File
          public function generatePDFFile() {

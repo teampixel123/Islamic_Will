@@ -132,14 +132,14 @@ $pdf->AddPage();
 //$pdf->RoundedRect(10, 05, 200, 290, 00, '1000', ' ', array(400, 400, 400));
 //page end border
 
-$html = '<br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br> <h1 style="text-align:center; font-family: times, serif; font-size:20px; ">
-In The Name Of Allah the Most Gracious, the Most Merciful <br>
-Islamic Last Will and Testament
- </h1>
+$html = '<br><br><br>
+<br><br> <h1 style="text-align:center; font-family: times, serif; font-size:20px; ">
+In The Name Of Allah the Most Gracious, the Most Merciful <br><br><br><br><br></h1>
+<h1 style="text-align:center; font-family: times, serif; font-size:26px;" >Islamic Last Will and Testament</h1>
+
 ';
 
-$pdf->Image('application\img\title.png', 20, 180, 170, 45, '', '', '', 72);
+$pdf->Image('application\img\title.png', 20, 170, 170, 45, '', '', '', 72);
 
 //$pdf->Image('application\img\logo.png', 50, 225, 100, 30, '', '', '', true, 52);
 // output the HTML content
@@ -229,15 +229,15 @@ $Brother_num = 0;
 $Sister_num = 0;
 foreach($family_data as $family_data ) {
   if($family_data->relationship == 'Spouse'){
-    $html .= 'My '.$family_data->relationship.'&nbsp;'.$family_data->family_person_name.',&nbsp;DOB: '.$family_data->family_person_dob.'<br>';
+    $html .= 'My '.$family_data->relationship.'&nbsp;'.$family_data->family_person_name.',&nbsp;Age: '.$family_data->family_person_age.'<br>';
   }
 
   if($family_data->relationship == 'Father'){
-    $html .= 'My '.$family_data->relationship.'&nbsp;'.$family_data->family_person_name.',&nbsp;DOB: '.$family_data->family_person_dob.'<br>';
+    $html .= 'My '.$family_data->relationship.'&nbsp;'.$family_data->family_person_name.',&nbsp;Age: '.$family_data->family_person_age.'<br>';
   }
 
   if($family_data->relationship == 'Mother'){
-    $html .= '<span style="font-size:12; font-family: times, serif;" >My '.$family_data->relationship.'&nbsp;'.$family_data->family_person_name.',&nbsp;DOB: '.$family_data->family_person_dob.'</span><br>';
+    $html .= '<span style="font-size:12; font-family: times, serif;" >My '.$family_data->relationship.'&nbsp;'.$family_data->family_person_name.',&nbsp;Age: '.$family_data->family_person_age.'</span><br>';
   }
 
   if($family_data->relationship == 'Son'){
@@ -245,7 +245,7 @@ foreach($family_data as $family_data ) {
     if($Son_num == 1){
       $html .= '<br><span style="font-size:14; font-family: times, serif;" ><b>My Son/s</b></span><br>';
     }
-    $html .= $Son_num.'.&nbsp;'.$family_data->family_person_name.',&nbsp;DOB: '.$family_data->family_person_dob.'<br>';
+    $html .= $Son_num.'.&nbsp;'.$family_data->family_person_name.',&nbsp;Age: '.$family_data->family_person_age.'<br>';
   }
 
   if($family_data->relationship == 'Daughter'){
@@ -253,7 +253,7 @@ foreach($family_data as $family_data ) {
     if($Daughter_num == 1){
       $html .= '<br><span style="font-size:14; font-family: times, serif;" ><b>My Daughter/s</b></span><br>';
     }
-    $html .= $Daughter_num.'.&nbsp;'.$family_data->family_person_name.',&nbsp;DOB: '.$family_data->family_person_dob.'<br>';
+    $html .= $Daughter_num.'.&nbsp;'.$family_data->family_person_name.',&nbsp;Age: '.$family_data->family_person_age.'<br>';
   }
 
   if($family_data->relationship == 'Brother'){
@@ -261,7 +261,7 @@ foreach($family_data as $family_data ) {
     if($Brother_num == 1){
       $html .= '<br><span style="font-size:14; font-family: times, serif;" ><b>My Brother/s</b></span><br>';
     }
-    $html .= $Brother_num.'.&nbsp;'.$family_data->family_person_name.',&nbsp;DOB: '.$family_data->family_person_dob.'<br>';
+    $html .= $Brother_num.'.&nbsp;'.$family_data->family_person_name.',&nbsp;Age: '.$family_data->family_person_age.'<br>';
   }
 
   if($family_data->relationship == 'Sister'){
@@ -269,15 +269,15 @@ foreach($family_data as $family_data ) {
     if($Sister_num == 1){
       $html .= '<br><span style="font-size:14; font-family: times, serif;" ><b>My Sister/s</b></span><br>';
     }
-    $html .= $Sister_num.'.&nbsp;'.$family_data->family_person_name.',&nbsp;DOB: '.$family_data->family_person_dob.'<br>';
+    $html .= $Sister_num.'.&nbsp;'.$family_data->family_person_name.',&nbsp;Age: '.$family_data->family_person_age.'<br>';
   }
 
   if($family_data->relationship == 'Grand Father'){
-    $html .= '<br>My '.$family_data->relationship.'&nbsp;'.$family_data->family_person_name.',&nbsp;DOB: '.$family_data->family_person_dob.'<br>';
+    $html .= '<br>My '.$family_data->relationship.'&nbsp;'.$family_data->family_person_name.',&nbsp;Age: '.$family_data->family_person_age.'<br>';
   }
 
   if($family_data->relationship == 'Grand Mother'){
-    $html .= '<br>My '.$family_data->relationship.'&nbsp;'.$family_data->family_person_name.',&nbsp;DOB: '.$family_data->family_person_dob.'<br>';
+    $html .= '<br>My '.$family_data->relationship.'&nbsp;'.$family_data->family_person_name.',&nbsp;Age: '.$family_data->family_person_age.'<br>';
   }
 
 }
@@ -295,7 +295,9 @@ foreach($excutor_data as $excutor_data ) {
     $key_1='she';
     $key_2='her';
   }
+
 	if($i == 1){
+    $frist_executor=$key_1;
 		$html .= '<p style="font-size:12; font-family: times, serif;">
 	1.	I  hereby nominate and appoint, namely  '.$excutor_data->executor_name.' Age - &nbsp;'.$excutor_data->executor_age.', presently Residing
 	at &nbsp;'.$excutor_data->executor_address.',  to be the executor/s of my Last Will and Testament.
@@ -305,8 +307,8 @@ foreach($excutor_data as $excutor_data ) {
 
 		$html .= '
 		<p style="font-size:12; font-family: times, serif;">
-			2.	In the event that  '.$key_1.' will be unwilling or unable to act as executor, I nominate and appoint,
-			namely '.$excutor_data->executor_name.'&nbsp;Age - &nbsp;'.$excutor_data->executor_age.', residing at &nbsp;'.$excutor_data->executor_address.'&nbsp;&nbsp;to be executor of this,
+			2.	In the event that '.$frist_executor.' will be unwilling or unable to act as executor, I nominate and appoint,
+			namely '.$excutor_data->executor_name.'&nbsp;Age - &nbsp;'.$excutor_data->executor_age.', presently Residing  at &nbsp;'.$excutor_data->executor_address.'&nbsp;&nbsp;to be executor of this
 			 my Last Will and Testament. I direct no bond or surety for any bond be required for my executor in the performance of '.$key_2.' duties.
 		</p>';
 	}
@@ -337,23 +339,23 @@ IV.	Distribution of the residue of my Estate to my Islamic heirs in accordance w
 
 <h1 style="text-align:center; font-family: times, serif;" >E.	FUNERAL AND BURIAL RIGHTS </h2>
 
-<p style="font-size:12; font-family: times, serif;">I direct my executor/s surviving relatives and friends to ensure that i have a funeral strictly in accordance with Islamic law. That must include Ghusl
+<p style="font-size:12; text-indent:40px; font-family: times, serif;">I direct my executor/s surviving relatives and friends to ensure that i have a funeral strictly in accordance with Islamic law. That must include Ghusl
  (washing), Janaza (funeral prayer) and Dafn (burial). In particular i do not wish for an autopsy to be performed on my body and request that my body be
   released for burial immediately upon death or as soon as practical. </p>
 
-	<p style="font-size:12; font-family: times, serif;">
+	<p style="font-size:12; text-indent:40px; font-family: times, serif;">
 		I ordain that absolutely no non-Islamic religious service or observance shall be conducted upon my death or on my body. I ordain that my grave
 		shall be dug deep into the ground in complete accordance with the specifications of Islamic practice and that it face the direction of Qiblah
 		(the Direction of the city of Mecca in the Arabian Peninsula, towards which Muslims face for prayer).
 	<br><br></p>
 
 	<h1 style="text-align:center; font-family: times, serif;" >F.  DEBTS AND EXPENSES	</h1>
-	<p style="font-size:12; font-family: times, serif;">
+	<p style="font-size:12; text-indent:40px; font-family: times, serif;">
 		I direct that my executor/s apply first, the assets of my estate to the payment of all my legal debts - including such expenses incurred by my
 		last illness and burial as well as the expenses of administrating my estate. I direct the said executor to pay any "obligations to Allah" (Huquq Allah) which are binding on me, such as unpaid Zakaat, Kaffarat, or unperformed pilgrimage (Hajj).
 	</p>
 
-	<p style="font-size:12; font-family: times, serif;">
+	<p style="font-size:12; text-indent:40px; font-family: times, serif;">
 		 I direct that all inheritance, state, and succession taxes (including interest and other penalties thereon) payable by reason of my death shall be paid out of and be charged generally against the principal of my
 		 residuary estate (Any portion of the testator &apos s estate that is not specifically devised to someone in the will), without reimbursement from any person; except that this provision shall not be construed as a waiver of any right which my executor has,
 		  by law or otherwise, to claim reimbursement for any such taxes which become payable on account of property, if any, over which I have a power of appointment.
@@ -427,7 +429,7 @@ foreach($bank_assets as $bank_assets ) {
       $html .= '<span style="font-size:14; font-family: times, serif;" ><b>'.$account_type_list.' ) Saving Accounts &nbsp;– </b></span>';
       $account_type_list++;
     }
-		$html .= '<p style="font-size:12; text-indent:40px; font-family: times, serif; ">Bank balance of my savings A/c. No.'. $bank_assets->account_number .' with '. $bank_assets->bank_name .' , Branch – '. $bank_assets->branch_name .' State – '. $bank_assets->state .', Pin code - '. $bank_assets->pin_code .'.<br></p>';
+		$html .= '<p style="font-size:12;  font-family: times, serif; ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bank balance of my savings A/c. No.'. $bank_assets->account_number .' with '. $bank_assets->bank_name .' , Branch – '. $bank_assets->branch_name .' State – '. $bank_assets->state .', Pin code - '. $bank_assets->pin_code .'.<br></p>';
 	}
 	elseif($bank_assets->assets_type == 'Current A/C'){
     $current++;
@@ -435,7 +437,7 @@ foreach($bank_assets as $bank_assets ) {
       $html .= '<span style="font-size:14; font-family: times, serif; " ><b>'.$account_type_list.' ) Current Account &nbsp;– </b></span>';
       $account_type_list++;
     }
-		$html .= '<p style="font-size:12; text-indent:40px; font-family: times, serif;" > Bank balance of my current A/c. No.'. $bank_assets->account_number .' with '. $bank_assets->bank_name .' , Branch - '. $bank_assets->branch_name .' State – '. $bank_assets->state .', Pin code - '. $bank_assets->pin_code .'.<br><br></p>';
+		$html .= '<p style="font-size:12;  font-family: times, serif;" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bank balance of my current A/c. No.'. $bank_assets->account_number .' with '. $bank_assets->bank_name .' , Branch - '. $bank_assets->branch_name .' State – '. $bank_assets->state .', Pin code - '. $bank_assets->pin_code .'.<br><br></p>';
 	}
 	elseif($bank_assets->assets_type == 'Fixed Deposits'){
     $Fixed++;
@@ -444,7 +446,7 @@ foreach($bank_assets as $bank_assets ) {
       $account_type_list++;
     }
 		$html .= '
-		<p style="font-size:12; text-indent:40px; font-family: times, serif;" > My bank fixed deposits with customer ID no. '. $bank_assets->account_number .' with '. $bank_assets->bank_name .' , Branch - '. $bank_assets->branch_name .' vide F.D. receipt no. '. $bank_assets->fd_recipt_No .'  State – '. $bank_assets->state .', Pin code - '. $bank_assets->pin_code .'.<br></p>
+		<p style="font-size:12;  font-family: times, serif;" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; My bank fixed deposits with customer ID no. '. $bank_assets->account_number .' with '. $bank_assets->bank_name .' , Branch - '. $bank_assets->branch_name .' vide F.D. receipt no. '. $bank_assets->fd_recipt_No .'  State – '. $bank_assets->state .', Pin code - '. $bank_assets->pin_code .'.<br></p>
     ';
 	}
 
@@ -454,7 +456,7 @@ foreach($bank_assets as $bank_assets ) {
       $html .= '<span style="font-size:14; font-family: times, serif;" ><b> '.$account_type_list.' )Public Provident Fund &nbsp;– </b></span>';
       $account_type_list++;
     }
-		$html .= '<p style="font-size:12; text-indent:40px; font-family: times, serif;" > My PPF account having no. '. $bank_assets->account_number .' with '. $bank_assets->bank_name .' , Branch - '. $bank_assets->branch_name . ' State – '. $bank_assets->state .', Pin code - '. $bank_assets->pin_code .'<br></p>
+		$html .= '<p style="font-size:12;  font-family: times, serif;" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; My PPF account having no. '. $bank_assets->account_number .' with '. $bank_assets->bank_name .' , Branch - '. $bank_assets->branch_name . ' State – '. $bank_assets->state .', Pin code - '. $bank_assets->pin_code .'<br></p>
     ';
 	}
 
@@ -464,7 +466,7 @@ foreach($bank_assets as $bank_assets ) {
       $html .= '<span style="font-size:14; font-family: times, serif;" ><b>'.$account_type_list.' )Bank Locker &nbsp;–</b></span>';
       $account_type_list++;
     }
-		$html .= '<p style="font-size:12; text-indent:40px; font-family: times, serif;" > The contents of bank locker no.'. $bank_assets->account_number .' with key no. '. $bank_assets->key_number .' with '. $bank_assets->bank_name .' , branch – '. $bank_assets->branch_name .' ,  State – '. $bank_assets->state .', Pin code - '. $bank_assets->pin_code .'<br></p>
+		$html .= '<p style="font-size:12;  font-family: times, serif;" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The contents of bank locker no.'. $bank_assets->account_number .' with key no. '. $bank_assets->key_number .' with '. $bank_assets->bank_name .' , branch – '. $bank_assets->branch_name .' ,  State – '. $bank_assets->state .', Pin code - '. $bank_assets->pin_code .'<br></p>
     ';
 	}
 
@@ -474,7 +476,7 @@ foreach($bank_assets as $bank_assets ) {
       $html .= '<span style="font-size:14; font-family: times, serif;" ><b>'.$account_type_list.' ) Mutual Funds &nbsp;–</b></span>';
       $account_type_list++;
     }
-		$html .= '<p style="font-size:12; text-indent:40px; font-family: times, serif;" > My mutual fund investments with folio numbers '. $bank_assets->account_number .' with '. $bank_assets->bank_name .'<br></p>
+		$html .= '<p style="font-size:12;  font-family: times, serif;" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; My mutual fund investments with folio numbers '. $bank_assets->account_number .' with '. $bank_assets->bank_name .'<br></p>
     ';
 	}
 
@@ -484,7 +486,7 @@ foreach($bank_assets as $bank_assets ) {
       $html .= '<span style="font-size:14; font-family: times, serif;" ><b>'.$account_type_list.' )Shares &nbsp;–</b></span>';
       $account_type_list++;
     }
-		$html .= '<p style="font-size:12; text-indent:40px; font-family: times, serif;" > My shares in '. $bank_assets->bank_name .' with account no. '. $bank_assets->account_number .'<br></p>
+		$html .= '<p style="font-size:12;  font-family: times, serif;" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; My shares in '. $bank_assets->bank_name .' with account no. '. $bank_assets->account_number .'<br></p>
     ';
 	}
 
@@ -494,7 +496,7 @@ foreach($bank_assets as $bank_assets ) {
       $html .= '<span style="font-size:14; font-family: times, serif;" ><b>'.$account_type_list.' )Insurance policies &nbsp;– </span>';
       $account_type_list++;
     }
-		$html .= '<p style="font-size:12; text-indent:40px; font-family: times, serif;" > My insurance policy '. $bank_assets->account_number .' from '. $bank_assets->bank_name .'  branch – '. $bank_assets->branch_name .'  for sum assurance of Rs. '. $bank_assets->assurance_amount .'/-.
+		$html .= '<p style="font-size:12;  font-family: times, serif;" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; My insurance policy '. $bank_assets->account_number .' from '. $bank_assets->bank_name .'  branch – '. $bank_assets->branch_name .'  for sum assurance of Rs. '. $bank_assets->assurance_amount .'/-.
 		<br></p>';
 	}
 }
@@ -538,27 +540,28 @@ foreach($other_gift as $other_gift ) {
 
 if($personal_data->marital_status == 0){
 	$html .= '<br><br><h1 style="text-align:center; font-family: times, serif;" > I. DISTRIBUTION OF THE REMINDER OF MY ESTATE</h1>
-	<p style="font-size:12;  font-family: times, serif;" > a.	I direct, devise and bequest all the residue and remainder of my estate after making provision for payment of
+	<p style="font-size:12;  font-family: times, serif;" > a) .	I direct, devise and bequest all the residue and remainder of my estate after making provision for payment of
 	my obligations and distributions provided above to only my Muslim heirs whose relation to me, whether ascending or descending,
 	has occurred through Islamic or lawful marriage at each and every point. The distribution of the residue and remainder of my estate shall
 	be made strictly in accordance with.<br><br></p>
 	';
 }
 
-$html .= '
-<h1 style="text-align:center; font-family: times, serif;" > SCHEDULE A – MAWARITH (INHERITANCE) </h1>
+$html .= '<div style="border: 1px solid #000;">
+<h1 style="text-align:center; font-family: times, serif; padding-top:50px; line-height:50px" >  SCHEDULE A – MAWARITH (INHERITANCE) </h1>
 
 <p style="font-size:12; text-indent:50px; font-family: times, serif;" >This schedule A is signed by me as a part of this Last Will and Testament.</p>
-<p style="font-size:12;  font-family: times, serif;" >b.&nbsp;	I direct that no part of the residue and remainder of my estate shall be inherited by any non-Muslim relative,
+</div>
+<p style="font-size:12;  font-family: times, serif;" >b) .&nbsp;	I direct that no part of the residue and remainder of my estate shall be inherited by any non-Muslim relative,
 whether he/she is a kin or an in-law, spouse, parent or child. I further direct or ordain that any non-Muslim relative be disregarded and
  disqualified in the application of the named schedule.</p>
 
  <p style="font-size:12; font-family: times, serif;">
- 	c.	I direct that no part of my estate shall be given to relatives whose relationship to me, ascending or descending has
+ 	c) .	I direct that no part of my estate shall be given to relatives whose relationship to me, ascending or descending has
 	occurred through non-Islamic and unlawful marriage or through adoption.
  </p>
 
- <h1 style="text-align:left; font-family: times, serif; " >d. Distribution of 1/3 Share</h1>
+ <h1 style="text-align:left; font-family: times, serif; " >d) . Distribution of 1/3 Share</h1>
  <h1 style="text-align:left; font-family: times, serif;line-height:14px;" >-	According to Mohammedan law</h1>
  <h1 style="text-align:left; font-family: times, serif; line-height:14px;" >-	The 1/3 rule Hadith: Sa`ad ibn Abi Waqqas said:</h1>
  <p style="font-size:12; text-indent:40px; font-family: times, serif;"> The Prophet came to visit me in my sickness I said to the Prophet, “O Prophet! I am wealthy and my only heir is my daughter.
@@ -567,12 +570,14 @@ whether he/she is a kin or an in-law, spouse, parent or child. I further direct 
  much. To leave after you your heirs well to do is better than you leave them poor and in want whilst others meet their needs.”</p>
 
  <p style="font-size:12; text-indent:40px; font-family: times, serif;">Accordingly I ordain that my executor/s shall asses all assets and out of which he/she shall pass my 1/3 assets share of remained estate shall go strictly to the person mentioned herein.<br><br>
-I would give my 1/3 share to -<br><br>
-1.	My friend ---------------------- age----------- presently Residing at------------------percentage of share---------%.<br>
-2.	My relative ---------------------- age------------ presently Residing at------------------- percentage of share------------%.<br><br>
+I would give my 1/3 share to - <br><br>';
+$share_number=1;
+foreach($share as $share ) {
+$html .='
+'.$share_number++.'.	My '.$share->share_relation.' '.$share->share_name.' age '.$share->share_age.' presently Residing at '.$share->share_address.' percentage of share '.$share->share_percentage.'% <br>';}
+$html .='<br>
 	Also it is my wish that all my legal heirs/legatees should support to the executor for execution of this Will with their full co-operation without any hindrance.
 <br><br></p>
-
 
 <h1 style="text-align:center; font-family: times, serif;" >J. Announcement</h1>
 <p style="font-size:12; font-family: times, serif;">1. If I die as a result of murder, I direct that the adjured murderer, principal or accessory in the murder shall be disqualified to receive any part of my estate. </p>

@@ -135,7 +135,7 @@
                 <div class="col-12">
                     <!-- Section Heading -->
                     <div class="section-heading text-center">
-                        <h2>Make Your Will in just 3 simple steps</h2>
+                        <h2>Make Your Will in just 3 simple steps  </h2>
                     </div>
                 </div>
             </div>
