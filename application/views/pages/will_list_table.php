@@ -161,8 +161,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </div>
 </div>
 
-<br><br><br><br>
-<?php include('include/footer.php') ?>
+
+
 <?php include('include/dashboard_footer.php') ?>
 </body>
 <?php } ?>

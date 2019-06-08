@@ -2,6 +2,18 @@
  defined('BASEPATH') OR exit('No direct script access allowed');
  include('include/head.php');
 ?>
+<style type="text/css">
+    .errspan {
+        float: right;
+        /* margin-right: 0px; */
+        /* padding-top: 10px; */
+        /* padding-bottom: 10px; */
+        padding: 10px;
+        position: relative;
+        z-index: 2;
+        background-color: #fff;
+    }
+</style>
 <body>
   <?php
     $is_login = $this->session->userdata('user_is_login');
@@ -23,7 +35,7 @@
             <label class="log" for="exampleInputEmail1">Mobile No. / Email:</label>
           </div>
           <div class="col-md-5">
-            <input type="text" name="mob_email" id="mob_email" class="form-control " aria-describedby="emailHelp"  style="width:90%;">
+            <input type="text" name="mob_email" id="mob_email" class="form-control " aria-describedby="emailHelp"  style="width:57%;">
 						<p id="error_invalide" style="color:red; display:none" class="text-left invalide">*Invalide Mobile Number/Email Format</p>
 						<p id="error_required" style="color:red; display:none" class="text-left invalide">*Fill up Mobile Number/Email Id</p>
 						<p id="error_not_registered" style="color:red; display:none" class="text-left invalide">*This Mobile Number/Email is not Registered</p>
@@ -36,13 +48,39 @@
           <div class="col-md-4 text-right">
             <label class="log" for="exampleInputEmail1">Type Your Password</label>
           </div>
-          <div class="col-md-5">
-            <input type="text" name="user_password" class="form-control" id="user_password" aria-describedby="emailHelp" style="width:90%;" >
-            <p id="error_invalide_otp" style="color:red; display:none" class="text-left invalide">*Invalide Password</p>
+          <div class="col-md-3">
+            <div class="input-group">
+            <input type="password" name="user_password" class="form-control" id="user_password" aria-describedby="emailHelp" style="width:85%;">
+            <div class="input-group-addon" >
+       <i class="fa fa-eye errspan" style="color:#000 !important;"  id="show" aria-hidden="true"></i>
+     </div>
 
+            <p id="error_invalide_otp" style="color:red; display:none" class="text-left invalide">*Invalide Password</p>
           </div>
         </div>
       </div>
+      <!-- <div class="input-group" id="show_hide_password">
+      <input class="form-control" type="password">
+      <div class="input-group-addon">
+        <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+      </div>
+    </div> -->
+
+      <script type="text/javascript">
+      $(document).ready(function() {
+        var x = document.getElementById("user_password");
+  $('#show').click(function() {
+
+    $('#show').toggleClass('fa-eye fa-eye-slash');
+    if (x.type === "password") {
+      x.type = "text";
+       $(this).toggleClass('fa-plus-circle fa-minus-circle')
+    } else {
+      x.type = "password";
+    }
+  });
+});
+      </script>
 
 <!--
 			<div id="otp_div" style="display:none;">

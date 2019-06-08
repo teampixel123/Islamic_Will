@@ -3,7 +3,7 @@
 
 <script src="<?php echo base_url(); ?>assets/website/js/akame.bundle.js"></script>
 <!-- Active -->
-<script src="<?php echo base_url(); ?>assets/website/js/default-assets/active.js"></script>
+<!-- <script src="<?php echo base_url(); ?>assets/website/js/default-assets/active.js"></script> -->
 
 <!--bootstrap admin panel js-->
 <script src="<?php echo base_url(); ?>assets/js/adminjs/bootstrap.bundle.min.js"></script>
