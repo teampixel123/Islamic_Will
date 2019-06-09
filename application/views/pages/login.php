@@ -34,8 +34,8 @@
           <div class="col-md-4 text-right">
             <label class="log" for="exampleInputEmail1">Mobile No. / Email:</label>
           </div>
-          <div class="col-md-5">
-            <input type="text" name="mob_email" id="mob_email" class="form-control " aria-describedby="emailHelp"  style="width:57%;">
+          <div class="col-md-5 text-center">
+            <input type="text" name="mob_email" id="mob_email" class="form-control " aria-describedby="emailHelp"  >
 						<p id="error_invalide" style="color:red; display:none" class="text-left invalide">*Invalide Mobile Number/Email Format</p>
 						<p id="error_required" style="color:red; display:none" class="text-left invalide">*Fill up Mobile Number/Email Id</p>
 						<p id="error_not_registered" style="color:red; display:none" class="text-left invalide">*This Mobile Number/Email is not Registered</p>
@@ -48,10 +48,10 @@
           <div class="col-md-4 text-right">
             <label class="log" for="exampleInputEmail1">Type Your Password</label>
           </div>
-          <div class="col-md-3">
-            <div class="input-group">
-            <input type="password" name="user_password" class="form-control" id="user_password" aria-describedby="emailHelp" style="width:85%;">
-            <div class="input-group-addon" >
+          <div class="col-md-5">
+            <div class="input-group" >
+            <input type="password" name="user_password" class="form-control" id="user_password" aria-describedby="emailHelp" >
+            <div class="input-group-addon" style="border: 1px solid #ced4da;">
        <i class="fa fa-eye errspan" style="color:#000 !important;"  id="show" aria-hidden="true"></i>
      </div>
 
@@ -105,11 +105,11 @@
 			</div> -->
 
       <div class="row">
-        <div class="col-md-6">
-          <p style="float:right;"><a href="<?php echo base_url(); ?>Login_controller/register_user_view" class="" > Register </a>|<a href="<?php echo base_url(); ?>Will_controller/forget_pass" class=""> Froget Password ? </a></p>
+        <div class="col-md-12">
+          <p class="text-center"><a href="<?php echo base_url(); ?>Login_controller/register_user_view" class="" > Register </a>|<a href="<?php echo base_url(); ?>Will_controller/forget_pass" class=""> Froget Password ? </a></p>
         </div>
         <!-- text-center -->
-        <div class="col-md-6 ">
+        <div class="col-md-12">
             <button type="button" id="btn_login" class="btn btn-success btn-md lbtn " style="width:15%;">Login</button>
         </div>
       </div>

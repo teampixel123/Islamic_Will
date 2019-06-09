@@ -57,6 +57,11 @@ body {
   position: relative;
   z-index: auto;
   }
+.row{
+  margin: 0px !important;
+  padding:0px !important;
+}
+
 
 h1,
 h2,
@@ -294,17 +299,27 @@ input:focus {
 
 .pt-50 {
   padding-top: 50px !important; }
+/*  custum css dhananjay  */
+.h-100{
+  height: 600px!important;
+}
+.bg-img{
+  max-height: 600px!important;
+}
+.testo-client{
+color: #1b334b;
+}
 
 .section-padding-80 {
-  padding-top: 80px;
-  padding-bottom: 80px; }
+  padding-top: 60px;
+  padding-bottom: 60px; }
 
 .section-padding-0-80 {
   padding-top: 0;
-  padding-bottom: 80px; }
+  padding-bottom: 60px; }
 
 .section-padding-80-0 {
-  padding-top: 80px;
+  padding-top: 60px;
   padding-bottom: 0; }
 
 /* :: 3.0 Preloader CSS */
@@ -531,7 +546,7 @@ input:focus {
     -webkit-transition-duration: 500ms;
     -o-transition-duration: 500ms;
     transition-duration: 500ms;
-    height: 100px;
+    height: 80px;
     padding: 0; }
     @media only screen and (min-width: 768px) and (max-width: 991px) {
       .classy-nav-container .classy-navbar {
@@ -633,7 +648,7 @@ input:focus {
       .single-welcome-slide .welcome-text h3 {
         font-size: 29px;
         display: block;
-        margin-bottom: 30px;
+        /* margin-bottom: 30px; */
         color: #252525; }
       @media only screen and (min-width: 992px) and (max-width: 1199px) {
         .single-welcome-slide .welcome-text h2 {

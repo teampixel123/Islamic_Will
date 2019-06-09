@@ -44,7 +44,7 @@
 <!-- Header Area Start -->
 <header class="header-area">
   <!-- Top Header Area Start -->
-  <div class="top-header-area">
+  <!-- <div class="top-header-area">
       <div class="container h-100">
           <div class="row h-100 align-items-center">
               <div class="col-8">
@@ -59,7 +59,7 @@
               </div>
           </div>
       </div>
-  </div>
+  </div> -->
   <!-- Top Header Area End -->
 
     <!-- Main Header Start -->
@@ -94,10 +94,7 @@
                             </ul>
 
                             <!-- Book Icon -->
-                            <div class="book-now-btn ml-5 mt-4 mt-lg-0 ml-md-4">
-                                <a href="<?php echo base_url(); ?>Will_controller/logout" class="btn akame-btn">Logout</a>
-																<!-- <a href="<?php echo base_url(); ?>Login" class="btn akame-btn">Log In</a> -->
-                            </div>
+
                             <!-- login user name-->
                             <div class="classynav">
                               <ul id="nav">
@@ -113,6 +110,11 @@
                                   </ul>
                             </div>
                             <!-- log user -->
+
+                            <div class="book-now-btn ml-5 mt-4 mt-lg-0 ml-md-4">
+                                <a href="<?php echo base_url(); ?>Will_controller/logout" class="btn akame-btn">Logout</a>
+                                <!-- <a href="<?php echo base_url(); ?>Login" class="btn akame-btn">Log In</a> -->
+                            </div>
                             <!-- Cart Icon -->
 
                             <div>

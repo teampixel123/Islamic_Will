@@ -33,7 +33,7 @@ include('include/head.php');
         <label class="col-md-2 text-right" for="exampleInputEmail1">Full Name</label>
 				<div class="col-md-2">
 					<select class="form-control" name="name_title" id="name_title">
-					 <option value="0">select </option>
+					 <option value="0" disabled selected>select </option>
 					 <option>Mr.</option>
 					 <option>Miss.</option>
 					 <option>Mrs.</option>
@@ -55,7 +55,7 @@ include('include/head.php');
 			<!-- </div> -->
 				<div class="col-md-4">
 					<select class="form-control" name="marital_status" id="marital_status">
-					 <option value="0">select </option>
+					 <option value="0" disabled selected>select </option>
 					 <option>Married</option>
 					 <option id="Unmarried">Unmarried</option>
 					 <option id="Widove">Widove</option>
@@ -118,7 +118,7 @@ include('include/head.php');
 		<p id="error_email_exist" style="color:red; display:none;" class="text-left invalide_mob_mail">*This email id is exist. Please go to <a href="<?php echo base_url(); ?>Will_controller/login"><b>Login</b></a></p>
     <button type="submit" id="save_start_data" class="btn btn-success float-right">Save</button>
 		<button type="submit" id="update_start_data" class="btn btn-info float-right" style="display:none;">Update & Next</button>
-		<button type="button" id="destroy" class="btn btn-danger">Clear session</button>
+		<!-- <button type="button" id="destroy" class="btn btn-danger">Clear session</button> -->
   </fieldset>
 </div>
 </div>

@@ -126,7 +126,7 @@
 
     <!-- Border -->
 
-        <div class="border-top mt-3"></div>
+        <!-- <div class="border-top mt-3"></div> -->
 
     <!-- Footer Area Start -->
   <?php include('footer.php') ?>

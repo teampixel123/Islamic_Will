@@ -8,7 +8,7 @@
 <!-- Header Area Start -->
 <header class="header-area">
   <!-- Top Header Area Start -->
-  <div class="top-header-area">
+  <!-- <div class="top-header-area">
       <div class="container h-100">
           <div class="row h-100 align-items-center">
               <div class="col-8">
@@ -23,7 +23,7 @@
               </div>
           </div>
       </div>
-  </div>
+  </div> -->
   <!-- Top Header Area End -->
 
     <!-- Main Header Start -->
@@ -33,7 +33,7 @@
                 <!-- Classy Menu -->
                 <nav class="classy-navbar justify-content-between" id="akameNav">
                     <!-- Logo -->
-                    <a class="nav-brand" href="index.html"><img src="<?php echo base_url(); ?>assets/website/img/core-img/logo.svg" alt=""></a>
+                    <a class="nav-brand" href="#"><img src="<?php echo base_url(); ?>assets/website/img/core-img/logo.svg" alt=""></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">

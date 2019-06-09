@@ -25,7 +25,7 @@
                 <div class="single-footer-widget mb-80">
                     <!-- Widget Title -->
 
-                    
+
                     <div class="f_nav ">
                       <ul class="text-left">
                         <!-- <li><a href="./index.html">• Home</a></li>
@@ -35,6 +35,7 @@
                         <li><a href="<?php echo base_url(); ?>Terms-and-Conditions">• Terms & Conditions</a></li>
                         <li><a href="<?php echo base_url(); ?>Privacy-Policy">• Privacy Policy </a></li>
                         <li><a href="<?php echo base_url(); ?>Contact">• Contact</a></li>
+                        <li><a href="<?php echo base_url(); ?>About-Us">• About Us</a></li>
                       </ul>
                     </div>
 
@@ -65,10 +66,10 @@
 
                     <!-- Social Info -->
                     <div class="social-info">
-                        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                        <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
-                        <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+                        <a href="#" class="facebook"><i class="fa fa-facebook" style="color:#fff !important;"></i></a>
+                        <a href="#" class="twitter"><i class="fa fa-twitter" style="color:#fff !important;"></i></a>
+                        <a href="#" class="google-plus"><i class="fa fa-google-plus" style="color:#fff !important;"></i></a>
+                        <a href="#" class="instagram"><i class="fa fa-instagram" style="color:#fff !important;"></i></a>
                     </div>
                 </div>
             </div>

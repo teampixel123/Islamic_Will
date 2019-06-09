@@ -43,24 +43,7 @@
 
 <!-- Header Area Start -->
 <header class="header-area">
-  <!-- Top Header Area Start -->
-  <div class="top-header-area">
-      <div class="container h-100">
-          <div class="row h-100 align-items-center">
-              <div class="col-8">
-                  <div class="top-header-content text-right">
-                      <p>Welcome to Islamic_will</p>
-                  </div>
-              </div>
-              <div class="col-4">
-                  <div class="top-header-content text-right">
-                      <p> <i class="fa fa-phone" aria-hidden="true"></i> Call us: (+91)-9545-465-656</p>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <!-- Top Header Area End -->
+
 
     <!-- Main Header Start -->
     <div class="main-header-area">

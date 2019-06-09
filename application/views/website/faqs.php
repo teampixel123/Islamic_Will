@@ -362,9 +362,9 @@
 
     <!-- Border -->
 
-        <div class="border-top mt-3"></div>
-  
-    <!-- Footer Area Start --> -->
+        <!-- <div class="border-top mt-3"></div> -->
+
+    <!-- Footer Area Start -->
     <?php include('footer.php') ?>
 </body>
 

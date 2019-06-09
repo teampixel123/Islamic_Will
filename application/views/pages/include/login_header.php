@@ -43,24 +43,7 @@
 
 <!-- Header Area Start -->
 <header class="header-area">
-  <!-- Top Header Area Start -->
-  <!-- <div class="top-header-area">
-      <div class="container h-100">
-          <div class="row h-100 align-items-center">
-              <div class="col-8">
-                  <div class="top-header-content text-right">
-                      <p>Welcome to Islamic will</p>
-                  </div>
-              </div>
-              <div class="col-4">
-                  <div class="top-header-content text-right">
-                      <p> <i class="fa fa-phone" aria-hidden="true"></i> Call us: (+91)-9545-465-656</p>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div> -->
-  <!-- Top Header Area End -->
+
 
     <!-- Main Header Start -->
     <div class="main-header-area">
@@ -94,22 +77,25 @@
                             </ul>
 
                             <!-- Book Icon -->
-                            <div class="book-now-btn ml-5 mt-4 mt-lg-0 ml-md-4">
-                                <a href="<?php echo base_url(); ?>Will_controller/logout" class="btn akame-btn">Logout</a>
-                            </div>
 
-                            <div class="classynav">
+
+                            <!-- <div class="classynav">
                               <ul id="nav">
                                   <li><a href="#"><?php echo $user_data->user_fullname; ?></a>
-                                  <ul class="dropdown">
+                                  <ul class="dropdown dahsboard-nav ">
                                     <li><a href="<?php echo base_url(); ?>Will_controller/make_will_view">- Make A Will</a></li>
                                     <li><a href="<?php echo base_url() ?>/User_controller/will_list">- Will List</a></li>
                                     <li><a href="<?php echo base_url() ?>/User_controller/user_profile">- Your Profile</a></li>
                                     <li><a href="<?php echo base_url(); ?>User_controller/user_dashboard">- Dashboard</a></li>
                                     <li><a href="<?php echo base_url(); ?>Will_controller/logout">- Logout</a></li>
-
                                     </ul>
                                   </ul>
+                            </div> -->
+                            <div class="book-now-btn ml-5 mt-4 mt-lg-0 ml-md-4">
+                                <a href="#" class="btn akame-btn" style="text-transform:capitalize; font-size:18px;"><?php echo $user_data->user_fullname; ?></a>
+                            </div>
+                            <div class="book-now-btn ml-5 mt-4 mt-lg-0 ml-md-4">
+                                <a href="<?php echo base_url(); ?>Will_controller/logout" class="btn akame-btn">Logout</a>
                             </div>
 
                         </div>

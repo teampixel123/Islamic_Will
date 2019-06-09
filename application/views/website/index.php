@@ -24,7 +24,6 @@
                                   <!-- <h2 data-animation="fadeInUp" data-delay="100ms">We Care About<br> Your life</h2> -->
                                   <h3 data-animation="fadeInUp" data-delay="150ms" >‘’From what is left by parents and those nearest related-there is a share for men and
                                      a share for women – whether the property be large or small. A share made fariadh (compulsory).‘’ </h3>
-
                                 </div>
                                 <a href="<?php echo base_url(); ?>About-Us" class="btn active akame-btn" data-animation="fadeInUp" data-delay="700ms">About Us</a>
                                   <a href="<?php echo base_url(); ?>Start-Will" class="btn active akame-btn" data-animation="fadeInUp" data-delay="700ms">Make Your Will</a>
@@ -307,14 +306,15 @@
                           </div>
                           <div class="row">
                             <div class="col-md-2 testimonial_img "alt="" >
-                            <img class="" src="<?php echo base_url(); ?>assets/website/img/bg-img/users.png" alt="" >
+                            <img class="" src="<?php echo base_url(); ?>assets/website/img/bg-img/client1.jpg" alt="" >
                             </div>
                             <div class="col-md-10">
-                              <p>	This website is very professional and personable. Would recommend to anyone needing Islamic will testament service.</p>
+                              <p>	“Easywillindia.com has made my will making process with ease and with my own time, also I got timely feedbacks from easywillindia, I had great experience to avail its efficient and excellent services with very reasonable expenses for me. Thanks Easy Will India team.” </p>
                           </div>
                         </div>
                         <div class="ratings-name d-flex align-items-center align-middle justify-content-center">
                             <div class="ratings mr-3">
+                              <span class="text-center testo-client">- Mr. Surjitsingh Randhawa</span><br>
                                 <i class="icon_star"></i>
                                 <i class="icon_star"></i>
                                 <i class="icon_star"></i>
@@ -333,14 +333,15 @@
                           </div>
                           <div class="row">
                             <div class="col-md-2 testimonial_img "alt="" >
-                            <img class="" src="<?php echo base_url(); ?>assets/website/img/bg-img/users.png" alt="" >
+                            <img class="" src="<?php echo base_url(); ?>assets/website/img/bg-img/client2.jpg" alt="" >
                             </div>
                             <div class="col-md-10">
-                              <p>	I feel that product is of superior quality and was exactly what i had in my mind and i will recommend use of the website to make will testament to users.</p>
+                              <p>	"Easywillindia.com have proven  to be a perfect fit for all my will related needs, very easy to understand and complete documentation, easywillindia  saved my time and money."</p>
                           </div>
                         </div>
                         <div class="ratings-name d-flex align-items-center align-middle justify-content-center">
                             <div class="ratings mr-3">
+                              <span class="text-center testo-client" >- Mr. Raosabheb Mule</span><br>
                                 <i class="icon_star"></i>
                                 <i class="icon_star"></i>
                                 <i class="icon_star"></i>
@@ -358,14 +359,15 @@
                           </div>
                           <div class="row">
                             <div class="col-md-2 testimonial_img "alt="" >
-                            <img class="" src="<?php echo base_url(); ?>assets/website/img/bg-img/users.png" alt="" >
+                            <img class="" src="<?php echo base_url(); ?>assets/website/img/bg-img/client3.jpg" alt="" >
                             </div>
                             <div class="col-md-10">
-                              <p>	Easy to use, got way more and way better designs that I expected and very happy with end result.</p>
+                              <p>	"Will making is no more difficult, hectic or expensive, easywillindia  has made it easy to understand, simple and most important in very affordable price."</p>
                           </div>
                         </div>
                         <div class="ratings-name d-flex align-items-center align-middle justify-content-center">
                             <div class="ratings mr-3">
+                               <span class="text-center testo-client" >- Mr. Azad Shrishrimal</span><br>
                                 <i class="icon_star"></i>
                                 <i class="icon_star"></i>
                                 <i class="icon_star"></i>
@@ -383,14 +385,42 @@
                           </div>
                           <div class="row">
                             <div class="col-md-2 testimonial_img "alt="" >
-                            <img class="" src="<?php echo base_url(); ?>assets/website/img/bg-img/users.png" alt="" >
+                            <img class="" src="<?php echo base_url(); ?>assets/website/img/bg-img/client1.jpg" alt="" >
                             </div>
                             <div class="col-md-10">
-                              <p>My experience with Islamic wills has been excellent, and they are always my first choice for a client referral.</p>
+                              <p>	“Easywillindia.com has made my will making process with ease and with my own time, also I got timely feedbacks from easywillindia, I had great experience to avail its efficient and excellent services with very reasonable expenses for me. Thanks Easy Will India team.” </p>
                           </div>
                         </div>
                         <div class="ratings-name d-flex align-items-center align-middle justify-content-center">
                             <div class="ratings mr-3">
+                              <span class="text-center testo-client">- Mr. Surjitsingh Randhawa</span><br>
+                                <i class="icon_star"></i>
+                                <i class="icon_star"></i>
+                                <i class="icon_star"></i>
+                                <i class="icon_star"></i>
+                                <i class="icon_star"></i>
+                            </div>
+                            <!-- <h5>Jackson Nash</h5> -->
+                        </div>
+                        </div>
+
+
+                        <!-- Single Testimonial Slide -->
+                        <div class="single-testimonial-slide">
+                          <div class="testimonial_icon">
+                            <img src="<?php echo base_url(); ?>assets/website/img/core-img/quote.png" alt="">
+                          </div>
+                          <div class="row">
+                            <div class="col-md-2 testimonial_img "alt="" >
+                            <img class="" src="<?php echo base_url(); ?>assets/website/img/bg-img/client2.jpg" alt="" >
+                            </div>
+                            <div class="col-md-10">
+                              <p>	"Easywillindia.com have proven  to be a perfect fit for all my will related needs, very easy to understand and complete documentation, easywillindia  saved my time and money."</p>
+                          </div>
+                        </div>
+                        <div class="ratings-name d-flex align-items-center align-middle justify-content-center">
+                            <div class="ratings mr-3">
+                              <span class="text-center testo-client">- Mr. Raosabheb Mule</span><br>
                                 <i class="icon_star"></i>
                                 <i class="icon_star"></i>
                                 <i class="icon_star"></i>
@@ -408,41 +438,15 @@
                           </div>
                           <div class="row">
                             <div class="col-md-2 testimonial_img "alt="" >
-                            <img class="" src="<?php echo base_url(); ?>assets/website/img/bg-img/users.png" alt="" >
+                            <img class="" src="<?php echo base_url(); ?>assets/website/img/bg-img/client3.jpg" alt="" >
                             </div>
                             <div class="col-md-10">
-                              <p>I recommend highly Islamic will website. They are truly professional and results oriented</p>
+                              <p>	"Will making is no more difficult, hectic or expensive, easywillindia  has made it easy to understand, simple and most important in very affordable price."</p>
                           </div>
                         </div>
                         <div class="ratings-name d-flex align-items-center align-middle justify-content-center">
                             <div class="ratings mr-3">
-                                <i class="icon_star"></i>
-                                <i class="icon_star"></i>
-                                <i class="icon_star"></i>
-                                <i class="icon_star"></i>
-                                <i class="icon_star"></i>
-                            </div>
-                            <!-- <h5>Jackson Nash</h5> -->
-                        </div>
-                        </div>
-
-                        <!-- Single Testimonial Slide -->
-                        <div class="single-testimonial-slide">
-                          <div class="testimonial_icon">
-                            <img src="<?php echo base_url(); ?>assets/website/img/core-img/quote.png" alt="">
-                          </div>
-                          <div class="row">
-                            <div class="col-md-2 testimonial_img "alt="" >
-                            <img class="" src="<?php echo base_url(); ?>assets/website/img/bg-img/users.png" alt="" >
-                            </div>
-                            <div class="col-md-10">
-                              <p>I have had a wonderful experience being represented wasiat.com They were able to resolve the situation through diligent hard work.
-                                The peace of mind that I received was priceless. I was able to safely and easily generate my last Islamic will testament. I’m very grateful
-                                 to the website and entire team.</p>
-                          </div>
-                        </div>
-                        <div class="ratings-name d-flex align-items-center align-middle justify-content-center">
-                            <div class="ratings mr-3">
+                               <span class="text-center testo-client">- Mr. Azad Shrishrimal</span><br>
                                 <i class="icon_star"></i>
                                 <i class="icon_star"></i>
                                 <i class="icon_star"></i>
@@ -483,7 +487,7 @@
     <!-- <div class="container">
         <div class="border-top mt-3"></div>
     </div> -->
-  <div class="border-top mt-3"></div>
+  <!-- <div class="border-top mt-3"></div> -->
   <?php include('footer.php') ?>
 
 </body>

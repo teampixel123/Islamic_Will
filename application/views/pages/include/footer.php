@@ -65,10 +65,10 @@
 
                     <!-- Social Info -->
                     <div class="social-info">
-                        <a href="#" class="facebook"><i class="fa fa-facebook" style="color:#fff"></i></a>
-                        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                        <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
-                        <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+                        <a href="#" class="facebook"><i class="fa fa-facebook" style="color:#fff !important;"></i></a>
+                        <a href="#" class="twitter"><i class="fa fa-twitter" style="color:#fff !important;"></i></a>
+                        <a href="#" class="google-plus"><i class="fa fa-google-plus" style="color:#fff !important;"></i></a>
+                        <a href="#" class="instagram"><i class="fa fa-instagram" style="color:#fff !important;"></i></a>
                     </div>
                 </div>
             </div>

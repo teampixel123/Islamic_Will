@@ -35,16 +35,16 @@
       <h3 class=" text-left">Assets Info </h3>
       <ul class="nav nav-tabs">
         <li class="nav-item" style="width:25%;">
-          <a id="real_estate_tab" class="nav-link active rem_class" data-toggle="tab" href="#real_estate"><i class="fa fa-home fa-2x" ></i></br> Real Estate</a>
+          <a id="real_estate_tab" class="nav-link active rem_class" data-toggle="tab" href="#real_estate"><i class="fa fa-home fa-2x"  ></i></br> Real Estate</a>
         </li>
         <li class="nav-item" style="width:26%;">
           <a id="bank_assets_tab" class="nav-link rem_class" data-toggle="tab" href="#bank_assets"><i class="fa fa-university fa-2x" ></i></br> Bank Assets</a>
         </li>
         <li class="nav-item" style="width:24%;">
-          <a id="vehicle_tab" class="nav-link rem_class" data-toggle="tab" href="#vehicle"><i class="fa fa-car fa-2x" ></i></br> Vehicle</a>
+          <a id="vehicle_tab" class="nav-link rem_class" data-toggle="tab" href="#vehicle"><i class="fa fa-car fa-2x"  ></i></br> Vehicle</a>
         </li>
         <li class="nav-item rem_class4" style="width:25%;">
-          <a id="other_gifts_tab" class="nav-link rem_class" data-toggle="tab" href="#other_gifts "><i class="fa fa-gift fa-2x" ></i></br> Other Gifts </a>
+          <a id="other_gifts_tab" class="nav-link rem_class" data-toggle="tab" href="#other_gifts "><i class="fa fa-gift fa-2x"  ></i></br> Other Gifts </a>
         </li>
       </ul>
 
