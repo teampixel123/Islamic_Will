@@ -8,8 +8,13 @@ include('include/head.php');
 <body>
 	<?php
 		$is_login = $this->session->userdata('user_is_login');
+		$owner_login = $this->session->userdata('owner_is_login');
+		// echo $owner_login;
 	  if($is_login){
 			include('include/login_header.php');
+		}
+		elseif($owner_login) {
+			 include(BASE_URL. 'admin_navbar_editwill.php');
 		}
 		else{
 			include('include/header.php');
@@ -133,9 +138,11 @@ include('include/head.php');
 </div>
 </div><br><br><br>
 <div class="border-top mt-3"></div>
-<?php include('include/footer.php') ?>
-<?php $is_login = $this->session->userdata('user_is_login');
-	if($is_login && $this->session->userdata('will_id') ){
+<?php include('include/footer.php'); ?>
+<?php
+$is_login = $this->session->userdata('user_is_login');
+$owner_login = $this->session->userdata('owner_is_login');
+	if( $this->session->userdata('will_id') && ($is_login || $owner_login)){
 ?>
 <script>
 $(document).ready(function(){

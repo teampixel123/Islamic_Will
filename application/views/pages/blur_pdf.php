@@ -59,7 +59,7 @@ Islamic Last Will and Testament
  </h1>
 ';
 $pdf->Image(base_url().'assets/images/title.png', 10, 150, 190, 50, '', '', '', 72);
-$pdf->Image(base_url().'assets/images/logo.png', 50, 225, 100, 30, '', '', '', true, 52);
+$pdf->Image(base_url().'assets/images/Easy_Islamic_Will_V3-06.png', 50, 225, 100, 30, '', '', '', true, 52);
 // output the HTML content
 $pdf->writeHTML($html, true, 0, true, 0);
 
@@ -113,9 +113,9 @@ Paradise is true, the Day of Judgement is coming without any doubt, and Allah (e
 ';
 
 // draw jpeg image
-$pdf->Image(base_url().'assets/images/logo.png', 50, 25, 100, 30, '', '', '', true, 52);
-$pdf->Image(base_url().'assets/images/logo.png', 50, 125, 100, 30, '', '', '', true, 52);
-$pdf->Image(base_url().'assets/images/logo.png', 50, 225, 100, 30, '', '', '', true, 52);
+// $pdf->Image(base_url().'assets/images/Easy_Islamic_Will_V3-06.png', 50, 25, 100, 30, '', '', '', true, 52);
+$pdf->Image(base_url().'assets/images/Easy_Islamic_Will_V3-06.png', 50, 125, 100, 30, '', '', '', true, 52);
+// $pdf->Image(base_url().'assets/images/Easy_Islamic_Will_V3-06.png', 50, 225, 100, 30, '', '', '', true, 52);
 // end  watermark
 
 // reset pointer to the last page
@@ -257,8 +257,8 @@ ______________________ <br>
 Signature &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br><br></p>
 
 
-<h1 style="text-align:center; font-family: times, serif;" >M.  WITNESSES</h1>
-<p style="font-family: times, serif;" >
+<h1 style=" text-align:center; font-family: times, serif;" >M.  WITNESSES</h1>
+<p style="font-size:12; font-family: times, serif;" >
 We hereby certify that the foregoing instrument was on the date thereof, signed, Published, and declared by
 the Testator '.$personal_data->full_name.', as and for His/her Last Will and Testament, in our presence, who at
 his/her request and in his/her Presence, and in the presence of each other, have hereunto subscribed our names as
@@ -270,11 +270,11 @@ Witnesses thereto, believing said Testator at the time of the signing to be of s
 $i=0 ;
 foreach($witness as $witness ) {
  $i++;
-   $html .= '<p style="font-size:12; font-family: times, serif; margin-left:40px;">'.$i.'. &nbsp; Sign-------------------<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name &nbsp;' .$witness->witness_name.'<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add&nbsp;&nbsp;&nbsp;&nbsp; '.$witness->witness_address.'<br></p>';
+   $html .= '<p style="font-size:12; font-family: times, serif; margin-left:40px;">'.$i.'. &nbsp; Sign________________<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name &nbsp;' .$witness->witness_name.'<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add&nbsp;&nbsp;&nbsp;&nbsp; '.$witness->witness_address.'<br></p>';
 }
-$pdf->Image(base_url().'assets/images/logo.png', 60, 25, 100, 30, '', '', '', true, 72);
-$pdf->Image(base_url().'assets/images/logo.png', 60, 125, 100, 30, '', '', '', true, 72);
-$pdf->Image(base_url().'assets/images/logo.png', 60, 225, 100, 30, '', '', '', true, 72);
+// $pdf->Image(base_url().'assets/images/Easy_Islamic_Will_V3-06.png', 60, 25, 100, 30, '', '', '', true, 72);
+$pdf->Image(base_url().'assets/images/Easy_Islamic_Will_V3-06.png', 60, 125, 100, 30, '', '', '', true, 72);
+// $pdf->Image(base_url().'assets/images/Easy_Islamic_Will_V3-06.png', 60, 225, 100, 30, '', '', '', true, 72);
 
 // output the HTML content
 $pdf->writeHTML($html, true, 0, true, 0);

@@ -8,6 +8,8 @@
       $this->load->Model('Will_Model');
       $this->load->Model('Table_Model');
       $this->load->helper('string');
+      $base_url = base_url();
+      define("BASE_URL", 'application/views/admin/include/');
     }
 
     public function demo_page(){
@@ -57,10 +59,10 @@
     // Start will view...
     public function start_will_view(){
       $is_login = $this->session->userdata('user_is_login');
+      $owner_login = $this->session->userdata('owner_is_login');
       $user_id = $this->session->userdata('user_id');
       $will_id = $this->session->userdata('will_id');
       if($is_login && $user_id){
-
         $user_data = $this->Will_Model->get_user_data($user_id);
         foreach ($user_data as $data2) {
           $user_subscription1 = $data2->user_subscription;
@@ -77,6 +79,9 @@
           header('Location:'.base_url().'User-Dashboard');
         }
       }
+      else if($owner_login){
+        $this->load->view('pages/start_will');
+      }
       else{
         $this->session->sess_destroy();
         $this->load->view('pages/start_will');
@@ -89,7 +94,8 @@
       if($is_login && $this->input->post('will_id')){
         $will_id = $this->input->post('will_id');
         $this->session->set_userdata('will_id',$will_id);
-        $this->session->set_userdata('set_update','1');
+        setcookie('set_update',$will_id, time() + (86400 * 30), "/");
+        // $this->session->set_userdata('set_update','1');
         header('Location:'.base_url().'Will_controller/start_will_view');
         // header('location:start_will_view');
       }

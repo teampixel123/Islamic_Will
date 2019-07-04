@@ -5,14 +5,19 @@
 ?>
 <body>
   <?php
-    $is_login = $this->session->userdata('user_is_login');
-    if($is_login){
-      include('include/login_header.php');
-    }
-    else{
-      include('include/header.php');
-    }
-   ?>
+		$is_login = $this->session->userdata('user_is_login');
+		$owner_login = $this->session->userdata('owner_is_login');
+		// echo $owner_login;
+	  if($is_login){
+			include('include/login_header.php');
+		}
+		elseif($owner_login) {
+			 include(BASE_URL. 'admin_navbar_editwill.php');
+		}
+		else{
+			include('include/header.php');
+		}
+	 ?>
 
    <!--Loader Modal -->
    <div class="modal fade" id="save_load_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
