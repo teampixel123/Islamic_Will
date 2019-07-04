@@ -3,6 +3,16 @@
  defined('BASEPATH') OR exit('No direct script access allowed');
  include('include/head.php');
 ?>
+<style >
+.tooltip-inner {
+    max-width: 500px;
+    padding: 3px 8px;
+    color: #fff;
+    text-align: center;
+    background-color: #17a2b8;
+    border-radius: .25rem;
+}
+</style>
 <body>
   <?php
 		$is_login = $this->session->userdata('user_is_login');
@@ -107,12 +117,16 @@
             <div class="form-group" id="">
               <div class="row text-center">
                 <label class="col-md-3 text-right" for="exampleInputEmail1">Percentage of Share: </label>
+
                 <div class="col-md-6">
-        					<input type="number" title="A Mohammadean according to Islamic Law cannot by will dispose of
+
+        					<input type="number" data-toggle="tooltip" title="A Mohammadean according to Islamic Law cannot by will dispose of
 more than one-third of the surplus of his estate after payment of funeral
 expenses and debts. It means a third of the estate of the testator as is left after
 the payment of the funeral expenses, other charges and debts of the deceased
-(testator). He/she can give their 100% share to any person." name="share_percentage" id="share_percentage" class="required form-control form-control-sm clear" placeholder="%" >
+(testator). He/she can give their 100% share to any person." name="share_percentage" id="share_percentage" class="required form-control form-control-sm clear redTip" placeholder="%" >
+
+
                 </div>
                 <label id="rem_per" class="col-md-3 text-left"></label>
               </div>
@@ -217,9 +231,10 @@ the payment of the funeral expenses, other charges and debts of the deceased
 <script type="text/javascript">var base_url = "<?php echo base_url() ?>";</script>
 <script src="<?php echo base_url(); ?>assets/js/will_custome/executor_funeral_js.js" type="text/javascript"></script>
 <script type="text/javascript">
-
+    
 </script>
 </body>
+
 <?php }
 else{
   header('location:login');

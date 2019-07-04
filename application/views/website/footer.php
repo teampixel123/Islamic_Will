@@ -1,13 +1,13 @@
 <!-- Footer Area Start -->
-<footer class="footer-area section-padding-80-0">
+<footer class="footer-area section-padding-80-0 padding-t-20">
     <div class="container">
         <div class="row justify-content-between">
 
             <!-- Single Footer Widget -->
             <div class="col-12 col-sm-6 col-md-4">
-                <div class="single-footer-widget mb-80">
+                <div class="single-footer-widget mb-80 m-center">
                     <!-- Footer Logo -->
-                    <a href="#" class="footer-logo"><img src="<?php echo base_url(); ?>assets/website/img/core-img/logo.svg" alt=""></a>
+                    <a href="#" class="footer-logo"><img src="<?php echo base_url(); ?>assets/website/img/core-img/Easy_Islamic_Will_V3-06.png" alt=""></a>
 
                     <p class="mb-30"><strong>Disclaimer:</strong> ‘’The information contained in the Site is provided for informational purposes
 only, and should not be construed as legal advice on any subject matter.”<a href="<?php echo base_url(); ?>About-Us#disclaimer"><strong> Read more..</strong></a></p>
@@ -28,7 +28,7 @@ only, and should not be construed as legal advice on any subject matter.”<a hr
 
 
                     <div class="f_nav ">
-                      <ul class="text-left">
+                      <ul class="text-left d-none d-sm-block">
                         <!-- <li><a href="./index.html">• Home</a></li>
                         <li><a href="./about.html">• About_Us</a></li> -->
                         <li><a href="<?php echo base_url(); ?>Pricing">• Pricing</a></li>
@@ -38,6 +38,28 @@ only, and should not be construed as legal advice on any subject matter.”<a hr
                         <li><a href="<?php echo base_url(); ?>Contact">• Contact</a></li>
                         <li><a href="<?php echo base_url(); ?>About-Us">• About Us</a></li>
                       </ul>
+
+                      <ul class="text-left d-block d-sm-none">
+                        <!-- <li><a href="./index.html">• Home</a></li>
+                        <li><a href="./about.html">• About_Us</a></li> -->
+                        <div class="row">
+                          <div class="col-6">
+                            <li><a href="<?php echo base_url(); ?>Pricing">• Pricing</a></li>
+                            <li><a href="<?php echo base_url(); ?>FAQ">• FAQ's</a></li>
+                              <li><a href="<?php echo base_url(); ?>Contact">• Contact</a></li>
+                          </div>
+                          <div class="col-6">
+
+                            <li><a href="<?php echo base_url(); ?>Privacy-Policy">• Privacy Policy </a></li>
+                              <li><a href="<?php echo base_url(); ?>About-Us">• About Us</a></li>
+                                <li><a href="<?php echo base_url(); ?>Terms-and-Conditions">• Terms & <br>&nbsp;&nbsp; Conditions</a></li>
+                          </div>
+                        </div>
+
+
+
+
+                      </ul>
                     </div>
 
                 </div>
@@ -45,15 +67,15 @@ only, and should not be construed as legal advice on any subject matter.”<a hr
 
             <!-- Single Footer Widget -->
             <div class="col-12 col-md-4 col-xl-3">
-                <div class="single-footer-widget mb-80">
+                <div class="single-footer-widget mb-80 m-center">
 
                     <!-- Widget Title -->
                     <h4 class="widget-title">Contact Us</h4>
 
                     <!-- Contact Address -->
-                    <div class="contact-address">
-                        <p>Tel: (+91) 9545-465-656</p>
-                        <p>E-mail:info@easywillindia.com</p>
+                    <div class="contact-address ">
+                        <p class="m-center">Tel: (+91) 9545-465-656</p>
+                        <p class="m-center">E-mail:info@easywillindia.com</p>
 
                     </div>
                     <hr>

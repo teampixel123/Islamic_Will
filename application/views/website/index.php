@@ -38,8 +38,10 @@ s0.parentNode.insertBefore(s1,s0);
                                   <h3 data-animation="fadeInUp" data-delay="150ms" >‘’From what is left by parents and those nearest related-there is a share for men and
                                      a share for women – whether the property be large or small. A share made fariadh (compulsory).‘’ </h3>
                                 </div>
-                                <a href="<?php echo base_url(); ?>About-Us" class="btn active akame-btn" data-animation="fadeInUp" data-delay="700ms">About Us</a>
-                                  <a href="<?php echo base_url(); ?>Start-Will" class="btn active akame-btn" data-animation="fadeInUp" data-delay="700ms">Make Your Will</a>
+                                <div class="d-none d-sm-block">
+                                <a href="<?php echo base_url(); ?>About-Us" class="btn active akame-btn " data-animation="fadeInUp" data-delay="700ms">About Us</a>
+                                  <a href="<?php echo base_url(); ?>Start-Will" class="btn active akame-btn " data-animation="fadeInUp" data-delay="700ms">Make Your Will</a>
+                                    </div>
                             </div>
                         </div>
                     </div>
@@ -60,9 +62,12 @@ s0.parentNode.insertBefore(s1,s0);
                                        and plan for your life after life as if you are going to die tomorrow.</h3>
 
                                 </div>
-                                <a href="<?php echo base_url(); ?>About-Us" class="btn active akame-btn active" data-animation="fadeInUp" data-delay="700ms">About Us</a>
-                                  <a href="<?php echo base_url(); ?>Start-Will" class="btn active akame-btn" data-animation="fadeInUp" data-delay="700ms">Make Your Will</a>
-                            </div>
+                                <div class="d-none d-sm-block">
+                                  <a href="<?php echo base_url(); ?>About-Us" class="btn active akame-btn active" data-animation="fadeInUp" data-delay="700ms">About Us</a>
+                                    <a href="<?php echo base_url(); ?>Start-Will" class="btn active akame-btn" data-animation="fadeInUp" data-delay="700ms">Make Your Will</a>
+
+                                </div>
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -83,9 +88,12 @@ s0.parentNode.insertBefore(s1,s0);
                                     testament written and kept ready with him."[ Sahih al-Bukhari)4:1- O.B]</h3>
 
                                 </div>
-                                <a href="<?php echo base_url(); ?>About-Us" class="btn active akame-btn active" data-animation="fadeInUp" data-delay="700ms">About Us</a>
-                                  <a href="<?php echo base_url(); ?>Start-Will" class="btn active akame-btn" data-animation="fadeInUp" data-delay="700ms">Make Your Will</a>
-                            </div>
+                                <div class="d-none d-sm-block">
+                                  <a href="<?php echo base_url(); ?>About-Us" class="btn active akame-btn active" data-animation="fadeInUp" data-delay="700ms">About Us</a>
+                                    <a href="<?php echo base_url(); ?>Start-Will" class="btn active akame-btn" data-animation="fadeInUp" data-delay="700ms">Make Your Will</a>
+
+                                </div>
+                                  </div>
                         </div>
                     </div>
                 </div>
@@ -112,7 +120,7 @@ s0.parentNode.insertBefore(s1,s0);
                     </div>
                 </div>
                 <!-- About Us Content -->
-                <div class="col-12 col-lg-4">
+                <div class="col-12 col-lg-4 about-cont">
                     <div class="about-us-content mb-80 pl-4">
                         <h3>Importance of a Will</h3>
                         <p>“The object of Wills according to the tradition of the Prophet is to provide for the maintenance of
@@ -120,11 +128,11 @@ s0.parentNode.insertBefore(s1,s0);
                             At the same time the prophet has declared that the power should not be exercised to the injury of the lawful
                              heirs.. ”</p>
                              <div class="row">
-                               <div class="col-md-6">
+                               <div class="col-6 no-m-padding">
                                  <a href="<?php echo base_url(); ?>About-Us/#important" class="btn akame-btn active mt-30" style="padding: 0 15px !important;">Read More</a>
 
                                </div>
-                               <div class="col-md-6">
+                               <div class="col-6 no-m-padding">
                                    <a href="<?php echo base_url(); ?>Start-Will" class="btn akame-btn active mt-30 "style="padding: 0 14px !important;font-size: 13px;">Start your Will</a>
                                </div>
 
@@ -141,7 +149,7 @@ s0.parentNode.insertBefore(s1,s0);
         <div class="border-top mt-3"></div>
     </div>
     <!-- Our Service Area Start -->
-    <section class="akame-service-area section-padding-80-0">
+    <section class="akame-service-area section-padding-80-0 padding-t-20">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -273,7 +281,7 @@ s0.parentNode.insertBefore(s1,s0);
     <!-- Our Service Area End -->
 
     <!-- Why Choose Us Area Start -->
-    <section class="why-choose-us-area bg-gray section-padding-80-0">
+    <section class="why-choose-us-area bg-gray section-padding-80-0 padding-t-20">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-12 col-lg-6">
@@ -298,7 +306,7 @@ s0.parentNode.insertBefore(s1,s0);
                             <li><i class="fa fa-check-square-o" aria-hidden="true"></i> Trusted advice and assistants provided.</li>
                         </ul><br>
                           <a href="<?php echo base_url(); ?>About-Us/#benefit" class="btn akame-btn active mt-30">Read More</a>
-                           <a href="<?php echo base_url(); ?>Start-Will" class="btn akame-btn active mt-30 ">Make Your Will</a>
+                           <a href="<?php echo base_url(); ?>Start-Will" class="btn akame-btn active mt-30  d-none d-sm-block">Make Your Will</a>
                     </div>
                 </div>
             </div>
@@ -477,13 +485,13 @@ s0.parentNode.insertBefore(s1,s0);
     <!-- Testimonial Area End -->
 
     <!-- Call To Action Area Start -->
-    <section class="akame-cta-area bg-gray section-padding-80">
+    <section class="akame-cta-area bg-gray section-padding-80  padding-t-20  padding-b-20">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-sm-10 col-xl-5">
                     <div class="cta-content">
                         <h2>Protection is not a <br>principle but an expedient</h2>
-                        <div class="akame-btn-group mt-30">
+                        <div class="akame-btn-group mt-30 margin-t-20 m-center">
                             <a href="<?php echo base_url(); ?>Start-Will" class="btn active akame-btn">Start Your Will</a>
                         </div>
                     </div>
