@@ -107,7 +107,7 @@ include('include/head.php');
           <label for="exampleInputEmail1">Email</label>
         </div>
         <div class="col-md-4">
-          <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="email">
+          <input type="email" title="Fill Your Email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="email">
 					<p id="error_email" style="color:red; display:none" class="text-left invalide  m-0">*Please enter a valid email address.</p>
         </div>
       </div>

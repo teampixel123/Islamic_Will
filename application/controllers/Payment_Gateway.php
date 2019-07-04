@@ -17,6 +17,9 @@ class Payment_Gateway extends CI_Controller {
    curl_setopt($ch, CURLOPT_HTTPHEADER,
                array("X-Api-Key:0ec75dd4bc3c0555c6a7b7d07089d75a",
                      "X-Auth-Token:842e107de7debf82f826b4c9ed4b398d"));
+
+            
+
    $payload = Array(
        'purpose' => 'Will Payment',
        'amount' => '1250',

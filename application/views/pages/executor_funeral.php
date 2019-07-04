@@ -3,6 +3,16 @@
  defined('BASEPATH') OR exit('No direct script access allowed');
  include('include/head.php');
 ?>
+<style >
+.tooltip-inner {
+    max-width: 500px;
+    padding: 3px 8px;
+    color: #fff;
+    text-align: center;
+    background-color: #17a2b8;
+    border-radius: .25rem;
+}
+</style>
 <body>
   <?php
     $is_login = $this->session->userdata('user_is_login');
@@ -84,8 +94,9 @@
             <div class="form-group" id="">
               <div class="row text-center">
                 <label class="col-md-3 text-right" for="exampleInputEmail1">Percentage of Share: </label>
+
                 <div class="col-md-6">
-        					<input type="number" name="share_percentage" id="share_percentage" class="required form-control form-control-sm clear" placeholder="%" >
+        					<input type="number" data-toggle="tooltip" title="You Can Also Give 100% Share To One Person  Out Of 1/3rd Share" name="share_percentage" id="share_percentage" class="required form-control form-control-sm clear redTip" placeholder="%" >
                 </div>
                 <label id="rem_per" class="col-md-3 text-left"></label>
               </div>
@@ -139,6 +150,8 @@
           </fieldset>
     		</form>
     </div>
+
+
       <!-- Executor Information End  -->
       <!-- Funeral and Burial Information Start  -->
       <!-- <div class="" style="display:none;">
@@ -363,7 +376,19 @@
 <!-- Custome Javascript file -->
 <script type="text/javascript">var base_url = "<?php echo base_url() ?>";</script>
 <script src="<?php echo base_url(); ?>assets/js/will_custome/executor_funeral_js.js" type="text/javascript"></script>
+
+<script>
+$('[data-toggle="tooltip"]').tooltip();
+
+// Add the classes to the toolip when it is created
+$('[data-toggle="tooltip"]').on('inserted.bs.tooltip',function () {
+    var thisClass = $(this).attr("class");
+    $('.tooltip-inner').addClass(thisClass);
+    $('.arrow').addClass(thisClass + "-arrow");
+});
+</script>
 </body>
+
 <?php }
 else{
   header('location:login');
