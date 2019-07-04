@@ -76,6 +76,7 @@
                          temporarily interrupted. From time to time, certain features of the site may not be available. You agree to hold product harmless
                          against any such interruption of service.
                        </p>
+                       <div class="border-top mt-3"></div><br>
                        <h3>3.	Terms Of Use Modifications</h3>
                        <p>
                          Your login subsequent to reviewing any modifications constitutes a binding acceptance by you of any and all modifications to the website/product.
@@ -135,7 +136,7 @@
                           the exclusions and limitations set out above will apply to your use of this website by linking to it.
                         </p>
                           <div class="border-top mt-3"></div><br>
-                        <h3>99.	Links From This Website</h3>
+                        <h3>9.	Links From This Website</h3>
 
                         <p>
                           We do not monitor or review the content of other party’s websites which are linked to from this website.
@@ -220,6 +221,7 @@
                         We expect all our business partners to have similar policies which apply to all matters involving <a href="wasihat.com/islamicwill.in" target="_blank"> <strong>wasihat.com/islamicwill.in </strong></a>
                         or its clients.
                       </p>
+                      <div class="border-top mt-3"></div><br>
                       <h3>14.	Legal And Ethical Requirements</h3>
 
                       <p>
@@ -363,8 +365,8 @@
     <!-- Border -->
 
         <div class="border-top mt-3"></div>
-    
-    <!-- Footer Area Start --> -->
+
+    <!-- Footer Area Start -->
     <?php include('footer.php') ?>
 </body>
 

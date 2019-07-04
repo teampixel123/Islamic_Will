@@ -24,18 +24,24 @@ $(document).ready(function(){
       $('#gender_male').prop("checked", true);
   	}
   	else if (title == 'Mrs.') {
-  		$('.marital_status_div').show();
+      $('#gender_female').prop("checked", true);
+  		$('.marital_status_div').hide();
+      $('.have_child_div').show();
+      $('#marital_status').val('Married')
+
+  	}
+    else if (title == 'Ms.') {
+      $('.marital_status_div').show();
   		$('#widove').show();
-      $('#Unmarried').hide();
+      $('#Unmarried').show();
   		$('.have_child_div').show();
       $('#gender_female').prop("checked", true);
-  	}
-    else if (title == 'Miss.') {
-      $('#child_no').prop("checked", true);
-      $('#gender_female').prop("checked", true);
-      $('#marital_status').val('Unmarried')
-      $('.marital_status_div').hide();
-      $('.have_child_div').hide();
+      $('#marital_status').val('0')
+      // $('#child_no').prop("checked", true);
+      // $('#gender_female').prop("checked", true);
+      // $('#marital_status').val('Unmarried')
+      // $('.marital_status_div').hide();
+      // $('.have_child_div').hide();
   	}
   });
 
@@ -54,69 +60,6 @@ $(document).ready(function(){
 		}
 	});
 
-  $("#name_title").blur(function(){
-    var name_title = $('#name_title').val();
-    if(name_title == '0'){
-      $('#error_name_title').show();
-    }
-    else{
-      $('#error_name_title').hide();
-      }
-  });
-
-  $("#full_name").blur(function(){
-    var full_name = $('#full_name').val();
-    var full_name_format =  /^[a-zA-Z ]*$/;
-    if(!full_name_format.test(full_name) || full_name == ''){
-      $('#error_name').show();
-    }
-    else{
-        $('#error_name').hide();
-      }
-  });
-
-  $("#marital_status").blur(function(){
-    var marital_status = $('#marital_status').val();
-    if(marital_status == '0'){
-      $('#error_marital_status').show();
-    }
-    else{
-      $('#error_marital_status').hide();
-      }
-  });
-
-  $("#is_have_child").blur(function(){
-    var is_have_child = $('#is_have_child').val();
-    if(is_have_child == '-1'){
-      $('#error_is_have_child').show();
-    }
-    else{
-      $('#error_is_have_child').hide();
-      }
-  });
-
-  $("#mobile_no").blur(function(){
-    var mobile_no = $('#mobile_no').val();
-   var mobile_format = /^[7-9][0-9]{9}$/;
-    if(!mobile_format.test(mobile_no) || mobile_no == '') {
-    $('#error_mobile_no').show();
-   }
-    else{
-      $('#error_mobile_no').hide();
-      }
-  });
-
- $("#email").blur(function(){
-   var email = $('#email').val();
-  var email_format = /^[a-z0-9._%+-]+@([a-z0-9-]+\.)+[a-z]{2,4}$/;
-   if(!email_format.test(email) || email == '') {
-    $('#error_email').show();
-   }
-   else{
-     $('#error_email').hide();
-     }
- });
-
  //	Save Will Start Info
  $('#save_start_data').click(function(){
    var name_title = $('#name_title').val();
@@ -125,60 +68,56 @@ $(document).ready(function(){
    var is_have_child = $('#is_have_child').val();
    var mobile_no = $('#mobile_no').val();
    var email = $('#email').val();
-   var full_name_format =  /^[a-zA-Z ]*$/;
+   var text =  /^[a-zA-Z ]*$/;
    var mobile_format = /^[7-9][0-9]{9}$/;
    var email_format = /^[a-z0-9._%+-]+@([a-z0-9-]+\.)+[a-z]{2,4}$/;
 
-   if(full_name == ''){
-     $('#error_name').show();
-   }
-   if(marital_status == '0'){
-     $('#error_marital_status').show();
-   }
-   if(is_have_child == '-1'){
-     $('#error_is_have_child').show();
-   }
-   if(!mobile_format.test(mobile_no) || mobile_no == '') {
-       $('#error_mobile_no').show();
-   }
-   if(!email_format.test(email) || email == '') {
-   $('#error_email').show();
-   }
+   $('.required').each(function(){
+     var val = $(this).val();
+     if(val == '' || val == '0'){
+       $(this).addClass('required-input');
+     }
+     // else{
+     //   $(this).removeClass('required-input');
+     // }
+   });
+   // $('.select').each(function(){
+   //   var val = $(this).val();
+   //   if(val == '0'){
+   //     $(this).addClass('required-input');
+   //   }
+   //   else{
+   //     $(this).removeClass('required-input');
+   //   }
+   // });
+   // $('.text').each(function(){
+   //   var text_info = $(this).val();
+   //   if(!text.test(text_info)){
+   //     $(this).addClass('required-input');
+   //   }
+   //   else{
+   //     $(this).removeClass('required-input');
+   //   }
+   // });
 
-   if(name_title == '0' || full_name == '' || (name_title!= 'Miss' && marital_status == '0') || is_have_child == '-1' || !mobile_format.test(mobile_no) || mobile_no == '' ||
+   if(name_title == '0' || full_name == '' || !text.test(full_name) || is_have_child == '-1' || !mobile_format.test(mobile_no) || mobile_no == '' ||
  !email_format.test(email) || email == ''){
    // Blank...
    }
    else {
-     $('.invalide').hide();
+     $('.required, .select').removeClass('required-input');
+     $('#save_load_modal').modal('show');
      var form_data = $('#start_will_form').serialize();
      $.ajax({
        data: form_data,
        type: "post",
        url: base_url+"Will_controller/save_start_info",
        success: function (data){
-          var info = JSON.parse(data);
-          if(info == 'Mobile_Exist'){
-            $('#error_mobile_exist').show();
-            // invalide_mob_mail//alert('Mobile_Exist');
-          }
-          else if(info == 'Email_Exist'){
-            $('#error_email_exist').show();
-            //alert('Email_Exist');
-          }
-          else{
-           $('#invalide_mob_mail').hide();
-           $('#lbl_name').text(info[0]['full_name']);
-           $('#lbl_mobile').text(info[0]['mobile_no']);
-           $('#lbl_email').text(info[0]['email']);
-           $('#lbl_address').text(info[0]['address']+', '+info[0]['city']+'-'+info[0]['pin_code']+', '+info[0]['state']+', '+info[0]['country']);
-           $('#lbl_occupation').text(info[0]['occupation']);
-           $('#lbl_aadhar').text(info[0]['aadhar_no']);
-           $('#lbl_pan').text(info[0]['pan_no']);
-           $('#save_personal_data').hide();
-           $('#update_personal_data').show();
+           $('#save_load_modal').on('shown.bs.modal', function(e) {
+             $("#save_load_modal").modal("hide");
+           });
            window.location.href = base_url+"Will_controller/personal_info_view";
-          }
+        //  }
        }
      });
    }
@@ -192,39 +131,54 @@ $(document).ready(function(){
    var is_have_child = $('#is_have_child').val();
    var mobile_no = $('#mobile_no').val();
    var email = $('#email').val();
-   var full_name_format =  /^[a-zA-Z ]*$/;
+   var text =  /^[a-zA-Z ]*$/;
    var mobile_format = /^[7-9][0-9]{9}$/;
    var email_format = /^[a-z0-9._%+-]+@([a-z0-9-]+\.)+[a-z]{2,4}$/;
 
-   if(full_name == ''){
-     $('#error_name').show();
-   }
-   if(marital_status == '0'){
-     $('#error_marital_status').show();
-   }
-   if(is_have_child == '-1'){
-     $('#error_is_have_child').show();
-   }
-   if(!mobile_format.test(mobile_no) || mobile_no == '') {
-       $('#error_mobile_no').show();
-   }
-   if(!email_format.test(email) || email == '') {
-   $('#error_email').show();
-   }
+   $('.required').each(function(){
+     var val = $(this).val();
+     if(val == '' || val == '0'){
+       $(this).addClass('required-input');
+     }
+     // else{
+     //   $(this).removeClass('required-input');
+     // }
+   });
+   // $('.select').each(function(){
+   //   var val = $(this).val();
+   //   if(val == '0'){
+   //     $(this).addClass('required-input');
+   //   }
+   //   else{
+   //     $(this).removeClass('required-input');
+   //   }
+   // });
+   // $('.text').each(function(){
+   //   var text_info = $(this).val();
+   //   if(!text.test(text_info)){
+   //     $(this).addClass('required-input');
+   //   }
+   //   else{
+   //     $(this).removeClass('required-input');
+   //   }
+   // });
 
-   if(name_title == '0' || full_name == '' || (name_title!= 'Miss' && marital_status == '0') || is_have_child == '-1' || !mobile_format.test(mobile_no) || mobile_no == '' ||
+   if(name_title == '0' || full_name == '' || !text.test(full_name) || is_have_child == '-1' || !mobile_format.test(mobile_no) || mobile_no == '' ||
  !email_format.test(email) || email == ''){
    // Blank...
    }
    else {
-     $('.invalide').hide();
+     $('#save_load_modal').modal('show');
      var form_data = $('#start_will_form').serialize();
      $.ajax({
        data: form_data,
        type: "post",
        url: base_url+"Will_controller/update_start_data",
        success: function (data){
-           window.location.href = base_url+"Will_controller/personal_info_view";
+         $('#save_load_modal').on('shown.bs.modal', function(e) {
+           $("#save_load_modal").modal("hide");
+         });
+         window.location.href = base_url+"Will_controller/personal_info_view";
        }
      });
    }

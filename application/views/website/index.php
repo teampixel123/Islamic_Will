@@ -188,7 +188,7 @@
 </svg>
 
                         <h5>Fill Your Information</h5>
-                        <p style="text-align: -webkit-left;">To preserve assets for your beneficiaries and to clear your wishes with simpler and Swifter way you can fill your detailed information to create a Islamic Will Testament for which you accessing this website. Information you fill up prepares
+                        <p style="text-align: justify;">To preserve assets for your beneficiaries and to clear your wishes with simpler and Swifter way you can fill your detailed information to create a Islamic Will Testament for which you accessing this website. Information you fill up prepares
                            your document and makes it in complete form, so your information shall be corrected and without any error.</p>
                     </div>
                 </div>
@@ -232,7 +232,7 @@
 </svg>
 
                         <h5>Verify Your Information </h5>
-                        <p style="text-align: -webkit-left;">To distribute your estate by your own will and to avoid confusion & in legal heirs and to Create your will through Islamic will, Registration is very first step to proceed for further process. For creating will verifications of your information is important for us. Please get your information verified according to the easy procedure we have provided. When you are verified you become a valid user of Easy Islamic will. Follow the easiest steps for your verification.</p>
+                        <p style="text-align: justify;">To distribute your estate by your own will and to avoid confusion & in legal heirs and to Create your will through Islamic will, Registration is very first step to proceed for further process. For creating will verifications of your information is important for us. Please get your information verified according to the easy procedure we have provided. When you are verified you become a valid user of Easy Islamic will. Follow the easiest steps for your verification.</p>
                     </div>
                 </div>
                 <!-- Single Service Area -->
@@ -251,7 +251,7 @@
 </svg>
 
                         <h5>Download Your Will</h5>
-                        <p style="text-align: -webkit-left;">Downloading is the next step in order to get your Islamic  Will document. Before this process user is informed to fulfill the payment process with regard to get it downloaded. After successful Payment user can download it in PDF format or user can get it on registered email.</p>
+                        <p style="text-align: justify;">Downloading is the next step in order to get your Islamic  Will document. Before this process user is informed to fulfill the payment process with regard to get it downloaded. After successful Payment user can download it in PDF format or user can get it on registered email.</p>
                     </div>
                 </div>
             </div>

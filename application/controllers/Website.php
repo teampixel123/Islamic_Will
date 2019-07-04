@@ -66,7 +66,7 @@ class Website extends CI_Controller {
 			$user_data = $this->Will_Model->get_user_data($user_id);
 			$this->load->view('website/Privacy.php',['user_data'=>$user_data]);
 			}else{
-			$this->load->view('website/Privacy.php');
+			$this->load->view('website/privacy.php');
 		}
 	}
 

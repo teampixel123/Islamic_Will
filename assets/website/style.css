@@ -609,7 +609,7 @@ color: #1b334b;
 
 .breakpoint-off .classynav ul li .dropdown,
 .breakpoint-off .classynav ul li .megamenu {
-  width: 210px;
+  width: 160px;
   -webkit-box-shadow: 0 2px 40px 8px rgba(15, 15, 15, 0.15);
   box-shadow: 0 2px 40px 8px rgba(15, 15, 15, 0.15);
   border-radius: 6px; }
@@ -1938,3 +1938,13 @@ width: 19%;
     /* opacity: 0.7; */
     transition: all 0.2s;
 }
+
+/* .nav-brand img {
+  width: 60% ;
+  }
+
+@media only screen and (min-width: 576px) {
+  .nav-brand img {
+    width: 100% !important;
+    }
+  } */

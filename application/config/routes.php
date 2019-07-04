@@ -56,10 +56,12 @@ $route["FAQ"] = 'Website/faqs';
 $route['Contact'] = 'Website/contact';
 $route["Terms-and-Conditions"] = 'Website/terms';
 $route['Privacy-Policy'] = 'Website/privacy';
-$route['Login'] = 'Will_controller/login';
+$route['Login'] = 'User_controller/login';
+$route['User-Dashboard'] = 'User_controller/user_dashboard';
+$route['Owner-Login'] = 'Owner_controller/login_view';
 
 
-$route['Start-Will'] = 'Will_controller/start_will_view';
+$route['Start-Will'] = 'Will_controller/load_login_start_info';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

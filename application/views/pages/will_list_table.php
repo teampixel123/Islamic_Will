@@ -74,7 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <td><?php echo $will_list->mobile_no; ?></td>
                   <td><?php echo $will_list->email; ?></td>
                   <td><?php echo $will_list->address; ?></td>
-                  <td>
+                  <td class="p-0">
                     <!--
                     <a type="button" id="btn_will_details" class="btn btn-sm btn-success no-margin"><i class="fa fa-eye"></i>View</a>
                     <form id="form_will_details" action="<?php echo base_url(); ?>/User_controller/will_details" method="post">
@@ -86,19 +86,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <table >
                           <tbody style="border: none!important;">
                             <tr style="border: none!important;">
-                              <td style="border: none!important;">
+                              <td class="p-0" style="border: none!important;">
                                 <form id="form_will_edit" action="<?php echo base_url(); ?>Will_controller/load_login_start_info" method="post">
                                    <input type="hidden" name="will_id" id="will_id" value="<?php echo $will_list->will_id; ?>" />
-                  								 <button id="btn_will_edit" type="submit" class="btn btn-sm btn-info no-margin"><i class="fa fa-edit"></i></i> Edit</button>
+                                   <!-- <input type="hidden" name="will_id" id="will_id" value="<?php echo $will_list->will_id; ?>" /> -->
+                  								 <button id="btn_will_edit" style="width:70px;" type="submit" class="btn btn-sm btn-info no-margin"><i class="fa fa-edit"></i></i> Edit</button>
                                 </form>
                               </td>
-                              <td style="border: none!important;">
-                                <form target="_blank" id="form_will_pdf" action="<?php echo base_url(); ?>Pdf_controller/final_pdf" method="post">
-                      							 <input type="hidden" name="will_id" id="will_id" value="<?php echo $will_list->will_id; ?>" />
-                      							 <button id="btn_will_pdf" type="submit" class="btn btn-sm btn-info no-margin"><i class="fa fa-file-pdf-o"></i>&nbsp;View PDF</button>
-                  						  </form>
-                              </td>
-                                <td style="border: none!important;">
+                              <?php $is_will_complete = $will_list->is_will_complete;
+                              if($is_will_complete == 1){ ?>
+                                <td class="p-0" style="border: none!important;">
+                                  <form target="_blank" id="form_will_pdf" action="<?php echo base_url(); ?>Pdf_controller/final_pdf" method="post">
+                        							 <input type="hidden" name="will_id" id="will_id" value="<?php echo $will_list->will_id; ?>" />
+                        							 <button id="btn_will_pdf" style="width:70px;" type="submit" class="btn btn-sm btn-info no-margin"><i class="fa fa-file-pdf-o"></i> PDF</button>
+                    						  </form>
+                                </td>
+                              <?php  }
+                                else{ ?>
+                                  <td class="pt-1" style="border: none!important; color:red;">
+                                  Incomplete Will
+                                </td>
+                              <?php } ?>
+
+                                <td class="p-0" style="border: none!important;">
                                   <!-- <form id="form_will_edit" action="<?php echo base_url(); ?>Will_controller/delete_will" method="post">
                                      <input type="hidden" name="will_id" id="will_id" value="<?php echo $will_list->will_id; ?>" />
                                      <button id="btn_will_edit" type="submit" class="btn btn-sm btn-danger no-margin"><i class="fa fa-edit"></i></i> Delete</button>
@@ -108,7 +118,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     Delete
                                   </button> -->
                                   <!-- Modal -->
-                                  <div class="modal fade" id="exampleModalCenter_<?php echo $will_list->id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                  <!-- <div class="modal fade" id="exampleModalCenter_<?php echo $will_list->id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                       <div class="modal-content">
                                         <div class="modal-header">
@@ -132,8 +142,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         </div>
                                       </div>
                                     </div>
-                                  </div>
-
+                                  </div> -->
                                 </td>
                             </tr>
                           </tbody>

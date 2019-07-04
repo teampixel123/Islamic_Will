@@ -34,46 +34,48 @@
   <div class="container">
     <div class="row">
       <!-- Free Tier -->
-        <div class="col-lg-1">
-          </div>
-      <div class="col-lg-5">
+        <!-- <div class="col-lg-1">
+          </div> -->
+      <div class="col-lg-4">
         <div class="card mb-5 mb-lg-0">
           <div class="card-body">
             <h3 class="card-title text-muted text-uppercase text-center" style="color: #05748e!important;">Silver</h3>
-            <h6 class="card-price text-center">Rs. 2000 <span class="period">/  + GST @18%</span></h6>
+            <h6 style="font-size:26px;" class="card-price text-center">Rs. 2000<span class="period">/ Only + GST @18%</span></h6>
             <hr>
             <ul class="fa-ul">
-              <li><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span><strong>Standard online services </strong></li>
+              <li><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span><strong>Standard online services</strong></li>
               <li><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>Just to fill details Online guidance @tools tips and faq’s</li>
               <li><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>It’s easy, simple and affordable</li>
               <li><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>User friendly experience</li>
               <li><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>Confidential, safe and secure </li>
               <li><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>Preview before print / finalize </li>
-              <li><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>User can fill details up to 30 days from payment</li>
-              <!-- <li class="text-muted"><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>Monthly Status Reports</li> -->
+              <li><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>User can generate will up to 30 days from payment</li>
+              <li ><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>One modification / updation up to one (1) month</li>
+              <li ><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>Only @ Rs. 2000/- + GST @18%</li>
             </ul>
-            <div class="text-center">
-                <!-- <a href="#" class="btn btn-block active akame-btn text-uppercase" id="btn_silver" style="padding: 0rem !important; width:auto;">Get Started</a> -->
-            </div>
-
-            <form class="" action="<?php base_url() ?>Payment_Gateway/payment" method="post">
-                    <!-- <input type="hidden" name="amount" id="amount" value="1" >
-                    <input type="hidden" name="name" id="name" value="<?php echo $user_data->user_fullname; ?>" >
-                    <input type="hidden" name="email" id="email" value="<?php echo $user_data->user_email_id; ?>" >
-                    <input type="hidden" name="mobile" id="mobile" value="<?php echo $user_data->user_mobile_number; ?>" >-->
-                    <input type="submit" class="btn btn-block active akame-btn text-uppercase" value="Payment Now" />
-            </form>
-
+            <?php if($is_login){ ?>
+              <form class="" action="<?php base_url() ?>Payment_Gateway/payment" method="post">
+                <input type="hidden" name="pack_name" id="pack_name" value="Silver" >
+                <input type="hidden" name="amount" id="amount" value="2000" >
+                <input type="hidden" name="name" id="name" value="<?php echo $user_data->user_fullname; ?>" >
+                <input type="hidden" name="email" id="email" value="<?php echo $user_data->user_email_id; ?>" >
+                <input type="hidden" name="mobile" id="mobile" value="<?php echo $user_data->user_mobile_number; ?>" >
+                <input type="submit" class="btn btn-block active akame-btn text-uppercase" value="Get Started" />
+              </form>
+            <?php }
+            else{ ?>
+              <a href="<?php echo base_url(); ?>Login" class="btn btn-block active akame-btn text-uppercase">Get Started</a>
+            <?php } ?>
           </div>
         </div>
       </div>
 
       <!-- Plus Tier -->
-      <div class="col-lg-5">
+      <div class="col-lg-4">
         <div class="card mb-5 mb-lg-0">
           <div class="card-body">
-            <h5 class="card-title text-muted text-uppercase text-center" style="color: #05748e!important;">Plus</h5>
-            <h6 class="card-price text-center">Rs. 4000<span class="period">/  + GST @18%</span></h6>
+            <h5 class="card-title text-muted text-uppercase text-center" style="color: #05748e!important;">Gold</h5>
+            <h6 style="font-size:26px;" class="card-price text-center">Rs. 4000<span class="period">/ Only + GST @18%</span></h6>
             <hr>
             <ul class="fa-ul">
               <li><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span><strong>Executive  online services</strong></li>
@@ -83,19 +85,64 @@
               <li><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>Confidential, safe and secure</li>
               <li><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>Preview before print / finalize</li>
               <li><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>User can generate will up to 30 days from payment</li>
-              <li ><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>One modification / updation up to 3 months</li>
+              <li ><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>One modification / updation up to three (3) months</li>
+              <li ><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>Only @ Rs. 4000/- + GST @18%</li>
               <hr>
-              <li><span class="fa-li"></span>same package will of user’s Spouse, Real Sister, Mother, Father, Son, Daughter’s is at 1500 + GST @ 18%</li>
+              <li><span class="fa-li"></span>same package will of user’s Spouse, Real Sister, Mother, Father, Son, Daughter’s is at 2000 + GST @ 18%</li>
               <li><span class="fa-li"></span>Final will delivery by E mail or Courier at user’s choice.</li>
             </ul>
-            <div class="text-center">
-                <a href="#" class="btn btn-block active  akame-btn text-uppercase" style="padding: 0rem !important; width:auto;">Get Started</a>
-            </div>
+            <?php if($is_login){ ?>
+              <form class="" action="<?php base_url() ?>Payment_Gateway/payment" method="post">
+                <input type="hidden" name="pack_name" id="pack_name" value="Gold" >
+                <input type="hidden" name="amount" id="amount" value="4000" >
+                <input type="hidden" name="name" id="name" value="<?php echo $user_data->user_fullname; ?>" >
+                <input type="hidden" name="email" id="email" value="<?php echo $user_data->user_email_id; ?>" >
+                <input type="hidden" name="mobile" id="mobile" value="<?php echo $user_data->user_mobile_number; ?>" >
+                <input type="submit" class="btn btn-block active akame-btn text-uppercase" value="Get Started" />
+              </form>
+            <?php }
+            else{ ?>
+              <a href="<?php echo base_url(); ?>Login" class="btn btn-block active akame-btn text-uppercase">Get Started</a>
+            <?php } ?>
           </div>
         </div>
       </div>
-      <div class="col-lg-1">
+
+      <div class="col-lg-4">
+        <div class="card mb-5 mb-lg-0">
+          <div class="card-body">
+            <h3 class="card-title text-muted text-uppercase text-center" style="color: #05748e!important;">Platinum</h3>
+            <!-- <h6 style="font-size:26px;" class="card-price text-center">Rs. 2000<span class="period">/ Only + GST @18%</span></h6> -->
+            <br>
+            <hr>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span><strong>Please drop your details for your
+personalized and customized will
+which is upgraded version of silver and
+gold package along with some extra
+features and benefits. </strong><br><br><br>
+Our executive will communicate you shortly.
+</li>
+
+            </ul>
+            <input type="submit" class="btn btn-block active akame-btn text-uppercase" value="Get Started" />
+            <!-- <?php if($is_login){ ?>
+              <form class="" action="<?php base_url() ?>Payment_Gateway/payment" method="post">
+                      <input type="hidden" name="amount" id="amount" value="10" >
+                      <input type="hidden" name="name" id="name" value="<?php echo $user_data->user_fullname; ?>" >
+                      <input type="hidden" name="email" id="email" value="<?php echo $user_data->user_email_id; ?>" >
+                      <input type="hidden" name="mobile" id="mobile" value="<?php echo $user_data->user_mobile_number; ?>" >
+                      <input type="submit" class="btn btn-block active akame-btn text-uppercase" value="Get Started" />
+              </form>
+            <?php }
+            else{ ?>
+              <a href="<?php echo base_url(); ?>Login" class="btn btn-block active akame-btn text-uppercase">Get Started</a>
+            <?php } ?> -->
+          </div>
         </div>
+      </div>
+      <!-- <div class="col-lg-1">
+        </div> -->
       <!-- Pro Tier -->
       <!-- <div class="col-lg-4">
         <div class="card">

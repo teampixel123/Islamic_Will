@@ -35,8 +35,8 @@ include('include/head.php');
 					<select class="form-control" name="name_title" id="name_title">
 					 <option value="0">select </option>
 					 <option>Mr.</option>
-					 <option>Miss.</option>
 					 <option>Mrs.</option>
+					 <option>Ms.</option>
 				 </select>
 				 <p id="error_name_title" style="color:red; display:none" class="text-left invalide m-0">*This field is required.</p>
         </div>
@@ -165,7 +165,7 @@ $(document).ready(function(){
 		  }
 
 		  var name_title = info[0]['name_title'];
-		  if(name_title == 0 || name_title == 'Miss.'){
+		  if(name_title == 0 || name_title == 'Mrs.'){
 		    $('.marital_status_div').hide();
 		  }
 		  else{

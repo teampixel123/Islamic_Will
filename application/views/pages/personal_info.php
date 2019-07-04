@@ -1,4 +1,5 @@
 <?php
+if($this->session->userdata('will_id')){
 defined('BASEPATH') OR exit('No direct script access allowed');
 include('include/head.php');
 ?>
@@ -12,13 +13,22 @@ include('include/head.php');
 			include('include/header.php');
 		}
 	 ?>
+	 <!--Loader Modal -->
+   <div class="modal fade" id="save_load_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class="modal-dialog" role="document">
+         <div class="modal-body" >
+           <div class="load" style="margin-left:37%; margin-top:33%;"></div>
+           <p class="text-center" style="color:#fff; font-size:20px !important; font-weight:600;">Savings your information. Please wait.</p>
+         </div>
+     </div>
+   </div>
 <!-- status bar satrt -->
 <div class="container-fluid">
 <ul class="list-unstyled multi-steps m-0 pt-3 pb-3">
 	<li class="personal-tab is-active" >Personal Information</li>
 	<li class="family-tab">Family Information</li>
 	<li class="assets-tab">Assets</li>
-	<li class="executor-tab">Executor</li>
+	<li class="executor-tab">Distribution & Executor</li>
 	<li class="witness-tab">Witness</li>
 </ul>
 </div>
@@ -42,7 +52,7 @@ include('include/head.php');
           <label for="exampleInputEmail1">Address</label>
         </div>
         <div class="col-md-10">
-          <input type="text" name="address" class="required form-control form-control-sm" id="address" aria-describedby="emailHelp" required>
+          <input type="text" name="address" class="address required form-control form-control-sm" id="address" aria-describedby="emailHelp" required>
         </div>
       </div>
     </div>
@@ -74,7 +84,7 @@ include('include/head.php');
           <label for="exampleInputEmail1">Country</label>
         </div>
         <div class="col-md-4">
-          <input type="text" name="country" class="text required form-control form-control-sm" id="country" aria-describedby="emailHelp" >
+          <input type="text" name="country" value="India" class="text required form-control form-control-sm" id="country" aria-describedby="emailHelp" readonly>
         </div>
       </div>
     </div>
@@ -106,7 +116,7 @@ include('include/head.php');
           <label for="exampleInputEmail1">PAN No</label>
         </div>
         <div class="col-md-4">
-          <input type="text" name="pan_no" class="form-control form-control-sm" id="pan_no" aria-describedby="emailHelp" >
+          <input type="text" name="pan_no" class="pan-no form-control form-control-sm" id="pan_no" aria-describedby="emailHelp" >
         </div>
       </div>
     </div>
@@ -115,7 +125,7 @@ include('include/head.php');
 <p id="error_mobile_exist" style="color:red; display:none;" class="text-left invalide_mob_mail">*This mobile number is exist. Please go to <a href="<?php echo base_url(); ?>Will_controller/login"><b>Login</b></a></p>
 <p id="error_email_exist" style="color:red; display:none;" class="text-left invalide_mob_mail">*This email id is exist. Please go to <a href="<?php echo base_url(); ?>Will_controller/login"><b>Login</b></a></p>
     <button type="submit" id="save_personal_data" class="btn btn-success" style="float:right;">Save & Next</button>
-		<button type="button" id="update_personal_data" class="btn btn-success" >Save & Next</button>
+		<!-- <button type="button" id="update_personal_data" class="btn btn-success" >Save & Next</button> -->
 		<!-- <button type="button" id="next_page" class="btn btn-info" >Next</button></p> -->
 		<!-- <div class="text-left">
 			<button type="button" id="destroy" class="btn btn-danger " >Clear session</button>
@@ -153,24 +163,20 @@ include('include/head.php');
 <!-- Border -->
 <div class="border-top mt-3"></div>
 <?php include('include/footer.php') ?>
-<!-- personal info containner end  asif change -->
-<script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="<?php echo base_url(); ?>assets/js/jquery-3.3.0.min.js" type="text/javascript"></script>
-<script src="<?php echo base_url(); ?>assets/js/jquery-ui.min.js" type="text/javascript"></script>
-<script src="<?php echo base_url(); ?>assets/js/moment.min.js" type="text/javascript"></script>
-<!-- <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="text/javascript"></script>
-<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js" type="text/javascript"></script> -->
+
 
 <script>
 $(document).ready(function(){
   //$('#save_personal_data').hide();
   //$('#update_personal_data').show();
+	$('#save_load_modal').modal('show');
   var will_id = $('#will_id').val();
   $.ajax({
     data: { 'will_id' : will_id  },
     type: "post",
     url: "<?php echo base_url(); ?>/Will_controller/get_personal_info",
     success: function (data){
+			// $('#save_load_modal').modal('hide');
       var info = JSON.parse(data);
       $('#lbl_name').text(info[0]['full_name']);
       $('#lbl_mobile').text(info[0]['mobile_no']);
@@ -180,23 +186,31 @@ $(document).ready(function(){
       $('#city').val(info[0]['city']);
       $('#pin_code').val(info[0]['pin_code']);
       $('#state').val(info[0]['state']);
-      $('#country').val(info[0]['country']);
       $('#occupation').val(info[0]['occupation']);
       $('#aadhar_no').val(info[0]['aadhar_no']);
       $('#pan_no').val(info[0]['pan_no']);
       $('#age').val(info[0]['age']);
-			if(info){
-				  $('#save_personal_data').hide();
-			}
-			else{
-				  $('#update_personal_data').show();
-			}
 
+			$('#save_load_modal').on('shown.bs.modal', function(e) {
+				$("#save_load_modal").modal("hide");
+			});
+			// if(info){
+			// 	  $('#save_personal_data').hide();
+			// }
+			// else{
+			// 	  $('#update_personal_data').show();
+			// }
     }
   });
+
 });
 </script>
 
 <script type="text/javascript">var base_url = "<?php echo base_url() ?>";</script>
 <script src="<?php echo base_url(); ?>assets/js/will_custome/personal_info_js.js" type="text/javascript"></script>
 </body>
+<?php }
+else{
+  header('location:login');
+}
+?>

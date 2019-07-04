@@ -9,7 +9,8 @@
                     <!-- Footer Logo -->
                     <a href="#" class="footer-logo"><img src="<?php echo base_url(); ?>assets/website/img/core-img/logo.svg" alt=""></a>
 
-                    <p class="mb-30"><strong>QUOTES:</strong> ‘’From what is left by parents and those nearest related-there is a share for men and a share for women – whether the property be large or small. A share made fariadh (compulsory).”<a href="<?php echo base_url(); ?>About-Us"><strong> Read more..</strong></a></p>
+                    <p class="mb-30"><strong>Disclaimer:</strong> ‘’The information contained in the Site is provided for informational purposes
+only, and should not be construed as legal advice on any subject matter.”<a href="<?php echo base_url(); ?>About-Us#disclaimer"><strong> Read more..</strong></a></p>
 
                     <!-- Copywrite Text -->
                     <div class="copywrite-text">

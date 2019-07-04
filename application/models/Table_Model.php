@@ -14,7 +14,7 @@
       $this->db->select('*');
       $this->db->from('tbl_family_info');
       $this->db->where('will_id',$will_id);
-      $this->db->order_by("FIELD(relationship,'Spouse','Father','Mother','Son','Daughter','Brother','Sister','Grand Father','Grand Mother')",'',FALSE);
+      $this->db->order_by("FIELD(relationship,'Father','Mother','Brother','Sister','Spouse','Son','Daughter','Grand Father','Grand Mother')",'',FALSE);
       $query = $this->db->get();
       $result = $query->result();
       return $result;

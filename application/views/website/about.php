@@ -284,6 +284,49 @@
         </div>
     </section>
     <!-- Akame About Area End -->
+
+    <div class="container">
+        <div class="border-top mt-3"></div>
+    </div>
+    <!-- Disclaimer Start -->
+    <section class="akame--about--area" id="disclaimer">
+        <div class="container">
+            <div class="row margin_1">
+                <!-- Section Heading -->
+                <div class="col-12 col-lg-6 about--us--content1">
+                  <div class="about--us--content mb-80">
+                    <h3> Disclaimer </h3>
+                      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The information contained in the Site is provided for informational purposes
+                        only, and should not be construed as legal advice on any subject matter.
+                      </p>
+
+                      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Your use of this website (“site”) is subject to the following Disclaimers
+                        and Terms of Use.
+                      </p>
+
+                      <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; www.wasihat.com and its affiliate entities are not a law firms, do not provide any legal advice, and are not a substitute for attorney' www. advice wasihat.com provides self-help services at your specific direction. Although all communications with www.wasihat.com are protected by our Privacy Policy, communication with www.wasihat.com is not protected by the attorney client privilege and does not create an attorney client relationship. We cannot provide any kind of advice, explanation, opinion, or recommendation about possible legal rights, remedies, options, selection of forms or strategies. Your access to the Site is subject to our terms of use.
+                      </p>
+
+
+                  </div>
+                </div>
+
+                <div class="col-12 col-lg-6 about--us--content1">
+                    <div class="about--us--content mb-80">
+                      <br><br>
+                      <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Our use of this website or the receipt of any information from this website does not create a solicitor-client relationship between you and www.wasihat.com Lawyers or any affiliated businesses and firms. If you are interested in representation by our firm, please contact us so that we can determine whether we are willing or able to accept professional responsibility. We reserve the right to decline representation if it would create a conflict of interest between any of our current of former clients.
+                      </p>
+                      <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Any publication on this website is for your information and interest only. Publications are not intended to be comprehensive, and they do not constitute and must not be relied on as legal advice. The logos of external organisations contained within this website are not owned by www.wasihat.com Lawyers and are the trademarks of the respective organisations.
+                      </p>
+                      <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; www.wasihat.com Lawyers publish electronic addresses on this website for the purpose of professional communication only. Unauthorized use of the information we present on this site, or the retransmission of the information in any form, is prohibited.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
     <div class="text-center">
         <a href="<?php echo base_url(); ?>Start-Will" class="btn active akame-btn" data-animation="fadeInUp" data-delay="700ms">Make Your Will</a>
     </div>

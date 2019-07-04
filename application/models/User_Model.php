@@ -21,5 +21,13 @@
       $this->db->where('user_id',$user_id);
       $this->db->update('tbl_user',$update_password);
     }
+
+    public function save_payment_info($payment_data){
+      $this->db->insert('tbl_payments',$payment_data);
+    }
+    public function update_subscription_info($user_id,$subscription_info){
+      $this->db->where('user_id',$user_id);
+      $this->db->update('tbl_user',$subscription_info);
+    }
   }
 ?>

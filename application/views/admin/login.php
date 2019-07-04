@@ -5,31 +5,22 @@
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">Login</div>
       <div class="card-body">
-        <form>
+        <form action="<?php echo base_url(); ?>Owner_controller/owner_login" method="post">
           <div class="form-group">
             <div class="form-label-group">
-              <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
-              <label for="inputEmail">Email address</label>
+              <input type="text" id="username" name="username" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
+              <label for="username">Username</label>
             </div>
           </div>
           <div class="form-group">
             <div class="form-label-group">
-              <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required">
-              <label for="inputPassword">Password</label>
+              <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="required">
+              <label for="password">Password</label>
             </div>
           </div>
-          <div class="form-group">
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" value="remember-me">
-                Remember Password
-              </label>
-            </div>
-          </div>
-          <a class="btn btn-primary btn-block" href="<?php echo base_url(); ?>Owner_controller/login">Login</a>
-        </form>
+          <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form><br>
         <div class="text-center">
-          <a class="d-block small mt-3" href="<?php echo base_url(); ?>Owner_controller/register">Register an Account</a>
           <a class="d-block small" href="<?php echo base_url(); ?>Owner_controller/forgot_password">Forgot Password?</a>
         </div>
       </div>

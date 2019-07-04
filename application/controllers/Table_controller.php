@@ -38,9 +38,13 @@
           $family_person_age_format = $post->family_person_age_format;
 					$is_minar = $post->is_minar;
 					$mother_of_minar = $post->mother_of_minar;
+					$guardian_name_title = $post->guardian_name_title;
 					$guardian_name = $post->guardian_name;
+          $guardian_age = $post->guardian_age;
 					$guardian_address = $post->guardian_address;
+					$opt_guardian_title = $post->opt_guardian_title;
 					$opt_guardian_name = $post->opt_guardian_name;
+					$opt_guardian_age = $post->opt_guardian_age;
 					$opt_guardian_address = $post->opt_guardian_address;
 
           if($is_minar == 1){
@@ -59,10 +63,11 @@
           $nestedData = array();
           //if($is_minar == 0){
             $nestedData[] = "<div class='row'><div class='col-md-9'>".$id.") Name: ".$family_person_name.", Relationship: ".$relationship.", Age: ".$family_person_age." ".$info."
-            </div><div class='col-md-3'>
-            <button type='button' style='width:80%' class='badge1 badge-pill ' title='Delete Family Member'>
-            <a id='family_member_delete".$id."' class='badge1 '  title='Delete Family Member' > <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>".$edit_button."
-            </button>
+            </div>
+            <div class='col-md-3 p-0'>
+              <button type='button' style='width:80%' class='badge1 ' title='Delete Family Member'>
+                <a id='family_member_delete".$id."' class='badge1 badge-pill'  title='Delete Family Member' > <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>".$edit_button."
+              </button>
             </div></div>
             <hr>
             <script>
@@ -126,9 +131,13 @@
                 $('#family_person_age_format').val('$family_person_age_format');
                 $('#is_minar').val('$is_minar');
                 $('#mother_of_minar').val('$mother_of_minar');
+                $('#guardian_name_title').val('$guardian_name_title');
                 $('#guardian_name').val('$guardian_name');
+                $('#guardian_age').val('$guardian_age');
                 $('#guardian_address').val('$guardian_address');
+                $('#opt_guardian_title').val('$opt_guardian_title');
                 $('#opt_guardian_name').val('$opt_guardian_name');
+                $('#opt_guardian_age').val('$opt_guardian_age');
                 $('#opt_guardian_address').val('$opt_guardian_address');
               });
 
@@ -177,13 +186,18 @@
         }else{
           $age = ' Age: '.$share_age.'';
         }
+        $edit_button = "";
         $nestedData = array();
-          $nestedData[] = "<div class='row'><div class='col-md-9'>".$id.") <b>".$share_relation."</b>: ".$share_name.", ".$age.", Address: ".$share_address.", share: <span class='percent'>".$share_percentage."<span>%
-          </div><div class='col-md-3'><button type='button' style='width:80%;' class='badge1 badge-pill badge-danger'>
-          <a id='share_delete".$id."' class='badge1 '  title='Delete Family Member' > <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
-
-          </button>
-          </div></div>
+          $nestedData[] = "<div class='row'>
+            <div class='col-md-9'>".$id.") <b>".$share_relation."</b>: ".$share_name.", ".$age.", Address: ".$share_address.", share: <span class='percent'>".$share_percentage."<span>%
+            </div>
+            <div class='col-md-3'>
+              <button type='button' class='badge1 badge-pill badge-danger' >
+                <a id='share_delete".$id."' class='badge1'  title='Delete Family Member' > <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
+                <a id='share_edit".$id."'  class='badge1 badge-pill '  title='Edit Family Member'> <i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
+              </button>
+            </div>
+          </div>
           <hr>
           <script>
             $('#share_delete".$id."').click(function(e){
@@ -193,6 +207,12 @@
                   type: 'post',
                   url: '".base_url()."Will_controller/delete_share',
                   success: function (data){
+                    var info = JSON.parse(data);
+                    var prev_per = info['percentage'];
+                    var total_per = 100;
+                    var rem_per = total_per - prev_per;
+                    $('#rem_per').html('<b>'+rem_per+'% Remaining</b>');
+                    $('#rem_percent').val(rem_per);
 
                     $('.table_share').dataTable({
                           'bDestroy': true
@@ -222,8 +242,40 @@
                           $('.table_share').show();
                         }
                     });
+
                   }
                 });
+            });
+            $('#share_edit".$id."').click(function(e){
+              $('#add_share').hide();
+              $('#update_share').removeClass('d-none');
+              var relation = '$share_relation';
+              if(relation == 'Organization'){
+                $('#organization').prop('checked', true);
+                $('#share_relation').val('Organization');
+                $('#relation_div').hide();
+                $('#age_div').hide();
+                $('#share_name').attr('placeholder', 'Enter Organization/Trust Name');
+                $('.required').val('');
+                $('#share_relation').val('Organization');
+                $('#share_age').removeClass('required');
+                $('#share_age').val('-1');
+              }
+              else{
+                $('#person').prop('checked', true);
+                $('#relation_div').show();
+                $('#age_div').show();
+                $('#share_relation').val('$share_relation');
+                $('#share_name').attr('placeholder', 'Firstname Middlename Lastname');
+                $('#share_age').addClass('required');
+              }
+              $('#share_id').val('$memberId');
+              $('#share_percentage').val('$share_percentage');
+              $('#share_name').val('$share_name');
+              $('#share_address').val('$share_address');
+              $('#share_age').val('$share_age');
+              $('#prev_share_percentage').val('$share_percentage');
+
             });
           </script>
           ";
@@ -260,20 +312,26 @@
 				{
 					$id++;
           $memberId = $post->id;
+          $e_name_title = $post->e_name_title;
           $executor_name = $post->executor_name;
 					$executor_age = $post->executor_age;
 					$executor_address = $post->executor_address;
 
           $nestedData = array();
 
-            $nestedData[] = "<div class='row'><div class='col-md-9'>".$id.") Executor Name: ".$executor_name.", Age: ".$executor_age.", Address: ".$executor_address."
-            </div><div class='col-md-3'><button type='button' style='width:80%;' class='badge1 badge-pill badge-danger'>
-            <a id='executor_delete".$id."' class='badge1 '  title='Delete Family Member' > <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
-            <!--a id='executor_edit".$id."'  class='badge1 badge-pill '  title='Edit Family Member'> <i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a-->
-            </button>
-            </div></div>
+            $nestedData[] = "<div class='row'>
+              <div class='col-md-9'>".$id.") Executor Name: ".$e_name_title." ".$executor_name.", Age: ".$executor_age.", Address: ".$executor_address."
+              </div>
+              <div class='col-md-3'>
+                <button type='button' class='badge1 badge-pill badge-danger'>
+                  <a id='executor_delete".$id."' class='badge1 '  title='Delete Family Member' > <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
+                  <a id='executor_edit".$id."'  class='badge1 badge-pill '  title='Edit Family Member'> <i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
+                </button>
+              </div>
+            </div>
             <hr>
             <script>
+            // Delete
               $('#executor_delete".$id."').click(function(e){
                 //alert();
             			$.ajax({
@@ -281,6 +339,10 @@
             				type: 'post',
             				url: '".base_url()."Will_controller/delete_executor',
             				success: function (data){
+
+                      var info = JSON.parse(data);
+                      var executor_count = info['executor_count'];
+                      $('#executor_count').val(executor_count);
 
                       $('.table_executor').dataTable({
                             'bDestroy': true
@@ -312,6 +374,16 @@
                       });
             				}
             			});
+              });
+              //Edit..
+              $('#executor_edit".$id."').click(function(e){
+                $('#add_executor').hide();
+                $('#update_executor').removeClass('d-none');
+                $('#executor_id').val('$memberId');
+                $('#e_name_title').val('$e_name_title');
+                $('#executor_name').val('$executor_name');
+                $('#executor_address').val('$executor_address');
+                $('#executor_age').val('$executor_age');
               });
             </script>
             ";
@@ -439,6 +511,7 @@
           $estateId = $post->id;
           $estate_type = $post->estate_type;
           $house_no = $post->house_no;
+          $survey_number_type = $post->survey_number_type;
           $survey_number = $post->survey_number;
           $measurment_area = $post->measurment_area;
           $measurment_unit = $post->measurment_unit;
@@ -449,7 +522,7 @@
           $estate_country = $post->estate_country;
           //echo print_r($estate_type) or die();
           // if($page == 'assets_info'){
-            $edit_button = "<a id='real_estate_edit".$id."'  class='badge1 badge-pill '  title='Edit Real Estate'> <i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>";
+          $edit_button = "<a id='real_estate_edit".$id."'  class='badge1 badge-pill '  title='Edit Real Estate'> <i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>";
           // }
           // else{
           //   $edit_button = "";
@@ -457,12 +530,12 @@
 
           $nestedData = array();
 
-            $nestedData[] = "<div class='row'><div class='col-md-9'>".$id.") Estate Types: ".$estate_type.", ".$estate_type." NO: ".$house_no."
-            Survey number: ".$survey_number.", Measurement: ".$measurment_area." ".$measurment_unit.",
+            $nestedData[] = "<div class='row'><div class='col-md-9'>".$id.") Estate Type: ".$estate_type.", ".$estate_type." No: ".$house_no."
+            Survey number: ".$survey_number_type." ".$survey_number.", Measurement: ".$measurment_area." ".$measurment_unit.",
             Address: ".$estate_address.",".$estate_city.", ".$estate_state.", ".$estate_country.", Pin:".$estate_pin."
             </div>
             <div class='col-md-3'>
-            <button type='button' style='width:80%' class='badge1 badge-pill badge-danger' '>
+            <button type='button' class='badge1 badge-pill badge-danger' >
             <a id='real_estate_delete".$id."' class='badge1 '  title='Delete Family Member' > <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
             ".$edit_button."
               </button>
@@ -471,41 +544,41 @@
             <script>
               $('#real_estate_delete".$id."').click(function(e){
                 //alert();
-                  $.ajax({
-                    data:{ 'id' : ".$estateId."  },
-                    type: 'post',
-                    url: '".base_url()."Will_controller/delete_real_estate',
-                    success: function (data){
+                $.ajax({
+                  data:{ 'id' : ".$estateId."  },
+                  type: 'post',
+                  url: '".base_url()."Will_controller/delete_real_estate',
+                  success: function (data){
 
-                      $('.table_real_estate').dataTable({
-                            'bDestroy': true
-                        }).fnDestroy(); // destroy table.
+                  $('.table_real_estate').dataTable({
+                      'bDestroy': true
+                  }).fnDestroy(); // destroy table.
 
-                    var table_real =  $('.table_real_estate').DataTable({
-                        'processing': true,
-                        'serverSide': true,
-                        'bFilter' : false,
-                        'bLengthChange': false,
-                        'bPaginate': false,
-                        'bInfo': false,
-                        'ajax':{
-                           'url': '".base_url()."Table_controller/real_estate_list',
-                           'dataType': 'json',
-                           'type': 'POST',
-                           'data':{ 'will_id' : ".$will_id."  }
-                          },
-                      });
-                      // Check Bank assets empty...
-                      $('.table_real_estate').on( 'draw.dt', function(){
-                         if (! table_real.data().any() ) {
-                            $('.table_real_estate').hide();
-                          }
-                          else{
-                            $('.table_real_estate').show();
-                          }
-                      });
-                    }
+                  var table_real =  $('.table_real_estate').DataTable({
+                    'processing': true,
+                    'serverSide': true,
+                    'bFilter' : false,
+                    'bLengthChange': false,
+                    'bPaginate': false,
+                    'bInfo': false,
+                    'ajax':{
+                     'url': '".base_url()."Table_controller/real_estate_list',
+                     'dataType': 'json',
+                     'type': 'POST',
+                     'data':{ 'will_id' : ".$will_id."  }
+                    },
                   });
+                    // Check Bank assets empty...
+                    $('.table_real_estate').on( 'draw.dt', function(){
+                     if(! table_real.data().any() ) {
+                        $('.table_real_estate').hide();
+                      }
+                      else{
+                        $('.table_real_estate').show();
+                      }
+                    });
+                  }
+                });
               });
               $('#real_estate_edit".$id."').click(function(){
                 $('#add_assets').hide();
@@ -518,11 +591,10 @@
                 $('#real_estate').addClass('show');
                 $('#real_estate_tab').addClass('active');
 
-
-
                 $('#real_estateId').val('$estateId');
                 $('#estate_type').val('$estate_type');
                 $('#house_no').val('$house_no');
+                $('#survey_number_type').val('$survey_number_type');
                 $('#survey_number').val('$survey_number');
                 $('#measurment_area').val('$measurment_area');
                 $('#measurment_unit').val('$measurment_unit');
@@ -531,7 +603,6 @@
                 $('#estate_pin').val('$estate_pin');
                 $('#estate_state').val('$estate_state');
                 $('#estate_country').val('$estate_country');
-                //alert($estate_type);
               });
             </script>
             ";
@@ -539,11 +610,11 @@
         }
       }
       $json_data = array(
-            "draw"            => intval($this->input->post('draw')),
-            "recordsTotal"    => intval($totalData),
-            "recordsFiltered" => intval($totalFiltered),
-            "data"            => $data
-            );
+        "draw"            => intval($this->input->post('draw')),
+        "recordsTotal"    => intval($totalData),
+        "recordsFiltered" => intval($totalFiltered),
+        "data"            => $data
+      );
       echo json_encode($json_data);
     }
 
@@ -622,8 +693,9 @@
 
           $nestedData = array();
 
-            $nestedData[] = "<div class='row'><div class='col-md-9'>".$id.") Assets type: ".$assets_type.", ".$name.": ".$bank_name.", Branch: ".$branch_name.", ".$acc_no.": ".$account_number."".$other."
-            </div><div class='col-md-3'><button type='button' style='width:80%' class='badge1 badge-pill badge-danger' >
+            $nestedData[] = "<div class='row'><div class='col-md-9'>".$id.") Assets type: ".$assets_type.", ".$name.": ".$bank_name.", Branch: ".$branch_name.", ".$acc_no.": ".$account_number."".$other."</div>
+            <div class='col-md-3'>
+            <button type='button' class='badge1 badge-pill badge-danger' >
             <a id='bank_assets_delete".$id."' class='badge1 '  title='Delete Family Member' > <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
             ".$edit_button."
             </button>
@@ -823,8 +895,9 @@
           // }
           $nestedData = array();
 
-            $nestedData[] = "<div class='row'><div class='col-md-9'>".$id.") Vehicle Model: ".$vehicle_model.", Make Year: ".$vehicle_make_year.", Registration Number: ".$registration_number."
-            </div><div class='col-md-3'><button type='button' style='width:80%'  class='badge1 badge-pill badge-danger'>
+            $nestedData[] = "<div class='row'><div class='col-md-9'>".$id.") Vehicle Model: ".$vehicle_model.", Make Year: ".$vehicle_make_year.", Registration Number: ".$registration_number."</div>
+            <div class='col-md-3'>
+            <button type='button' class='badge1 badge-pill badge-danger'>
             <a id='vehicle_delete".$id."' class='badge1 '  title='Delete Family Member' > <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
             ".$edit_button."
             </button>
@@ -934,7 +1007,7 @@
           $nestedData = array();
 
             $nestedData[] = "<div class='row'><div class='col-md-9'>".$id.") Gift Type: ".$gift_type.", Description: ".$gift_description."
-            </div><div class='col-md-3'><button type='button' style='width:80%' class='badge1 badge-pill badge-danger'>
+            </div><div class='col-md-3'><button type='button' class='badge1 badge-pill badge-danger'>
             <a id='gift_delete".$id."' class='badge1 '  title='Delete Family Member' > <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
             ".$edit_button."
           </button>
@@ -1031,14 +1104,14 @@
 
           $nestedData = array();
 
-            $nestedData[] = "<div class='row'><div class='col-md-9'>".$id.") Witness Name: ".$witness_name.", Address: ".$witness_address."
-            </div><div class='col-md-3 '><button type='button'   class='badge1 badge-pill badge-danger' >
-
-            <a id='witness_delete".$id."' class='badge1 '  title='Delete Family Member' > <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
-             <a id='witness_delete".$id."'  class='badge1 badge-pill '  title='Edit Family Member'> <i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
-
-          </button>
-            </div></div>
+            $nestedData[] = "<div class='row'>
+              <div class='col-md-9'>".$id.") Witness Name: ".$witness_name.", Address: ".$witness_address."</div>
+              <div class='col-md-3 '>
+                <button type='button' style='width:80%;' class='badge1 badge-pill badge-danger' >
+                  <a id='witness_delete".$id."' class='badge1 '  title='Delete Family Member' > <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
+                </button>
+              </div>
+            </div>
             <hr>
             <script>
               $('#witness_delete".$id."').click(function(e){
@@ -1068,12 +1141,14 @@
                           },
                       });
                       $('.table_witness').on( 'draw.dt', function(){
-                         if (! table_witness.data().any() ) {
-                           $('.table_witness').hide();
-                          }
-                          else{
-                            $('.table_witness').show();
-                          }
+                        if (! table_witness.data().any() ) {
+                          $('#btn_final_pdf, #btn_pdf').prop('disabled', true);
+                          $('.table_witness').hide();
+                         }
+                         else{
+                           $('#btn_final_pdf, #btn_pdf').prop('disabled', false);
+                           $('.table_witness').show();
+                         }
                       });
                     }
                   });
