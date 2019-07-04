@@ -12,7 +12,7 @@
                 <!-- Classy Menu -->
                 <nav class="classy-navbar justify-content-between" id="akameNav">
                     <!-- Logo -->
-                    <a class="nav-brand" href="#"><img style="width:60%;" src="<?php echo base_url(); ?>assets/website/img/core-img/Easy_Islamic_Will_V3-06.png" alt=""></a>
+                    <a class="nav-brand" href="#"><img class="nav-image" src="<?php echo base_url(); ?>assets/website/img/core-img/Easy_Islamic_Will_V3-06.png" alt=""></a>
 
                     <!-- <a class="nav-brand" href="<?php echo base_url(); ?>website"><img src="<?php echo base_url(); ?>assets/website/img/core-img/logo.svg" alt=""></a> -->
                     <!-- Navbar Toggler -->

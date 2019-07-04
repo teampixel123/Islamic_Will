@@ -179,44 +179,8 @@ the payment of the funeral expenses, other charges and debts of the deceased
           </fieldset>
     		</form>
     </div>
-<<<<<<< HEAD
-
-
-      <!-- Executor Information End  -->
-      <!-- Funeral and Burial Information Start  -->
-      <!-- <div class="" style="display:none;">
-        <div class="personal_info1 " style=" margin-right: -18px;" >
-        <form class="" id="funeral_form" method="post">
-        <fieldset>
-        <h3 class=" text-left">Funeral and Burial: </h3>
-        <div class="form-group" id="">
-          <div class="row text-center">
-            <label class="col-md-3 text-right" for="exampleInputEmail1">Funeral and Burial Person Name: </label>
-    				<div class="col-md-9">
-    					<input type="text" name="funeral_name" id="funeral_name" class="form-control clear"  aria-describedby="emailHelp" >
-              <p id="error_funeral_name" style="color:red; display:none" class="text-left valide">*This field is required.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-  		<div class="form-group" id="">
-        <div class="row text-center">
-          <label class="col-md-3 text-right" for="exampleInputEmail1">Address: </label>
-  				<div class="col-md-9">
-  					<input type="text" name="funeral_address" id="funeral_address" class="form-control clear"  aria-describedby="emailHelp" >
-            <p id="error_funeral_address" style="color:red; display:none" class="text-left valide">*This field is required.</p>
-          </div>
-        </div>
-      </div>
-      </fieldset>
-      <p><button type="button" id="add_funeral" class="btn btn-success"  >Add</button></p>
-  		</form>
-      <br><br>
-    </div> -->
-=======
   </div>
   <div class="alert alert-danger" role="alert" style="display:none;">
->>>>>>> 84f08d3953dbef5243a7b35ec8ec5dca29bc5cc3
   </div>
 <p>
     <button id="executor_previous" class="btn btn-info">Previous</button>
@@ -261,21 +225,8 @@ the payment of the funeral expenses, other charges and debts of the deceased
 <!-- Custome Javascript file -->
 <script type="text/javascript">var base_url = "<?php echo base_url() ?>";</script>
 <script src="<?php echo base_url(); ?>assets/js/will_custome/executor_funeral_js.js" type="text/javascript"></script>
-<<<<<<< HEAD
-
-<script>
-$('[data-toggle="tooltip"]').tooltip();
-
-// Add the classes to the toolip when it is created
-$('[data-toggle="tooltip"]').on('inserted.bs.tooltip',function () {
-    var thisClass = $(this).attr("class");
-    $('.tooltip-inner').addClass(thisClass);
-    $('.arrow').addClass(thisClass + "-arrow");
-});
-=======
 <script type="text/javascript">
-
->>>>>>> 84f08d3953dbef5243a7b35ec8ec5dca29bc5cc3
+    
 </script>
 </body>
 

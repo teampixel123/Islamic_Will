@@ -35,45 +35,45 @@
         <div class="container">
             <div class="row">
                 <!-- Section Heading -->
-                <div class="col-12 col-lg-6 about--us--content1 ">
+                <div class="col-12 col-lg-6 about--us--content1 no-bottom-padding">
                     <div class="about--us--content mb-80">
-                      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The terms "We" / "Us" / "Our"/ “Company” individually and collectively refer to <a href="wasihat.com/islamicwill.in" target="_blank"> <strong>wasihat.com/islamicwill.in </strong></a>
+                      <p class="indent">The terms "We" / "Us" / "Our"/ “Company” individually and collectively refer to <a href="wasihat.com/islamicwill.in" target="_blank"> <strong>wasihat.com/islamicwill.in </strong></a>
                          and the terms "You" / "Your" / "Yourself" refer to the users. </p>
                       <p>
                         This Privacy Policy applies to all information collected by or submitted to <a href="wasihat.com/islamicwill.in" target="_blank"> <strong>wasihat.com/islamicwill.in </strong></a> (or carefully selected third parties acting on <a href="wasihat.com/islamicwill.in" target="_blank"> <strong>wasihat.com/islamicwill.in </strong></a> behalf),
                         including personal information. “Personal information” is data that reasonably can be used to identify or describe an individual. You do not need to provide us personal information to
                          simply browse our site.
                       </p>
-                      <p>
-                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Please read this Privacy Policy carefully by using the Website, you indicate that you understand, agree and consent to this Privacy Policy.
+                      <p class="indent">
+                         Please read this Privacy Policy carefully by using the Website, you indicate that you understand, agree and consent to this Privacy Policy.
                         If you do not agree with the terms of this Privacy Policy, please do not use this Website.
                       </p>
                       <div class="border-top mt-3"></div><br>
 
-                      <h3>1.	Information We Collect</h3>
-                      <p>
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  We collect the following Personal Information from you while transacting through our Website. Some of it is mandatory where as some of it is optional. The Information as supplied by the users
+                      <h3 class="padding-t-20">1.	Information We Collect</h3>
+                      <p class="indent">
+                        We collect the following Personal Information from you while transacting through our Website. Some of it is mandatory where as some of it is optional. The Information as supplied by the users
                         enables us to improve our sites and provide you the most user-friendly experience.
                       </p>
                       <p>
                         (a) Name,(b) Gender, (c) Date of Birth, (d) Permanent Account Number (PAN), (e) AADHAR No, (f) Telephone Number, (g) Office Number,(h) Mobile Number (i)Permanent Address (j) Email address.
                       </p>
-                      <p>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  We respect your privacy and recognizes the need to protect the personally identifiable information i.e. any information by which you can be identified,
+                      <p class="indent">
+                          We respect your privacy and recognizes the need to protect the personally identifiable information i.e. any information by which you can be identified,
                         such as, name, address, telephone number, etc(“Personal Information”) you share with us. We would like to
                          assure you that we follow appropriate standards when it comes to protecting your privacy on our website.
                       </p>
-                      <p>
-                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; To avail certain services on our Websites, users are required to provide certain information for the registration process also.
+                      <p class="indent">
+                           To avail certain services on our Websites, users are required to provide certain information for the registration process also.
                            All required information is service dependent and we may use the above said user information to, maintain, protect, and improve its services (including advertising services)
                             and for developing new services.
-                      </p>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Such information will not be considered as sensitive if it is freely available and accessible in the public domain or is furnished under
+                      </p class="indent">
+                         Such information will not be considered as sensitive if it is freely available and accessible in the public domain or is furnished under
                          the Right to Information Act, 2005 or any other law for the time being in force.
                       <p>
                         <div class="border-top mt-3"></div><br>
 
-                        <h3>
+                        <h3 class="padding-t-20">
                       2.	How We Share Our Information
                         </h3>
                         <p>
@@ -83,15 +83,15 @@
                         </p>
                         <div class="border-top mt-3"></div><br>
 
-                        <h3>3.	Collection Of Information</h3>
-                        <p>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The data collected on this website are processed by the website operator.  The operator’s contact details can be found in the website’s
+                        <h3 class="padding-t-20">3.	Collection Of Information</h3>
+                        <p class="indent">
+                             The data collected on this website are processed by the website operator.  The operator’s contact details can be found in the website’s
                            required legal notice. We will not collect or solicit personal information via this site which would be unlawful,
                             unnecessary or unrelated to the functions or activities of RMB Lawyers, or unfair or unreasonably intrusive.
                         </p>
 
-                        <p>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Other data are collected automatically by our IT systems when you visit the website. These data are primarily
+                        <p class="indent">
+                             Other data are collected automatically by our IT systems when you visit the website. These data are primarily
                           technical data such as the browser an operating system you are using or when you accessed the page.
                            These data are collected automatically as soon as you enter our website
                         </p>
@@ -102,7 +102,7 @@
                         </p>
                         <div class="border-top mt-3"></div><br>
 
-                        <h3>•	Collecting personal information</h3>
+                        <h3 class="padding-t-20">•	Collecting personal information</h3>
                         <p>
                           Because there are risks associated with using the Internet as a transmission medium, when we use electronic forms to collect information we will also provide
                           you with other options for providing the information - for example, a paper form and mailing address and a telephone contact.
@@ -117,7 +117,7 @@
                         </p>
                         <div class="border-top mt-3"></div><br>
 
-                        <h3>
+                        <h3 class="padding-t-20">
                           4.	Use Of Your Personal Information
                         </h3>
                         <p>
@@ -131,7 +131,7 @@
                         </p>
                         <div class="border-top mt-3"></div><br>
 
-                        <h3>5.	Disclosures Of Your Information</h3>
+                        <h3 class="padding-t-20">5.	Disclosures Of Your Information</h3>
                         <p>
                           We will share your information with other sites where it is necessary in order to provide you with our recruitment services.
                            We may also release information relating to you to regulatory or law enforcement authorities, if required to do so.
@@ -140,7 +140,7 @@
                         </p>
                         <div class="border-top mt-3"></div><br>
 
-                        <h3>6.Retention Of Your Personal Information</h3>
+                        <h3 class="padding-t-20">6.Retention Of Your Personal Information</h3>
                         <p>
                           <a href="wasihat.com/islamicwill.in" target="_blank"> <strong>wasihat.com/islamicwill.in </strong></a> will keep this information for the duration of our business relationship and to the extent
                            permitted or required under applicable law, after termination of the business relationship. Laws may require
@@ -149,7 +149,7 @@
                            to meet regulatory requirements or to protect itself from legal claims.
                         </p>
                         <div class="border-top mt-3"></div><br>
-                        <h3>7.	How We Protect Your Personal Information</h3>
+                        <h3 class="padding-t-20">7.	How We Protect Your Personal Information</h3>
 
                         <p>
                           We will use appropriate technical and organizational security measures which are designed to prevent personal information from being accidentally lost, or accessed or used in an unauthorized way.
@@ -158,7 +158,7 @@
                            information we share with them only in accordance with our instructions and not for other purposes.
                         </p>
                         <div class="border-top mt-3"></div><br>
-                        <h3>8.	Information Sharing/Disclosure Of Information </h3>
+                        <h3 class="padding-t-20">8.	Information Sharing/Disclosure Of Information </h3>
 
                         <p>
                           We shares the sensitive personal information to any third party without obtaining the prior consent of the user in the following limited circumstances:
@@ -177,7 +177,7 @@
                            or servicing you, so long as those parties agree to keep this information confidential
                         </p>
                         <div class="border-top mt-3"></div><br>
-                        <h3>
+                        <h3 class="padding-t-20">
                           •	With Whom We Share Your Personal Data
                         </h3>
                         <p>
@@ -188,9 +188,9 @@
                     </div>
                 </div>
 
-                <div class="col-12 col-lg-6 about--us--content1">
+                <div class="col-12 col-lg-6 about--us--content1 no-top-padding">
                     <div class="about--us--content mb-80">
-                      <h3>•	Disclosure of Information</h3>
+                      <h3 >•	Disclosure of Information</h3>
                       <p>
                         We keep your personal data as long as necessary for the purpose for which we use your data.
                          And for as long as the law obligates us to store your data
@@ -220,17 +220,18 @@
                         We may also share personally identifiable data with our company's subsidiaries and affiliates. All these companies and agents are required to comply with the terms of our privacy policies.
                       </p>
                       <div class="border-top mt-3"></div><br>
-                      <h3>9.	Opting-Out </h3>
+                      <h3 class="padding-t-20">9.	Opting-Out </h3>
                       <p> You may at any time opt out of receiving newsletters and updates from us by selecting the
                          “unsubscribe” option included in the email or other material. </p>
-                      <h3>10.	Grievances  </h3>
+                           <div class="border-top mt-3"></div><br>
+                      <h3 class="padding-t-20">10.	Grievances  </h3>
                       <p>
                         If you have any concern in relation to the processing and use of your information or if there are any clarifications you might need with respect to our Privacy Policy, you may
                         contact ---------------------. If you raise a concern as aforementioned, we shall promptly revert to you with information on how we will handle the grievance and may even seek further details,
                         consult with other parties and maintain record of the interaction.
                       </p>
                       <div class="border-top mt-3"></div><br>
-                      <h3>
+                      <h3 class="padding-t-20">
                         11. Tell-A-Friend
                       </h3>
                       <p>
@@ -239,7 +240,7 @@
                          We do not access or store this information, except to send this invitation.
                       </p>
                       <div class="border-top mt-3"></div><br>
-                      <h3>12. Storage Of Information</h3>
+                      <h3 class="padding-t-20">12. Storage Of Information</h3>
                       <p>
                         Personally identifiable information you may share with us is stored on our database servers at <a href="wasihat.com/islamicwill.in" target="_blank"> <strong>wasihat.com/islamicwill.in </strong></a>
                         centre Kolhapur (in whatever country they may be located) or hosted by third parties who have entered into agreements with
@@ -248,7 +249,7 @@
                          from unauthorized access by unauthorized persons.
                       </p>
                       <div class="border-top mt-3"></div><br>
-                      <h3>13. Web Beacons </h3>
+                      <h3 class="padding-t-20">13. Web Beacons </h3>
                       <p>
                         On certain Web pages or e-mails, <a href="wasihat.com/islamicwill.in" target="_blank"> <strong>wasihat.com/islamicwill.in </strong></a> may utilize a common Internet technology called a "Web beacon"
                         (also known as an "action tag" or "clear GIF technology"). Web beacons help analyze the effectiveness of Web sites by measuring,
@@ -256,13 +257,13 @@
                           other tracking technologies do not automatically obtain personally identifiable information about you.
                       </p>
                       <div class="border-top mt-3"></div><br>
-                      <h3>14. Changes In Privacy Policy</h3>
+                      <h3 class="padding-t-20">14. Changes In Privacy Policy</h3>
                       <p>
                         This privacy statement is effective as on date. From time to time we may update this Privacy Policy. Your continued use of our website constitutes
                          an acceptance of the then-current Privacy Policy. We also encourage you to visit this page periodically to review any changes.
                       </p>
                       <div class="border-top mt-3"></div><br>
-                      <h3>15.	Links To The Other Sites</h3>
+                      <h3 class="padding-t-20">15.	Links To The Other Sites</h3>
                       <p>
                         We may from time to time provide links to third party websites for your convenience and information.
                         Such third party websites are not controlled by us.
@@ -291,7 +292,7 @@
                             them with information about you, or entering into any transactions on them.
                       </p>
                       <div class="border-top mt-3"></div><br>
-                      <h3>16.	Cookies</h3>
+                      <h3 class="padding-t-20">16.	Cookies</h3>
                       <p>
                          In common with many other website operators, we use standard technology called 'cookies' on our website. Cookies are small pieces of information that are stored by your browser on your computer's hard drive and they
                          are used to record how you navigate this website on each visit.
@@ -304,7 +305,7 @@
                       </p>
 
                         <div class="border-top mt-3"></div><br>
-                      <h3>•	Use of Cookies</h3>
+                      <h3 class="padding-t-20">•	Use of Cookies</h3>
                       <p> Like most websites, we use cookies. Cookies are small text files that are stored on your device when you visit certain websites.
                         Internet browsers normally accept cookies by default.</p>
 
@@ -318,7 +319,7 @@
                           (this may impair your ability to use our website so that some features may not work).
                         </p>
                           <div class="border-top mt-3"></div><br>
-                        <h3>17.	   Marketing</h3>
+                        <h3 class="padding-t-20">17.	   Marketing</h3>
                         <p>
                           We strive to provide you with choices regarding certain personal data uses,
                           particularly around marketing and advertising.
@@ -337,7 +338,7 @@
                           express opt-in consent before doing so.
                         </p>
                           <div class="border-top mt-3"></div><br>
-                        <h3>
+                        <h3 class="padding-t-20">
                           18.	 Changes To Our Privacy Statement
                         </h3>
                         <p>
@@ -345,7 +346,7 @@
                            If material changes are made we will place a prominent notice on our website.
                         </p>
                           <div class="border-top mt-3"></div><br>
-                        <h3>19.	Do Not Send Us Confidential Information</h3>
+                        <h3 class="padding-t-20">19.	Do Not Send Us Confidential Information</h3>
                         <p>
                           Please do not send us any information you consider to be confidential or secret until you have
                            received authorization from one of our lawyers/team member. Providing information to www.wasihat.com

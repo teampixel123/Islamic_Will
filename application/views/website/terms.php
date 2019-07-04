@@ -37,18 +37,18 @@
         <div class="container">
             <div class="row">
                 <!-- Section Heading -->
-                <div class="col-12 col-lg-6 about--us--content1">
+                <div class="col-12 col-lg-6 about--us--content1 no-bottom-padding">
                   <div class="about--us--content mb-80">
-                      <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  By using the Website <a href="wasihat.com/islamicwill.in" target="_blank"> <strong>wasihat.com/islamicwill.in </strong></a> you agree to be legally bound by these terms of use,
+                      <p class="indent">   By using the Website <a href="wasihat.com/islamicwill.in" target="_blank"> <strong>wasihat.com/islamicwill.in </strong></a> you agree to be legally bound by these terms of use,
                         which shall take effect from your first use of the Website. If these Terms and Conditions are not accepted in full,
                          the use of the Website must be terminated immediately. For the purposes of this testament “content” means material
                          including, without limitation, text, video, graphics and audio, published on the Website, whether copyright of
                          Islamic will.
                        </p>
                          <div class="border-top mt-3"></div><br>
-                       <h3>1.	Use Of Content / Website</h3>
+                       <h3 class="padding-t-20">1.	Use Of Content / Website</h3>
 
-                       <p>
+                       <p class="indent">
                          By using this Website, you are granted a limited, non-exclusive, nontransferable right to use the content and materials on the Website
                          in connection with your normal, noncommercial, use of the Website. All logos, brands, marks headings, labels, names,
                          signatures, numerals, shapes or any combinations thereof, appearing in this site, except as otherwise noted,
@@ -69,16 +69,16 @@
                               or hereinafter created, anywhere in the world.
                        </p>
                          <div class="border-top mt-3"></div><br>
-                       <h3>2.	Service Interruption</h3>
+                       <h3 class="padding-t-20">2.	Service Interruption</h3>
 
-                       <p>
+                       <p class="indent">
                          From time to time due to technological factors, scheduled software uploads and other factors beyond our control, service may be
                          temporarily interrupted. From time to time, certain features of the site may not be available. You agree to hold product harmless
                          against any such interruption of service.
                        </p>
                        <div class="border-top mt-3"></div><br>
-                       <h3>3.	Terms Of Use Modifications</h3>
-                       <p>
+                       <h3 class="padding-t-20">3.	Terms Of Use Modifications</h3>
+                       <p class="indent">
                          Your login subsequent to reviewing any modifications constitutes a binding acceptance by you of any and all modifications to the website/product.
                        </p>
 
@@ -87,37 +87,37 @@
                           Your statutory rights are not affected at all by these terms and conditions.
                        </p>
                          <div class="border-top mt-3"></div><br>
-                       <h3>4.	Unlawful Use</h3>
+                       <h3 class="padding-t-20">4.	Unlawful Use</h3>
 
-                       <p>
+                       <p class="indent">
                          You may only use this site for lawful purpose and you may not inhabit the use and enjoyment of this website islamicwill.com/islamicwill.in by any third party. You agree to solely responsible for
                          all things arising from your use of this site.  You may not submit, publish, distribute or transmit any defamatory, offensive, infringing, obscene,indecent,or otherwise unlawful or objectionable
                           material or information.
                        </p>
                          <div class="border-top mt-3"></div><br>
-                       <h3>5.	Indemnity</h3>
+                       <h3 class="padding-t-20">5.	Indemnity</h3>
 
-                       <p>
+                       <p class="indent">
                          You agree to indemnify to the fullest extent to islamicwill.com/islamicwill.in from and against any and all liabilities, costs,
                           demands, causes of action, damages and expenses its staff and stakeholders against any loss or damages, including without
                           limitation reasonable legal fees, which we may suffer from your activities on or use of the site, including without limitation
                           any breach by you of this Agreement or any charges or complaints made by other parties against you.
                        </p>
                          <div class="border-top mt-3"></div><br>
-                       <h3>
+                       <h3 class="padding-t-20">
                         6.	Governing Law
                        </h3>
 
-                       <p>
+                       <p class="indent">
                          The terms and conditions shall be governed and construed in accordance with the Shariat Law India.
                           Any disputes shall be subject to the courts of India
                        </p>
                          <div class="border-top mt-3"></div><br>
-                       <h3>
+                       <h3 class="padding-t-20">
                         7.	 Availability
                        </h3>
 
-                       <p>
+                       <p class="indent">
                          You are solely responsible for evaluating the fitness for a particular purpose of any downloads, programs and text available through this site.
                           Redistribution or republication of any part of this site or its content is prohibited, including such by framing or other similar or any other means,
                           without the express written consent of the Company. We do not warrant that the service from this site will be uninterrupted, timely or error free,
@@ -129,16 +129,16 @@
                          The terms and conditions shall be governed and construed in accordance with the Shariat Law India. Any disputes shall be subject to the courts of India
                        </p>
                          <div class="border-top mt-3"></div><br>
-                       <h3>8.	Links To This Website</h3>
-                        <p>
+                       <h3 class="padding-t-20">8.	Links To This Website</h3>
+                        <p class="indent">
                           You may not create a link to any page of this website without our prior written consent. If you do create a link to a page of this
                            website you do so at your own risk and
                           the exclusions and limitations set out above will apply to your use of this website by linking to it.
                         </p>
                           <div class="border-top mt-3"></div><br>
-                        <h3>9.	Links From This Website</h3>
+                        <h3 class="padding-t-20">9.	Links From This Website</h3>
 
-                        <p>
+                        <p class="indent">
                           We do not monitor or review the content of other party’s websites which are linked to from this website.
                            Opinions expressed or materials appearing on such websites are not necessarily shared or endorsed by us
                             and should not be regarded as the publisher of such opinions or material. Please be aware that we are
@@ -150,29 +150,29 @@
                               to third parties of personal information.
                         </p>
                           <div class="border-top mt-3"></div><br>
-                        <h3>10.	Registration </h3>
-                        <p>
+                        <h3 class="padding-t-20">10.	Registration </h3>
+                        <p class="indent">
                           As part of the registration process, the User will select a password and a Member ID. The User also has to give us certain
                           registration information, all of which must be accurate and updated. The user shall not select or use a registration ID
                            of another person with the intent to impersonate that person; user is not allowed to use a registration ID in which
                             another person has rights without such person's authorization.
                         </p>
                           <div class="border-top mt-3"></div><br>
-                        <h3>11.	License Of Your Content To Provider</h3>
-                        <p>
+                        <h3 class="padding-t-20">11.	License Of Your Content To Provider</h3>
+                        <p class="indent">
                           By uploading content to or submitting any materials for use on the Web Site, you grant (or warrant that the owner of such rights has expressly granted)
                            Provider a perpetual, royalty-free, irrevocable, non-exclusive right and license to use, reproduce, modify, adapt, publish,
                            translate, create derivative works from and distribute such materials or incorporate such materials into any form, medium,
                             or technology now known or later developed throughout the universe.
                         </p>
                           <div class="border-top mt-3"></div><br>
-                        <h3>•	Errors and Corrections</h3>
+                        <h3 class="padding-t-20">•	Errors and Corrections</h3>
                         <p>Provider does not represent or warrant that the Web Site will be error-free, free of viruses or other harmful components,
                           or that defects will be corrected. Provider does not warrant or represent that the information available on or through the
                            Web Site will be correct, accurate, timely, or otherwise reliable. Provider may make improvements and/or changes.
                          </p>
                            <div class="border-top mt-3"></div><br>
-                         <h3>•	Unlawful Activity </h3>
+                         <h3 class="padding-t-20">•	Unlawful Activity </h3>
 
                          <p>Provider reserves the right to investigate complaints or reported violations of the Terms of Use and to take any action
                             we deem appropriate including but not limited to reporting any suspected unlawful activity to law enforcement officials,
@@ -180,7 +180,7 @@
                               relating to user profiles, e-mail addresses, usage history, posted materials, IP addresses and traffic information.
                             </p>
                               <div class="border-top mt-3"></div><br>
-                            <h3>•	Remedies for Violations</h3>
+                            <h3 class="padding-t-20">•	Remedies for Violations</h3>
 
                             <p>
                               Provider reserves the right to seek all remedies available at law and in equity for violations of these Terms of Use,
@@ -188,7 +188,7 @@
                               Web sites and their features.
                             </p>
                               <div class="border-top mt-3"></div><br>
-                            <h3>12.	We Provide High Standards Of Service</h3>
+                            <h3 class="padding-t-20">12.	We Provide High Standards Of Service</h3>
 
                             <p>
                               We provide our services with care. We provide <a href="wasihat.com/islamicwill.in" target="_blank"> <strong>wasihat.com/islamicwill.in </strong></a> and our services with due care and skill.
@@ -206,10 +206,10 @@
                   </div>
                 </div>
 
-                <div class="col-12 col-lg-6 about--us--content1">
+                <div class="col-12 col-lg-6 about--us--content1 no-top-padding">
                     <div class="about--us--content mb-80">
-                      <h3>13.	Anti-Corruption</h3>
-                      <p>
+                      <h3 class="padding-t-20">13.	Anti-Corruption</h3>
+                      <p class="indent">
                         <a href="wasihat.com/islamicwill.in" target="_blank"> <strong>wasihat.com/islamicwill.in </strong></a> approach to bribery and corruption is one of zero tolerance.
                          All people within <a href="wasihat.com/islamicwill.in" target="_blank"> <strong>wasihat.com/islamicwill.in </strong></a> are required to act honestly and with integrity
                          at all times and must not offer or receive gifts and hospitality that could improperly influence,
@@ -222,16 +222,16 @@
                         or its clients.
                       </p>
                       <div class="border-top mt-3"></div><br>
-                      <h3>14.	Legal And Ethical Requirements</h3>
+                      <h3 class="padding-t-20">14.	Legal And Ethical Requirements</h3>
 
-                      <p>
+                      <p class="indent">
                         <a href="wasihat.com/islamicwill.in" target="_blank"> <strong>wasihat.com/islamicwill.in </strong></a> has tried to comply with all legal and ethical requirements in compiling this website.
                          We do not want to represent clients based on their review of any portion of this website that does not comply
                           with legal or ethical requirements.
                       </p>
                         <div class="border-top mt-3"></div><br>
-                        <h3>15.	Fees And Expenses</h3>
-                        <p>
+                        <h3 class="padding-t-20">15.	Fees And Expenses</h3>
+                        <p class="indent">
                           We will do our best at the outset to give you an estimate of the likely overall cost in relation to a matter.
                            There are, of course, many variables which come into play and therefore we will provide you with an estimate based
                            upon the information we have at any particular stage.  Unless our Engagement Letter states otherwise, any estimate
@@ -263,27 +263,27 @@
                             If the scope of the work changes or our assumptions change, we will discuss a revised fee arrangement or estimate with you.
                         </p>
                           <div class="border-top mt-3"></div><br>
-                        <h3>16. 	Raising Queries Or Concerns With Us</h3>
-                        <p>
+                        <h3 class="padding-t-20">16. 	Raising Queries Or Concerns With Us</h3>
+                        <p class="indent">
                           We are committed to providing a high quality service in all respects and keeping you advised regularly of the progress of your matter.
                            If you have any queries or concerns about our work for you, (including any complaint about our charges or bills) please raise them in the
                            first instance with the Client Partner.  We have a procedure in place which details how we handle complaints, which is available on our website or upon request.
                             We have eight weeks to consider your complaint. We can resolve it as soon as possible.
                         </p>
                           <div class="border-top mt-3"></div><br>
-                        <h3>17.	  Acknowledgement</h3>
-                        <p>By using <a href="wasihat.com/islamicwill.in" target="_blank"> <strong>wasihat.com/islamicwill.in </strong></a> service or accessing the <a href="wasihat.com/islamicwill.in" target="_blank"> <strong>wasihat.com/islamicwill.in </strong></a> site or applications, you acknowledge that you have read
+                        <h3 class="padding-t-20">17.	  Acknowledgement</h3>
+                        <p class="indent">By using <a href="wasihat.com/islamicwill.in" target="_blank"> <strong>wasihat.com/islamicwill.in </strong></a> service or accessing the <a href="wasihat.com/islamicwill.in" target="_blank"> <strong>wasihat.com/islamicwill.in </strong></a> site or applications, you acknowledge that you have read
                           these terms of use and agree to be bound by them.</p>
                             <div class="border-top mt-3"></div><br>
-                          <h3>18.	  Cookies</h3>
+                          <h3 class="padding-t-20">18.	  Cookies</h3>
 
-                          <p>
+                          <p class="indent">
                             Like most interactive web sites this Company’s website uses cookies to enable us to retrieve user details for each visit.
                              Cookies are used in some areas of our site to enable the functionality of this area and ease of use for those people visiting.
                               Some of our affiliate partners may also use cookies.
                           </p>
                             <div class="border-top mt-3"></div><br>
-                          <h3>•	How we use cookies</h3>
+                          <h3 class="padding-t-20">•	How we use cookies</h3>
 
                           <p>
                             We use cookies to provide you with a positive experience when you browse through our website.
@@ -291,31 +291,31 @@
                              enough capacity to make pages load quickly.
                           </p>
                             <div class="border-top mt-3"></div><br>
-                          <h3>19.	 Severance</h3>
-                          <p>
+                          <h3 class="padding-t-20">19.	 Severance</h3>
+                          <p class="indent">
                             If any of these Terms and Conditions should be deemed invalid, illegal or unenforceable for any given reason by any court of competent jurisdiction,
                             then that certain Term or Condition shall be demolished but the remaining Terms and Conditions shall survive and remain in full force and effect and
                              continue to be binding and enforceable.
                           </p>
                             <div class="border-top mt-3"></div><br>
-                          <h3>20.	  Waiver</h3>
-                          <p>
+                          <h3 class="padding-t-20">20.	  Waiver</h3>
+                          <p class="indent">
                             If you violate these Conditions of Use and we happen to take no action against it, we will still be entitled to use our rights and remedies
                              in any further situations where you violate these Conditions of Use.
                           </p>
                             <div class="border-top mt-3"></div><br>
-                          <h3>
+                          <h3 class="padding-t-20">
                           21.	  Security
                           </h3>
-                          <p>
+                          <p class="indent">
                             We are committed to ensuring that your information is secure. In order to prevent unauthorized access or disclosure we have put in place suitable
                              technical and organisational measures to safeguard and secure the information we collect online.
                           </p>
                             <div class="border-top mt-3"></div><br>
-                          <h3>
+                          <h3 class="padding-t-20">
                             22.	  Liability
                           </h3>
-                          <p>
+                          <p class="indent">
                             The Indemnities’ assume no liability or responsibility for any; (i) personal injury or property damage, of any nature whatsoever, resulting from use of the
                             <a href="wasihat.com/islamicwill.in" target="_blank"> <strong>wasihat.com/islamicwill.in </strong></a>, to the maximum extent permitted by applicable Law; (ii) unauthorized access to or use of third-party servers used in connection
                             with the <a href="wasihat.com/islamicwill.in" target="_blank"> <strong>wasihat.com/islamicwill.in </strong></a> or any data stored therein;(iii) any interruption or cessation of the or other <a href="wasihat.com/islamicwill.in" target="_blank"> <strong>wasihat.com/islamicwill.in </strong></a>, errors, inaccuracies,

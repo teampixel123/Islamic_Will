@@ -10,7 +10,7 @@
     }
    ?>
     <!-- Contact Information Area Start -->
-    <section class="contact-information-area section-padding-80-0">
+    <section class="contact-information-area section-padding-80-0 padding-t-20">
         <div class="container">
             <div class="row">
                 <!-- Single Contact Information -->
