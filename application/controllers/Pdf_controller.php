@@ -11,10 +11,12 @@
     }
 
     public function pdf(){
-  		//$this->load->library('Pdf');
-  		//$will_id = $this->session->userdata('will_id');
-      //$this->session->sess_destroy();
       $will_id = $this->input->post('will_id');
+      $is_complete = $this->input->post('is_complete');
+      if($is_complete == 1){
+        $this->Will_Model->set_will_complete($will_id);
+      }
+
       $data['personal_data']=$this->Will_Model->get_personal_data($will_id);
       $data['family_data']= $this->Table_Model->getAllFamilyMembarDataAjax($will_id);
       $data['family_data2']= $this->Table_Model->getAllFamilyMembarDataAjax($will_id);
@@ -28,17 +30,20 @@
       $data['witness']= $this->Table_Model->getAllWitnessAjax($will_id);
       $data['will_data']= $this->Will_Model->get_will_data($will_id);
 
-      $this->load->view('welcome_message',$data);
-  		//$personal_data = $this->Will_Model->get_personal_data($will_id);
-
-  		// $this->load->view('welcome_message',['data'=>$personal_data]);
+      $this->load->view('pages/blur_pdf',$data);
   	}
 
     public function final_pdf(){
       $is_login = $this->session->userdata('user_is_login');
-      //echo $is_login;
       if($is_login && $this->input->post('will_id')){
         $will_id = $this->input->post('will_id');
+        $is_complete = $this->input->post('is_complete');
+        if($is_complete == 1){
+          $this->Will_Model->set_will_complete($will_id);
+        }
+        if($this->session->userdata('set_update')){
+          $this->Will_Model->set_will_updation_over($will_id);
+        }
     		$data['personal_data']=$this->Will_Model->get_personal_data($will_id);
     		$data['family_data']= $this->Table_Model->getAllFamilyMembarDataAjax($will_id);
     		$data['family_data2']= $this->Table_Model->getAllFamilyMembarDataAjax($will_id);
@@ -52,9 +57,8 @@
     		$data['witness']= $this->Table_Model->getAllWitnessAjax($will_id);
     		$data['will_data']= $this->Will_Model->get_will_data($will_id);
         $data['share']=$this->Will_Model->display_share_info($will_id);
-        //echo print_r($data['bank_assets']);
 
-    		$this->load->view('final_pdf_steup',$data);
+    		$this->load->view('pages/final_pdf',$data);
       }
   	}
 

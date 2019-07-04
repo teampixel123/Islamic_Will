@@ -90,6 +90,7 @@ $('#relationship').change(function(){
   $('#guardian_div').hide();
   //$('#invalide_family_person_dob').hide();
 });
+
 // $('#family_person_dob').datetimepicker().on('changeDate', function(ev){
 //   var today = new Date();
 //   var dd = today.getDate();
@@ -150,8 +151,6 @@ $('#relationship').change(function(){
 //     }
 // });
 
-
-
 //  strat ob blur validation asif
 // $("#relationship").blur(function(){
 //   var relationship = $('#relationship').val();
@@ -174,11 +173,6 @@ $('#relationship').change(function(){
 //     }
 // });
 
-
-
-
-
-
 //  end ob blur validation asif
 
 //	Save/Add Family Member.. Datta...
@@ -189,21 +183,41 @@ $('#add_family_member').click(function(){
   var family_person_dob = $('#family_person_dob').val();
   var guardian_name = $('#guardian_name').val();
   var guardian_address = $('#guardian_address').val();
+  var guardian_age = $('#guardian_age').val();
+
+  if($('#add_opt_guardian').prop('checked') == true){
+    var add_opt_guardian = 'on';
+  }
+  else{
+    var add_opt_guardian = 'off';
+  }
+
+  var opt_guardian_name = $('#opt_guardian_name').val();
+  var opt_guardian_age = $('#opt_guardian_age').val();
+  var opt_guardian_address = $('#opt_guardian_address').val();
+
   var family_person_name_format =  /^[a-zA-Z ]*$/;
   var guardian_name_format =  /^[a-zA-Z ]*$/;
 
   $('.required').each(function(){
     var val = $(this).val();
-    if(val == ''){
-      $(this).addClass('invalide-input');
+    if(val == '' || val == '0'){
+      $(this).addClass('required-input');
     }
   });
 
-  if(relationship == '0' || !family_person_name_format.test(family_person_name) || family_person_name == '' || family_person_dob == '' || family_person_age == '' ||
-(guardian_name == '' && family_person_age < 18)){
+  // alert(add_opt_guardian);
 
+  if(relationship == '0' || family_person_age < 1 || family_person_age > 110 || !family_person_name_format.test(family_person_name) || family_person_name == '' || family_person_dob == '' || family_person_age == '' ||
+(guardian_name == '' && family_person_age < 18) || (family_person_age < 18 && (guardian_age >120 || guardian_age <18)) || (add_opt_guardian == 'on' && opt_guardian_name == '' && family_person_age < 18)
+|| (add_opt_guardian == 'on' && (opt_guardian_age >120 || opt_guardian_age <18))){
+    // alert('error');
   }
   else {
+    // alert('save');
+      $("#save_load_modal").modal("show");
+      $('.required').removeClass('invalide-input');
+      $('.required').removeClass('required-input');
      var form_data = $('#family_member_form').serialize();
      $.ajax({
        data: form_data,
@@ -215,6 +229,9 @@ $('#add_family_member').click(function(){
          $('#guardian_div').hide();
 
          var info = JSON.parse(data);
+         var will_id = $('#will_id').val();
+         family_member_table(will_id);
+         //
          if(info == 'max_father'){
            $("#success_save_member").html('<span style="color:red;">*Father information already exist. Not saved.</span>')
            $("#success_save_member").show().delay(5000).fadeOut();
@@ -223,14 +240,18 @@ $('#add_family_member').click(function(){
            $("#success_save_member").html('<span style="color:red;">*Can not insert mother information.</span>')
            $("#success_save_member").show().delay(5000).fadeOut();
          }
+         else if(info == 'max_grand_father'){
+           $("#success_save_member").html('<span style="color:red;">*Grand Father information already exist. Not saved.</span>')
+           $("#success_save_member").show().delay(5000).fadeOut();
+         }
          else if (info == 'success') {
            $("#success_save_member").html('<span style="color:green;">*Information Saved successfully.</span>')
            $("#success_save_member").show().delay(5000).fadeOut();
          }
-         //alert(info);
-
-         var will_id = $('#will_id').val();
-         family_member_table(will_id);
+         $('#save_load_modal').on('shown.bs.modal', function(e) {
+           $("#save_load_modal").modal("hide");
+         });
+         // alert(info);
        }
      });
     }
@@ -244,35 +265,40 @@ $('#update_family_member').click(function(){
   var family_person_dob = $('#family_person_dob').val();
   var guardian_name = $('#guardian_name').val();
   var guardian_address = $('#guardian_address').val();
+  var guardian_age = $('#guardian_age').val();
+
+  if($('#add_opt_guardian').prop('checked') == true){
+    var add_opt_guardian = 'on';
+  }
+  else{
+    var add_opt_guardian = 'off';
+  }
+
+  var opt_guardian_name = $('#opt_guardian_name').val();
+  var opt_guardian_age = $('#opt_guardian_age').val();
+  var opt_guardian_address = $('#opt_guardian_address').val();
+
   var family_person_name_format =  /^[a-zA-Z ]*$/;
   var guardian_name_format =  /^[a-zA-Z ]*$/;
 
-  if(relationship == '0'){
-    $('#error_relationship').show();
-  }
-  if(!family_person_name_format.test(family_person_name) || family_person_name == ''){
-    $('#error_family_person_name').show();
-  }
-  if(family_person_age == ''){
-    $('#error_family_person_age').show();
-  }
-  if(family_person_dob == ''){
-    $('#error_family_person_dob').show();
-  }
-  if((relationship == 'Son' || relationship == 'Daughter' || relationship == 'Brother' || relationship == 'Sister') && guardian_name == '' && family_person_age < 18){
-    $('#error_guardian_name').show();
-  }
+  $('.required').each(function(){
+    var val = $(this).val();
+    if(val == '' || val == '0'){
+      $(this).addClass('required-input');
+    }
+  });
 
-  if((relationship == 'Son' || relationship == 'Daughter' || relationship == 'Brother' || relationship == 'Sister') && (!guardian_name_format.test(guardian_name) || guardian_name == '')  && family_person_age < 18){
-    $('#error_guardian_name').show();
-  }
+  // alert(add_opt_guardian);
 
-  if(relationship == '0' || !family_person_name_format.test(family_person_name) || family_person_name == '' || family_person_dob == '' || family_person_age == '' ||
-(guardian_name == '' && family_person_age < 18)){
-
+  if(relationship == '0' || family_person_age < 1 || family_person_age > 110 || !family_person_name_format.test(family_person_name) || family_person_name == '' || family_person_dob == '' || family_person_age == '' ||
+(guardian_name == '' && family_person_age < 18) || (family_person_age < 18 && (guardian_age >120 || guardian_age <18)) || (add_opt_guardian == 'on' && opt_guardian_name == '' && family_person_age < 18)
+|| (add_opt_guardian == 'on' && (opt_guardian_age >120 || opt_guardian_age <18))){
+    // alert('error');
   }
   else {
-     $('.valide').hide();
+      $("#save_load_modal").modal("show");
+      $('.required').removeClass('invalide-input');
+      $('.required').removeClass('required-input');
 
      var form_data = $('#family_member_form').serialize();
      $.ajax({
@@ -285,30 +311,15 @@ $('#update_family_member').click(function(){
          $('#guardian_div').hide();
          $('#update_family_member').addClass('d-none');
          $('#add_family_member').show();
-         $("#success_update_member").show().delay(5000).fadeOut();
 
          var will_id = $('#will_id').val();
-         $('.table_family_member').dataTable({
-             'bDestroy': true
-         }).fnDestroy(); // destroy table.
+         family_member_table(will_id);
 
-         var table = $('.table_family_member').DataTable({
-           "processing": true,
-           "serverSide": true,
-           "bFilter" : false,
-           "bLengthChange": false,
-           "bPaginate": false,
-           "bInfo": false,
-           "ajax":{
-              "url": base_url+"Table_controller/family_member_list",
-              "dataType": "json",
-              "type": "POST",
-              "data":{
-                'will_id' : will_id,
-                'page' : 'family_info'
-              }
-           },
+         $('#save_load_modal').on('shown.bs.modal', function(e) {
+           $("#save_load_modal").modal("hide");
          });
+
+         $("#success_update_member").show().delay(5000).fadeOut();
        }
      });
     }

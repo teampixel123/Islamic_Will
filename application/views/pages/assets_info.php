@@ -13,13 +13,22 @@
       include('include/header.php');
     }
    ?>
+   <!--Loader Modal -->
+   <div class="modal fade" id="save_load_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class="modal-dialog" role="document">
+         <div class="modal-body" >
+           <div class="load" style="margin-left:37%; margin-top:33%;"></div>
+           <p class="text-center" style="color:#fff; font-size:20px !important; font-weight:600;">Savings your information. Please wait.</p>
+         </div>
+     </div>
+   </div>
 <!-- status bar satrt -->
 <div class="container-fluid">
 <ul class="list-unstyled multi-steps m-0 pt-3 pb-3">
   <li class="personal-tab" >Personal Information</li>
 	<li class="family-tab">Family Information</li>
 	<li class="assets-tab is-active">Assets</li>
-	<li class="executor-tab">Executor</li>
+	<li class="executor-tab">Distribution & Executor</li>
 	<li class="witness-tab">Witness</li>
 </ul>
 </div>
@@ -60,7 +69,7 @@
               <label class="col-md-3 text-right" for="exampleInputEmail1" placeholder="Select Estate Type">Estate Types: </label>
       				<div class="col-md-9">
                 <select class="required form-control form-control-sm clear_dr" name="estate_type" id="estate_type">
-                  <option value="0" disabled selected>Select Estate Type</option>
+                  <option value="0" >Select Estate Type</option>
       					  <option>Flat</option>
       					  <option>Shop</option>
       					  <option>Land</option>
@@ -75,15 +84,22 @@
             <div class="row text-center">
               <label class="col-md-3 text-right" for="exampleInputEmail1">Number: </label>
       				<div class="col-md-9">
-      					<input type="text" name="house_no" id="house_no" class="required form-control form-control-sm form-control-sm clear"  aria-describedby="emailHelp" >
+      					<input type="text" name="house_no" id="house_no" class="address required form-control form-control-sm form-control-sm clear"  aria-describedby="emailHelp" >
               </div>
             </div>
           </div>
           <div class="form-group" id="">
             <div class="row text-center">
-              <label class="col-md-3 text-right" for="exampleInputEmail1">Survey number / CTS No : </label>
-      				<div class="col-md-9">
-      					<input type="text" name="survey_number" id="survey_number" class="required form-control form-control-sm clear"  aria-describedby="emailHelp" >
+              <label class="col-md-3 text-right" for="exampleInputEmail1">Survey Number : </label>
+              <div class="col-md-3">
+                <select class="required form-control form-control-sm clear_dr" name="survey_number_type" id="survey_number_type">
+                  <option value="0">Select</option>
+      					  <option>C.S. No.</option>
+      					  <option>R.S. No.</option>
+      				 </select>
+              </div>
+      				<div class="col-md-6">
+      					<input type="text" name="survey_number" id="survey_number" class="address required form-control form-control-sm clear"  aria-describedby="emailHelp" >
               </div>
             </div>
           </div>
@@ -91,7 +107,7 @@
             <div class="row text-center">
               <label class="col-md-3 text-right" for="exampleInputEmail1">Measurement Area: </label>
       				<div class="col-md-5">
-      					<input type="number" name="measurment_area" id="measurment_area" class="required form-control form-control-sm clear"  aria-describedby="emailHelp" >
+      					<input type="number" name="measurment_area" id="measurment_area" class="only_number required form-control form-control-sm clear"  aria-describedby="emailHelp" >
               </div>
               <div class="col-md-4">
                 <select class="required form-control form-control-sm clear_dr" name="measurment_unit" id="measurment_unit">
@@ -107,7 +123,7 @@
             <div class="row text-center">
               <label class="col-md-3 text-right" for="exampleInputEmail1">Address : </label>
       				<div class="col-md-9">
-      					<input type="text" name="estate_address" id="estate_address" class="required form-control form-control-sm clear" >
+      					<input type="text" name="estate_address" id="estate_address" class="address required form-control form-control-sm clear" >
               </div>
             </div>
           </div>
@@ -123,15 +139,7 @@
             <div class="row text-center">
               <label class="col-md-3 text-right" for="exampleInputEmail1">PIN/ZIP Code: </label>
       				<div class="col-md-9">
-      					<input type="number" name="estate_pin" id="estate_pin" class="pin-code required form-control form-control-sm clear"  aria-describedby="emailHelp" >
-              </div>
-            </div>
-          </div>
-          <div class="form-group" id="">
-            <div class="row text-center">
-              <label class="col-md-3 text-right" for="exampleInputEmail1">Country: </label>
-      				<div class="col-md-9">
-      					<input type="text" name="estate_country" id="estate_country" class="text required form-control form-control-sm clear"  aria-describedby="emailHelp" >
+      					<input type="number" name="estate_pin" id="estate_pin" class="only_number pin-code required form-control form-control-sm clear"  aria-describedby="emailHelp" >
               </div>
             </div>
           </div>
@@ -140,6 +148,14 @@
               <label class="col-md-3 text-right" for="exampleInputEmail1">State: </label>
       				<div class="col-md-9">
       					<input type="text" name="estate_state" id="estate_state" class="text required form-control form-control-sm clear"  aria-describedby="emailHelp" >
+              </div>
+            </div>
+          </div>
+          <div class="form-group" id="">
+            <div class="row text-center">
+              <label class="col-md-3 text-right" for="exampleInputEmail1">Country: </label>
+      				<div class="col-md-9">
+      					<input type="text" name="estate_country" id="estate_country" class="text required form-control form-control-sm clear"  aria-describedby="emailHelp" >
               </div>
             </div>
           </div>
@@ -159,12 +175,12 @@
           <h4 class=" text-left p-2">Bank Assets : </h4>
           <div class="form-group" id="">
             <div class="row text-center">
-              <label class="col-md-3 text-right" for="exampleInputEmail1">Estate Types: </label>
+              <label class="col-md-3 text-right" for="exampleInputEmail1">Account Types: </label>
       				<div class="col-md-9">
                 <select class="required form-control form-control-sm clear_dr" name="assets_type" id="assets_type">
-                  <option value="0">Select Estate Type</option>
+                  <option value="0" >Select Account Type</option>
       					  <option>Savings A/c</option>
-      					  <option>Current  A/C</option>
+      					  <option>Current A/C</option>
       					  <option>Fixed Deposits</option>
       					  <option>PPF</option>
       					  <option>Bank Locker</option>
@@ -175,7 +191,7 @@
               </div>
             </div>
           </div>
-      		<div class="form-group" id="">
+      		<div class="form-group" >
             <div class="row text-center">
               <label class="col-md-3 text-right" for="exampleInputEmail1">
                 <div id="customer_id" class="hide_num" style="display:none;">Customer ID No: </div>
@@ -186,8 +202,8 @@
                 <div id="account_no" class="hide_num" >Account Number: </div>
                 <!-- <div id="amount" class="hide_num" >Some amount: </div> -->
               </label>
-      				<div class="col-md-9">
-      					<input type="text" name="account_number" id="account_number" class="required form-control form-control-sm clear"  aria-describedby="emailHelp" >
+      				<div class="col-md-9" id="acc_num">
+      					<input type="number" name="account_number" id="account_number" class="only_number required form-control form-control-sm clear"  aria-describedby="emailHelp" >
               </div>
             </div>
           </div>
@@ -223,7 +239,7 @@
             <div class="row text-center">
               <label class="col-md-3 text-right" for="exampleInputEmail1">Pin Code</label>
       				<div class="col-md-9">
-      					<input type="number" name="b_pin_code" id="b_pin_code" class="required form-control form-control-sm clear"  aria-describedby="emailHelp" >
+      					<input type="number" name="b_pin_code" id="b_pin_code" class="pin-code required form-control form-control-sm clear"  aria-describedby="emailHelp" >
               </div>
             </div>
           </div>
@@ -239,7 +255,7 @@
             <div class="row text-center">
               <label class="col-md-3 text-right" for="exampleInputEmail1">FD Receipt No  </label>
       				<div class="col-md-9">
-      					<input type="text" name="fd_recipt_No" id="fd_recipt_No" class="required form-control form-control-sm clear"  aria-describedby="emailHelp" >
+      					<input type="number" name="fd_recipt_No" id="fd_recipt_No" class="only_number required form-control form-control-sm clear"  aria-describedby="emailHelp" >
               </div>
             </div>
           </div>
@@ -247,7 +263,7 @@
             <div class="row text-center">
               <label class="col-md-3 text-right" for="exampleInputEmail1">Key Number  </label>
       				<div class="col-md-9">
-      					<input type="text" name="key_number" id="key_number" class="required form-control form-control-sm clear"  aria-describedby="emailHelp" >
+      					<input type="number" name="key_number" id="key_number" class="required only_number form-control form-control-sm clear"  aria-describedby="emailHelp" >
               </div>
             </div>
           </div>
@@ -270,7 +286,7 @@
             <div class="row text-center">
               <label class="col-md-3 text-right" for="exampleInputEmail1">Vehicle Model: </label>
               <div class="col-md-9">
-      					<input type="text" name="vehicle_model" id="vehicle_model" class="required form-control form-control-sm clear"  aria-describedby="emailHelp" >
+      					<input type="text" name="vehicle_model" id="vehicle_model" class="text_number required form-control form-control-sm clear"  aria-describedby="emailHelp" >
               </div>
             </div>
           </div>
@@ -288,7 +304,7 @@
             <div class="row text-center">
               <label class="col-md-3 text-right" for="exampleInputEmail1">Registration Number: </label>
       				<div class="col-md-9">
-      					<input type="text" name="registration_number" id="registration_number" class="required form-control form-control-sm clear"  aria-describedby="emailHelp" >
+      					<input type="text" name="registration_number" id="registration_number" class="address required form-control form-control-sm clear"  aria-describedby="emailHelp" >
               </div>
             </div>
           </div>
@@ -325,7 +341,7 @@
             <div class="row text-center">
               <label class="col-md-3 text-right" for="exampleInputEmail1">Description: </label>
       				<div class="col-md-9">
-      					<input type="text" name="gift_description" id="gift_description" class="required form-control clear"  aria-describedby="emailHelp" >
+      					<input type="text" name="gift_description" id="gift_description" class="text_number required form-control clear"  aria-describedby="emailHelp" >
               </div>
             </div>
           </div>
@@ -342,7 +358,7 @@
       <div>
     </div>
   </div>
-  <p id="error_add_assets" style="color:red; display:none" class="text-left valide">*Add family information for next.</p>
+  <p id="error_add_assets" style="color:red; display:none" class="text-left valide">*Add assets information for next.</p>
   <p>  <button type="button" id="assets_previous" class="btn btn-info">Previous</button>
   <button type="button" style="float:right;" type="button" id="assets_next" class="btn btn-info" >Next</button></p>
   </div>
@@ -471,12 +487,7 @@
 
 <?php include('include/footer.php') ?>
 <!-- personal info containner end -->
-<script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="<?php echo base_url(); ?>assets/js/jquery-3.3.0.min.js" type="text/javascript"></script>
-<script src="<?php echo base_url(); ?>assets/js/jquery-ui.min.js" type="text/javascript"></script>
-<script src="<?php echo base_url(); ?>assets/js/moment.min.js" type="text/javascript"></script>
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="text/javascript"></script>
-<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
+
 
 <!-- Custome Javascript file -->
 <script type="text/javascript">var base_url = "<?php echo base_url() ?>";</script>

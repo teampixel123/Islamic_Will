@@ -47,7 +47,7 @@
               <div class="col-md-5">
                 <input type="text" name="otp" class="form-control" id="otp" aria-describedby="emailHelp" style="width:90%;" >
                 <p id="error_invalide_otp" style="color:red; display:none" class="text-left invalide">*Invalide Security Code</p>
-                <p id="" style="color:green;" class="text-left "> Security Code send to your Mobile </p>
+                <p id="" style="color:green;" class="text-left "> Security Code send to your Mobile/Email. </p>
                 <!-- <p id="error_expired_otp" style="color:red; display:none" class="text-left invalide">*Invalide Expired</p> -->
               </div>
             </div>
@@ -147,33 +147,27 @@ $(document).ready(function(){
     }
   });
 
-  $('#btn_login').click(function(){
+$('#btn_login').click(function(){
 var otp = $('#otp').val();
 var user_password = $('#user_password').val();
 var contact_type = $('#contact_type').val();
     $.ajax({
-       data: {
-         'user_password': user_password,
-       'otp': otp,
-      'contact_type': contact_type },
-       type: "post",
-      url: "<?php echo base_url(); ?>Login_controller/validtion_password",
-      success: function(data){
-
-      var responce = JSON.parse(data);
-      if (responce['responce'] == 'Valide') {
-        window.location.href = "<?php echo base_url() ?>User_controller/user_dashboard";
-      }
-      else{
-        // alert(responce['responce']);
-
-        $('#error_invalide_otp').show();
-      }
-
-        // window.location.href = "<?php echo base_url() ?>User_controller/user_dashboard";
+      data: {
+        'user_password': user_password,
+        'otp': otp,
+        'contact_type': contact_type },
+        type: "post",
+        url: "<?php echo base_url(); ?>Login_controller/validtion_password",
+        success: function(data){
+          var responce = JSON.parse(data);
+          if (responce['responce'] == 'Valide') {
+            window.location.href = "<?php echo base_url() ?>User_controller/user_dashboard";
+          }
+          else{
+            $('#error_invalide_otp').show();
+          }
       }
     });
-
    });
 
 

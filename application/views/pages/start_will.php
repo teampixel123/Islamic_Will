@@ -2,17 +2,29 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 include('include/head.php');
 ?>
+<style>
+
+</style>
 <body>
 	<?php
 		$is_login = $this->session->userdata('user_is_login');
 	  if($is_login){
 			include('include/login_header.php');
-			// $this->session->unset_userdata('will_id');
 		}
 		else{
 			include('include/header.php');
 		}
 	 ?>
+   <!--Loader Modal -->
+   <div class="modal fade" id="save_load_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class="modal-dialog" role="document">
+         <div class="modal-body" >
+           <div class="load" style="margin-left:37%; margin-top:33%;"></div>
+           <p class="text-center" style="color:#fff; font-size:20px !important; font-weight:600;">Savings your information. Please wait.</p>
+         </div>
+     </div>
+   </div>
+
 <h3 id="head1" class="display-4 text-center">Start Your Will Now</h3>
  <!-- end status bar -->
 <!-- personal info containner start  asif change -->
@@ -32,17 +44,16 @@ include('include/head.php');
 				<div class="col-md-2"></div>
         <label class="col-md-2 text-right" for="exampleInputEmail1">Full Name</label>
 				<div class="col-md-2">
-					<select class="form-control" name="name_title" id="name_title">
-					 <option value="0" disabled selected>select </option>
+					<select class="form-control required" name="name_title" id="name_title">
+					 <option value="0">Select</option>
 					 <option>Mr.</option>
-					 <option>Miss.</option>
 					 <option>Mrs.</option>
+					 <option>Ms.</option>
+					 <!-- <option>Miss.</option> -->
 				 </select>
-				 <p id="error_name_title" style="color:red; display:none" class="text-left invalide m-0">*This field is required.</p>
         </div>
         <div class="col-md-4">
-					<input type="text" name="full_name"  id="full_name"class="form-control empty" id="exampleInputEmail1" placeholder="Full Name" >
-					<p id="error_name" style="color:red; display:none" class="text-left invalide  m-0">*This field is required.</p>
+					<input type="text" name="full_name"  id="full_name" class="required text title-case form-control" id="exampleInputEmail1" placeholder="Full Name" >
 				</div>
       </div>
     </div>
@@ -54,8 +65,8 @@ include('include/head.php');
         <label class="col-md-2 text-right" for="exampleInputEmail1">Marital status</label>
 			<!-- </div> -->
 				<div class="col-md-4">
-					<select class="form-control" name="marital_status" id="marital_status">
-					 <option value="0" disabled selected>select </option>
+					<select class="form-control required" name="marital_status" id="marital_status">
+					 <option value="0">select </option>
 					 <option>Married</option>
 					 <option id="Unmarried">Unmarried</option>
 					 <option id="Widove">Widove</option>
@@ -75,11 +86,11 @@ include('include/head.php');
 				<div class="col-md-2" style="padding-left:30px;">
 					<div class="row">
 					<div class="custom-control custom-radio col-md-6">
-						<input type="radio" id="child_yes" name="is_have_child" class="custom-control-input" value="1" checked="">
+						<input type="radio" id="child_yes" name="is_have_child" class="custom-control-input" value="1" >
 						<label class="custom-control-label" for="child_yes">Yes</label>
 					</div>
 					<div class="custom-control custom-radio col-md-6">
-						<input type="radio" id="child_no" name="is_have_child" value="0" class="custom-control-input">
+						<input type="radio" id="child_no" name="is_have_child" value="0" class="custom-control-input" checked>
 						<label class="custom-control-label" for="child_no">No</label>
 					</div>
 				</div>
@@ -94,8 +105,7 @@ include('include/head.php');
           <label for="exampleInputEmail1">Mobile No</label>
         </div>
         <div class="col-md-4">
-          <input type="number" name="mobile_no" class="form-control" id="mobile_no" aria-describedby="emailHelp" placeholder="Mobile No" >
-					<p id="error_mobile_no" style="color:red; display:none" class="text-left invalide  m-0">*Please enter a valid number.</p>
+          <input type="number" name="mobile_no" class="required mobile form-control" id="mobile_no" aria-describedby="emailHelp" placeholder="Mobile No" >
         </div>
       </div>
     </div>
@@ -107,8 +117,7 @@ include('include/head.php');
           <label for="exampleInputEmail1">Email</label>
         </div>
         <div class="col-md-4">
-          <input type="email" title="Fill Your Email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="email">
-					<p id="error_email" style="color:red; display:none" class="text-left invalide  m-0">*Please enter a valid email address.</p>
+          <input type="email" name="email" class="required email form-control" id="email" aria-describedby="emailHelp" placeholder="email">
         </div>
       </div>
     </div>
@@ -125,15 +134,12 @@ include('include/head.php');
 </div><br><br><br>
 <div class="border-top mt-3"></div>
 <?php include('include/footer.php') ?>
-<script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="<?php echo base_url(); ?>assets/js/jquery-3.3.0.min.js" type="text/javascript"></script>
-<script src="<?php echo base_url(); ?>assets/js/jquery-ui.min.js" type="text/javascript"></script>
-<script src="<?php echo base_url(); ?>assets/js/moment.min.js" type="text/javascript"></script>
 <?php $is_login = $this->session->userdata('user_is_login');
 	if($is_login && $this->session->userdata('will_id') ){
 ?>
 <script>
 $(document).ready(function(){
+	//$('#exampleModal').modal('show');
 	$('#update_start_data').show();
   var will_id = $('#will_id').val();
   $.ajax({
@@ -165,7 +171,7 @@ $(document).ready(function(){
 		  }
 
 		  var name_title = info[0]['name_title'];
-		  if(name_title == 0 || name_title == 'Miss.'){
+		  if(name_title == 0 || name_title == 'Mrs.'){
 		    $('.marital_status_div').hide();
 		  }
 		  else{
@@ -187,4 +193,12 @@ $(document).ready(function(){
 
 <script type="text/javascript">var base_url = "<?php echo base_url() ?>";</script>
 <script src="<?php echo base_url(); ?>assets/js/will_custome/start_will_js.js" type="text/javascript"></script>
+<script type="text/javascript">
+//
+	$(document).ready(function(){
+		//alert();
+     // $('#save_load_modal').modal('show');
+	});
+</script>
+
 </body>

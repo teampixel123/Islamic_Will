@@ -22,23 +22,26 @@ $(document).ready(function(){
     $('.required').each(function(){
       var val = $(this).val();
       if(val == ''){
-        $(this).addClass('invalide-input');
+        $(this).addClass('required-input');
       }
     });
 
-    if(age == '' || address == '' || !city_format.test(city) || city == '' || !state_format.test(state) ||
+    if(age < 18 || age > 100 || address == '' || !city_format.test(city) || city == '' || !state_format.test(state) ||
   state == '' || !country_format.test(country) || country == '' || !occupation_format.test(occupation) || occupation == '' || !pin_code_format.test(pin_code) ||
   pin_code == '' || aadhar_no == '' || !aadhar_no_format.test(aadhar_no)){
     // Blank...
     }
 		else {
-      //$(this).removeClass('invalide-input');
+       $('#save_load_modal').modal('show');
       var form_data = $('#personal_info_form').serialize();
      $.ajax({
        data: form_data,
        type: "post",
        url: base_url+"Will_controller/update_personal_info",
        success: function (data){
+         $('#save_load_modal').on('shown.bs.modal', function(e) {
+           $("#save_load_modal").modal("hide");
+         });
          window.location.href = base_url+"Will_controller/family_info_view";
        }
       });

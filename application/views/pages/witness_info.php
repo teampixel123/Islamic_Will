@@ -13,6 +13,15 @@
       include('include/header.php');
     }
    ?>
+   <!--Loader Modal -->
+   <div class="modal fade" id="save_load_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class="modal-dialog" role="document">
+         <div class="modal-body" >
+           <div class="load" style="margin-left:37%; margin-top:33%;"></div>
+           <p class="text-center" style="color:#fff; font-size:20px !important; font-weight:600;">Savings your information. Please wait.</p>
+         </div>
+     </div>
+   </div>
 <div class="" id="witness_page_div">
 <!-- status bar satrt -->
 <div class="container-fluid">
@@ -20,7 +29,7 @@
   <li class="personal-tab" >Personal Information</li>
 	<li class="family-tab">Family Information</li>
 	<li class="assets-tab">Assets</li>
-	<li class="executor-tab">Executor</li>
+	<li class="executor-tab">Distribution & Executor</li>
 	<li class="witness-tab is-active">Witness</li>
 </ul>
 </div>
@@ -38,16 +47,15 @@
         <div class="row text-center">
           <label class="col-md-3 text-right" for="exampleInputEmail1">Witness Name</label>
   				<div class="col-md-9">
-  					<input type="text" name="witness_name" id="witness_name" class="form-control form-control-sm clear"  aria-describedby="emailHelp" >
+  					<input type="text" name="witness_name" id="witness_name" class="required text form-control form-control-sm clear"  aria-describedby="emailHelp" >
           </div>
         </div>
       </div>
-
   		<div class="form-group" id="">
         <div class="row text-center">
           <label class="col-md-3 text-right" for="exampleInputEmail1">Witness Address</label>
   				<div class="col-md-9">
-  					<input type="text" name="witness_address" id="witness_address" class="form-control form-control-sm clear"  aria-describedby="emailHelp" >
+  					<input type="text" name="witness_address" id="witness_address" class="address required form-control form-control-sm clear"  aria-describedby="emailHelp" >
           </div>
         </div>
       </div>
@@ -63,7 +71,7 @@
         <div class="row text-center">
           <label class="col-md-3 text-right"  for="exampleInputEmail1">Date of Signature</label>
   				<div class="col-md-9">
-  					<input type="text" style="background-color:#fff;"  readonly name="will_date" id="will_date" class="form-control form-control-sm clear"  aria-describedby="emailHelp" >
+  					<input type="text" style="background-color:#fff;"  readonly name="will_date" id="will_date" class="required form-control form-control-sm clear"  aria-describedby="emailHelp" >
           </div>
         </div>
       </div>
@@ -81,7 +89,7 @@
         <div class="row text-center">
           <label class="col-md-3 text-right" for="exampleInputEmail1">Place</label>
   				<div class="col-md-9">
-  					<input type="text" name="will_place" id="will_place" class="form-control form-control-sm clear"  aria-describedby="emailHelp" >
+  					<input type="text" name="will_place" id="will_place" class="required text form-control form-control-sm clear"  aria-describedby="emailHelp" >
           </div>
         </div>
       </div>
@@ -96,181 +104,24 @@
 
   <?php if($this->session->userdata('user_is_login')){
           ?>
-          <button type="submit" id="btn_final_pdf" class="btn btn-info float-right" >Create PDF</button></p>
+          <button type="submit" id="btn_final_pdf" class="btn btn-info float-right" disabled>Create PDF</button></p>
           <?php
         } else{ ?>
-          <button type="submit" id="btn_pdf" class="btn btn-info float-right" >Create PDF</button></p>
+          <button type="submit" id="btn_pdf" class="btn btn-info float-right" disabled>Create PDF</button></p>
       <?php } ?>
       <form target="_blank" id="final_pdf" class="" action="<?php echo base_url() ?>Pdf_controller/final_pdf" method="post">
         <input type="hidden" name="will_id" value="<?php echo $this->session->userdata('will_id'); ?>">
+        <input type="hidden" name="is_complete" value="1">
       </form>
       <form target="_blank" id="pdf" class="" action="<?php echo base_url() ?>Pdf_controller/pdf" method="post">
         <input type="hidden" name="will_id" value="<?php echo $this->session->userdata('will_id'); ?>">
+        <input type="hidden" name="is_complete" value="1">
       </form>
   <!--a href="#" type="button" id="personal_next" class="btn btn-info" style="float:right;">Create PDF</a--></p>
   </div>
 
   <div class="col-md-6 col-sm-12">
   	<input type="hidden" name="will_id" id="will_id" value="<?php echo $start_will_data['will_id']; ?>">
-
-    <!-- <div class="container" style="background-color:white;">
-    	<div class="" style="">
-        <table id="table_personal_info" class="personal_data_dispaly table_personal_info">
-          <thead>
-            <tr>
-              <th>Personal Info
-                <button style="float:right;" type='button'  class='badge1 badge-pill' title='Delete Family Member'>
-                  <a id='per_info' href="<?php echo base_url(); ?>Will_controller/personal_info_view" class='badge1' title='Delete Family Member'><i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
-                </button>
-                <br> <hr> </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>
-              <div class="row text-center">
-    		        <label class="col-md-4 text-right" for="exampleInputEmail1" >Name :</label>
-    						<label class="col-md-8 text-left" id="lbl_name" ></label>
-    		      </div>
-
-    		      <div class="row text-center">
-    		        <label class="col-md-4 text-right" for="exampleInputEmail1">Mobile :</label>
-    						<label class="col-md-8 text-left" id="lbl_mobile"></label>
-    		      </div>
-
-    		      <div class="row text-center">
-    		        <label class="col-md-4 text-right" for="exampleInputEmail1">Email :</label>
-    						<label class="col-md-8 text-left" id="lbl_email"></label>
-    		      </div>
-    		      <div class="row text-center">
-    		        <label class="col-md-4 text-right" for="exampleInputEmail1">Address :</label>
-    						<label class="col-md-8 text-left" id="lbl_address"></label>
-    		      </div>
-    		      <div class="row text-center">
-    		        <label class="col-md-4 text-right" for="exampleInputEmail1">Occupation :</label>
-    						<label class="col-md-8 text-left" id="lbl_occupation"></label>
-    		      </div>
-    		      <div class="row text-center">
-    		        <label class="col-md-4 text-right" for="exampleInputEmail1">Aadhar No :</label>
-    						<label class="col-md-8 text-left" id="lbl_aadhar"></label>
-    		      </div>
-    		      <div class="row text-center">
-    		        <label class="col-md-4 text-right" for="exampleInputEmail1">PAN No :</label>
-    						<label class="col-md-8 text-left" id="lbl_pan"></label>
-    		      </div>
-            </td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div> -->
-
-    <!-- <div class="container" style="background-color:white;">
-    <table id="table_family_member" class="personal_data_dispaly table_family_member" style=" width:100%;">
-      <thead>
-        <tr>
-          <th>Family Member Info
-            <button style="float:right;" type='button'  class='badge1 badge-pill' title='Delete Family Member'>
-              <a id='per_info' href="<?php echo base_url(); ?>Will_controller/family_info_view" class='badge1' title='Delete Family Member'><i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
-            </button>
-            <br> <hr> </th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
-    </div> -->
-
-    <!-- <div class="container" style="background-color:white;">
-      <b>Assets Information</b>
-    <table id="table_real_estate" class="personal_data_dispaly table_real_estate" style=" width:100%;">
-      <thead>
-        <tr>
-          <th>Real Estate Info
-            <button style="float:right;" type='button'  class='badge1 badge-pill' title='Delete Family Member'>
-              <a id='per_info' href="<?php echo base_url(); ?>Will_controller/assets_info_view" class='badge1' title='Delete Family Member'><i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
-            </button>
-            <br> <hr> </th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
-
-    <table id="table_bank_assets" class="personal_data_dispaly table_bank_assets" style=" width:100%;">
-      <thead>
-        <tr>
-          <th>Bank Assets Info
-            <button style="float:right;" type='button'  class='badge1 badge-pill' title='Delete Family Member'>
-              <a id='per_info' href="<?php echo base_url(); ?>Will_controller/assets_info_view" class='badge1' title='Delete Family Member'><i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
-            </button>
-             <br> <br></th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
-
-    <table id="table_vehicle" class="personal_data_dispaly table_vehicle" style=" width:100%;">
-      <thead>
-        <tr>
-          <th>Vehicle Info
-            <button style="float:right;" type='button'  class='badge1 badge-pill' title='Delete Family Member'>
-              <a id='per_info' href="<?php echo base_url(); ?>Will_controller/assets_info_view" class='badge1' title='Delete Family Member'><i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
-            </button>
-            <br> <hr> </th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
-
-    <table id="table_gift" class="personal_data_dispaly table_gift" style=" width:100%;">
-      <thead>
-        <tr>
-          <th>Gift Info
-            <button style="float:right;" type='button'  class='badge1 badge-pill' title='Delete Family Member'>
-              <a id='per_info' href="<?php echo base_url(); ?>Will_controller/assets_info_view" class='badge1' title='Delete Family Member'><i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
-            </button>
-            <br> <hr> </th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
-    </div> -->
-
-    <!-- <div class="container" style="background-color:white;">
-    <table id="table_executor" class="personal_data_dispaly table_executor" style=" width:100%;">
-      <thead>
-        <tr>
-          <th>Executor Info
-            <button style="float:right;" type='button'  class='badge1 badge-pill' title='Delete Family Member'>
-              <a id='per_info' href="<?php echo base_url(); ?>Will_controller/executor_funeral_view" class='badge1' title='Delete Family Member'><i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
-            </button>
-            <br> <hr> </th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
-    </div> -->
-
-
-    <!-- <div class="container" style="background-color:white;">
-    <table id="table_funeral" class="personal_data_dispaly table_funeral" style=" width:100%;">
-      <thead>
-        <tr>
-          <th>Funeral Info
-            <button style="float:right;" type='button'  class='badge1 badge-pill' title='Delete Family Member'>
-              <a id='per_info' href="<?php echo base_url(); ?>Will_controller/executor_funeral_view" class='badge1' title='Delete Family Member'><i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
-            </button>
-             <br> <hr> </th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
-    </div> -->
-
     <div class="container" style="background-color:white;">
     <table id="table_witness" class="personal_data_dispaly table_witness" style=" width:100%;">
       <thead>
@@ -279,6 +130,18 @@
         </tr>
       </thead>
       <tbody>
+      </tbody>
+    </table>
+    <table id="table_date_place" class="personal_data_dispaly table_date_place" style=" width:100%;">
+      <thead>
+        <tr>
+          <th>Date and Place <br> <hr> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="date_place_td"> </td>
+        </tr>
       </tbody>
     </table>
     </div>
@@ -310,25 +173,10 @@
       </div>
       </div>
 </div>
-
 <!-- Border -->
-
-		<div class="border-top mt-3"></div>
-
-
+<div class="border-top mt-3"></div>
 <?php include('include/footer.php') ?>
 <!-- personal info containner end -->
-<script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="<?php echo base_url(); ?>assets/js/jquery-3.3.0.min.js" type="text/javascript"></script>
-<script src="<?php echo base_url(); ?>assets/js/jquery-ui.min.js" type="text/javascript"></script>
-<script src="<?php echo base_url(); ?>assets/js/moment.min.js" type="text/javascript"></script>
-<!-- bootstrap-datetimepicker -->
-<script src="<?php echo base_url(); ?>assets/datetimepicker3/bootstrap-datetimepicker.js"></script>
-<script src="<?php echo base_url(); ?>assets/datetimepicker3/bootstrap-datetimepicker.fr.js"></script>
-
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="text/javascript"></script>
-<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
-
 <!-- Custome Javascript file -->
 <script type="text/javascript">var base_url = "<?php echo base_url() ?>";</script>
 <script src="<?php echo base_url(); ?>assets/js/will_custome/witness_js.js" type="text/javascript"></script>

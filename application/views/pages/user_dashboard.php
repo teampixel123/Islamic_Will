@@ -20,7 +20,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div id="content-wrapper">
 
     <div class="container-fluid">
-
+      <?php if($this->session->flashdata('subscription_status')) { ?>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item" style="color:green;">
+            Subscribed Successfully.
+          </li>
+        </ol>
+      <?php } ?>
+      <?php if($user_subscription == 1){ ?>
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
@@ -37,7 +44,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <div class="card-body-icon">
                 <i class="fas fa-fw fa-comments"></i>
               </div>
-              <div class="mr-5"><?php echo $user_data->complete_will; ?> Completed Will! <br></div>
+              <div class="mr-0"><?php echo $user_data->complete_will; ?> Completed Will! <br></div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="#">
               <span class="float-left">View Details</span>
@@ -53,7 +60,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <div class="card-body-icon">
                 <i class="fas fa-fw fa-list"></i>
               </div>
-              <div class="mr-5"><?php echo $user_data->incomplete_will; ?> Incomplete Will!</div>
+              <div class="mr-0"><?php echo $user_data->incomplete_will; ?> Incomplete Will!</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="#">
               <span class="float-left">View Details</span>
@@ -69,7 +76,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <div class="card-body-icon">
                 <i class="fas fa-fw fa-shopping-cart"></i>
               </div>
-              <div class="mr-5"><?php echo $user_data->pdf_download; ?> Download Will! <br></div>
+              <div class="mr-0"><?php echo $user_data->pdf_download; ?> Download Will! <br></div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="#">
               <span class="float-left">View Details</span>
@@ -85,10 +92,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <div class="card-body-icon">
                 <i class="fas fa-fw fa-life-ring"></i>
               </div>
-              <div class="mr-5">
-                      <?php $start_data= $user_data->user_subscription_start_date;
-                      $endDay = date ("d-m-Y", strtotime ($start_data ."+30 days"));
-                      echo $endDay;
+              <div class="mr-0">
+                      <?php
+                      echo $user_data->user_subscription_end_date;
+                      // $start_data= $user_data->user_subscription_start_date;
+                      // $endDay = date ("d-m-Y", strtotime ($start_data ."+30 days"));
+                      // echo $endDay;
                        ?> End Subcription Date
               </div>
             </div>
@@ -101,6 +110,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
         </div>
       </div>
+    <?php } else { ?>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="<?php echo base_url() ?>Pricing"><b>Subscribe Now</b></a>
+        </li>
+        <!-- <li class="breadcrumb-item active">Overview</li> -->
+      </ol>
+
+      <!--  -->
+    <?php
+    if($this->session->userdata('will_id')){
+      $will_id=$this->session->userdata('will_id');?>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <form target="_blank" id="pdf" class="" action="<?php echo base_url() ?>Pdf_controller/pdf" method="post">
+            <input type="hidden" name="will_id" value="<?php echo $this->session->userdata('will_id'); ?>">
+            Your PDF is here. <button type="submit" id="btn_pdf" class="btn btn-info" >View PDF</button></p>
+          </form>
+        </li>
+      </ol>
+    <?php }
+        }
+    ?>
+
 
 
 
@@ -109,8 +142,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
   </div>
-  <!-- /.content-wrapper -->
-
   </div>
 </div>
 

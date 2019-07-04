@@ -12,17 +12,15 @@
 
     public function register_user_view(){
       $this->load->view('pages/register_user');
-
     }
 
+    // Send OTP...
     public function save_register_user(){
       $date = date('d-m-Y');
       $user_password = random_string('nozero',8);
       $reg_name = $this->input->post('reg_name');
       $reg_mob_email = $this->input->post('reg_mob_email');
       $contact_type = $this->input->post('contact_type');
-       // echo $user_password;
-
 
       if ($contact_type=='email') {
       $check = $this->Will_Model->check_mail_id($this->input->post('reg_mob_email'));
@@ -40,12 +38,13 @@
         $this->session->set_userdata('otp',$user_password);
 
         if ($contact_type=='mobile_number') {
+          //echo $user_password;
           $fields = array(
               "sender_id" => "FSTSMS",
               "message" => "Islamic Will OTP: $user_password",
               "language" => "english",
               "route" => "p",
-              "numbers" => "8482860057",
+              "numbers" => $reg_mob_email,
           );
 
           $curl = curl_init();
@@ -70,28 +69,20 @@
           $res = curl_exec($curl);
           $err = curl_error($curl);
           curl_close($curl);
-
         }
-           else
+        else
         {
           $from_email = "asif@pixelbazar.com";
-          //$to_email = $this->input->post('email');
-          // $to_email = $mail_id;
           //Load email library
           $this->load->library('email');
-
           $this->email->from($from_email);
-          $this->email->to('mullaa064@gmail.com');
+          $this->email->to($reg_mob_email);
           $this->email->subject('Islamic Will OTP');
           $this->email->message('Islamic Will OTP:'.$user_password);
-
         }
-
-        $error = $user_password;
+        $error = $user_password;  // Change this value to success after project complete...
         echo json_encode($error);
       }
-
-
     }
 
     // public function save_forget1($reg_mob_email){
@@ -106,69 +97,85 @@
 
 
     public function save_forget(){
-
       $reg_mob_email = $this->input->post('reg_mob_email');
-       $contact_type = $this->input->post('contact_type');
+      $contact_type = $this->input->post('contact_type');
 
-          $check_forget = $this->Will_Model->check_forget($reg_mob_email);
-          // echo $check_forget;
-          if ($check_forget) {
-              $password=$check_forget[0]['user_password'];
-             $status='success';
-           }
-         else
-          {
+      $check_forget = $this->Will_Model->check_forget($reg_mob_email);
+
+      if ($check_forget) {
+        $password=$check_forget[0]['user_password'];
+        $status='success';
+      }
+      else{
          $status='error';
       }
       echo json_encode($status);
-}
+    }
+    // Save new user.. if otp is correct...
+     public function validtion_password(){
+      $otp = $this->input->post('otp');
+      $user_password = $this->input->post('user_password');
+      $otp2 = $this->session->userdata('otp');
+      $contact_type= $this->input->post('contact_type');
 
-       public function validtion_password(){
-         $otp = $this->input->post('otp');
-        $user_password = $this->input->post('user_password');
-        $otp2 = $this->session->userdata('otp');
-        $contact_type= $this->input->post('contact_type');
-
-
-        if ($otp == $otp2 ) {
-
-          $date = date('d-m-Y');
-          $user_id = random_string('nozero',8);
-
-          if ($this->session->userdata('will_id')){
-            $will_id=$this->session->userdata('will_id');
-                $this->Login_Model->update_will_user($will_id,$user_id);
+      if($otp == $otp2 ) {
+        $date = date('d-m-Y');
+        $user_id = random_string('nozero',8);  // Generate user id...
+        // Check for id duplication...
+        $flag = 0;
+        while($flag==0){
+          $user_data = $this->Will_Model->get_user_data($user_id);
+          if($user_data){
+            $flag = 0;
+            $user_id = random_string('nozero',8);
           }
-          if ($contact_type == 'mobile_number') {
-            $register_data = array(
-              'user_id' => $user_id,
-              'user_fullname' => $this->session->userdata('reg_name'),
-              'user_mobile_number' => $this->session->userdata('reg_mob_email'),
-              'user_password' => $user_password,
-              'reg_date' => $date,
-            );
+          else{
+            $flag = 1;
           }
-          else {
-            $register_data = array(
-              'user_id' => $user_id,
-              'user_fullname' => $this->session->userdata('reg_name'),
-              'user_email_id' => $this->session->userdata('reg_mob_email'),
-              'user_password' => $user_password,
-              'reg_date' => $date,
-            );
-          }
-          $this->Login_Model->save_register_user($register_data);
-
-
-            $session_data = array('user_is_login' => 'YES','user_id' =>$user_id);
-            $this->session->set_userdata($session_data);
-            $result['responce'] = 'Valide';
         }
-        else{
-          $result['responce'] = 'Invalide';
+        // echo $this->session->userdata('reg_name');
+        // echo $this->session->userdata('reg_mob_email');
+        // if($this->session->userdata('will_id')){
+        //   if($user_data){
+        //     foreach ($user_data as $user_data1) {
+        //       $incomplete_will = $user_data1->incomplete_will;
+        //     }
+        //     if($incomplete_will != 0) {
+        //       $will_id=$this->session->userdata('will_id');
+        //       $this->Login_Model->update_will_user($will_id,$user_id);
+        //     }
+        //   }
+        // }
+        if($contact_type == 'mobile_number') {
+          $register_data = array(
+            'user_id' => $user_id,
+            'user_fullname' => $this->session->userdata('reg_name'),
+            'user_mobile_number' => $this->session->userdata('reg_mob_email'),
+            'user_password' => $user_password,
+            'reg_date' => $date,
+          );
         }
-        echo json_encode($result);
-       }
+        else {
+          $register_data = array(
+            'user_id' => $user_id,
+            'user_fullname' => $this->session->userdata('reg_name'),
+            'user_email_id' => $this->session->userdata('reg_mob_email'),
+            'user_password' => $user_password,
+            'reg_date' => $date,
+          );
+        }
+
+        // echo print_r($register_data);
+        $this->Login_Model->save_register_user($register_data);
+        $session_data = array('user_is_login' => 'YES','user_id' =>$user_id);
+        $this->session->set_userdata($session_data);
+        $result['responce'] = 'Valide';
+      }
+      else{
+        $result['responce'] = 'Invalide';
+      }
+      echo json_encode($result);
+     }
 
 
 
@@ -269,20 +276,24 @@
 
     public function login_user(){
       $mob_email = $this->input->post('mob_email');
-      // $otp = $this->input->post('otp');
       $user_password = $this->input->post('user_password');
-      // $current_date = date('d-m-Y');
-      // $current_time = date('H:i:s');
-
-       $get_data = $this->Login_Model->validate_otp($mob_email,$user_password);
+      $get_data = $this->Login_Model->validate_otp($mob_email,$user_password);
        //echo print_r($get_data);
       if($get_data){
-
          $user_id = $get_data[0]['user_id'];
-
-         if ($this->session->userdata('will_id')){
-           $will_id=$this->session->userdata('will_id');
-               $this->Login_Model->update_will_user($will_id,$user_id);
+         $user_subscription = $get_data[0]['user_subscription'];
+         $incomplete_will = $get_data[0]['incomplete_will'];
+         $complete_will = $get_data[0]['complete_will'];
+         if($this->session->userdata('temp_will_id') && $user_subscription == 1 && $incomplete_will > 0){
+           $will_id=$this->session->userdata('temp_will_id');
+           $this->Login_Model->update_will_user($will_id,$user_id);
+           $complete_will = $complete_will +1;
+           $incomplete_will = $incomplete_will - 1;
+           $will_count_data = array(
+             'complete_will' => $complete_will,
+             'incomplete_will' => $incomplete_will,
+           );
+           $this->Will_Model->update_will_count($will_count_data,$user_id);
          }
            $session_data = array('user_is_login' => 'YES','user_id' =>$user_id);
            $this->session->set_userdata($session_data);

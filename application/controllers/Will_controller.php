@@ -21,45 +21,85 @@
   	}
 
     public function login(){
+      $this->session->unset_userdata('user_is_login');
       //$this->session->sess_destroy();
       $this->load->view('pages/login');
   	}
     public function logout(){
       $this->session->sess_destroy();
-      header('location:login');
+
+      header('Location:'.base_url().'Login');
+      // header('location:login');
   	}
 
     public function forget_pass(){
       $this->session->sess_destroy();
       $this->load->view('pages/forget_pass');
     }
-
-  public function make_will_view(){
-    $is_login = $this->session->userdata('user_is_login');
-    $user_id = $this->session->userdata('user_id');
-    if($is_login && $user_id){
-      $this->session->unset_userdata('will_id');
-        header('location:start_will_view');
-    }
-    else {
-      $this->session->sess_destroy();
-      header('location:login');
-    }
-  }
-    public function start_will_view(){
+    // For new will.. Unset will id session...
+    public function make_will_view(){
       $is_login = $this->session->userdata('user_is_login');
       $user_id = $this->session->userdata('user_id');
       if($is_login && $user_id){
+        $this->session->unset_userdata('will_id');
+
+        header('Location:'.base_url().'Will_controller/start_will_view');
+        // header('location:start_will_view');
+      }
+      else {
+        $this->session->sess_destroy();
+
+        header('Location:'.base_url().'Login');
+        // header('location:login');
+      }
+    }
+
+    // Start will view...
+    public function start_will_view(){
+      $is_login = $this->session->userdata('user_is_login');
+      $user_id = $this->session->userdata('user_id');
+      $will_id = $this->session->userdata('will_id');
+      if($is_login && $user_id){
 
         $user_data = $this->Will_Model->get_user_data($user_id);
-        // $this->load->view('pages/start_will',['user_data'=>$user_data]);
-         $this->load->view('pages/start_will',['user_data'=>$user_data]);
+        foreach ($user_data as $data2) {
+          $user_subscription1 = $data2->user_subscription;
+          $incomplete_will = $data2->incomplete_will;
+          $rem_updations = $data2->rem_updations;
+        }
+        if($user_subscription1 == 1 && $incomplete_will > 0){
+          $this->load->view('pages/start_will',['user_data'=>$user_data]);
+        }
+        else if($user_subscription1 == 1 && $rem_updations > 0 && $will_id ){
+            $this->load->view('pages/start_will',['user_data'=>$user_data]);
+        }
+        else{
+          header('Location:'.base_url().'User-Dashboard');
+        }
       }
       else{
-      $this->session->sess_destroy();
-      $this->load->view('pages/start_will');
+        $this->session->sess_destroy();
+        $this->load->view('pages/start_will');
+      }
     }
+
+    // Start Will View after login... Edit Will...
+    public function load_login_start_info(){
+      $is_login = $this->session->userdata('user_is_login');
+      if($is_login && $this->input->post('will_id')){
+        $will_id = $this->input->post('will_id');
+        $this->session->set_userdata('will_id',$will_id);
+        $this->session->set_userdata('set_update','1');
+        header('Location:'.base_url().'Will_controller/start_will_view');
+        // header('location:start_will_view');
+      }
+      else{
+        $this->session->unset_userdata('will_id');
+        header('Location:'.base_url().'Will_controller/start_will_view');
+        // header('Location:'.base_url().'Login');
+      }
     }
+
 
     public function personal_info_view(){
       $is_login = $this->session->userdata('user_is_login');
@@ -73,27 +113,17 @@
       }
   	}
 
-    public function load_login_start_info(){
-      $is_login = $this->session->userdata('user_is_login');
-      if($is_login && $this->input->post('will_id')){
-        $will_id = $this->input->post('will_id');
-        $this->session->set_userdata('will_id',$will_id);
-        header('location:start_will_view');
-      }
-      else{
-        header('location:login');
-      }
-    }
-
     public function family_info_view(){
       $is_login = $this->session->userdata('user_is_login');
       $user_id = $this->session->userdata('user_id');
+      $will_id = $this->session->userdata('will_id');
+      $data['personal_data'] = $this->Will_Model->get_personal_data($will_id);
       if($is_login && $user_id){
-        $user_data = $this->Will_Model->get_user_data($user_id);
-        $this->load->view('pages/family_info',['user_data'=>$user_data]);
+        $data['user_data'] = $this->Will_Model->get_user_data($user_id);
+        $this->load->view('pages/family_info',$data);
       }
       else{
-        $this->load->view('pages/family_info');
+        $this->load->view('pages/family_info',$data);
       }
     }
 
@@ -141,29 +171,18 @@
         $this->load->view('pages/user_dashboard',['user_data'=>$user_data]);
       }
       else{
-        header('Location:login');
+        header('Location:'.base_url().'Login');
+        // header('Location:login');
       }
     }
 
-    // public function will_list(){
-    //   $is_login = $this->session->userdata('user_is_login');
-    //   if($is_login){
-    //     $user_id = $this->session->userdata('user_id');
-    //     $user_data = $this->Will_Model->get_user_data($user_id);
-    //     $this->load->view('pages/will_list_table',['user_data'=>$user_data]);
-    //   }
-    //   else{
-    //     header('Location:login');
-    //   }
-    // }
+   public function pdf_view2(){
+    $this->load->view('pages/pdf');
+   }
 
- public function pdf_view2(){
-  $this->load->view('pages/pdf');
- }
-
- public function pdf_view(){
-  $this->load->view('pages/final_pdf');
- }
+   public function pdf_view(){
+    $this->load->view('pages/final_pdf');
+   }
 
  /**************************************************************/
  /*            delete Will  .... dhananjay...               */
@@ -188,10 +207,21 @@
  public function save_start_info(){
    $will_date = date('d-m-Y');
    $will_id = random_string('nozero',8);
-   // $user_id = random_string('nozero',8);
-   $name_title = $this->input->post('name_title');
+   // Check for duplication of will id...
+   $flag = 0;
+   while($flag==0){
+     $will_data = $this->Will_Model->get_will_data($will_id);
+     if($will_data){
+       $flag = 0;
+       $will_id = random_string('nozero',8);
+     }
+     else{
+       $flag = 1;
+     }
+   }
 
-   if($name_title == 'Miss.' || $name_title == 'Mrs.'){
+   $name_title = $this->input->post('name_title');
+   if($name_title == 'Ms.' || $name_title == 'Mrs.'){
      $gender = "Female";
    }
    else{
@@ -201,11 +231,28 @@
    $is_login = $this->session->userdata('user_is_login');
    if($is_login){
      $user_id = $this->session->userdata('user_id');
-
+     $user_data = $this->Will_Model->get_user_data($user_id);
+     foreach ($user_data as $data2) {
+       $user_subscription = $data2->user_subscription;
+       $max_will = $data2->max_will;
+       $complete_will = $data2->complete_will;
+       $incomplete_will = $data2->incomplete_will;
+       $updation_end_date = $data2->updation_end_date;
+       $rem_updations = $data2->rem_updations;
+     }
+     $complete_will = $complete_will +1;
+     $incomplete_will = $incomplete_will - 1;
+     $will_count_data = array(
+       'complete_will' => $complete_will,
+       'incomplete_will' => $incomplete_will,
+     );
      $will_data = array(
        'will_id' => $will_id,
        'will_date' => $will_date,
        'will_user_id' => $user_id,
+       'will_rem_updations' => $rem_updations,
+       'updation_last_date' => $updation_end_date,
+       'date' => $will_date,
      );
      $start_data = array(
        'will_id' => $will_id,
@@ -220,44 +267,48 @@
 
     $this->Will_Model->save_start_info($start_data);
     $this->Will_Model->save_will_data($will_data);
+    $this->Will_Model->update_will_count($will_count_data,$user_id);
 
     $session_data = array('will_start' => 'yes','will_id' =>$will_id);
     $temp_will_id =  $this->session->set_userdata($session_data);
 
-    $get_personal_data = $this->Will_Model->get_personal_data($will_id);
-    echo json_encode($get_personal_data);
+    // $get_personal_data = $this->Will_Model->get_personal_data($will_id);
+    // echo json_encode($get_personal_data);
    }
 
-     else{
-        $will_data = array(
-          'will_id' => $will_id,
-          'will_date' => $will_date,
-        );
-        $start_data = array(
-          'will_id' => $will_id,
-          'name_title'=>$this->input->post('name_title'),
-          'full_name'=>$this->input->post('full_name'),
-          'mobile_no'=>$this->input->post('mobile_no'),
-          'email'=>$this->input->post('email'),
-          'gender'=>$gender,
-          'marital_status'=>$this->input->post('marital_status'),
-          'is_have_child'=>$this->input->post('is_have_child'),
-        );
+   else{
+      $will_data = array(
+        'will_id' => $will_id,
+        'will_date' => $will_date,
+        'date' => $will_date,
+      );
+      $start_data = array(
+        'will_id' => $will_id,
+        'name_title'=>$this->input->post('name_title'),
+        'full_name'=>$this->input->post('full_name'),
+        'mobile_no'=>$this->input->post('mobile_no'),
+        'email'=>$this->input->post('email'),
+        'gender'=>$gender,
+        'marital_status'=>$this->input->post('marital_status'),
+        'is_have_child'=>$this->input->post('is_have_child'),
+      );
 
-       $this->Will_Model->save_start_info($start_data);
-       $this->Will_Model->save_will_data($will_data);
+     $this->Will_Model->save_start_info($start_data);
+     $this->Will_Model->save_will_data($will_data);
 
-       $session_data = array('will_start' => 'yes','will_id' =>$will_id);
-       $temp_will_id =  $this->session->set_userdata($session_data);
+     $session_data = array('will_start' => 'yes','will_id' =>$will_id,'temp_will_id'=>$will_id);
+     $this->session->set_userdata($session_data);
 
-       $get_personal_data = $this->Will_Model->get_personal_data($will_id);
-       echo json_encode($get_personal_data);
-     }
+     // $get_personal_data = $this->Will_Model->get_personal_data($will_id);
+     // echo json_encode($get_personal_data);
+   }
   }
 
  public function update_start_data(){
+   $date = date('d-m-Y');
    $will_id = $this->input->post('will_id');
-   if($name_title == 'Miss.' || $name_title == 'Mrs.'){
+   $name_title = $this->input->post('name_title');
+   if($name_title == 'Ms.' || $name_title == 'Mrs.'){
      $gender = "Female";
    }
    else{
@@ -272,8 +323,11 @@
      'marital_status'=>$this->input->post('marital_status'),
      'is_have_child'=>$this->input->post('is_have_child'),
    );
+   $will_data = array(
+     'date' => $date,
+   );
    $this->Will_Model->update_start_data($will_id,$start_data);
-
+   $this->Will_Model->save_date_place_info($will_id,$will_data);
  }
 
  /**************************************************************/
@@ -354,72 +408,48 @@
  //     }
  // }
 
+ public function get_will_data(){
+   $will_id = $this->input->post('will_id');
+   $get_will_data = $this->Will_Model->get_will_data($will_id);
+   echo json_encode($get_will_data);
+ }
 
  /**************************************************************/
  /*            Get personal info.... datta...                 */
  /**************************************************************/
-     public function get_personal_info(){
-       $will_id = $this->input->post('will_id');
-       $get_personal_data = $this->Will_Model->get_personal_data($will_id);
-       echo json_encode($get_personal_data);
-     }
+   public function get_personal_info(){
+     $will_id = $this->input->post('will_id');
+     $get_personal_data = $this->Will_Model->get_personal_data($will_id);
+     echo json_encode($get_personal_data);
+   }
 
-     public function display_personal_info(){
-       $personal_data = $this->Will_Model->display_personal_info();
-       $this->load->view('pages/display_personal_info',['personal_data'=>$personal_data]);
-     }
+     // public function display_personal_info(){
+     //   $personal_data = $this->Will_Model->display_personal_info();
+     //   $this->load->view('pages/display_personal_info',['personal_data'=>$personal_data]);
+     // }
 
 
     /**************************************************************/
     /*        Save    Update personal info.... datta...                 */
     /**************************************************************/
     public function update_personal_info(){
-      // $will_date = date('d-m-Y');
-      // $name_title = $this->input->post('name_title');
-      //
-      // if($name_title == 'Miss.'){
-      //   $marital_status = 'Unmarried';
-      //   $is_have_child = '0';
-      //   $gender = 'Female';
-      // }
-      // else {
-      //   $marital_status = $this->input->post('marital_status');
-      //   $is_have_child = $this->input->post('is_have_child');
-      //   $gender = $this->input->post('gender');
-      // }
-      //
-      // if($marital_status == 'Unmarried'){
-      //   $is_have_child = '0';
-      // }
 
       $will_id =  $this->session->userdata('will_id');
       $personal_data_update = array(
-                'address'=>$this->input->post('address'),
-                'city'=>$this->input->post('city'),
-                'pin_code'=>$this->input->post('pin_code'),
-                'state'=>$this->input->post('state'),
-                'country'=>$this->input->post('country'),
-                'occupation'=>$this->input->post('occupation'),
-                'aadhar_no'=>$this->input->post('aadhar_no'),
-                'pan_no'=>$this->input->post('pan_no'),
-                'age'=>$this->input->post('age'),
-              );
-        // $check_mail = $this->Will_Model->check_mail_id($this->input->post('email'));
-        // $check_mobile = $this->Will_Model->check_mobile_no($this->input->post('mobile_no'));
+        'address'=>$this->input->post('address'),
+        'city'=>$this->input->post('city'),
+        'pin_code'=>$this->input->post('pin_code'),
+        'state'=>$this->input->post('state'),
+        'country'=>$this->input->post('country'),
+        'occupation'=>$this->input->post('occupation'),
+        'aadhar_no'=>$this->input->post('aadhar_no'),
+        'pan_no'=>$this->input->post('pan_no'),
+        'age'=>$this->input->post('age'),
+      );
+      $this->Will_Model->update_personal_info($will_id,$personal_data_update);
 
-       /*if ($check_mail > 0) {
-          echo "Email Exist";
-        }
-        elseif ($check_mobile > 0) {
-          echo "Mobile Number Exist";
-        }
-        else{*/
-          $this->Will_Model->update_personal_info($will_id,$personal_data_update);
-
-          $get_personal_data = $this->Will_Model->get_personal_data($will_id);
-          echo json_encode($get_personal_data);
-          //header('Location: display_personal_info');
-      //  }
+      $get_personal_data = $this->Will_Model->get_personal_data($will_id);
+      echo json_encode($get_personal_data);
     }
 
     /**************************************************************/
@@ -430,11 +460,12 @@
       $input_relationship = $this->input->post('relationship');
 
       $posts = $this->Table_Model->getAllFamilyMembarDataAjax($will_id);
-      $i = 0; $j = 0;
+      $i = 0; $j = 0; $k=0;
       foreach ($posts as $posts) {
         $relationship = $posts->relationship;
         if($relationship == 'Father'){ $i++; }
         if($relationship == 'Mother'){ $j++; }
+        if($relationship == 'Grand Father'){ $k++; }
       }
 
 
@@ -443,6 +474,9 @@
         }
         elseif($j==4 && $input_relationship == 'Mother'){
           $error = 'max_mother';
+        }
+        elseif ($k==1 && $input_relationship == 'Grand Father') {
+          $error = 'max_grand_father';
         }
         else{
           $member_data = array(
@@ -513,7 +547,7 @@
       }
     }
 
-//family_info
+    //Save Family Information...
     public function save_family_info(){
      $fmily_data = array(
                 'relationship'=>$this->input->post('relationship'),
@@ -522,34 +556,41 @@
               );
             $this->Will_Model->save_family_info($fmily_data);
     }
-
+    //Delete Family Information...
     public function delete_family_member(){
       $id = $this->input->post('id');
       $this->Will_Model->delete_family_member($id);
     }
 
     /**************************************************************/
-    /*            Save/Add Distribution of 1/3 Share... datta...  */
+    /*            Distribution of 1/3 Share... datta...  */
     /**************************************************************/
+    // Save Distribution...
     public function save_share_distribution(){
       $will_id = $this->session->userdata('will_id');
       $posts = $this->Table_Model->getAllShareDataAjax($will_id);
       $percentage = 0;
       $share_percentage = $this->input->post('share_percentage');
+      $share_type = $this->input->post('share_type');
       foreach ($posts as $posts) {
         $per = $posts->share_percentage;
         $percentage = $percentage + $per;
       }
-
+      if($share_type == 'Organization'){
+        $share_relation = 'Organization';
+      }
+      else{
+        $share_relation = $this->input->post('share_relation');
+      }
       $total_per = $percentage + $share_percentage;
-      if($total_per > 100){
+      if($total_per > 100 || $percentage == 100){
         $responce['status'] = 'error';
         $responce['percentage'] = $percentage;
       }
       else{
         $share_data = array(
           'will_id' => $will_id,
-          'share_relation' => $this->input->post('share_relation'),
+          'share_relation' => $share_relation,
           'share_name' => $this->input->post('share_name'),
           'share_address' => $this->input->post('share_address'),
           'share_age' => $this->input->post('share_age'),
@@ -565,25 +606,97 @@
         $responce['status'] = 'success';
         $responce['percentage'] = $percentage;
       }
+      echo json_encode($responce);
+    }
 
 
+    // Update Distribution of 1/3 Share...
+    public function update_share_distribution(){
+      $will_id = $this->session->userdata('will_id');
+      $posts = $this->Table_Model->getAllShareDataAjax($will_id);
+      $percentage = 0;
+      $share_percentage = $this->input->post('share_percentage');
+      $prev_share_percentage = $this->input->post('prev_share_percentage');
+      $share_type = $this->input->post('share_type');
+      foreach ($posts as $posts) {
+        $per = $posts->share_percentage;
+        $percentage = $percentage + $per;
+      }
+      if($share_type == 'Organization'){
+        $share_relation = 'Organization';
+      }
+      else{
+        $share_relation = $this->input->post('share_relation');
+      }
+      $total_per = ($percentage - $prev_share_percentage) + $share_percentage;
+      if($total_per > 100){
+        $responce['status'] = 'error';
+        $responce['percentage'] = $percentage;
+      }
+      else{
+        $share_id = $this->input->post('share_id');
+        $update_share_data = array(
+          'share_relation' => $share_relation,
+          'share_name' => $this->input->post('share_name'),
+          'share_address' => $this->input->post('share_address'),
+          'share_age' => $this->input->post('share_age'),
+          'share_percentage' => $this->input->post('share_percentage'),
+        );
+        $this->Will_Model->update_share_distribution($share_id,$update_share_data);
+        $posts = $this->Table_Model->getAllShareDataAjax($will_id);
+        $percentage = 0;
+        foreach ($posts as $posts) {
+          $per = $posts->share_percentage;
+          $percentage = $percentage + $per;
+        }
+        $responce['status'] = 'success';
+        $responce['percentage'] = $percentage;
+      }
+      echo json_encode($responce);
+    }
+
+
+    public function total_share_per(){
+      $will_id = $this->session->userdata('will_id');
+      $posts = $this->Table_Model->getAllShareDataAjax($will_id);
+      $executor_count = $this->Table_Model->countExecutorRows($will_id);
+      $percentage = 0;
+      foreach ($posts as $posts) {
+        $per = $posts->share_percentage;
+        $percentage = $percentage + $per;
+      }
+      $responce['status'] = 'success';
+      $responce['percentage'] = $percentage;
+      $responce['executor_count'] = $executor_count;
       echo json_encode($responce);
     }
     /**************************************************************/
     /*            Delete Share... datta...             */
     /**************************************************************/
     public function delete_share(){
+      $will_id = $this->session->userdata('will_id');
       $id = $this->input->post('id');
       $this->Will_Model->delete_share($id);
+      $posts = $this->Table_Model->getAllShareDataAjax($will_id);
+      $percentage = 0;
+      foreach ($posts as $posts) {
+        $per = $posts->share_percentage;
+        $percentage = $percentage + $per;
+      }
+      $responce['percentage'] = $percentage;
+      echo json_encode($responce);
     }
     /**************************************************************/
-    /*            Save/Add Executor... datta...             */
+    /*            Executor... datta...             */
     /**************************************************************/
+    // Save Executor...
     public function save_executor(){
       $will_id = $this->session->userdata('will_id');
       $e_name_title = $this->input->post('e_name_title');
-      $executor_name1 = $this->input->post('executor_name');
-      $executor_name= $e_name_title.' '.$executor_name1;
+
+
+      // $executor_name1 = $this->input->post('executor_name');
+      // $executor_name= $e_name_title.' '.$executor_name1;
       if($e_name_title=='Mr.'){
         $gender='Male';
       }
@@ -592,20 +705,46 @@
       }
       $executor_data = array(
                   'will_id' => $will_id,
-                  'executor_name' => $executor_name,
+                  'e_name_title' => $this->input->post('e_name_title'),
+                  'executor_name' => $this->input->post('executor_name'),
                   'executor_age' => $this->input->post('executor_age'),
                   'executor_address' => $this->input->post('executor_address'),
                   'executor_gender'=>$gender,
                 );
       $this->Will_Model->save_executor($executor_data);
+      $executor_count = $this->Table_Model->countExecutorRows($will_id);
+      $responce['executor_count'] = $executor_count;
+      echo json_encode($responce);
     }
-
-    /**************************************************************/
-    /*            Delete Executor... datta...             */
-    /**************************************************************/
+    // Update Executor...
+    public function update_executor(){
+      // $will_id = $this->session->userdata('will_id');
+      $e_name_title = $this->input->post('e_name_title');
+      $executor_id = $this->input->post('executor_id');
+      if($e_name_title=='Mr.'){
+        $gender='Male';
+      }
+      else {
+        $gender='Female';
+      }
+      $update_executor_data = array(
+                  'e_name_title' => $this->input->post('e_name_title'),
+                  'executor_name' => $this->input->post('executor_name'),
+                  'executor_age' => $this->input->post('executor_age'),
+                  'executor_address' => $this->input->post('executor_address'),
+                  'executor_gender'=>$gender,
+                );
+      $this->Will_Model->update_executor($executor_id,$update_executor_data);
+    }
+    // Delete Executor...
     public function delete_executor(){
+      $will_id = $this->session->userdata('will_id');
       $id = $this->input->post('id');
       $this->Will_Model->delete_executor($id);
+
+      $executor_count = $this->Table_Model->countExecutorRows($will_id);
+      $responce['executor_count'] = $executor_count;
+      echo json_encode($responce);
     }
 
     /**************************************************************/
@@ -635,10 +774,12 @@
     /**************************************************************/
     public function save_assets(){
       $will_id = $this->session->userdata('will_id');
+      // $survey_number = $survey_number_type
       $assets_data = array(
                   'will_id' => $will_id,
                   'estate_type' => $this->input->post('estate_type'),
                   'house_no' => $this->input->post('house_no'),
+                  'survey_number_type' => $this->input->post('survey_number_type'),
                   'survey_number' => $this->input->post('survey_number'),
                   'measurment_area' => $this->input->post('measurment_area'),
                   'measurment_unit' => $this->input->post('measurment_unit'),
@@ -660,6 +801,7 @@
       $update_assets_data = array(
                   'estate_type' => $this->input->post('estate_type'),
                   'house_no' => $this->input->post('house_no'),
+                  'survey_number_type' => $this->input->post('survey_number_type'),
                   'survey_number' => $this->input->post('survey_number'),
                   'measurment_area' => $this->input->post('measurment_area'),
                   'measurment_unit' => $this->input->post('measurment_unit'),
@@ -888,20 +1030,24 @@
                   'will_place' => $this->input->post('will_place'),
                 );
       $this->Will_Model->save_date_place_info($will_id,$date_place_data);
+      $get_will_data = $this->Will_Model->get_will_data($will_id);
+      echo json_encode($get_will_data);
     }
 
     public function destroy_session(){
     //  $this->session->unset_userdata('will_id');
     //  $this->session->unset_userdata('will_start');
       $this->session->sess_destroy();
-      header('Location:start_will_view');
+      header('Location:'.base_url().'Will_controller/start_will_view');
+      // header('Location:start_will_view');
     }
 
     public function logout_user(){
     //  $this->session->unset_userdata('will_id');
     //  $this->session->unset_userdata('will_start');
       $this->session->sess_destroy();
-      header('Location:start_will_view');
+      header('Location:'.base_url().'Will_controller/start_will_view');
+      // header('Location:start_will_view');
     }
 
 

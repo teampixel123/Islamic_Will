@@ -14,13 +14,22 @@
     }
    ?>
 
+   <!--Loader Modal -->
+   <div class="modal fade" id="save_load_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class="modal-dialog" role="document">
+         <div class="modal-body" >
+           <div class="load" style="margin-left:37%; margin-top:33%;"></div>
+           <p class="text-center" style="color:#fff; font-size:20px !important; font-weight:600;">Savings your information. Please wait.</p>
+         </div>
+     </div>
+   </div>
 <!-- status bar satrt -->
 <div class="container-fluid">
 <ul class="list-unstyled multi-steps m-0 pt-3 pb-3">
   <li class="personal-tab" >Personal Information</li>
   <li class="family-tab is-active">Family Information</li>
   <li class="assets-tab">Assets</li>
-  <li class="executor-tab">Executor</li>
+  <li class="executor-tab">Distribution & Executor</li>
   <li class="witness-tab">Witness</li>
 </ul>
 </div>
@@ -41,16 +50,51 @@
           <label class="col-md-3 text-right" for="exampleInputEmail1">Relation</label>
   				<div class="col-md-6">
   					<select class="required form-control clear_dr form-control-sm" name="relationship" id="relationship">
-              <option value="0" disabled selected>Select Relationship</option>
-  					  <option id="Father">Father</option>
-    					 <option>Mother</option>
-    					 <option id="Spouse">Spouse</option>
-    					 <option id="Son">Son</option>
-    					 <option id="Daugther">Daughter</option>
-    					 <option>Brother</option>
-    					 <option>Sister</option>
-    					 <option>Grand Father</option>
-    					 <option>Grand Mother</option>
+              <option value="0" >Select Relationship</option>
+              <?php if($personal_data){ ?>
+                      <?php foreach ($personal_data as $personal_data):
+                        $marital_status = $personal_data->marital_status;
+                        $is_have_child = $personal_data->is_have_child;
+                       endforeach;
+                       if($marital_status == 'Married' && $is_have_child == 1){ ?>
+                         <option id="Father">Father</option>
+               					 <option>Mother</option>
+               					 <option id="Spouse">Spouse</option>
+               					 <option id="Son">Son</option>
+               					 <option id="Daugther">Daughter</option>
+               					 <option>Brother</option>
+               					 <option>Sister</option>
+               					 <option>Grand Father</option>
+               					 <option>Grand Mother</option>
+                      <?php } else if ($marital_status == 'Married' && $is_have_child == 0) { ?>
+                        <option id="Father">Father</option>
+                        <option>Mother</option>
+                        <option id="Spouse">Spouse</option>
+                        <option>Brother</option>
+                        <option>Sister</option>
+                        <option>Grand Father</option>
+                        <option>Grand Mother</option>
+                    <?php   } else if ($marital_status == 'Unmarried') { ?>
+                      <option id="Father">Father</option>
+                      <option>Mother</option>
+                      <option>Brother</option>
+                      <option>Sister</option>
+                      <option>Grand Father</option>
+                      <option>Grand Mother</option>
+                  <?php   } ?>?>
+              <?php }
+                    else{ ?>
+                     <option id="Father">Father</option>
+           					 <option>Mother</option>
+           					 <option id="Spouse">Spouse</option>
+           					 <option id="Son">Son</option>
+           					 <option id="Daugther">Daughter</option>
+           					 <option>Brother</option>
+           					 <option>Sister</option>
+           					 <option>Grand Father</option>
+           					 <option>Grand Mother</option>
+              <?php } ?>
+
   				 </select>
            <!-- <p id="error_relationship" style="color:red; display:none" class="text-left valide">*This field is required.</p> -->
           </div>
@@ -61,28 +105,17 @@
         <div class="row text-center">
           <label class="col-md-3 text-right" for="exampleInputEmail1">Name</label>
   				<div class="col-md-9">
-  					<input type="text" name="family_person_name" id="family_person_name" class="text required form-control form-control-sm clear" placeholder="Firstname Middlename Lastname" >
+  					<input type="text" name="family_person_name" id="family_person_name" class="required text title-case form-control form-control-sm clear" placeholder="Firstname Middlename Lastname" >
             	<!-- <p id="error_family_person_name" style="color:red; display:none" class="text-left valide">*This field is required.</p> -->
           </div>
         </div>
       </div>
 
-  		<!-- <div class="form-group" id="">
-        <div class="row text-center">
-          <label class="col-md-3 text-right" for="exampleInputEmail1">Date of Birth</label>
-  				<div class="col-md-9">
-  					<input type="text" readonly style="background-color:#fff;" name="family_person_dob" id="family_person_dob" class="form-control clear"  autocomplete="off" >
-            <p id="error_family_person_dob" style="color:red; display:none" class="text-left valide">*This field is required.</p>
-            <p id="invalide_family_person_dob" style="color:red; display:none" class="text-left valide">*Invalide Date For Father/Mother/Wife.</p>
-          </div>
-        </div>
-      </div> -->
-
       <div class="form-group" id="age_div" >
         <div class="row text-center">
           <label class="col-md-3 text-right" for="exampleInputEmail1">Age:</label>
           <div class="col-md-6">
-  					<input type="number" name="family_person_age" id="family_person_age" class="required form-control form-control-sm clear" placeholder="Age in Years">
+  					<input type="number" name="family_person_age" id="family_person_age" class="age required form-control form-control-sm clear" placeholder="Age in Years">
             <!-- <p id="error_family_person_age" style="color:red; display:none" class="text-left valide">*This field is required.</p> -->
           </div>
           <!-- <div class="col-md-4">
@@ -96,7 +129,7 @@
           <div class="row text-center">
             <label class="col-md-3 text-right" for="exampleInputEmail1">Mother of Minor</label>
             <div class="col-md-9">
-              <input type="text" name="mother_of_minar" id="mother_of_minar" class="text required form-control form-control-sm minor clear" placeholder="Name of minor child's mother" >
+              <input type="text" name="mother_of_minar" id="mother_of_minar" class="text required title-case form-control form-control-sm minor clear" placeholder="Name of minor child's mother" >
             </div>
           </div>
         </div>
@@ -106,12 +139,12 @@
             <div class="col-md-2 pr-0">
               <select class="required form-control form-control-sm" name="guardian_name_title" id="guardian_name_title">
     					  <option>Mr.</option>
+                <option>Ms.</option>
       					 <option>Mrs.</option>
-      					 <option>Miss.</option>
     				 </select>
             </div>
             <div class="col-md-7">
-              <input type="text" name="guardian_name" id="guardian_name" class="text required form-control form-control-sm minor clear"  aria-describedby="emailHelp" >
+              <input type="text" name="guardian_name" id="guardian_name" class="text required title-case form-control form-control-sm minor clear"  aria-describedby="emailHelp" >
             </div>
           </div>
         </div>
@@ -127,7 +160,7 @@
           <div class="row text-center">
             <label class="col-md-3 text-right" for="exampleInputEmail1">Address</label>
             <div class="col-md-9">
-              <input type="text" name="guardian_address" id="guardian_address" class="required form-control form-control-sm minor clear"  aria-describedby="emailHelp" >
+              <input type="text" name="guardian_address" id="guardian_address" class="address required form-control form-control-sm minor clear"  aria-describedby="emailHelp" >
             </div>
           </div>
         </div>
@@ -145,10 +178,10 @@
           <div class="row text-center">
             <label class="col-md-3 text-right" for="exampleInputEmail1">Optional Guardian Name</label>
             <div class="col-md-2 pr-0">
-              <select class="required form-control form-control-sm" name="opt_guardian_name_title" id="opt_guardian_name_title">
+              <select class="required title-case form-control form-control-sm" name="opt_guardian_name_title" id="opt_guardian_name_title">
     					  <option>Mr.</option>
+                <option>Ms.</option>
       					 <option>Mrs.</option>
-      					 <option>Miss.</option>
     				 </select>
             </div>
             <div class="col-md-7">
@@ -168,7 +201,7 @@
           <div class="row text-center">
             <label class="col-md-3 text-right" for="exampleInputEmail1">Address</label>
             <div class="col-md-9">
-              <input type="text" name="opt_guardian_address" id="opt_guardian_address" class="required form-control form-control-sm minor clear"  aria-describedby="emailHelp" >
+              <input type="text" name="opt_guardian_address" id="opt_guardian_address" class="address required form-control form-control-sm minor clear"  aria-describedby="emailHelp" >
             </div>
           </div>
         </div>
@@ -258,31 +291,17 @@
       <tbody>
       </tbody>
     </table>
-    </div>
+  </div>
   </div>
   </div>
 <!-- </div> -->
 </div>
 <!-- Border -->
-
-		<div class="border-top mt-3"></div>
-
-
+<div class="border-top mt-3"></div>
 <?php include('include/footer.php') ?>
-<!-- personal info containner end -->
-<script src="<?php echo base_url(); ?>assets/js/jquery-3.3.0.min.js" type="text/javascript"></script>
- <script src="<?php echo base_url(); ?>assets/js/jquery-ui.min.js" type="text/javascript"></script>
- <script src="<?php echo base_url(); ?>assets/js/moment.min.js" type="text/javascript"></script>
-<!-- bootstrap-datetimepicker -->
-<script src="<?php echo base_url(); ?>assets/datetimepicker3/bootstrap-datetimepicker.js"></script>
-<script src="<?php echo base_url(); ?>assets/datetimepicker3/bootstrap-datetimepicker.fr.js"></script>
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="text/javascript"></script>
-<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
-
 <!-- Custome Javascript file -->
 <script type="text/javascript">var base_url = "<?php echo base_url() ?>";</script>
 <script src="<?php echo base_url(); ?>assets/js/will_custome/family_info_js.js" type="text/javascript"></script>
-
 </body>
 <?php }
 else{

@@ -40,7 +40,15 @@
     public function save_user($data){
       $this->db->insert('tbl_user',$data);
     }
-
+    // Get Will Data... Datta...
+    public function get_will_data($will_id){
+      $this->db->select('*');
+      $this->db->from('tbl_will');
+      $this->db->where('will_id',$will_id);
+      $query = $this->db->get();
+      $result = $query->result();
+      return $result;
+    }
     // Get User Data... Datta...
     public function get_user_data($user_id){
       $this->db->select('*');
@@ -53,7 +61,7 @@
 
     // delete will  Dhananjay...
     public function delete_will($will_id){
-      $tables = array('tbl_will', 'tbl_witness', 'tbl_vehicle','tbl_real_estate', 'tbl_personal_info',
+      $tables = array('tbl_will', 'tbl_witness', 'tbl_share', 'tbl_vehicle','tbl_real_estate', 'tbl_personal_info',
                         'tbl_other_gift','tbl_guardian', 'tbl_funeral', 'tbl_family_info','tbl_executor','tbl_bank_assets');
       $this->db->where('will_id',$will_id);
       $del=$this->db->delete($tables);
@@ -79,6 +87,11 @@
     //save will data...
     public function save_will_data($data){
       $this->db->insert('tbl_will',$data);
+    }
+    //Update will Count..
+    public function update_will_count($will_count_data,$user_id){
+      $this->db->where('user_id',$user_id);
+      $this->db->update('tbl_user',$will_count_data);
     }
 
     public function get_have_miner($will_id){
@@ -160,6 +173,10 @@
     public function save_share_distribution($data){
       $this->db->insert('tbl_share',$data);
     }
+    public function update_share_distribution($share_id,$update_share_data){
+      $this->db->where('id',$share_id);
+      $this->db->update('tbl_share',$update_share_data);
+    }
     //	delete Share Distribution...
     public function delete_share($id){
       $this->db->where('id',$id);
@@ -179,7 +196,11 @@
       $result = $query->result();
       return $result;
     }
-
+    // Update Executor...
+    public function update_executor($executor_id,$update_executor_data){
+      $this->db->where('id',$executor_id);
+      $this->db->update('tbl_executor',$update_executor_data);
+    }
     //	Save/Add executor...
     public function delete_executor($id){
       $this->db->where('id',$id);
@@ -400,20 +421,9 @@
       return $result;
     }
 
-
-
     public function get_witness($will_id){
       $this->db->select('*');
       $this->db->from('tbl_witness');
-      $this->db->where('will_id',$will_id);
-      $query = $this->db->get();
-      $result = $query->result();
-      return $result;
-    }
-
-    public function get_will_data($will_id){
-      $this->db->select('*');
-      $this->db->from('tbl_will');
       $this->db->where('will_id',$will_id);
       $query = $this->db->get();
       $result = $query->result();
@@ -428,5 +438,20 @@
       $result = $query->result();
       return $result;
     }
+
+    // Set 1 if will is completed.
+    public function set_will_complete($will_id){
+      $this->db->set('is_will_complete',1);
+      $this->db->where('will_id',$will_id);
+      $this->db->update('tbl_will');
+    }
+
+    // Will updation expire
+    public function set_will_updation_over($will_id){
+      $this->db->set('will_rem_updations',0);
+      $this->db->where('will_id',$will_id);
+      $this->db->update('tbl_will');
+    }
+
   }
  ?>
