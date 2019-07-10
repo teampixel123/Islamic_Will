@@ -282,6 +282,13 @@ input:focus {
 .mb-80 {
   margin-bottom: 80px; }
 
+  .mb-30{
+    margin-bottom: 30px;
+  }
+  .mb-20{
+    margin-bottom: 20px;
+  }
+
 .mb-100 {
   margin-bottom: 100px; }
 
@@ -686,6 +693,34 @@ color: #1b334b;
 .footer-area {
   position: relative;
   z-index: 1; }
+
+  .copywrite-row{
+    text-align: center;
+    background-color: #666;
+  }
+
+#social{
+  padding-top: 25px;
+}
+#contact{
+  padding-top: 25px;
+}
+#padding-left{
+  padding-left: 40px;
+}
+
+
+  .copy-row{
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .copy-row p{
+    margin-bottom: 0px!important;
+  }
+
+  .copy{
+    color: #e5e5e5;
+  }
 
 .single-footer-widget {
   position: relative;
@@ -2094,6 +2129,17 @@ width: 19%;
   .single-contact-information h4{
     font-size: 22px!important;
     margin-bottom: 0px!important;
+  }
+  .padding-l{
+    padding-left: 20px;
+  }
+
+  .link-mobile{
+    padding-top: 20px;
+  }
+
+  .copy{
+    text-align: center;
   }
 
 }

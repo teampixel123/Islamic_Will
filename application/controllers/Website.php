@@ -96,6 +96,21 @@ class Website extends CI_Controller {
 		}
 
 	}
+
+	public function benefit()
+	{
+		$is_login = $this->session->userdata('user_is_login');
+		$user_id = $this->session->userdata('user_id');
+		if($is_login && $user_id){
+			$user_data = $this->Will_Model->get_user_data($user_id);
+			$this->load->view('website/benifit.php',['user_data'=>$user_data]);
+		}
+		else {
+		$this->load->view('website/benifit.php');
+		}
+
+	}
+
 	public function insta(){
 		$this->load->view('pages/Instamojo.php');
 	}

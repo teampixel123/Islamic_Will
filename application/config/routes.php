@@ -51,12 +51,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'Website';
 $route['About-Us'] = 'Website/about';
+$route['Benefits'] = 'Website/benefit';
 $route['Pricing'] = 'Website/pricing';
 $route["FAQ"] = 'Website/faqs';
 $route['Contact'] = 'Website/contact';
 $route["Terms-and-Conditions"] = 'Website/terms';
 $route['Privacy-Policy'] = 'Website/privacy';
 $route['Login'] = 'User_controller/login';
+$route['Register'] = 'Login_controller/register_user_view';
 $route['User-Dashboard'] = 'User_controller/user_dashboard';
 
 

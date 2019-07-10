@@ -78,14 +78,14 @@
         </div>
     </section>
     <!-- Akame About Area End -->
-    <div class="container">
+    <!-- <div class="container">
         <div class="border-top mt-3"></div>
-    </div>
+    </div> -->
     <!-- Akame About Area Start -->
-    <section class="akame--about--area" id="important">
+    <!-- <section class="akame--about--area" id="important">
         <div class="container">
             <div class="row margin_1">
-                <!-- Section Heading -->
+
                 <div class="col-12 col-lg-6 about--us--content1 no-bottom-padding">
                   <div class="about--us--content mb-80">
                     <h3 class="m-center"> Importance Islamic Wills </h3>
@@ -138,16 +138,16 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- Akame About Area End -->
-    <div class="container">
+    <!-- <div class="container">
         <div class="border-top mt-3"></div>
     </div>
-    <!-- Akame About Area Start -->
+
     <section class="akame--about--area" id="benefit">
         <div class="container">
             <div class="row margin_1">
-                <!-- Section Heading -->
+
                 <div class="col-12 col-lg-6 about--us--content1 no-bottom-padding">
                   <div class="about--us--content mb-80">
                     <h3 class=" m-center"> Benefits Of Using </h3>
@@ -194,7 +194,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- Akame About Area End -->
     <div class="container">
         <div class="border-top mt-3"></div>

@@ -30,7 +30,8 @@
                             <ul id="nav">
                                 <li id="accordion"><a href="<?php echo base_url(); ?>website">Home</a></li>
                                 <li id="accordion"><a href="<?php echo base_url(); ?>About-Us">About Us</a></li>
-                                  <li id="accordion"><a href="<?php echo base_url(); ?>Pricing">Pricing</a></li>
+                                <li id="accordion"><a href="<?php echo base_url(); ?>Benefits">Benefits</a></li>
+                                <li id="accordion"><a href="<?php echo base_url(); ?>Pricing">Pricing</a></li>
                                 <li id="accordion"><a href="<?php echo base_url(); ?>FAQ">FAQ's</a></li>
                                 <li id="accordion"><a href="<?php echo base_url(); ?>Contact">Contact</a></li>
                                 <?php if($user_subscription == 1){ ?>

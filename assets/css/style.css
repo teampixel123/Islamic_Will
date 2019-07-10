@@ -164,6 +164,10 @@ border-width: 0;
     border-color: #1976d2!important;
 }
 
+.mb-20{
+  margin-bottom: 20px!important;
+}
+
 .badge{
   background-color: #fff;
   border-radius: 8px;

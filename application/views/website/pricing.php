@@ -93,7 +93,7 @@
               <li ><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>One modification / updation up to three (3) months</li>
               <li ><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>Only @ Rs. 4000/- + GST @18%</li>
               <hr>
-              <li><span class="fa-li"></span>same package will of user’s Spouse, Real Sister, Mother, Father, Son, Daughter’s is at 2000 + GST @ 18%</li>
+              <li><span class="fa-li"></span>same package will of user’s Spouse, Real Sister, Mother, Father, Son, Daughter’s is at 2000 + GST @ 18% <i title="You can use promocode for 50% discount" class="fa fa-question-circle-o" aria-hidden="true"></i></li>
               <li><span class="fa-li"></span>Final will delivery by E mail or Courier at user’s choice.</li>
             </ul>
 
@@ -151,12 +151,13 @@
                 gold package along with some extra
                 features and benefits. </strong><br><br><br>
                 Our executive will communicate you shortly.
-              </li>
+                </li>
             </ul>
-            <input type="submit" class="btn btn-block active akame-btn text-uppercase" value="Get Started" />
+              <a href="<?php echo base_url(); ?>Contact"><input type="submit" class="btn btn-block active akame-btn text-uppercase" value="Contact Us" /></a>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>

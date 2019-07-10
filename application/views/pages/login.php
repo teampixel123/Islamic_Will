@@ -63,8 +63,8 @@
     </div>
   </div>
   </div>
-<div class="border-top mt-3 w-100"></div>
-<?php include('include/footer.php') ?>
+<!-- <div class="border-top mt-3 w-100"></div> -->
+
 <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/js/jquery-3.3.0.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/js/jquery-ui.min.js" type="text/javascript"></script>
