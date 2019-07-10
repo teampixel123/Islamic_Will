@@ -53,7 +53,7 @@
                 <nav class="classy-navbar justify-content-between" id="akameNav">
 
                     <!-- Logo -->
-                    <a class="nav-brand" href="<?php echo base_url(); ?>website"><img src="<?php echo base_url(); ?>assets/website/img/core-img/logo.svg" alt=""></a>
+                    <a class="nav-brand" href="<?php echo base_url(); ?>website"><img src="<?php echo base_url(); ?>assets/website/img/core-img/Easy_Islamic_Will_V3-06.png" alt=""></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -71,16 +71,18 @@
                             <ul id="nav">
                                 <li id="accordion"><a href="<?php echo base_url(); ?>website">Home</a></li>
                                 <li id="accordion"><a href="<?php echo base_url(); ?>About-Us">About Us</a></li>
-                                  <li id="accordion"><a href="<?php echo base_url(); ?>Pricing">Pricing</a></li>
+                                <li id="accordion"><a href="<?php echo base_url(); ?>Benefits">Benefits</a></li>
+                                <li id="accordion"><a href="<?php echo base_url(); ?>Pricing">Pricing</a></li>
                                 <li id="accordion"><a href="<?php echo base_url(); ?>FAQ">FAQ's</a></li>
                                 <li id="accordion"><a href="<?php echo base_url(); ?>Contact">Contact</a></li>
+                                <li id="accordion"><a href="<?php echo base_url(); ?>Register">Register</a></li>
+                                <li id="accordion"><a href="<?php echo base_url(); ?>Login">Login</a></li>
                             </ul>
-
                             <!-- Book Icon -->
-                            <div class="book-now-btn ml-5 mt-4 mt-lg-0 ml-md-4" >
+                            <!-- <div class="book-now-btn ml-5 mt-4 mt-lg-0 ml-md-4" >
                                 <a href="<?php echo base_url(); ?>Login_controller/register_user_view" class="btn akame-btn">Register</a>
 																<a href="<?php echo base_url(); ?>Login" class="btn akame-btn">Log In</a>
-                            </div>
+                            </div> -->
                         </div>
                         <!-- Nav End -->
                     </div>

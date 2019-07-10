@@ -88,7 +88,7 @@
               <li ><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>One modification / updation up to three (3) months</li>
               <li ><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>Only @ Rs. 4000/- + GST @18%</li>
               <hr>
-              <li><span class="fa-li"></span>same package will of user’s Spouse, Real Sister, Mother, Father, Son, Daughter’s is at 2000 + GST @ 18%</li>
+              <li><span class="fa-li"></span>same package will of user’s Spouse, Real Sister, Mother, Father, Son, Daughter’s is at 2000 + GST @ 18% <i title="You can use promocode for 50% discount" class="fa fa-question-circle-o" aria-hidden="true"></i></li>
               <li><span class="fa-li"></span>Final will delivery by E mail or Courier at user’s choice.</li>
             </ul>
             <?php if($is_login){ ?>
@@ -116,54 +116,20 @@
             <br>
             <hr>
             <ul class="fa-ul">
-              <li><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span><strong>Please drop your details for your
-personalized and customized will
-which is upgraded version of silver and
-gold package along with some extra
-features and benefits. </strong><br><br><br>
-Our executive will communicate you shortly.
-</li>
+                <li><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span><strong>Please drop your details for your
+                personalized and customized will
+                which is upgraded version of silver and
+                gold package along with some extra
+                features and benefits. </strong><br><br><br>
+                Our executive will communicate you shortly.
+                </li>
 
             </ul>
-            <input type="submit" class="btn btn-block active akame-btn text-uppercase" value="Get Started" />
-            <!-- <?php if($is_login){ ?>
-              <form class="" action="<?php base_url() ?>Payment_Gateway/payment" method="post">
-                      <input type="hidden" name="amount" id="amount" value="10" >
-                      <input type="hidden" name="name" id="name" value="<?php echo $user_data->user_fullname; ?>" >
-                      <input type="hidden" name="email" id="email" value="<?php echo $user_data->user_email_id; ?>" >
-                      <input type="hidden" name="mobile" id="mobile" value="<?php echo $user_data->user_mobile_number; ?>" >
-                      <input type="submit" class="btn btn-block active akame-btn text-uppercase" value="Get Started" />
-              </form>
-            <?php }
-            else{ ?>
-              <a href="<?php echo base_url(); ?>Login" class="btn btn-block active akame-btn text-uppercase">Get Started</a>
-            <?php } ?> -->
+              <a href="<?php echo base_url(); ?>Contact"><input type="submit" class="btn btn-block active akame-btn text-uppercase" value="Contact Us" /></a>
           </div>
         </div>
       </div>
-      <!-- <div class="col-lg-1">
-        </div> -->
-      <!-- Pro Tier -->
-      <!-- <div class="col-lg-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title text-muted text-uppercase text-center">Pro</h5>
-            <h6 class="card-price text-center">$49<span class="period">/month</span></h6>
-            <hr>
-            <ul class="fa-ul">
-              <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Unlimited Users</strong></li>
-              <li><span class="fa-li"><i class="fas fa-check"></i></span>150GB Storage</li>
-              <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Public Projects</li>
-              <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
-              <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Private Projects</li>
-              <li><span class="fa-li"><i class="fas fa-check"></i></span>Dedicated Phone Support</li>
-              <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Unlimited</strong> Free Subdomains</li>
-              <li><span class="fa-li"><i class="fas fa-check"></i></span>Monthly Status Reports</li>
-            </ul>
-            <a href="#" class="btn btn-block btn-primary text-uppercase">Button</a>
-          </div>
-        </div>
-      </div> -->
+
     </div>
   </div>
 </section>

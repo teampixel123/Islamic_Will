@@ -116,7 +116,7 @@
                              heirs.. ”</p>
                              <div class="row">
                                <div class="col-6 no-m-padding">
-                                 <a href="<?php echo base_url(); ?>About-Us/#important" class="btn akame-btn active mt-30" style="padding: 0 15px !important;">Read More</a>
+                                 <a href="<?php echo base_url(); ?>Benefits/#important" class="btn akame-btn active mt-30" style="padding: 0 15px !important;">Read More</a>
 
                                </div>
                                <div class="col-6 no-m-padding">
@@ -292,9 +292,16 @@
                             <li><i class="fa fa-check-square-o" aria-hidden="true"></i> Independent professional advices available</li>
                             <li><i class="fa fa-check-square-o" aria-hidden="true"></i> Trusted advice and assistants provided.</li>
                         </ul><br>
-                          <a href="<?php echo base_url(); ?>About-Us/#benefit" class="btn akame-btn active mt-30">Read More</a>
-                           <a href="<?php echo base_url(); ?>Start-Will" class="btn akame-btn active mt-30  d-none d-sm-block">Make Your Will</a>
-                    </div>
+                        <div class="row">
+                          <div class="col-6 no-m-padding">
+                            <a href="<?php echo base_url(); ?>Benefits/#benefit" class="btn akame-btn active mt-30" style="padding: 0 15px !important;">Read More</a>
+
+                          </div>
+                          <div class="col-6 no-m-padding d-none d-sm-block">
+                              <a href="<?php echo base_url(); ?>Start-Will" class="btn akame-btn active mt-30 "style="padding: 0 8px !important;font-size: 13px;">Start your Will</a>
+                          </div>
+
+                        </div></div>
                 </div>
             </div>
         </div>

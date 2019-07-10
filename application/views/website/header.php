@@ -51,9 +51,12 @@
                             <ul id="nav">
                                 <li id="accordion"><a href="<?php echo base_url(); ?>website">Home</a></li>
                                 <li id="accordion"><a href="<?php echo base_url(); ?>About-Us">About Us</a></li>
-                                  <li id="accordion"><a href="<?php echo base_url(); ?>Pricing">Pricing</a></li>
+                                <li id="accordion"><a href="<?php echo base_url(); ?>Benefits">Benefits</a></li>
+                                <li id="accordion"><a href="<?php echo base_url(); ?>Pricing">Pricing</a></li>
                                 <li id="accordion"><a href="<?php echo base_url(); ?>FAQ">FAQ's</a></li>
                                 <li id="accordion"><a href="<?php echo base_url(); ?>Contact">Contact</a></li>
+                                <li id="accordion"><a href="<?php echo base_url(); ?>Register">Register</a></li>
+                                <li id="accordion"><a href="<?php echo base_url(); ?>Login">Login</a></li>
                             </ul>
                             <!-- Cart Icon -->
                             <!-- <div class="cart-icon ml-5 mt-4 mt-lg-0">
@@ -61,10 +64,10 @@
                             </div> -->
 
                             <!-- Book Icon -->
-                            <div class="book-now-btn ml-5 mt-4 mt-lg-0 ml-md-4">
+                            <!-- <div class="book-now-btn ml-5 mt-4 mt-lg-0 ml-md-4">
                                 <a href="<?php echo base_url(); ?>Login_controller/register_user_view" class="btn akame-btn">Register</a>
                                 <a href="<?php echo base_url(); ?>Login" class="btn akame-btn">Log In</a>
-                            </div>
+                            </div> -->
                         </div>
                         <!-- Nav End -->
                     </div>

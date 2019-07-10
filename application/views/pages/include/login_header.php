@@ -11,7 +11,7 @@
                 <!-- Classy Menu -->
                 <nav class="classy-navbar justify-content-between" id="akameNav">
                     <!-- Logo -->
-                    <a class="nav-brand" href="<?php echo base_url(); ?>website"><img src="<?php echo base_url(); ?>assets/website/img/core-img/logo.svg" alt=""></a>
+                    <a class="nav-brand" href="<?php echo base_url(); ?>website"><img src="<?php echo base_url(); ?>assets/website/img/core-img/Easy_Islamic_Will_V3-06.png" alt=""></a>
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
                         <span class="navbarToggler"><span></span><span></span><span></span></span>
@@ -27,10 +27,11 @@
                             <ul id="nav">
                                 <li id="accordion"><a href="<?php echo base_url(); ?>website">Home</a></li>
                                 <li id="accordion"><a href="<?php echo base_url(); ?>About-Us">About Us</a></li>
+                                <li id="accordion"><a href="<?php echo base_url(); ?>Benefits">Benefits</a></li>
                                 <li id="accordion"><a href="<?php echo base_url(); ?>Pricing">Pricing</a></li>
                                 <li id="accordion"><a href="<?php echo base_url(); ?>FAQ">FAQ's</a></li>
                                 <li id="accordion"><a href="<?php echo base_url(); ?>Contact">Contact</a></li>
-                                <li id="accordion"><a href="<?php echo base_url(); ?>User_controller/user_dashboard"><i class="fa fa-user"></i> <?php echo $user_data->user_fullname; ?></a>
+                                <li id="accordion"><a href="<?php echo base_url(); ?>User_controller/user_dashboard"><i class="fa fa-user"></i> <?php echo $user_data->user_fullname; ?></a></li>
                             </ul>
                         </div>
                         <!-- Nav End -->
