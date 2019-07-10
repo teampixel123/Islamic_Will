@@ -72,10 +72,10 @@ include('include/head.php');
 				<div class="col-md-4">
 					<select class="form-control required" name="marital_status" id="marital_status">
 					 <option value="0">select </option>
-					 <option>Married</option>
+					 <option id="Married">Married</option>
 					 <option id="Unmarried">Unmarried</option>
-					 <option id="Widove">Widove</option>
-					 <option>Divorcee</option>
+					 <option id="Widove">Widow</option>
+					 <option id="Divorcee">Divorcee</option>
 				 </select>
 				 <p id="error_marital_status" style="color:red; display:none" class="text-left invalide  m-0">*This field is required.</p>
         </div>

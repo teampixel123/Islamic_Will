@@ -30,8 +30,8 @@ $(document).ready(function(){
       $('#b_pin_code_div').show();
       $('#b_sum_amount_div').hide();
 
-      // $('#account_number').addClass('only_number');
-      // $('#account_number').removeClass('text_number');
+      $('#account_number').hide();
+      $('#account_number2').show();
     }
     else if (assets_type == 'Current A/C') {
       $('.hide_num').hide();
@@ -43,8 +43,9 @@ $(document).ready(function(){
       $('#b_state_div').show();
       $('#b_pin_code_div').show();
       $('#b_sum_amount_div').hide();
-      // $('#account_number').addClass('only_number');
-      // $('#account_number').removeClass('text_number');
+
+      $('#account_number').hide();
+      $('#account_number2').show();
     }
     else if (assets_type == 'Fixed Deposits') {
       $('.hide_num').hide();
@@ -56,8 +57,9 @@ $(document).ready(function(){
       $('#b_state_div').show();
       $('#b_pin_code_div').show();
       $('#b_sum_amount_div').hide();
-      // $('#account_number').addClass('only_number');
-      // $('#account_number').removeClass('text_number');
+
+      $('#account_number').hide();
+      $('#account_number2').show();
     }
     else if (assets_type == 'PPF') {
       $('.hide_num').hide();
@@ -71,8 +73,9 @@ $(document).ready(function(){
       $('#b_state_div').show();
       $('#b_pin_code_div').show();
       $('#b_sum_amount_div').hide();
-      // $('#account_number').addClass('only_number');
-      // $('#account_number').removeClass('text_number');
+
+      $('#account_number').hide();
+      $('#account_number2').show();
     }
     else if (assets_type == 'Bank Locker') {
       $('.hide_num').hide();
@@ -85,8 +88,9 @@ $(document).ready(function(){
       $('#b_pin_code_div').show();
       $('#fd_recipt_No').val('');
       $('#b_sum_amount_div').hide();
-      // $('#account_number').addClass('only_number');
-      // $('#account_number').removeClass('text_number');
+
+      $('#account_number').hide();
+      $('#account_number2').show();
     }
     else if (assets_type == 'Mutual Funds') {
       $('.hide_num').hide();
@@ -99,8 +103,9 @@ $(document).ready(function(){
       $('#b_state_div').hide();
       $('#b_pin_code_div').hide();
       $('#b_sum_amount_div').hide();
-      // $('#account_number').removeClass('only_number');
-      // $('#account_number').addClass('text_number');
+
+      $('#account_number').show();
+      $('#account_number2').hide();
     }
     else if (assets_type == 'Stock Equities') {
       $('.hide_num').hide();
@@ -112,8 +117,9 @@ $(document).ready(function(){
       $('#b_state_div').hide();
       $('#b_pin_code_div').hide();
       $('#b_sum_amount_div').hide();
-      // $('#account_number').addClass('text_number');
-      // $('#account_number').removeClass('only_number');
+
+      $('#account_number').show();
+      $('#account_number2').hide();
     }
     else if (assets_type == 'Insurance Policy') {
       $('.hide_num').hide();
@@ -125,9 +131,20 @@ $(document).ready(function(){
       $('#b_sum_amount_div').show();
       $('#b_state_div').hide();
       $('#b_pin_code_div').hide();
-      // $('#account_number').addClass('only_number');
-      // $('#account_number').removeClass('text_number');
+
+      $('#account_number').show();
+      $('#account_number2').hide();
     }
+  });
+
+  $("#account_number2").keyup(function(event){
+    var inputValue = $("#account_number2").val();
+    $("#account_number").val(inputValue);
+    // var inputValue = event.which;
+    // // allow letters and whitespaces only.
+    // if(!(inputValue >= 48 && inputValue <= 57) && (inputValue != 0 && inputValue != 46)) {
+    //     event.preventDefault();
+    // }
   });
 
   all_tables();

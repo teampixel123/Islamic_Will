@@ -39,9 +39,9 @@ s0.parentNode.insertBefore(s1,s0);
                                      a share for women – whether the property be large or small. A share made fariadh (compulsory).‘’ </h3>
                                 </div>
                                 <div class="d-none d-sm-block">
-                                <a href="<?php echo base_url(); ?>About-Us" class="btn active akame-btn " data-animation="fadeInUp" data-delay="700ms">About Us</a>
+                                  <a href="<?php echo base_url(); ?>About-Us" class="btn active akame-btn " data-animation="fadeInUp" data-delay="700ms">About Us</a>
                                   <a href="<?php echo base_url(); ?>Start-Will" class="btn active akame-btn " data-animation="fadeInUp" data-delay="700ms">Make Your Will</a>
-                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
