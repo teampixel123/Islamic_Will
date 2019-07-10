@@ -68,10 +68,60 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       <td><?php echo $will_list->email; ?></td>
                       <td><?php echo $will_list->will_date; ?></td>
                       <td>
-                        <form class="" action="<?php echo base_url() ?>Owner_controller/delete_will" method="post">
-                          <input type="hidden" name="will_id" value="<?php echo $will_list->will_id; ?>">
-                          <button type="submit" class="btn btn-default btn-sm" name="button"><i style="color:red;" class="fa fa-trash"></i></button>
-                        </form>
+                        <table>
+                          <tr>
+                            <?php if($will_list->is_will_complete == 1){ ?>
+                              <td class="p-0" style="border: none!important;">
+                                <form class="" action="<?php echo base_url() ?>Will-PDF" method="post">
+                                  <input type="hidden" name="will_id" value="<?php echo $will_list->will_id; ?>">
+                                  <button type="submit" class="btn btn-default btn-sm" name="button"><i style="color:#00cc00;" class="fa fa-file-pdf"></i></button>
+                                </form>
+                              </td>
+                            <?php } else{ ?>
+                              <td class="p-0" style="border: none!important;">
+                                <button type="submit" title="Incomplite Will" class="btn btn-default btn-sm" name="button"><i style="color:#99ff99;" class="fa fa-file-pdf" disabled></i></button>
+                              </td>
+                            <?php } ?>
+
+                            <td class="p-0" style="border: none!important;">
+                              <form class="" action="<?php echo base_url() ?>Owner_controller/update_will" method="post">
+                                <input type="hidden" name="will_id" value="<?php echo $will_list->will_id; ?>">
+                                <button type="submit" class="btn btn-default btn-sm" name="button"><i style="color:blue;" class="fa fa-edit"></i></button>
+                              </form>
+                            </td>
+                            <td class="p-0" style="border: none!important;">
+                              <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#exampleModal_<?php echo $i; ?>"><i style="color:red;" class="fa fa-trash"></i></button>
+                              <!--  -->
+                            </td>
+                          </tr>
+                        </table>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal_<?php echo $i; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Delete Will</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <p>Do you want to delete this Will.</p>
+                                <p>Name: <?php echo $will_list->name_title.' '.$will_list->full_name; ?></p>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <form class="" action="<?php echo base_url() ?>Owner_controller/delete_will" method="post">
+                                  <input type="hidden" name="will_id" value="<?php echo $will_list->will_id; ?>">
+                                  <button type="submit" class="btn btn-danger" name="button">Delete</button>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- //Modal -->
+
                       </td>
                     </tr>
                   <?php } ?>

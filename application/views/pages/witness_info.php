@@ -5,14 +5,19 @@
 ?>
 <body>
   <?php
-    $is_login = $this->session->userdata('user_is_login');
-    if($is_login){
-      include('include/login_header.php');
-    }
-    else{
-      include('include/header.php');
-    }
-   ?>
+		$is_login = $this->session->userdata('user_is_login');
+		$owner_login = $this->session->userdata('owner_is_login');
+		// echo $owner_login;
+	  if($is_login){
+			include('include/login_header.php');
+		}
+		elseif($owner_login) {
+			 include(BASE_URL. 'admin_navbar_editwill.php');
+		}
+		else{
+			include('include/header.php');
+		}
+	 ?>
    <!--Loader Modal -->
    <div class="modal fade" id="save_load_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
      <div class="modal-dialog" role="document">
@@ -102,18 +107,22 @@
 
   <p> <button type="button" id="witness_previous" class="btn btn-info">Previous</button>
 
-  <?php if($this->session->userdata('user_is_login')){
-          ?>
-          <button type="submit" id="btn_final_pdf" class="btn btn-info float-right" disabled>Create PDF</button></p>
-          <?php
-        } else{ ?>
-          <button type="submit" id="btn_pdf" class="btn btn-info float-right" disabled>Create PDF</button></p>
+      <?php if($this->session->userdata('user_is_login')){ ?>
+        <button type="submit" id="btn_final_pdf" class="btn btn-info float-right" disabled>Create PDF</button></p>
+      <?php } elseif ($this->session->userdata('owner_is_login')) { ?>
+        <button type="submit" id="btn_final_pdf_owner" class="btn btn-info float-right" disabled>Create PDF</button></p>
+      <?php } else { ?>
+        <button type="submit" id="btn_pdf" class="btn btn-info float-right" disabled>Create PDF</button></p>
       <?php } ?>
       <form target="_blank" id="final_pdf" class="" action="<?php echo base_url() ?>Pdf_controller/final_pdf" method="post">
         <input type="hidden" name="will_id" value="<?php echo $this->session->userdata('will_id'); ?>">
         <input type="hidden" name="is_complete" value="1">
       </form>
       <form target="_blank" id="pdf" class="" action="<?php echo base_url() ?>Pdf_controller/pdf" method="post">
+        <input type="hidden" name="will_id" value="<?php echo $this->session->userdata('will_id'); ?>">
+        <input type="hidden" name="is_complete" value="1">
+      </form>
+      <form target="_blank" id="final_pdf_owner" class="" action="<?php echo base_url() ?>Pdf_controller/final_pdf_owner" method="post">
         <input type="hidden" name="will_id" value="<?php echo $this->session->userdata('will_id'); ?>">
         <input type="hidden" name="is_complete" value="1">
       </form>
@@ -140,7 +149,7 @@
       </thead>
       <tbody>
         <tr>
-          <td id="date_place_td"> </td>
+          <td id="date_place_td"></td>
         </tr>
       </tbody>
     </table>
@@ -150,6 +159,7 @@
 <!-- </div> -->
 </div>
 </div>
+<input type="hidden" name="date_place_txt" id="date_place_txt">
 <div class="" id="go_login_div" style="display:none">
   <!-- status bar satrt -->
   <div class="container-fluid">

@@ -8,8 +8,13 @@ include('include/head.php');
 <body>
 	<?php
 		$is_login = $this->session->userdata('user_is_login');
+		$owner_login = $this->session->userdata('owner_is_login');
+		// echo $owner_login;
 	  if($is_login){
 			include('include/login_header.php');
+		}
+		elseif($owner_login) {
+			 include(BASE_URL. 'admin_navbar_editwill.php');
 		}
 		else{
 			include('include/header.php');
@@ -67,10 +72,10 @@ include('include/head.php');
 				<div class="col-md-4">
 					<select class="form-control required" name="marital_status" id="marital_status">
 					 <option value="0">select </option>
-					 <option>Married</option>
+					 <option id="Married">Married</option>
 					 <option id="Unmarried">Unmarried</option>
-					 <option id="Widove">Widove</option>
-					 <option>Divorcee</option>
+					 <option id="Widove">Widow</option>
+					 <option id="Divorcee">Divorcee</option>
 				 </select>
 				 <p id="error_marital_status" style="color:red; display:none" class="text-left invalide  m-0">*This field is required.</p>
         </div>
@@ -133,9 +138,11 @@ include('include/head.php');
 </div>
 </div><br><br><br>
 <div class="border-top mt-3"></div>
-<?php include('include/footer.php') ?>
-<?php $is_login = $this->session->userdata('user_is_login');
-	if($is_login && $this->session->userdata('will_id') ){
+<?php include('include/footer.php'); ?>
+<?php
+$is_login = $this->session->userdata('user_is_login');
+$owner_login = $this->session->userdata('owner_is_login');
+	if( $this->session->userdata('will_id') && ($is_login || $owner_login)){
 ?>
 <script>
 $(document).ready(function(){

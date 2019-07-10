@@ -11,7 +11,6 @@
     }
 
     public function login_view(){
-
         $this->load->view('admin/login');
     }
     public function index(){
@@ -31,26 +30,31 @@
         }
         $session_data = array('owner_is_login' => 'YES','owner_id' =>$owner_id);
         $this->session->set_userdata($session_data);
-        header('Location:'.base_url().'Owner_controller/dashboard');
+        header('Location:'.base_url().'Owner-Dashboard');
       }
       else{
-        header('Location:'.base_url().'Owner_controller/login_view');
+        header('Location:'.base_url().'Owner-Login');
       }
     }
 
     public function dashboard(){
+      $this->session->unset_userdata('will_id');
       $is_login = $this->session->userdata('owner_is_login');
       if($is_login){
         $owner_id = $this->session->userdata('owner_id');
-        $owner_data = $this->Owner_Model->get_owner_data($owner_id);
-        $this->load->view('admin/owner_dashboard',['owner_data'=>$owner_data]);
+        $data['owner_data'] = $this->Owner_Model->get_owner_data($owner_id);
+        $data['all_will_count'] = $this->Owner_Model->all_will_count();
+        $data['complete_will_count'] = $this->Owner_Model->complete_will_count();
+        $data['incomplete_will_count'] = $this->Owner_Model->incomplete_will_count();
+        $this->load->view('admin/owner_dashboard',$data);
       }
       else{
-        header('Location:login_view');
+        header('Location:'.base_url().'Owner-Login');
       }
     }
 
     public function will_list(){
+      $this->session->unset_userdata('will_id');
       $is_login = $this->session->userdata('owner_is_login');
       if($is_login){
         $owner_id = $this->session->userdata('owner_id');
@@ -59,7 +63,7 @@
         $this->load->view('admin/will_list',$data);
       }
       else{
-        header('Location:login_view');
+        header('Location:'.base_url().'Owner-Login');
       }
     }
 
@@ -69,11 +73,52 @@
         $owner_id = $this->session->userdata('owner_id');
         $will_id = $this->input->post('will_id');
         $user_data = $this->Owner_Model->delete_will($will_id);
-        header('Location:will_list');
+        header('Location:'.base_url().'Owner-Will-List');
+
       }
       else{
-        header('Location:login_view');
+        header('Location:'.base_url().'Owner-Login');
       }
+    }
+
+    public function update_will(){
+      $will_id = $this->input->post('will_id');
+      $this->session->set_userdata('will_id',$will_id);
+      header('Location:'.base_url().'Will_controller/start_will_view');
+    }
+
+    public function users_list(){
+      $this->session->unset_userdata('will_id');
+      $is_login = $this->session->userdata('owner_is_login');
+      if($is_login){
+        $owner_id = $this->session->userdata('owner_id');
+        $data['owner_data'] = $this->Owner_Model->get_owner_data($owner_id);
+        $data['users_list'] = $this->Owner_Model->get_users_list();
+        $this->load->view('admin/users_list',$data);
+      }
+      else{
+        header('Location:'.base_url().'Owner-Login');
+      }
+    }
+
+    public function payments_list(){
+      $this->session->unset_userdata('will_id');
+      $is_login = $this->session->userdata('owner_is_login');
+      if($is_login){
+        $owner_id = $this->session->userdata('owner_id');
+        $data['owner_data'] = $this->Owner_Model->get_owner_data($owner_id);
+        $data['payments_list'] = $this->Owner_Model->get_payments_list();
+        $this->load->view('admin/payments_list',$data);
+      }
+      else{
+        header('Location:'.base_url().'Owner-Login');
+      }
+    }
+
+
+    public function owner_logout(){
+      $this->session->sess_destroy();
+      header('Location:'.base_url().'Owner-Login');
     }
 
 

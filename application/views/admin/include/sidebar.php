@@ -11,6 +11,18 @@
       <span>Will List</span>
     </a>
   </li>
+  <li class="nav-item active">
+    <a class="nav-link" href="<?php echo base_url(); ?>Users-List">
+      <i class="fas fa-fw fa-table"></i>
+      <span>Users List</span>
+    </a>
+  </li>
+  <li class="nav-item active">
+    <a class="nav-link" href="<?php echo base_url(); ?>Payments-List">
+      <i class="fas fa-fw fa-table"></i>
+      <span>Payment List</span>
+    </a>
+  </li>
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <i class="fas fa-fw fa-folder"></i>
@@ -36,5 +48,10 @@
     <a class="nav-link" href="<?php echo base_url(); ?>Owner_controller/dashboard">
       <i class="fas fa-fw fa-table"></i>
       <span>Tables</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="<?php echo base_url(); ?>Owner_controller/owner_logout">
+      <i class="fa fa-sign-out-alt "></i>
+      <span>Logout</span></a>
   </li>
 </ul>

@@ -19,7 +19,9 @@ $(document).ready(function(){
     		$('.have_child_div').show();
       }
   		$('.marital_status_div').show();
+      $('#Married').show();
       $('#Unmarried').show();
+  		$('#Divorcee').show();
   		$('#Widove').hide();
       $('#gender_male').prop("checked", true);
   	}
@@ -32,7 +34,8 @@ $(document).ready(function(){
   	}
     else if (title == 'Ms.') {
       $('.marital_status_div').show();
-  		$('#widove').show();
+      $('#Married').hide();
+  		$('#Widove').show();
       $('#Unmarried').show();
   		$('.have_child_div').show();
       $('#gender_female').prop("checked", true);

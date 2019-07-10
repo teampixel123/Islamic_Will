@@ -11,6 +11,8 @@
 
     public function login(){
       $this->session->unset_userdata('user_is_login');
+      $this->session->unset_userdata('user_id');
+      $this->session->unset_userdata('is_subscrided');
       $this->load->view('pages/login');
   	}
 

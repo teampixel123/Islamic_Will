@@ -60,10 +60,17 @@ $route['Privacy-Policy'] = 'Website/privacy';
 $route['Login'] = 'User_controller/login';
 $route['Register'] = 'Login_controller/register_user_view';
 $route['User-Dashboard'] = 'User_controller/user_dashboard';
-$route['Owner-Login'] = 'Owner_controller/login_view';
 
 
 $route['Start-Will'] = 'Will_controller/load_login_start_info';
+
+// Owner
+$route['Owner-Login'] = 'Owner_controller/login_view';
+$route['Owner-Dashboard'] = 'Owner_controller/dashboard';
+$route['Owner-Will-List'] = 'Owner_controller/will_list';
+$route['Users-List'] = 'Owner_controller/users_list';
+$route['Payments-List'] = 'Owner_controller/payments_list';
+$route['Will-PDF'] = 'Pdf_controller/final_pdf_owner';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

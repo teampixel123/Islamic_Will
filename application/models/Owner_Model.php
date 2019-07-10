@@ -37,5 +37,51 @@ class Owner_Model extends CI_Model{
     $del=$this->db->delete($tables);
     return $del;
   }
+
+  // Get Users List... Datta...
+  public function get_users_list(){
+    $this->db->select('user.*, payments.*,user.user_id as user_id');
+    $this->db->from('tbl_user user');
+    $this->db->join('tbl_payments payments','user.user_id = payments.user_id','LEFT');
+    $query = $this->db->get();
+    //$last = $this->db->last_query();
+    $result = $query->result();
+    return $result;
+  }
+
+  // Get Payments List... Datta...
+  public function get_payments_list(){
+    $this->db->select('user.*, payments.*,user.user_id as user_id');
+    $this->db->from('tbl_user user');
+    $this->db->join('tbl_payments payments','user.user_id = payments.user_id','RIGHT');
+    $query = $this->db->get();
+    //$last = $this->db->last_query();
+    $result = $query->result();
+    return $result;
+  }
+
+  public function all_will_count(){
+    $query = $this->db->select('id')
+      ->from('tbl_will')
+      ->get();
+    $num = $query->num_rows();
+    return $num;
+  }
+  public function complete_will_count(){
+    $query = $this->db->select('id')
+      ->from('tbl_will')
+      ->where('is_will_complete',1)
+      ->get();
+    $num = $query->num_rows();
+    return $num;
+  }
+  public function incomplete_will_count(){
+    $query = $this->db->select('id')
+      ->from('tbl_will')
+      ->where('is_will_complete',0)
+      ->get();
+    $num = $query->num_rows();
+    return $num;
+  }
 }
  ?>

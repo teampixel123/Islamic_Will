@@ -15,7 +15,7 @@ $('.pan-no').blur(function(){
   if(!pan_format.test(val)){
     $(this).addClass('invalide-input');
     var val = $(this).val('');
-    $(this).attr("placeholder", "Invalide PAN Number");
+    $(this).attr("placeholder", "Invalid PAN Number");
   }
   if(pan_format.test(val)){
     $(this).removeClass('invalide-input');
@@ -109,6 +109,25 @@ $(".only_number").keypress(function(event){
       event.preventDefault();
   }
 });
+
+// Only Number allowed in input.
+$(".dec_number").keypress(function(event){
+  var inputValue = event.which;
+  // allow letters and whitespaces only.
+  if(!(inputValue >= 48 && inputValue <= 57) && (inputValue != 0 && inputValue != 46)) {
+      event.preventDefault();
+  }
+});
+
+// Only Number allowed in input.
+$(".policy_number").keypress(function(event){
+  var inputValue = event.which;
+  // allow letters and whitespaces only.
+  if(!(inputValue >= 48 && inputValue <= 57) && (inputValue != 0 && inputValue != 46 && inputValue != 44 && inputValue != 45 && inputValue != 47)) {
+      event.preventDefault();
+  }
+});
+
 
 //  Number Alphabets and , . / - allowed in input.
 $(".address").keypress(function(event){
