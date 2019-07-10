@@ -15,6 +15,8 @@ $(document).ready(function(){
   // Bank Assets Fields change by selection of Bank assets Type...
   $('#assets_type').change(function(){
     var assets_type = $(this).val();
+    $('#account_number').val('');
+    $('#account_number2').val('');
     $('#fd_recipt_No_div').hide();
     $('#key_number_div').hide();
 

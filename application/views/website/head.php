@@ -21,4 +21,5 @@
     <!-- <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'> -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
     <link href="<?php echo base_url('assets/css/font-awesome/font-awesome.min.css');?>" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="<?php echo base_url(); ?>assets/website/img/core-img/Easy_Islamic_Will_V3-06.png"/>
 </head>

@@ -29,5 +29,18 @@
       $this->db->where('user_id',$user_id);
       $this->db->update('tbl_user',$subscription_info);
     }
+
+    public function check_promocode($promocode){
+      $date = date('d-m-Y');
+      $this->db->select('user_id');
+      $this->db->from('tbl_user');
+      $this->db->where('promocode',$promocode);
+      $this->db->where('is_promocode_used','no');
+      $this->db->where("str_to_date(user_subscription_end_date,'%d-%m-%Y') >= str_to_date('$date','%d-%m-%Y')");
+      $query = $this->db->get();
+      $result = $query->result_array();
+      // $query = $this->db->last_query();
+      return $result;
+    }
   }
 ?>

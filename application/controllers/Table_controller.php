@@ -757,6 +757,7 @@
                 $('#bank_assets_id').val('$memberId');
                 $('#assets_type').val('$assets_type');
                 $('#account_number').val('$account_number');
+                $('#account_number2').val('$account_number');
                 $('#bank_name').val('$bank_name');
                 $('#branch_name').val('$branch_name');
                 $('#fd_recipt_No').val('$fd_recipt_No');

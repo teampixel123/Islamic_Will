@@ -17,7 +17,7 @@
     // Send OTP...
     public function save_register_user(){
       $date = date('d-m-Y');
-      $user_password = random_string('nozero',8);
+      $security_code = random_string('nozero',8);
       $reg_name = $this->input->post('reg_name');
       $reg_mob_email = $this->input->post('reg_mob_email');
       $contact_type = $this->input->post('contact_type');
@@ -35,13 +35,13 @@
       else {
         $this->session->set_userdata('reg_name',$reg_name);
         $this->session->set_userdata('reg_mob_email',$reg_mob_email);
-        $this->session->set_userdata('otp',$user_password);
+        $this->session->set_userdata('otp',$security_code);
 
         if ($contact_type=='mobile_number') {
-          //echo $user_password;
+          //echo $security_code;
           $fields = array(
               "sender_id" => "FSTSMS",
-              "message" => "Islamic Will OTP: $user_password",
+              "message" => "Islamic Will OTP: $security_code",
               "language" => "english",
               "route" => "p",
               "numbers" => $reg_mob_email,
@@ -72,15 +72,37 @@
         }
         else
         {
-          $from_email = "asif@pixelbazar.com";
-          //Load email library
-          $this->load->library('email');
-          $this->email->from($from_email);
-          $this->email->to($reg_mob_email);
-          $this->email->subject('Islamic Will OTP');
-          $this->email->message('Islamic Will OTP:'.$user_password);
+          $from_email = "datta@pixelbazar.com";
+          $formcontent='
+    			 <p style="color:#698291; font-weight: normal; margin: 0; padding: 0; line-height: 20px; font-size: 20px;font-family: Georgia, serif; ">
+    			 Welcome to Easy Islamic Will
+    			 </p>
+    			 <hr>
+    			 <p style="color:#698291; font-weight: normal; margin: 0; padding: 0; line-height: 20px; font-size: 16px;font-family: Georgia, serif; ">
+    			 Your Security Code is: '.$security_code.'
+    			 </p>
+    		 ';
+          $recipient = $reg_mob_email;
+          $subject = "Easy Islamic Will Security Code";
+
+          $headers  = 'MIME-Version: 1.0' . "\r\n";
+          $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+          $headers .= 'From: '.$from_email."\r\n".
+                      'Reply-To: '.$from_email."\r\n" .
+                      'X-Mailer: PHP/' . phpversion();
+
+          mail($recipient, $subject, $formcontent, $headers);
+
+
+          // $from_email = "asif@pixelbazar.com";
+          // //Load email library
+          // $this->load->library('email');
+          // $this->email->from($from_email);
+          // $this->email->to($reg_mob_email);
+          // $this->email->subject('Islamic Will OTP');
+          // $this->email->message('Islamic Will OTP:'.$security_code);
         }
-        $error = $user_password;  // Change this value to success after project complete...
+        $error = $security_code;  // Change this value to success after project complete...
         echo json_encode($error);
       }
     }

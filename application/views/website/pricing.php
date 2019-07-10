@@ -32,7 +32,11 @@
 
     <section class="pricing py-5">
   <div class="container">
+
     <div class="row">
+      <div class="alert alert-danger col-lg-12" style="display:none;" role="alert">
+      Invalide Promocode
+      </div>
       <!-- Free Tier -->
         <!-- <div class="col-lg-1">
           </div> -->
@@ -57,6 +61,7 @@
               <form class="" action="<?php base_url() ?>Payment_Gateway/payment" method="post">
                 <input type="hidden" name="pack_name" id="pack_name" value="Silver" >
                 <input type="hidden" name="amount" id="amount" value="2000" >
+                <input type="hidden" name="promocode" id="no_promocode" value="no_promocode">
                 <input type="hidden" name="name" id="name" value="<?php echo $user_data->user_fullname; ?>" >
                 <input type="hidden" name="email" id="email" value="<?php echo $user_data->user_email_id; ?>" >
                 <input type="hidden" name="mobile" id="mobile" value="<?php echo $user_data->user_mobile_number; ?>" >
@@ -91,14 +96,39 @@
               <li><span class="fa-li"></span>same package will of user’s Spouse, Real Sister, Mother, Father, Son, Daughter’s is at 2000 + GST @ 18%</li>
               <li><span class="fa-li"></span>Final will delivery by E mail or Courier at user’s choice.</li>
             </ul>
+
+
             <?php if($is_login){ ?>
-              <form class="" action="<?php base_url() ?>Payment_Gateway/payment" method="post">
+              <button type="button" class="btn btn-block active akame-btn text-uppercase" data-toggle="modal" data-target="#exampleModal">Get Started</button>
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Enter Promocode</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <p>Do you have promocode?</p>
+                      <input type="text" name="txt_promocode" id="txt_promocode" class="form-control">
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" id="btn_promo_yes" class="btn btn-block active akame-btn text-uppercase" >Yes</button>
+                      <button type="button" id="btn_promo_no" class="btn btn-block active akame-btn text-uppercase">No</button>
+                      <!-- data-dismiss="modal" -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <form class="" id="gold_pack_form" action="<?php base_url() ?>Payment_Gateway/payment" method="post">
                 <input type="hidden" name="pack_name" id="pack_name" value="Gold" >
                 <input type="hidden" name="amount" id="amount" value="4000" >
+                <input type="hidden" name="promocode" id="promocode">
                 <input type="hidden" name="name" id="name" value="<?php echo $user_data->user_fullname; ?>" >
                 <input type="hidden" name="email" id="email" value="<?php echo $user_data->user_email_id; ?>" >
                 <input type="hidden" name="mobile" id="mobile" value="<?php echo $user_data->user_mobile_number; ?>" >
-                <input type="submit" class="btn btn-block active akame-btn text-uppercase" value="Get Started" />
               </form>
             <?php }
             else{ ?>
@@ -112,78 +142,51 @@
         <div class="card mb-5 mb-lg-0">
           <div class="card-body">
             <h3 class="card-title text-muted text-uppercase text-center" style="color: #05748e!important;">Platinum</h3>
-            <!-- <h6 style="font-size:26px;" class="card-price text-center">Rs. 2000<span class="period">/ Only + GST @18%</span></h6> -->
             <br>
             <hr>
             <ul class="fa-ul">
               <li><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span><strong>Please drop your details for your
-personalized and customized will
-which is upgraded version of silver and
-gold package along with some extra
-features and benefits. </strong><br><br><br>
-Our executive will communicate you shortly.
-</li>
-
+                personalized and customized will
+                which is upgraded version of silver and
+                gold package along with some extra
+                features and benefits. </strong><br><br><br>
+                Our executive will communicate you shortly.
+              </li>
             </ul>
             <input type="submit" class="btn btn-block active akame-btn text-uppercase" value="Get Started" />
-            <!-- <?php if($is_login){ ?>
-              <form class="" action="<?php base_url() ?>Payment_Gateway/payment" method="post">
-                      <input type="hidden" name="amount" id="amount" value="10" >
-                      <input type="hidden" name="name" id="name" value="<?php echo $user_data->user_fullname; ?>" >
-                      <input type="hidden" name="email" id="email" value="<?php echo $user_data->user_email_id; ?>" >
-                      <input type="hidden" name="mobile" id="mobile" value="<?php echo $user_data->user_mobile_number; ?>" >
-                      <input type="submit" class="btn btn-block active akame-btn text-uppercase" value="Get Started" />
-              </form>
-            <?php }
-            else{ ?>
-              <a href="<?php echo base_url(); ?>Login" class="btn btn-block active akame-btn text-uppercase">Get Started</a>
-            <?php } ?> -->
           </div>
         </div>
       </div>
-      <!-- <div class="col-lg-1">
-        </div> -->
-      <!-- Pro Tier -->
-      <!-- <div class="col-lg-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title text-muted text-uppercase text-center">Pro</h5>
-            <h6 class="card-price text-center">$49<span class="period">/month</span></h6>
-            <hr>
-            <ul class="fa-ul">
-              <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Unlimited Users</strong></li>
-              <li><span class="fa-li"><i class="fas fa-check"></i></span>150GB Storage</li>
-              <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Public Projects</li>
-              <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
-              <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Private Projects</li>
-              <li><span class="fa-li"><i class="fas fa-check"></i></span>Dedicated Phone Support</li>
-              <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Unlimited</strong> Free Subdomains</li>
-              <li><span class="fa-li"><i class="fas fa-check"></i></span>Monthly Status Reports</li>
-            </ul>
-            <a href="#" class="btn btn-block btn-primary text-uppercase">Button</a>
-          </div>
-        </div>
-      </div> -->
     </div>
   </div>
 </section>
-
-
-
-
     <!-- Border -->
-
         <!-- <div class="border-top mt-3"></div> -->
-
     <!-- Footer Area Start -->
   <?php include('footer.php') ?>
 </body>
 <script>
-$(document).ready(function(){
-$('#btn_silver').click(function(){
-
-});
-});
+  $(document).ready(function(){
+    $('#btn_promo_yes').click(function(){
+      var promocode = $('#txt_promocode').val();
+      if(promocode == ''){
+        alert('Enter Promocode');
+      }
+      else{
+        $('#promocode').val(promocode);
+        $('#txt_promocode').val('');
+        $('#gold_pack_form').submit();
+      }
+    });
+    $('#btn_promo_no').click(function(){
+        $('#promocode').val('no_promocode');
+        $('#gold_pack_form').submit();
+    });
+  });
 </script>
-
+<?php if($this->session->flashdata('invalid_promocode')){ ?>
+  <script>
+  $('.alert-danger').show().delay(5000).fadeOut();
+  </script>
+<?php } ?>
 </html>
