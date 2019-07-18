@@ -38,18 +38,17 @@
       if($is_login && $this->input->post('will_id')){
         $will_id = $this->input->post('will_id');
         $is_complete = $this->input->post('is_complete');
+        $btn_from = $this->input->post('btn_from');
         if($is_complete == 1){
           $this->Will_Model->set_will_complete($will_id);
         }
-        if(isset($_COOKIE['set_update']) && $_COOKIE['set_update'] == $will_id){
-          // echo $_COOKIE['set_update'];
+        if(isset($_COOKIE['set_update']) && $_COOKIE['set_update'] == $will_id && $btn_from == 'user_will_edit'){
           $this->Will_Model->set_will_updation_over($will_id);
         }
-        // if($this->session->userdata('set_update')){
-        //   $this->Will_Model->set_will_updation_over($will_id);
-        // }
-        // echo $will_id;
-        // echo $this->session->userdata('set_update');
+        else{
+          unset($_COOKIE['set_update']);
+          setcookie('set_update', null, -1, '/');
+        }
 
     		$data['personal_data']=$this->Will_Model->get_personal_data($will_id);
     		$data['family_data']= $this->Table_Model->getAllFamilyMembarDataAjax($will_id);

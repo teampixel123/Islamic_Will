@@ -60,7 +60,7 @@ $route['Privacy-Policy'] = 'Website/privacy';
 $route['Login'] = 'User_controller/login';
 $route['Register'] = 'Login_controller/register_user_view';
 $route['User-Dashboard'] = 'User_controller/user_dashboard';
-
+$route['Will-Success'] = 'User_controller/success_page';
 
 $route['Start-Will'] = 'Will_controller/load_login_start_info';
 

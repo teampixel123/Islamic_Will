@@ -92,7 +92,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                               $today = date('d-m-Y');
                               if($will_rem_updations > 0 && strtotime($updation_last_date) >= strtotime($today)){ ?>
                                 <td class="p-0" style="border: none!important;">
-                                  <button type="button" style="width:70px;" class="btn btn-sm btn-primary no-margin" data-toggle="modal" data-target="#exampleModal_<?php echo $i; ?>"><i style="color:#ffffff !important;" class="fa fa-edit"></i> Edit</button>
+                                  <button type="button" style="width:90px;" class="btn btn-sm btn-primary no-margin" data-toggle="modal" data-target="#exampleModal_<?php echo $i; ?>">Edit Will</button>
                                 </td>
                                   <!-- Modal -->
                                   <div class="modal fade" id="exampleModal_<?php echo $i; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -112,7 +112,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                           <form id="form_will_edit" action="<?php echo base_url(); ?>Will_controller/load_login_start_info" method="post">
                                              <input type="hidden" name="will_id" id="will_id" value="<?php echo $will_list->will_id; ?>" />
-                                             <button id="btn_will_edit" title="You can update only 1 time" type="submit" class="btn btn-primary"><i style="color:#ffffff !important;" class="fa fa-edit"></i></i> Edit</button>
+                                             <button id="btn_will_edit" title="You can update only 1 time" type="submit" class="btn btn-primary"><i style="color:#ffffff !important;" class="fa fa-edit"></i></i> Edit Will</button>
                                           </form>
                                           <!-- <button type="button" class="btn btn-primary">Edit</button> -->
                                         </div>
@@ -121,62 +121,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                   </div>
                                   <!-- // Modal -->
                               <?php } else{ ?>
-                                <td class="pt-1" style="border: none!important; color:red;">
-                                Can't Update
-                              </td>
+                                <td class="p-0" style="border: none!important;">
+                                  <button type="button" style="width:90px;" class="btn btn-sm btn-primary no-margin" disabled><i style="color:#ffffff !important;" class="fa fa-edit"></i> Edit Will</button>
+                                </td>
                               <?php } ?>
 
                               <?php $is_will_complete = $will_list->is_will_complete;
-                              if($is_will_complete == 1){ ?>
+                                    $is_blur = $will_list->is_blur;
+                              if($is_will_complete == 1 && $is_blur == 'no'){ ?>
                                 <td class="p-0" style="border: none!important;">
                                   <form target="_blank" id="form_will_pdf" action="<?php echo base_url(); ?>Pdf_controller/final_pdf" method="post">
                         							 <input type="hidden" name="will_id" id="will_id" value="<?php echo $will_list->will_id; ?>" />
-                        							 <button id="btn_will_pdf" style="width:70px;" type="submit" class="btn btn-sm btn-success no-margin"><i style="color:#ffffff !important;" class="fa fa-file-pdf-o"></i> PDF</button>
+                                       <input type="hidden" name="btn_from" id="btn_from" value="user_will_list" />
+                        							 <button id="btn_will_pdf" style="width:70px;" type="submit" class="btn btn-sm btn-success no-margin"><i style="color:#ffffff !important;" class="fa fa-file-pdf-o"></i> Will</button>
                     						  </form>
                                 </td>
-                              <?php  }
+
+
+                            <?php  }
                                 else{ ?>
-                                  <td class="pt-1" style="border: none!important; color:red;">
-                                  Incomplete Will
+                                  <td class="p-0" style="border: none!important; color:red;">
+                                  <button style="width:70px;" type="submit" class="btn btn-sm btn-success no-margin" disabled><i style="color:#ffffff !important;" class="fa fa-file-pdf-o"></i> Will</button>
                                 </td>
                               <?php } ?>
-
-                                <td class="p-0" style="border: none!important;">
-                                  <!-- <form id="form_will_edit" action="<?php echo base_url(); ?>Will_controller/delete_will" method="post">
-                                     <input type="hidden" name="will_id" id="will_id" value="<?php echo $will_list->will_id; ?>" />
-                                     <button id="btn_will_edit" type="submit" class="btn btn-sm btn-danger no-margin"><i class="fa fa-edit"></i></i> Delete</button>
-                                  </form> -->
-                                  <!-- Button trigger modal -->
-                                  <!-- <button type="button" class="btn btn-sm btn-danger no-margin" data-toggle="modal" data-target="#exampleModalCenter_<?php echo $will_list->id; ?>">
-                                    Delete
-                                  </button> -->
-                                  <!-- Modal -->
-                                  <!-- <div class="modal fade" id="exampleModalCenter_<?php echo $will_list->id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                      <div class="modal-content">
-                                        <div class="modal-header">
-                                          <h5 class="modal-title" id="exampleModalLongTitle">Do You want's To Delete This Will </h5>
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                          </button>
-                                        </div>
-                                        <div class="modal-body">
-                                              <h5>Will Id: <?php echo $will_list->will_id; ?></h5>
-                                              <h5>Name: <?php echo $will_list->full_name; ?></h5>
-
-                                        </div>
-                                        <div class="modal-footer">
-                                          <form id="form_will_edit" action="<?php echo base_url(); ?>Will_controller/delete_will" method="post">
-                                             <input type="hidden" name="will_id" id="will_id" value="<?php echo $will_list->will_id; ?>" />
-                                             <button id="btn_will_edit" type="submit" class="btn  btn-danger no-margin">Yes</button>
-                                          </form>
-
-                                          <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div> -->
-                                </td>
                             </tr>
                           </tbody>
                         </table>
@@ -190,7 +157,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </table>
           </div>
         </div>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
       </div>
 
     <!-- /.container-fluid -->

@@ -1,6 +1,6 @@
 <!-- Sidebar -->
 <ul class="sidebar navbar-nav">
-  <?php 
+  <?php
   if($user_subscription == 1){ ?>
     <li class="nav-item <?php if($page=='dashboard'){echo "active";}?>">
       <a class="nav-link" href="<?php echo base_url(); ?>User_controller/user_dashboard">
@@ -13,11 +13,11 @@
         <i class="fas fa-fw fa-chart-area"></i>
         <span>Make a Will </span></a>
     </li>
-    <li class="nav-item <?php if($page=='will_list'){echo "active";}?>">
+    <!-- <li class="nav-item <?php if($page=='will_list'){echo "active";}?>">
       <a class="nav-link" href="<?php echo base_url(); ?>User_controller/will_list">
         <i class="fas fa-fw fa-table"></i>
         <span>Will List</span></a>
-    </li>
+    </li> -->
     <li class="nav-item <?php if($page=='profile'){echo "active";}?>">
       <a class="nav-link" href="<?php echo base_url(); ?>User_controller/profile">
         <i class="fas fa-fw fa-user-circle"></i>

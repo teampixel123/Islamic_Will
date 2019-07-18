@@ -53,11 +53,15 @@
               <li><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>User friendly experience</li>
               <li><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>Confidential, safe and secure </li>
               <li><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>Preview before print / finalize </li>
-              <li><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>User can generate will up to 30 days from payment</li>
-              <li ><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>One modification / updation up to one (1) month</li>
+              <li><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span><strong>User can generate will up to 30 days from payment</strong></li>
+              <li ><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span><strong>One modification / updation up to one (1) month from payment</strong></li>
               <li ><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>Only @ Rs. 2000/- + GST @18%</li>
             </ul>
             <?php if($is_login){ ?>
+              <?php $max_will = $user_data->max_will;
+                if($max_will > 0){ ?>
+                  <button type="button" class="btn btn-block active akame-btn text-uppercase" data-toggle="modal" data-target="#subscribedModel">Get Started</button>
+              <?php  } else{ ?>
               <form class="" action="<?php base_url() ?>Payment_Gateway/payment" method="post">
                 <input type="hidden" name="pack_name" id="pack_name" value="Silver" >
                 <input type="hidden" name="amount" id="amount" value="2000" >
@@ -67,7 +71,7 @@
                 <input type="hidden" name="mobile" id="mobile" value="<?php echo $user_data->user_mobile_number; ?>" >
                 <input type="submit" class="btn btn-block active akame-btn text-uppercase" value="Get Started" />
               </form>
-            <?php }
+            <?php } }
             else{ ?>
               <a href="<?php echo base_url(); ?>Login" class="btn btn-block active akame-btn text-uppercase">Get Started</a>
             <?php } ?>
@@ -89,8 +93,8 @@
               <li><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>User friendly experience</li>
               <li><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>Confidential, safe and secure</li>
               <li><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>Preview before print / finalize</li>
-              <li><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>User can generate will up to 30 days from payment</li>
-              <li ><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>One modification / updation up to three (3) months</li>
+              <li><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span><strong>User can generate will up to 30 days from payment</strong></li>
+              <li ><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span><strong>One modification / updation up to three (3) months from payment</strong></li>
               <li ><span class="fa-li"><i class="fa fa-check" aria-hidden="true"></i></span>Only @ Rs. 4000/- + GST @18%</li>
               <hr>
               <li><span class="fa-li"></span>same package will of user’s Spouse, Real Sister, Mother, Father, Son, Daughter’s is at 2000 + GST @ 18% <i title="You can use promocode for 50% discount" class="fa fa-question-circle-o" aria-hidden="true"></i></li>
@@ -99,6 +103,10 @@
 
 
             <?php if($is_login){ ?>
+              <?php $user_subscription = $user_data->user_subscription;
+                if($max_will > 0){ ?>
+                  <button type="button" class="btn btn-block active akame-btn text-uppercase" data-toggle="modal" data-target="#subscribedModel">Get Started</button>
+              <?php  } else{ ?>
               <button type="button" class="btn btn-block active akame-btn text-uppercase" data-toggle="modal" data-target="#exampleModal">Get Started</button>
               <!-- Modal -->
               <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -130,14 +138,34 @@
                 <input type="hidden" name="email" id="email" value="<?php echo $user_data->user_email_id; ?>" >
                 <input type="hidden" name="mobile" id="mobile" value="<?php echo $user_data->user_mobile_number; ?>" >
               </form>
-            <?php }
+            <?php } }
             else{ ?>
               <a href="<?php echo base_url(); ?>Login" class="btn btn-block active akame-btn text-uppercase">Get Started</a>
             <?php } ?>
           </div>
         </div>
       </div>
-
+      <div class="modal fade" id="subscribedModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Alert</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>You are allready subscribed</p>
+              <p>Create new will</p>
+            </div>
+            <div class="modal-footer">
+              <a href="<?php echo base_url(); ?>Will_controller/make_will_view" class="btn btn-block active akame-btn text-uppercase" >Create a Will</a>
+              <button type="button" class="btn btn-block active akame-btn text-uppercase" data-dismiss="modal">Cancel</button>
+              <!-- data-dismiss="modal" -->
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="col-lg-4">
         <div class="card mb-5 mb-lg-0">
           <div class="card-body">

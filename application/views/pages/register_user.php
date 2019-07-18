@@ -161,7 +161,8 @@ var contact_type = $('#contact_type').val();
         success: function(data){
           var responce = JSON.parse(data);
           if (responce['responce'] == 'Valide') {
-            window.location.href = "<?php echo base_url() ?>User_controller/user_dashboard";
+            // window.location.href = "<?php echo base_url() ?>User_controller/user_dashboard";
+              window.location.href = "<?php echo base_url() ?>Login";
           }
           else{
             $('#error_invalide_otp').show();

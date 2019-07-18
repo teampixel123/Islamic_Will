@@ -1,6 +1,9 @@
 <?php foreach($user_data as $user_data){
   }
+  // $user_is_login =
+  $user_id = $this->session->userdata('user_id');
   $user_subscription = $user_data->user_subscription;
+  $is_have_blur = $user_data->is_have_blur;
 ?>
 <!-- Header Area Start -->
 <header class="header-area">

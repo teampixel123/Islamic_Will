@@ -24,6 +24,7 @@ class Owner_Model extends CI_Model{
      $query = $this->db->select('t1.*, t2.*')
       ->from('tbl_will as t1')
       ->join('tbl_personal_info as t2', 't1.will_id = t2.will_id', 'LEFT')
+      ->where('t1.will_user_id !=','')
       ->get();
     $result = $query->result();
     return $result;

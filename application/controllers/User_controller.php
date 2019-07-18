@@ -27,11 +27,13 @@
           $user_subscription1 = $data2->user_subscription;
           $incomplete_will = $data2->incomplete_will;
         }
+        $data['user_data'] = $user_data;
+        $data['will_list'] = $this->User_Model->get_will_list($user_id);
+        $data['will_list2'] = $this->User_Model->get_will_list($user_id);
         if($user_subscription1 == 1){
           $this->session->set_userdata('is_subscrided','yes');
         }
-
-        $this->load->view('pages/user_dashboard',['user_data'=>$user_data]);
+        $this->load->view('pages/user_dashboard',$data);
       }
       else{
         header('Location:'.base_url().'Login');
@@ -105,9 +107,7 @@
         $this->session->sess_destroy();
         header('Location:'.base_url().'Login');
       }
-
     }
-
 
     public function profile(){
       $is_login = $this->session->userdata('user_is_login');
@@ -179,6 +179,19 @@
         header('Location:'.base_url().'Login');
       }
     }
+
+      public function success_page(){
+        $is_login = $this->session->userdata('user_is_login');
+        if($is_login){
+          $user_id = $this->session->userdata('user_id');
+          $user_data = $this->Will_Model->get_user_data($user_id);
+          $data['user_data'] = $user_data;
+          $this->load->view('pages/success_page',$data);
+        }
+        else{
+          header('Location:'.base_url().'Login');
+        }
+      }
 
   }
 ?>

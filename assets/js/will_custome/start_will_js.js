@@ -80,45 +80,24 @@ $(document).ready(function(){
      if(val == '' || val == '0'){
        $(this).addClass('required-input');
      }
-     // else{
-     //   $(this).removeClass('required-input');
-     // }
    });
-   // $('.select').each(function(){
-   //   var val = $(this).val();
-   //   if(val == '0'){
-   //     $(this).addClass('required-input');
-   //   }
-   //   else{
-   //     $(this).removeClass('required-input');
-   //   }
-   // });
-   // $('.text').each(function(){
-   //   var text_info = $(this).val();
-   //   if(!text.test(text_info)){
-   //     $(this).addClass('required-input');
-   //   }
-   //   else{
-   //     $(this).removeClass('required-input');
-   //   }
-   // });
-
-   if(name_title == '0' || full_name == '' || !text.test(full_name) || is_have_child == '-1' || !mobile_format.test(mobile_no) || mobile_no == '' ||
+   if(name_title == '0' || full_name == '' || marital_status == '0' || !text.test(full_name) || is_have_child == '-1' || !mobile_format.test(mobile_no) || mobile_no == '' ||
  !email_format.test(email) || email == ''){
    // Blank...
    }
    else {
+     $('#save_start_data').prop('disabled', true);
      $('.required, .select').removeClass('required-input');
-     $('#save_load_modal').modal('show');
+     // $('#save_load_modal').modal('show');
      var form_data = $('#start_will_form').serialize();
      $.ajax({
        data: form_data,
        type: "post",
        url: base_url+"Will_controller/save_start_info",
        success: function (data){
-           $('#save_load_modal').on('shown.bs.modal', function(e) {
-             $("#save_load_modal").modal("hide");
-           });
+           // $('#save_load_modal').on('shown.bs.modal', function(e) {
+           //   $("#save_load_modal").modal("hide");
+           // });
            window.location.href = base_url+"Will_controller/personal_info_view";
         //  }
        }
@@ -143,30 +122,9 @@ $(document).ready(function(){
      if(val == '' || val == '0'){
        $(this).addClass('required-input');
      }
-     // else{
-     //   $(this).removeClass('required-input');
-     // }
    });
-   // $('.select').each(function(){
-   //   var val = $(this).val();
-   //   if(val == '0'){
-   //     $(this).addClass('required-input');
-   //   }
-   //   else{
-   //     $(this).removeClass('required-input');
-   //   }
-   // });
-   // $('.text').each(function(){
-   //   var text_info = $(this).val();
-   //   if(!text.test(text_info)){
-   //     $(this).addClass('required-input');
-   //   }
-   //   else{
-   //     $(this).removeClass('required-input');
-   //   }
-   // });
 
-   if(name_title == '0' || full_name == '' || !text.test(full_name) || is_have_child == '-1' || !mobile_format.test(mobile_no) || mobile_no == '' ||
+   if(name_title == '0' || full_name == '' || marital_status == '0' || !text.test(full_name) || is_have_child == '-1' || !mobile_format.test(mobile_no) || mobile_no == '' ||
  !email_format.test(email) || email == ''){
    // Blank...
    }

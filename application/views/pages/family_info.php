@@ -86,19 +86,35 @@
                       <option>Sister</option>
                       <option>Grand Father</option>
                       <option>Grand Mother</option>
-                  <?php   } ?>?>
-              <?php }
-                    else{ ?>
-                     <option id="Father">Father</option>
-           					 <option>Mother</option>
-           					 <option id="Spouse">Spouse</option>
-           					 <option id="Son">Son</option>
-           					 <option id="Daugther">Daughter</option>
-           					 <option>Brother</option>
-           					 <option>Sister</option>
-           					 <option>Grand Father</option>
-           					 <option>Grand Mother</option>
-              <?php } ?>
+                  <?php   } else if ($marital_status == 'Widow') { ?>
+                    <option id="Father">Father</option>
+                    <option>Mother</option>
+                    <option>Brother</option>
+                    <option>Sister</option>
+                    <option id="Son">Son</option>
+                    <option id="Daugther">Daughter</option>
+                    <option>Grand Father</option>
+                    <option>Grand Mother</option>
+                <?php   } else if ($marital_status == 'Divorcee') { ?>
+                  <option id="Father">Father</option>
+                  <option>Mother</option>
+                  <option>Brother</option>
+                  <option>Sister</option>
+                  <option id="Son">Son</option>
+                  <option id="Daugther">Daughter</option>
+                  <option>Grand Father</option>
+                  <option>Grand Mother</option>
+                  <?php   } else{ ?>
+                    <option id="Father">Father</option>
+                    <option>Mother</option>
+                    <option id="Spouse">Spouse</option>
+                    <option id="Son">Son</option>
+                    <option id="Daugther">Daughter</option>
+                    <option>Brother</option>
+                    <option>Sister</option>
+                    <option>Grand Father</option>
+                    <option>Grand Mother</option>
+              <?php } } ?>
 
   				 </select>
            <!-- <p id="error_relationship" style="color:red; display:none" class="text-left valide">*This field is required.</p> -->

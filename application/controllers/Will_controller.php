@@ -44,13 +44,11 @@
       $user_id = $this->session->userdata('user_id');
       if($is_login && $user_id){
         $this->session->unset_userdata('will_id');
-
         header('Location:'.base_url().'Will_controller/start_will_view');
         // header('location:start_will_view');
       }
       else {
         $this->session->sess_destroy();
-
         header('Location:'.base_url().'Login');
         // header('location:login');
       }
@@ -64,20 +62,31 @@
       $will_id = $this->session->userdata('will_id');
       if($is_login && $user_id){
         $user_data = $this->Will_Model->get_user_data($user_id);
-        foreach ($user_data as $data2) {
+        foreach ($user_data as $data2){
           $user_subscription1 = $data2->user_subscription;
           $incomplete_will = $data2->incomplete_will;
           $rem_updations = $data2->rem_updations;
+          $is_have_blur = $data2->is_have_blur;
+          $max_will = $data2->max_will;
         }
-        if($user_subscription1 == 1 && $incomplete_will > 0){
+        if($user_subscription1 == 1 && $max_will > 0){
           $this->load->view('pages/start_will',['user_data'=>$user_data]);
         }
         else if($user_subscription1 == 1 && $rem_updations > 0 && $will_id ){
-            $this->load->view('pages/start_will',['user_data'=>$user_data]);
+          $this->load->view('pages/start_will',['user_data'=>$user_data]);
+        }
+        else if($is_have_blur == 'no'){
+          $this->load->view('pages/start_will',['user_data'=>$user_data]);
+        }
+        else if($is_have_blur == 'yes' && $will_id){
+          $this->load->view('pages/start_will',['user_data'=>$user_data]);
         }
         else{
+          $this->session->set_flashdata('subscribe_for_will','yes');
           header('Location:'.base_url().'User-Dashboard');
         }
+
+
       }
       else if($owner_login){
         $this->load->view('pages/start_will');
@@ -235,6 +244,7 @@
    }
 
    $is_login = $this->session->userdata('user_is_login');
+
    if($is_login){
      $user_id = $this->session->userdata('user_id');
      $user_data = $this->Will_Model->get_user_data($user_id);
@@ -246,12 +256,28 @@
        $updation_end_date = $data2->updation_end_date;
        $rem_updations = $data2->rem_updations;
      }
+
+     // Check user has subscription or not...
+     if($max_will == 0){
+       $updation_end_date = '';
+       $is_have_blur = 'yes';
+       $is_blur = 'yes';
+     }
+     else{
+       $is_have_blur = 'no';
+       $is_blur = 'no';
+     }
+
      $complete_will = $complete_will +1;
      $incomplete_will = $incomplete_will - 1;
+     //update in tbl_user
      $will_count_data = array(
        'complete_will' => $complete_will,
        'incomplete_will' => $incomplete_will,
+       'is_have_blur' => $is_have_blur,
+       'max_will' => 0,
      );
+     // save in tbl_will
      $will_data = array(
        'will_id' => $will_id,
        'will_date' => $will_date,
@@ -259,7 +285,9 @@
        'will_rem_updations' => $rem_updations,
        'updation_last_date' => $updation_end_date,
        'date' => $will_date,
+       'is_blur' => $is_blur,
      );
+     // save in tbl_personal_info.
      $start_data = array(
        'will_id' => $will_id,
        'name_title'=>$this->input->post('name_title'),
@@ -275,7 +303,7 @@
     $this->Will_Model->save_will_data($will_data);
     $this->Will_Model->update_will_count($will_count_data,$user_id);
 
-    $session_data = array('will_start' => 'yes','will_id' =>$will_id);
+    $session_data = array('will_start' => 'yes','will_id' => $will_id);
     $temp_will_id =  $this->session->set_userdata($session_data);
 
     // $get_personal_data = $this->Will_Model->get_personal_data($will_id);
@@ -287,6 +315,7 @@
         'will_id' => $will_id,
         'will_date' => $will_date,
         'date' => $will_date,
+        'is_blur' => 'yes',
       );
       $start_data = array(
         'will_id' => $will_id,
@@ -1093,69 +1122,60 @@
         // new pages
 
         public function printpage(){
-                 $this->load->library('Myfpdf');
-                 $data=$this->Will_Model->displaydata();
+           $this->load->library('Myfpdf');
+           $data=$this->Will_Model->displaydata();
 
-                 //if(!empty(array_filter($data))){
-                  $this->load->view('pages\pdf',['result'=>$data]);
-                //}else{
-                // redirect('Will_controller/pdf_view',$data);
-              //   }
+           //if(!empty(array_filter($data))){
+            $this->load->view('pages\pdf',['result'=>$data]);
+          //}else{
+          // redirect('Will_controller/pdf_view',$data);
+        //   }
 
-                 }
+           }
 
-                 public function gotopayment(){
+      public function gotopayment(){
+        //print_r($_POST);
+        extract($_POST);
 
-                      //print_r($_POST);
+        $ch = curl_init();
+        //curl_setopt($ch, CURLOPT_URL, 'https://www.instamojo.com/api/1.1/payment-requests/');
+        curl_setopt($ch, CURLOPT_URL, 'https://www.instamojo.com/api/1.1/payment-requests/');
+        curl_setopt($ch, CURLOPT_HEADER, FALSE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
+        curl_setopt($ch, CURLOPT_HTTPHEADER,
+                   /* array("X-Api-Key:d82016f839e13cd0a79afc0ef5",
+                          "X-Auth-Token:3827881f669c11e8dad8a023fd1108c2s"));
+        			*/
+        		array("X-Api-Key:0ec75dd4bc3c0555c6a7b7d07089d75a",
+                          "X-Auth-Token:842e107de7debf82f826b4c9ed4b398d"));
+        $payload = Array(
+            'purpose' => 'Will Payment',
+            'amount' => $amount,
+            'phone' => $phone,
+            'buyer_name' => $name,
+            'redirect_url' => $surl,
+            'send_email' => true,
+            'webhook' => '',
+            'send_sms' => true,
+            'email' => $email,
+            'allow_repeated_payments' => false
+        );
 
+        //print_r($payload);
 
-                      extract($_POST);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($payload));
+        $response = curl_exec($ch);
+        curl_close($ch);
+        //echo $response;
 
-                      $ch = curl_init();
-                      //curl_setopt($ch, CURLOPT_URL, 'https://www.instamojo.com/api/1.1/payment-requests/');
-                      curl_setopt($ch, CURLOPT_URL, 'https://www.instamojo.com/api/1.1/payment-requests/');
-                      curl_setopt($ch, CURLOPT_HEADER, FALSE);
-                      curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-                      curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
-                      curl_setopt($ch, CURLOPT_HTTPHEADER,
-                                 /* array("X-Api-Key:d82016f839e13cd0a79afc0ef5",
-                                        "X-Auth-Token:3827881f669c11e8dad8a023fd1108c2s"));
-                      			*/
-                      		array("X-Api-Key:0ec75dd4bc3c0555c6a7b7d07089d75a",
-                                        "X-Auth-Token:842e107de7debf82f826b4c9ed4b398d"));
-                      $payload = Array(
-                          'purpose' => 'Will Payment',
-                          'amount' => $amount,
-                          'phone' => $phone,
-                          'buyer_name' => $name,
-                          'redirect_url' => $surl,
-                          'send_email' => true,
-                          'webhook' => '',
-                          'send_sms' => true,
-                          'email' => $email,
-                          'allow_repeated_payments' => false
-                      );
+        $json_decode = json_decode($response, true);
+        $longurl = $json_decode['payment_request']['longurl'];
 
-                      //print_r($payload);
-
-                      curl_setopt($ch, CURLOPT_POST, true);
-                      curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($payload));
-                      $response = curl_exec($ch);
-                      curl_close($ch);
-
-                      //echo $response;
-
-                      $json_decode = json_decode($response, true);
-                      $longurl = $json_decode['payment_request']['longurl'];
-
-
-
-                      header('location:'.$longurl);
-                      echo "<>window.location=".$longurl."</script>";
-
-
-               }
-
+        header('location:'.$longurl);
+        echo "<>window.location=".$longurl."</script>";
+    }
 
   }
  ?>

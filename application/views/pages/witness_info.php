@@ -104,22 +104,37 @@
       <br>
 
   </div>
+  <?php
+  $will_id = $this->session->userdata('will_id');
+  $will_data = $this->Will_Model->get_will_data($will_id);
+  foreach ($will_data as $will_data) {
+    $is_blur = $will_data->is_blur;
+  }
+  ?>
 
   <p> <button type="button" id="witness_previous" class="btn btn-info">Previous</button>
 
-      <?php if($this->session->userdata('user_is_login')){ ?>
+      <?php if($this->session->userdata('user_is_login') && ($is_have_blur == 'no' || $is_blur == 'no')){ ?> <!-- && $is_have_blur == 'no' -->
         <button type="submit" id="btn_final_pdf" class="btn btn-info float-right" disabled>Create PDF</button></p>
+
       <?php } elseif ($this->session->userdata('owner_is_login')) { ?>
         <button type="submit" id="btn_final_pdf_owner" class="btn btn-info float-right" disabled>Create PDF</button></p>
+
+      <?php } elseif ($this->session->userdata('user_is_login') && $is_have_blur == 'yes') { ?>
+          <button type="submit" id="btn_pdf_blur" class="btn btn-info float-right">Create PDF</button></p>>
+
       <?php } else { ?>
         <button type="submit" id="btn_pdf" class="btn btn-info float-right" disabled>Create PDF</button></p>
       <?php } ?>
-      <form target="_blank" id="final_pdf" class="" action="<?php echo base_url() ?>Pdf_controller/final_pdf" method="post">
+      <!-- blur pdf -->
+      <form target="_blank" id="pdf" class="" action="<?php echo base_url() ?>Pdf_controller/pdf" method="post">
         <input type="hidden" name="will_id" value="<?php echo $this->session->userdata('will_id'); ?>">
         <input type="hidden" name="is_complete" value="1">
       </form>
-      <form target="_blank" id="pdf" class="" action="<?php echo base_url() ?>Pdf_controller/pdf" method="post">
+      <!-- final pdf -->
+      <form target="_blank" id="final_pdf" class="" action="<?php echo base_url() ?>Pdf_controller/final_pdf" method="post">
         <input type="hidden" name="will_id" value="<?php echo $this->session->userdata('will_id'); ?>">
+        <input type="hidden" name="btn_from" id="btn_from" value="user_will_edit" />
         <input type="hidden" name="is_complete" value="1">
       </form>
       <form target="_blank" id="final_pdf_owner" class="" action="<?php echo base_url() ?>Pdf_controller/final_pdf_owner" method="post">
@@ -166,11 +181,11 @@
   <br /><br />
   <ul class="list-unstyled multi-steps">
 
-  	<li  >Personal Information</li>
-  	<li >Family Information</li>
-  	<li >Assets</li>
-  	<li >Executor</li>
-  	<li >Witness</li>
+  	<li>Personal Information</li>
+  	<li>Family Information</li>
+  	<li>Assets</li>
+  	<li>Executor</li>
+  	<li>Witness</li>
   </ul>
   </div>
   <div class="container">

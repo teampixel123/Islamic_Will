@@ -64,15 +64,19 @@
           <input type="hidden" name="share_id" id="share_id">
           <input type="hidden" name="will_id" id="will_id" value="<?php echo $start_will_data['will_id']; ?>">
           <fieldset>
-            <h3 class=" text-left">Distribution of 1/3 Share: </h3>
+            <h3 class=" text-left">Distribution of 1/3 Share: <i style="font-size:16px;" title="A Mohammadean according to Islamic Law cannot by will dispose of
+more than one-third of the surplus of his estate after payment of funeral
+expenses and debts. It means a third of the estate of the testator as is left after
+the payment of the funeral expenses, other charges and debts of the deceased
+(testator). He/she can give their 100% share to any person." class="fa fa-question-circle-o"></i></h3>
             <div class="form-group" id="">
               <div class="row text-center">
                 <label class="col-md-3 text-right" for="exampleInputEmail1">Share To: </label>
-                <div class="col-md-3">
+                <div class="col-md-4">
         						<input type="radio" id="person" name="share_type" class="" value="Person" checked="">
         						<label class="" for="person">Person</label>
         					</div>
-        					<div class="col-md-3">
+        					<div class="col-md-4">
         						<input type="radio" id="organization" name="share_type" value="Organization" class="">
         						<label class="" for="organization">Organization</label>
         					</div>
@@ -120,11 +124,7 @@
 
                 <div class="col-md-6">
 
-        					<input type="number" data-toggle="tooltip" title="A Mohammadean according to Islamic Law cannot by will dispose of
-more than one-third of the surplus of his estate after payment of funeral
-expenses and debts. It means a third of the estate of the testator as is left after
-the payment of the funeral expenses, other charges and debts of the deceased
-(testator). He/she can give their 100% share to any person." name="share_percentage" id="share_percentage" class="required form-control form-control-sm clear redTip" placeholder="%" >
+        					<input type="number" data-toggle="tooltip" name="share_percentage" id="share_percentage" class="required form-control form-control-sm clear redTip" placeholder="%" >
 
 
                 </div>
@@ -231,7 +231,7 @@ the payment of the funeral expenses, other charges and debts of the deceased
 <script type="text/javascript">var base_url = "<?php echo base_url() ?>";</script>
 <script src="<?php echo base_url(); ?>assets/js/will_custome/executor_funeral_js.js" type="text/javascript"></script>
 <script type="text/javascript">
-    
+
 </script>
 </body>
 

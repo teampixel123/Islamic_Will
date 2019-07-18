@@ -68,7 +68,6 @@
       return $del;
     }
 
-
     // Save start Will Info...
     public function save_start_info($data){
       $this->db->insert('tbl_personal_info',$data);
@@ -453,5 +452,26 @@
       $this->db->update('tbl_will');
     }
 
+    // Get Blur Will info by user id
+    public function get_blur_will_info($user_id){
+      $this->db->select('*');
+      $this->db->where('will_user_id',$user_id);
+      $this->db->where('is_blur','yes');
+      $this->db->from('tbl_will');
+      $query = $this->db->get();
+      $result = $query->result_array();
+      return $result;
+    }
+
+    public function set_user_noblur($user_id,$key){
+      $this->db->set('is_have_blur',$key);
+      $this->db->where('user_id',$user_id);
+      $this->db->update('tbl_user');
+    }
+    public function set_will_noblur($will_id,$key){
+      $this->db->set('is_blur',$key);
+      $this->db->where('will_id',$will_id);
+      $this->db->update('tbl_will');
+    }
   }
  ?>

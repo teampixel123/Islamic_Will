@@ -11,7 +11,7 @@ $(document).ready(function(){
       var place = info[0]['will_place'];
       if(place == ''){
         $('#table_date_place').hide();
-        $('#btn_final_pdf, #btn_pdf, #btn_final_pdf_owner').prop('disabled', true);
+        $('#btn_final_pdf, #btn_pdf, #btn_final_pdf_owner, #btn_pdf_blur').prop('disabled', true);
       }
       else{
         $('#table_date_place').show();
@@ -19,7 +19,7 @@ $(document).ready(function(){
         $('#date_place_td').text(date_place);
         $('#date_place_txt').val(date_place);
 
-        $('#btn_final_pdf, #btn_pdf, #btn_final_pdf_owner').prop('disabled', false);
+        $('#btn_final_pdf, #btn_pdf, #btn_final_pdf_owner, #btn_pdf_blur').prop('disabled', false);
       }
     }
   });
@@ -50,11 +50,11 @@ function witness_table(will_id){
   });
   $('.table_witness').on( 'draw.dt', function(){
      if (! table_witness.data().any() ) {
-       $('#btn_final_pdf, #btn_pdf, #btn_final_pdf_owner').prop('disabled', true);
+       $('#btn_final_pdf, #btn_pdf, #btn_final_pdf_owner, #btn_pdf_blur').prop('disabled', true);
        $('.table_witness').hide();
       }
       else{
-        $('#btn_final_pdf, #btn_pdf, #btn_final_pdf_owner').prop('disabled', false);
+        $('#btn_final_pdf, #btn_pdf, #btn_final_pdf_owner, #btn_pdf_blur').prop('disabled', false);
         $('.table_witness').show();
       }
   });
@@ -73,11 +73,11 @@ function date_place_table(){
   });
   $('.table_date_place').on( 'draw.dt', function(){
      if (! table_date_place.data().any() ) {
-       $('#btn_final_pdf, #btn_pdf, #btn_final_pdf_owner').prop('disabled', true);
+       $('#btn_final_pdf, #btn_pdf, #btn_final_pdf_owner, #btn_pdf_blur').prop('disabled', true);
        $('.table_date_place').hide();
       }
       else{
-        $('#btn_final_pdf, #btn_pdf, #btn_final_pdf_owner').prop('disabled', false);
+        $('#btn_final_pdf, #btn_pdf, #btn_final_pdf_owner, #btn_pdf_blur').prop('disabled', false);
         $('.table_date_place').show();
       }
   });
@@ -117,7 +117,7 @@ $('#btn_final_pdf').click(function(){
   }
   else{
     $('#final_pdf').submit();
-    document.location.replace(base_url+"User-Dashboard");
+    window.location.replace(base_url+"User-Dashboard");
   }
 });
 
@@ -129,10 +129,19 @@ $('#btn_final_pdf_owner').click(function(){
   }
   else{
     $('#final_pdf_owner').submit();
-    document.location.replace(base_url+"Owner-Will-List");
+    window.location.replace(base_url+"Owner-Will-List");
   }
 });
-
+$('#btn_pdf_blur').click(function(){
+  var date_place_txt = $('#date_place_txt').val();
+  if(date_place_txt == ''){
+    alert('Enter Date and Place');
+  }
+  else{
+    $('#pdf').submit();
+    window.location.replace(base_url+"User-Dashboard");
+  }
+});
 $('#btn_pdf').click(function(){
   var date_place_txt = $('#date_place_txt').val();
   if(date_place_txt == ''){
@@ -140,7 +149,7 @@ $('#btn_pdf').click(function(){
   }
   else{
     $('#pdf').submit();
-    document.location.replace(base_url+"Login");
+    window.location.replace(base_url+"Login");
   }
 });
 
@@ -222,14 +231,14 @@ $('#add_date_place').click(function(){
         var place = info[0]['will_place'];
         if(place == ''){
           $('#table_date_place').hide();
-          $('#btn_final_pdf, #btn_pdf, #btn_final_pdf_owner').prop('disabled', true);
+          $('#btn_final_pdf, #btn_pdf, #btn_final_pdf_owner, #btn_pdf_blur').prop('disabled', true);
         }
         else{
           $('#table_date_place').show();
           var date_place = 'Date: '+info[0]['will_date']+', Place: '+info[0]['will_place'];
           $('#date_place_td').text(date_place);
           $('#date_place_txt').val(date_place);
-          $('#btn_final_pdf, #btn_pdf, #btn_final_pdf_owner').prop('disabled', false);
+          $('#btn_final_pdf, #btn_pdf, #btn_final_pdf_owner, #btn_pdf_blur').prop('disabled', false);
         }
          $('.clear').val('');
         // $('.clear_dr').val(0);

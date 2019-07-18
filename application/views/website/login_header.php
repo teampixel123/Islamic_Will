@@ -1,6 +1,8 @@
 <?php foreach($user_data as $user_data){
   }
+  $user_id = $this->session->userdata('user_id');
   $user_subscription = $user_data->user_subscription;
+  $is_have_blur = $user_data->is_have_blur;
 ?>
 
 <!-- Header Area Start -->
@@ -37,10 +39,10 @@
                                 <?php if($user_subscription == 1){ ?>
                                 <li><a href="#"><?php echo $user_data->user_fullname; ?></a>
                                 <ul class="dropdown">
-                                  <li><a href="<?php echo base_url(); ?>User_controller/profile">- Profile</a></li>
                                   <li><a href="<?php echo base_url(); ?>User_controller/user_dashboard">- Dashboard</a></li>
                                   <li><a href="<?php echo base_url(); ?>Will_controller/make_will_view">- Make A Will</a></li>
                                   <li><a href="<?php echo base_url() ?>User_controller/will_list">- Will List</a></li>
+                                  <li><a href="<?php echo base_url(); ?>User_controller/profile">- Profile</a></li>
                                   <li><a href="<?php echo base_url(); ?>Will_controller/logout">- Logout</a></li>
                                 </ul>
                               <?php } else{ ?>

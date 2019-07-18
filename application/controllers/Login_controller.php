@@ -13,7 +13,12 @@
     public function register_user_view(){
       $this->load->view('pages/register_user');
     }
-
+    public function mail_demo(){
+      $recipient = "datta.pixelbazar@gmail.com";
+      $subject = "Demo Islamic Will";
+      $headers = "From: info@easywillindia.com \r\n";
+      mail($recipient, $subject, 'Demo Islamic Will', $headers) or die("Error!");
+	   }
     // Send OTP...
     public function save_register_user(){
       $date = date('d-m-Y');
@@ -28,6 +33,7 @@
       elseif ($contact_type=='mobile_number') {
       $check = $this->Will_Model->check_mobile_no($this->input->post('reg_mob_email'));
       }
+    // $check = 0;
       if ($check >0) {
         $error = 'Mobile_Exist';
         echo json_encode($error);
@@ -72,13 +78,13 @@
         }
         else
         {
-          $from_email = "datta@pixelbazar.com";
+          $from_email = "info@easywillindia.com";
           $formcontent='
     			 <p style="color:#698291; font-weight: normal; margin: 0; padding: 0; line-height: 20px; font-size: 20px;font-family: Georgia, serif; ">
     			 Welcome to Easy Islamic Will
     			 </p>
     			 <hr>
-    			 <p style="color:#698291; font-weight: normal; margin: 0; padding: 0; line-height: 20px; font-size: 16px;font-family: Georgia, serif; ">
+    			 <p style="color:#698291; font-weight: normal; margin: 0; padding: 0; line-height: 20px; font-size: 16px;font-family: Times, serif; ">
     			 Your Security Code is: '.$security_code.'
     			 </p>
     		 ';
@@ -92,15 +98,6 @@
                       'X-Mailer: PHP/' . phpversion();
 
           mail($recipient, $subject, $formcontent, $headers);
-
-
-          // $from_email = "asif@pixelbazar.com";
-          // //Load email library
-          // $this->load->library('email');
-          // $this->email->from($from_email);
-          // $this->email->to($reg_mob_email);
-          // $this->email->subject('Islamic Will OTP');
-          // $this->email->message('Islamic Will OTP:'.$security_code);
         }
         $error = $security_code;  // Change this value to success after project complete...
         echo json_encode($error);
@@ -155,19 +152,6 @@
             $flag = 1;
           }
         }
-        // echo $this->session->userdata('reg_name');
-        // echo $this->session->userdata('reg_mob_email');
-        // if($this->session->userdata('will_id')){
-        //   if($user_data){
-        //     foreach ($user_data as $user_data1) {
-        //       $incomplete_will = $user_data1->incomplete_will;
-        //     }
-        //     if($incomplete_will != 0) {
-        //       $will_id=$this->session->userdata('will_id');
-        //       $this->Login_Model->update_will_user($will_id,$user_id);
-        //     }
-        //   }
-        // }
         if($contact_type == 'mobile_number') {
           $register_data = array(
             'user_id' => $user_id,
@@ -198,8 +182,6 @@
       }
       echo json_encode($result);
      }
-
-
 
     public function generate_otp(){
       $mob_email = $this->input->post('mob_email');
@@ -274,7 +256,7 @@
     }
 
     public function send_mail($mail_id) {
-      $from_email = "datta@pixelbazar.com";
+      $from_email = "info@easywillindia.com";
       //$to_email = $this->input->post('email');
       $to_email = $mail_id;
       //Load email library
@@ -306,7 +288,33 @@
          $user_subscription = $get_data[0]['user_subscription'];
          $incomplete_will = $get_data[0]['incomplete_will'];
          $complete_will = $get_data[0]['complete_will'];
-         if($this->session->userdata('temp_will_id') && $user_subscription == 1 && $incomplete_will > 0){
+         $is_have_blur = $get_data[0]['is_have_blur'];
+         $max_will = $get_data[0]['max_will'];
+         $updation_end_date = $get_data[0]['updation_end_date'];
+         if($this->session->userdata('temp_will_id') && $user_subscription == 1 && $max_will > 0){
+           $will_id=$this->session->userdata('temp_will_id');
+           $this->Login_Model->update_will_user($will_id,$user_id);
+           $complete_will = $complete_will +1;
+           $incomplete_will = $incomplete_will - 1;
+           $will_count_data = array(
+             'complete_will' => $complete_will,
+             'incomplete_will' => $incomplete_will,
+             'max_will' => 0,
+           );
+           $this->Will_Model->update_will_count($will_count_data,$user_id);
+
+           $key = 'no';
+           $this->Will_Model->set_user_noblur($user_id,$key);
+           $this->Will_Model->set_will_noblur($will_id,$key);
+
+           $will_updation_count_data = array(
+             'will_rem_updations' => 1,
+             'updation_last_date' => $updation_end_date,
+           );
+           // Save Will Updation Count and Date.. In Will Table..
+           $this->Will_Model->save_date_place_info($will_id,$will_updation_count_data);
+         }
+         else if($this->session->userdata('temp_will_id') && $is_have_blur=='no' && $max_will == 0){
            $will_id=$this->session->userdata('temp_will_id');
            $this->Login_Model->update_will_user($will_id,$user_id);
            $complete_will = $complete_will +1;
@@ -316,11 +324,16 @@
              'incomplete_will' => $incomplete_will,
            );
            $this->Will_Model->update_will_count($will_count_data,$user_id);
-         }
-           $session_data = array('user_is_login' => 'YES','user_id' =>$user_id);
-           $this->session->set_userdata($session_data);
-           $result['responce'] = 'Success';
 
+           $key = 'yes';
+           $this->Will_Model->set_user_noblur($user_id,$key);
+           $this->Will_Model->set_will_noblur($will_id,$key);
+         }
+
+
+         $session_data = array('user_is_login' => 'YES','user_id' =>$user_id);
+         $this->session->set_userdata($session_data);
+         $result['responce'] = 'Success';
       }
       else{
         $result['responce'] = 'Invalide_Password';
