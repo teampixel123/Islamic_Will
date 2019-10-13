@@ -109,7 +109,41 @@ $('input[type=radio][name=share_type').change(function() {
       $('#share_age').val('-1');
       $('#update_share').addClass('d-none');
       $('#add_share').show();
+      $('#guardian_div').hide();
+      $('#guardian_name').val('');
+      $('#guardian_address').val('');
+      $('#guardian_age').val('');
+
+      $('#opt_guardian_div').hide();
+      $('#opt_guardian_name').val('');
+      $('#opt_guardian_address').val('');
+      $('#opt_guardian_age').val('');
     }
+});
+
+//Show Guardian div..
+$('#share_age').keyup(function(){
+  var share_age = $('#share_age').val();
+  if(share_age>0 && share_age<18){
+    $('#guardian_div').show();
+  }
+  else{
+    $('#guardian_div').hide();
+    $('#guardian_name').val('');
+    $('#guardian_address').val('');
+    $('#guardian_age').val('');
+  }
+});
+$('#add_opt_guardian').change(function(){
+  if ($(this).prop('checked')) {
+    $('#opt_guardian_div').show();
+  }
+  else{
+    $('#opt_guardian_name').val('');
+    $('#opt_guardian_address').val('');
+    $('#opt_guardian_age').val('');
+    $('#opt_guardian_div').hide();
+  }
 });
 // // get and fill up Funeral...
 // $('.table_funeral').dataTable({
@@ -153,6 +187,29 @@ $('input[type=radio][name=share_type').change(function() {
       $('#share_age').val('-1');
     }
     var share_age = $('#share_age').val();
+    var guardian_name = $('#guardian_name').val();
+    var guardian_address = $('#guardian_address').val();
+    var guardian_age = $('#guardian_age').val();
+    var opt_guardian_name = $('#opt_guardian_name').val();
+    var opt_guardian_age = $('#opt_guardian_age').val();
+    var opt_guardian_address = $('#opt_guardian_address').val();
+
+    if($('#add_opt_guardian').prop('checked') == true){
+      var add_opt_guardian = 'on';
+    }
+    else{
+      var add_opt_guardian = 'off';
+    }
+
+    $('.required').each(function(){
+      var val = $(this).val();
+      if(val == '' || val == '0'){
+        $(this).addClass('required-input');
+      }
+      else{
+        $(this).removeClass('required-input');
+      }
+    });
 
     $('#share_relation, #share_name, #share_address, #share_age, #share_percentage').each(function(){
       var val = $(this).val();
@@ -165,11 +222,15 @@ $('input[type=radio][name=share_type').change(function() {
     });
 
     if(share_relation == '' || share_name == '' || share_address == '' || share_age == '' || share_percentage == '0' || share_percentage == '' ||
-    (radioValue == 'Person' && (share_age <0 || share_age >120 ))){
+    (radioValue == 'Person' && (share_age <0 || share_age >120 )) || (guardian_name == '' && share_age < 18 && share_age > 0) || (share_age < 18 && share_age > 0 && (guardian_age >120 || guardian_age <18)) || (add_opt_guardian == 'on' && opt_guardian_name == '' && share_age < 18 && share_age > 0)
+    || (add_opt_guardian == 'on' && (opt_guardian_age >120 || opt_guardian_age <18))){
       // blank...
     }
     else{
-        $("#save_load_modal").modal("show");
+      $(".required").removeClass('required-input');
+      $('#guardian_div').hide();
+      $('#opt_guardian_div').hide();
+      $("#save_load_modal").modal("show");
       var form_data = $('#share_form').serialize();
       $.ajax({
         data: form_data,
@@ -214,6 +275,19 @@ $('input[type=radio][name=share_type').change(function() {
       $('#share_age').val('-1');
     }
     var share_age = $('#share_age').val();
+    var guardian_name = $('#guardian_name').val();
+    var guardian_address = $('#guardian_address').val();
+    var guardian_age = $('#guardian_age').val();
+    var opt_guardian_name = $('#opt_guardian_name').val();
+    var opt_guardian_age = $('#opt_guardian_age').val();
+    var opt_guardian_address = $('#opt_guardian_address').val();
+
+    if($('#add_opt_guardian').prop('checked') == true){
+      var add_opt_guardian = 'on';
+    }
+    else{
+      var add_opt_guardian = 'off';
+    }
 
     $('#share_relation, #share_name, #share_address, #share_age, #share_percentage').each(function(){
       var val = $(this).val();
@@ -224,13 +298,26 @@ $('input[type=radio][name=share_type').change(function() {
         $(this).removeClass('required-input');
       }
     });
+    $('.required').each(function(){
+      var val = $(this).val();
+      if(val == '' || val == '0'){
+        $(this).addClass('required-input');
+      }
+      else{
+        $(this).removeClass('required-input');
+      }
+    });
 
-    if(share_relation == '' || share_name == '' || share_address == '' || share_age == '' || share_percentage == '0' ||  share_percentage == '' ||
-    (radioValue == 'Person' && (share_age <0 || share_age >120 ))){
+    if(share_relation == '' || share_name == '' || share_address == '' || share_age == '' || share_percentage == '0' || share_percentage == '' ||
+    (radioValue == 'Person' && (share_age <0 || share_age >120 )) || (guardian_name == '' && share_age < 18 && share_age > 0) || (share_age < 18 && share_age > 0 && (guardian_age >120 || guardian_age <18)) || (add_opt_guardian == 'on' && opt_guardian_name == '' && share_age < 18 && share_age > 0)
+    || (add_opt_guardian == 'on' && (opt_guardian_age >120 || opt_guardian_age <18))){
       // blank...
     }
     else{
-        $("#save_load_modal").modal("show");
+      $(".required").removeClass('required-input');
+      $('#guardian_div').hide();
+      $('#opt_guardian_div').hide();
+      $("#save_load_modal").modal("show");
       var form_data = $('#share_form').serialize();
       $.ajax({
         data: form_data,

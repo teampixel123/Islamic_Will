@@ -13,6 +13,7 @@
     public function register_user_view(){
       $this->load->view('pages/register_user');
     }
+
     public function mail_demo(){
       $recipient = "datta.pixelbazar@gmail.com";
       $subject = "Demo Islamic Will";
@@ -276,7 +277,6 @@
         $this->load->view('email_form');
       }
     }
-
 
     public function login_user(){
       $mob_email = $this->input->post('mob_email');

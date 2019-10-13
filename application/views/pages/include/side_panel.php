@@ -1,5 +1,5 @@
 <!-- Sidebar -->
-<ul class="sidebar navbar-nav">
+<ul class="sidebar navbar-nav" style="width: 180px !important; ">
   <?php
   if($user_subscription == 1){ ?>
     <li class="nav-item <?php if($page=='dashboard'){echo "active";}?>">

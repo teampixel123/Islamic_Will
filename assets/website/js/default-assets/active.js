@@ -24,15 +24,27 @@
     // *********************************
     // :: 3.0 Welcome Slides Active Code
     // *********************************
-
+  //   $('.welcome-slides single-welcome-slide').on('mouseover',function(e){
+  //   owl.trigger('play.owl.autoplay');
+  // });
+  //   $('.welcome-slides single-welcome-slide').on('mouseleave',function(e){
+  //   owl.trigger('stop.owl.autoplay');
+  // });
     if ($.fn.owlCarousel) {
         var welcomeSlider = $('.welcome-slides');
+        var owlCarouselTimeout = 500;
         welcomeSlider.owlCarousel({
             items: 1,
             loop: true,
             autoplay: true,
-            smartSpeed: 1500
-        })
+            smartSpeed: 2000,
+            // autoplayTimeout:owlCarouselTimeout,
+            autoplayHoverPause:true
+        });
+        welcomeSlider.on('mouseleave',function(){
+   welcomeSlider.trigger('stop.owl.autoplay'); //this is main line to fix it
+   welcomeSlider.trigger('play.owl.autoplay', [owlCarouselTimeout]);
+});
         welcomeSlider.on('translate.owl.carousel', function () {
             var layer = $("[data-animation]");
             layer.each(function () {
@@ -40,6 +52,8 @@
                 $(this).removeClass('animated ' + anim_name).css('opacity', '0');
             });
         });
+
+
 
         $("[data-delay]").each(function () {
             var anim_del = $(this).data('delay');
@@ -166,7 +180,7 @@
     if ($.fn.scrollUp) {
         akame_window.scrollUp({
             scrollSpeed: 1500,
-            scrollText: '<i class="arrow_carrot-up"</i>'
+            scrollText: '<i class="arrow-up-icon"></i>'
         });
     }
 

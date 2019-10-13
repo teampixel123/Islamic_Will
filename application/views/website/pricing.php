@@ -28,8 +28,6 @@
         </div>
     </section>
     <!-- Breadcrumb Area End -->
-
-
     <section class="pricing py-5">
   <div class="container">
 
@@ -60,7 +58,9 @@
             <?php if($is_login){ ?>
               <?php $max_will = $user_data->max_will;
                 if($max_will > 0){ ?>
-                  <button type="button" class="btn btn-block active akame-btn text-uppercase" data-toggle="modal" data-target="#subscribedModel">Get Started</button>
+                  <div class="text-center">
+                    <button type="button" class="btn active akame-btn text-uppercase" data-toggle="modal" data-target="#subscribedModel">Get Started</button>
+                  </div>
               <?php  } else{ ?>
               <form class="" action="<?php base_url() ?>Payment_Gateway/payment" method="post">
                 <input type="hidden" name="pack_name" id="pack_name" value="Silver" >
@@ -69,11 +69,16 @@
                 <input type="hidden" name="name" id="name" value="<?php echo $user_data->user_fullname; ?>" >
                 <input type="hidden" name="email" id="email" value="<?php echo $user_data->user_email_id; ?>" >
                 <input type="hidden" name="mobile" id="mobile" value="<?php echo $user_data->user_mobile_number; ?>" >
-                <input type="submit" class="btn btn-block active akame-btn text-uppercase" value="Get Started" />
+                <div class="text-center">
+                <input type="submit" class="btn active akame-btn text-uppercase" value="Get Started" />
+                </div>
               </form>
             <?php } }
             else{ ?>
-              <a href="<?php echo base_url(); ?>Login" class="btn btn-block active akame-btn text-uppercase">Get Started</a>
+              <div class="text-center">
+                <a href="<?php echo base_url(); ?>Login" class="btn active akame-btn text-uppercase">Get Started</a>
+              </div>
+
             <?php } ?>
           </div>
         </div>
@@ -105,9 +110,13 @@
             <?php if($is_login){ ?>
               <?php $user_subscription = $user_data->user_subscription;
                 if($max_will > 0){ ?>
-                  <button type="button" class="btn btn-block active akame-btn text-uppercase" data-toggle="modal" data-target="#subscribedModel">Get Started</button>
+                  <div class="text-center">
+                    <button type="button" class="btn active akame-btn text-uppercase" data-toggle="modal" data-target="#subscribedModel">Get Started</button>
+                  </div>
               <?php  } else{ ?>
-              <button type="button" class="btn btn-block active akame-btn text-uppercase" data-toggle="modal" data-target="#exampleModal">Get Started</button>
+              <div class="text-center">
+                <button type="button" class="btn active akame-btn text-uppercase" data-toggle="modal" data-target="#exampleModal">Get Started</button>
+              </div>
               <!-- Modal -->
               <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -123,8 +132,8 @@
                       <input type="text" name="txt_promocode" id="txt_promocode" class="form-control">
                     </div>
                     <div class="modal-footer">
-                      <button type="button" id="btn_promo_yes" class="btn btn-block active akame-btn text-uppercase" >Yes</button>
-                      <button type="button" id="btn_promo_no" class="btn btn-block active akame-btn text-uppercase">No</button>
+                      <button type="button" id="btn_promo_yes" class="btn active akame-btn text-uppercase" >Yes</button>
+                      <button type="button" id="btn_promo_no" class="btn active akame-btn text-uppercase">No</button>
                       <!-- data-dismiss="modal" -->
                     </div>
                   </div>
@@ -140,7 +149,9 @@
               </form>
             <?php } }
             else{ ?>
-              <a href="<?php echo base_url(); ?>Login" class="btn btn-block active akame-btn text-uppercase">Get Started</a>
+              <div class="text-center">
+                <a href="<?php echo base_url(); ?>Login" class="btn active akame-btn text-uppercase">Get Started</a>
+              </div>
             <?php } ?>
           </div>
         </div>
@@ -159,8 +170,8 @@
               <p>Create new will</p>
             </div>
             <div class="modal-footer">
-              <a href="<?php echo base_url(); ?>Will_controller/make_will_view" class="btn btn-block active akame-btn text-uppercase" >Create a Will</a>
-              <button type="button" class="btn btn-block active akame-btn text-uppercase" data-dismiss="modal">Cancel</button>
+              <a href="<?php echo base_url(); ?>Will_controller/make_will_view" class="btn active akame-btn text-uppercase" >Create a Will</a>
+              <button type="button" class="btn active akame-btn text-uppercase" data-dismiss="modal">Cancel</button>
               <!-- data-dismiss="modal" -->
             </div>
           </div>
@@ -181,7 +192,9 @@
                 Our executive will communicate you shortly.
                 </li>
             </ul>
-              <a href="<?php echo base_url(); ?>Contact"><input type="submit" class="btn btn-block active akame-btn text-uppercase" value="Contact Us" /></a>
+            <div class="text-center">
+              <a href="<?php echo base_url(); ?>Contact"><input type="submit" class="btn active akame-btn text-uppercase" value="Contact Us" /></a>
+            </div>  
           </div>
         </div>
       </div>

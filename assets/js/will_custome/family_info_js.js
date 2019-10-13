@@ -204,6 +204,9 @@ $('#add_family_member').click(function(){
     if(val == '' || val == '0'){
       $(this).addClass('required-input');
     }
+    else{
+      $(this).removeClass('required-input');
+    }
   });
 
   // alert(add_opt_guardian);
@@ -242,6 +245,10 @@ $('#add_family_member').click(function(){
          }
          else if(info == 'max_grand_father'){
            $("#success_save_member").html('<span style="color:red;">*Grand Father information already exist. Not saved.</span>')
+           $("#success_save_member").show().delay(5000).fadeOut();
+         }
+         else if(info == 'max_spouse'){
+           $("#success_save_member").html('<span style="color:red;">*Spouse information already exist. Not saved.</span>')
            $("#success_save_member").show().delay(5000).fadeOut();
          }
          else if (info == 'success') {

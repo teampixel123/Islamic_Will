@@ -69,51 +69,65 @@
                					 <option id="Daugther">Daughter</option>
                					 <option>Brother</option>
                					 <option>Sister</option>
-               					 <option>Grand Father</option>
-               					 <option>Grand Mother</option>
+               					 <option>Grandfather</option>
+               					 <option>Grandmother</option>
                       <?php } else if ($marital_status == 'Married' && $is_have_child == 0) { ?>
                         <option id="Father">Father</option>
                         <option>Mother</option>
                         <option id="Spouse">Spouse</option>
                         <option>Brother</option>
                         <option>Sister</option>
-                        <option>Grand Father</option>
-                        <option>Grand Mother</option>
+                        <option>Grandfather</option>
+                        <option>Grandmother</option>
                     <?php   } else if ($marital_status == 'Unmarried') { ?>
                       <option id="Father">Father</option>
                       <option>Mother</option>
                       <option>Brother</option>
                       <option>Sister</option>
-                      <option>Grand Father</option>
-                      <option>Grand Mother</option>
-                  <?php   } else if ($marital_status == 'Widow') { ?>
+                      <option>Grandfather</option>
+                      <option>Grandmother</option>
+                  <?php   } else if ($marital_status == 'Widow' && $is_have_child == 0 ) { ?>
                     <option id="Father">Father</option>
                     <option>Mother</option>
                     <option>Brother</option>
                     <option>Sister</option>
-                    <option id="Son">Son</option>
-                    <option id="Daugther">Daughter</option>
-                    <option>Grand Father</option>
-                    <option>Grand Mother</option>
-                <?php   } else if ($marital_status == 'Divorcee') { ?>
+                    <option>Grandfather</option>
+                    <option>Grandmother</option>
+                <?php   } else if ($marital_status == 'Widow' && $is_have_child == 1) { ?>
                   <option id="Father">Father</option>
                   <option>Mother</option>
                   <option>Brother</option>
                   <option>Sister</option>
                   <option id="Son">Son</option>
                   <option id="Daugther">Daughter</option>
-                  <option>Grand Father</option>
-                  <option>Grand Mother</option>
-                  <?php   } else{ ?>
-                    <option id="Father">Father</option>
-                    <option>Mother</option>
-                    <option id="Spouse">Spouse</option>
-                    <option id="Son">Son</option>
-                    <option id="Daugther">Daughter</option>
-                    <option>Brother</option>
-                    <option>Sister</option>
-                    <option>Grand Father</option>
-                    <option>Grand Mother</option>
+                  <option>Grandfather</option>
+                  <option>Grandmother</option>
+              <?php   } else if ($marital_status == 'Divorcee' && $is_have_child == 0 ) { ?>
+                  <option id="Father">Father</option>
+                  <option>Mother</option>
+                  <option>Brother</option>
+                  <option>Sister</option>
+                  <option>Grandfather</option>
+                  <option>Grandmother</option>
+              <?php   } else if ($marital_status == 'Divorcee' && $is_have_child == 1) { ?>
+                  <option id="Father">Father</option>
+                  <option>Mother</option>
+                  <option>Brother</option>
+                  <option>Sister</option>
+                  <option id="Son">Son</option>
+                  <option id="Daugther">Daughter</option>
+                  <option>Grandfather</option>
+                  <option>Grandmother</option>
+              <?php   } else{ ?>
+                  <option id="Father">Father</option>
+                  <option>Mother</option>
+                  <option id="Spouse">Spouse</option>
+                  <option id="Son">Son</option>
+                  <option id="Daugther">Daughter</option>
+                  <option>Brother</option>
+                  <option>Sister</option>
+                  <option>Grandfather</option>
+                  <option>Grandmother</option>
               <?php } } ?>
 
   				 </select>
@@ -163,7 +177,7 @@
                 <option>Ms.</option>
       					 <option>Mrs.</option>
     				 </select>
-            </div>
+           </div>
             <div class="col-md-7">
               <input type="text" name="guardian_name" id="guardian_name" class="text required title-case form-control form-control-sm minor clear"  aria-describedby="emailHelp" >
             </div>

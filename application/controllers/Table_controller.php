@@ -66,17 +66,43 @@
             </div>
             <div class='col-md-3 p-0'>
               <button type='button' style='width:80%' class='badge1 ' title='Delete Family Member'>
-                <a id='family_member_delete".$id."' class='badge1 badge-pill'  title='Delete Family Member' > <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>".$edit_button."
+                <a  class='badge1 badge-pill'  title='Delete Family Member' data-toggle='modal' data-target='#delete_modal_".$id."'>
+                  <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i>
+                </a>
+                ".$edit_button."
               </button>
             </div></div>
+
+            <div class='modal fade' id='delete_modal_".$id."' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+              <div class='modal-dialog' role='document'>
+                <div class='modal-content'>
+                  <div class='modal-header'>
+                    <h5 class='modal-title' id='exampleModalLabel'>Do you want to delete</h5>
+                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                      <span aria-hidden='true'>&times;</span>
+                    </button>
+                  </div>
+                  <div class='modal-body'>
+                    <p>Relationship : ".$relationship."</p>
+                    <p>Name : ".$family_person_name."</p>
+                  </div>
+                  <div class='modal-footer'>
+                    <button type='button' class='btn btn-secondary' data-dismiss='modal'>No</button>
+                    <button type='button' id='family_member_delete".$id."' class='btn btn-primary' data-dismiss='modal'>Delete</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
             <hr>
             <script>
               $('#family_member_delete".$id."').click(function(e){
-          			$.ajax({
-          				data:{ 'id' : ".$memberId."  },
-          				type: 'post',
-          				url: '".base_url()."Will_controller/delete_family_member',
-          				success: function (data){
+                $.ajax({
+                  data:{ 'id' : ".$memberId."  },
+                  type: 'post',
+                  url: '".base_url()."Will_controller/delete_family_member',
+                  success: function (data){
                     $('.table_family_member').dataTable({
                       'bDestroy': true
                     }).fnDestroy(); // destroy table.
@@ -107,8 +133,8 @@
                           $('#error_add_member').hide();
                         }
                     });
-          				}
-          			});
+                  }
+                });
               });
 
               $('#family_member_edit".$id."').click(function(){
@@ -181,6 +207,15 @@
         $share_age = $post->share_age;
         $share_address = $post->share_address;
         $share_percentage = $post->share_percentage;
+        $guardian_name_title = $post->guardian_name_title;
+        $guardian_name = $post->guardian_name;
+        $guardian_age = $post->guardian_age;
+        $guardian_address = $post->guardian_address;
+        $opt_guardian_title = $post->opt_guardian_name_title;
+        $opt_guardian_name = $post->opt_guardian_name;
+        $opt_guardian_age = $post->opt_guardian_age;
+        $opt_guardian_address = $post->opt_guardian_address;
+
         if($share_relation == 'Organization'){
           $age = '';
         }else{
@@ -193,12 +228,38 @@
             </div>
             <div class='col-md-3'>
               <button type='button' class='badge1 badge-pill badge-danger' >
-                <a id='share_delete".$id."' class='badge1'  title='Delete Family Member' > <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
-                <a id='share_edit".$id."'  class='badge1 badge-pill '  title='Edit Family Member'> <i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
+                <a id='' class='badge1'  title='Delete Family Member' data-toggle='modal' data-target='#share_delete_modal_".$id."'>
+                  <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i>
+                </a>
+                <a id='share_edit".$id."'  class='badge1 badge-pill '  title='Edit Family Member'>
+                  <i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i>
+                </a>
               </button>
             </div>
           </div>
           <hr>
+          <div class='modal fade' id='share_delete_modal_".$id."' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+            <div class='modal-dialog' role='document'>
+              <div class='modal-content'>
+                <div class='modal-header'>
+                  <h5 class='modal-title' id='exampleModalLabel'>Do you want to delete</h5>
+                  <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                  </button>
+                </div>
+                <div class='modal-body'>
+                  <p>Relationship : ".$share_relation."</p>
+                  <p>Name : ".$share_name."</p>
+                </div>
+                <div class='modal-footer'>
+                  <button type='button' class='btn btn-secondary' data-dismiss='modal'>No</button>
+                  <button type='button' id='share_delete".$id."' class='btn btn-primary' data-dismiss='modal'>Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
           <script>
             $('#share_delete".$id."').click(function(e){
               //alert();
@@ -269,12 +330,39 @@
                 $('#share_name').attr('placeholder', 'Firstname Middlename Lastname');
                 $('#share_age').addClass('required');
               }
+
+              var guardian_name = '$guardian_name';
+              var opt_guardian_name = '$opt_guardian_name';
+              if(guardian_name != ''){
+                $('#guardian_div').show();
+              }
+              else{
+                $('#guardian_div').hide();
+              }
+              if(opt_guardian_name != ''){
+                $('#opt_guardian_div').show();
+                $('#add_opt_guardian').prop('checked', true);
+              }
+              else{
+                $('#opt_guardian_div').hide();
+                $('#add_opt_guardian').prop('checked', false);
+              }
+
               $('#share_id').val('$memberId');
               $('#share_percentage').val('$share_percentage');
               $('#share_name').val('$share_name');
               $('#share_address').val('$share_address');
               $('#share_age').val('$share_age');
               $('#prev_share_percentage').val('$share_percentage');
+              $('#guardian_name_title').val('$guardian_name_title');
+              $('#guardian_name').val('$guardian_name');
+              $('#guardian_age').val('$guardian_age');
+              $('#guardian_address').val('$guardian_address');
+              $('#opt_guardian_title').val('$opt_guardian_title');
+              $('#opt_guardian_name').val('$opt_guardian_name');
+              $('#opt_guardian_age').val('$opt_guardian_age');
+              $('#opt_guardian_address').val('$opt_guardian_address');
+
 
             });
           </script>
@@ -324,12 +412,36 @@
               </div>
               <div class='col-md-3'>
                 <button type='button' class='badge1 badge-pill badge-danger'>
-                  <a id='executor_delete".$id."' class='badge1 '  title='Delete Family Member' > <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
-                  <a id='executor_edit".$id."'  class='badge1 badge-pill '  title='Edit Family Member'> <i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
+                  <a id='' class='badge1 '  title='Delete Executor' data-toggle='modal' data-target='#executor_delete_modal_".$id."'>
+                    <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i>
+                  </a>
+                  <a id='executor_edit".$id."'  class='badge1 badge-pill '  title='Edit Executor'>
+                    <i class='fa fa-edit' aria-hidden='true'  style='font-size:15px; width:15px;'></i>
+                  </a>
                 </button>
               </div>
             </div>
             <hr>
+            <div class='modal fade' id='executor_delete_modal_".$id."' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+              <div class='modal-dialog' role='document'>
+                <div class='modal-content'>
+                  <div class='modal-header'>
+                    <h5 class='modal-title' id='exampleModalLabel'>Do you want to delete</h5>
+                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                      <span aria-hidden='true'>&times;</span>
+                    </button>
+                  </div>
+                  <div class='modal-body'>
+                    <p>Name : ".$e_name_title." ".$executor_name."</p>
+                  </div>
+                  <div class='modal-footer'>
+                    <button type='button' class='btn btn-secondary' data-dismiss='modal'>No</button>
+                    <button type='button' id='executor_delete".$id."' class='btn btn-primary' data-dismiss='modal'>Delete</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <script>
             // Delete
               $('#executor_delete".$id."').click(function(e){
@@ -536,10 +648,36 @@
             </div>
             <div class='col-md-3'>
             <button type='button' class='badge1 badge-pill badge-danger' >
-            <a id='real_estate_delete".$id."' class='badge1 '  title='Delete Family Member' > <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
+            <a id='' class='badge1 '  title='Delete Family Member' data-toggle='modal' data-target='#real_estate_delete_modal_".$id."'>
+              <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i>
+            </a>
             ".$edit_button."
               </button>
-            </div></div>
+            </div>
+            </div>
+
+            <div class='modal fade' id='real_estate_delete_modal_".$id."' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+              <div class='modal-dialog' role='document'>
+                <div class='modal-content'>
+                  <div class='modal-header'>
+                    <h5 class='modal-title' id='exampleModalLabel'>Do you want to delete</h5>
+                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                      <span aria-hidden='true'>&times;</span>
+                    </button>
+                  </div>
+                  <div class='modal-body'>
+                    <p>Estate Type : ".$estate_type."</p>
+                    <p>".$estate_type." No : ".$house_no."</p>
+                    <p>Survey number : ".$survey_number_type." ".$survey_number."</p>
+                  </div>
+                  <div class='modal-footer'>
+                    <button type='button' class='btn btn-secondary' data-dismiss='modal'>No</button>
+                    <button type='button' id='real_estate_delete".$id."' class='btn btn-primary' data-dismiss='modal'>Delete</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <hr>
             <script>
               $('#real_estate_delete".$id."').click(function(e){
@@ -696,11 +834,36 @@
             $nestedData[] = "<div class='row'><div class='col-md-9'>".$id.") Assets type: ".$assets_type.", ".$name.": ".$bank_name.", Branch: ".$branch_name.", ".$acc_no.": ".$account_number."".$other."</div>
             <div class='col-md-3'>
             <button type='button' class='badge1 badge-pill badge-danger' >
-            <a id='bank_assets_delete".$id."' class='badge1 '  title='Delete Family Member' > <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
+            <a class='badge1 '  title='Delete Family Member' data-toggle='modal' data-target='#bank_assets_delete_modal_".$id."'>
+              <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i>
+            </a>
             ".$edit_button."
             </button>
             </div></div>
             <hr>
+
+
+            <div class='modal fade' id='bank_assets_delete_modal_".$id."' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+              <div class='modal-dialog' role='document'>
+                <div class='modal-content'>
+                  <div class='modal-header'>
+                    <h5 class='modal-title' id='exampleModalLabel'>Do you want to delete</h5>
+                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                      <span aria-hidden='true'>&times;</span>
+                    </button>
+                  </div>
+                  <div class='modal-body'>
+                    <p>Assets type : ".$assets_type."</p>
+                    <p>Name : ".$bank_name."</p>
+                  </div>
+                  <div class='modal-footer'>
+                    <button type='button' class='btn btn-secondary' data-dismiss='modal'>No</button>
+                    <button type='button' id='bank_assets_delete".$id."' class='btn btn-primary' data-dismiss='modal'>Delete</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <script>
               $('#bank_assets_delete".$id."').click(function(e){
                 //alert();
@@ -899,11 +1062,35 @@
             $nestedData[] = "<div class='row'><div class='col-md-9'>".$id.") Vehicle Model: ".$vehicle_model.", Make Year: ".$vehicle_make_year.", Registration Number: ".$registration_number."</div>
             <div class='col-md-3'>
             <button type='button' class='badge1 badge-pill badge-danger'>
-            <a id='vehicle_delete".$id."' class='badge1 '  title='Delete Family Member' > <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
+            <a class='badge1 '  title='Delete Vehicle' data-toggle='modal' data-target='#vehicle_delete_modal_".$id."'>
+              <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i>
+            </a>
             ".$edit_button."
             </button>
             </div></div>
             <hr>
+
+            <div class='modal fade' id='vehicle_delete_modal_".$id."' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+              <div class='modal-dialog' role='document'>
+                <div class='modal-content'>
+                  <div class='modal-header'>
+                    <h5 class='modal-title' id='exampleModalLabel'>Do you want to delete</h5>
+                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                      <span aria-hidden='true'>&times;</span>
+                    </button>
+                  </div>
+                  <div class='modal-body'>
+                    <p>Vehicle Model : ".$vehicle_model."</p>
+                    <p>Registration Number : ".$registration_number."</p>
+                  </div>
+                  <div class='modal-footer'>
+                    <button type='button' class='btn btn-secondary' data-dismiss='modal'>No</button>
+                    <button type='button' id='vehicle_delete".$id."' class='btn btn-primary' data-dismiss='modal'>Delete</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <script>
               $('#vehicle_delete".$id."').click(function(e){
                 //alert();
@@ -1009,10 +1196,34 @@
 
             $nestedData[] = "<div class='row'><div class='col-md-9'>".$id.") Gift Type: ".$gift_type.", Description: ".$gift_description."
             </div><div class='col-md-3'><button type='button' class='badge1 badge-pill badge-danger'>
-            <a id='gift_delete".$id."' class='badge1 '  title='Delete Family Member' > <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
-            ".$edit_button."
-          </button>
+              <a class='badge1 '  title='Delete Family Member' data-toggle='modal' data-target='#gift_delete_modal_".$id."'>
+                <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i>
+              </a>
+              ".$edit_button."
+            </button>
             </div></div>
+
+            <div class='modal fade' id='gift_delete_modal_".$id."' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+              <div class='modal-dialog' role='document'>
+                <div class='modal-content'>
+                  <div class='modal-header'>
+                    <h5 class='modal-title' id='exampleModalLabel'>Do you want to delete</h5>
+                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                      <span aria-hidden='true'>&times;</span>
+                    </button>
+                  </div>
+                  <div class='modal-body'>
+                    <p>Type : ".$gift_type."</p>
+                    <p>Description : ".$gift_description."</p>
+                  </div>
+                  <div class='modal-footer'>
+                    <button type='button' class='btn btn-secondary' data-dismiss='modal'>No</button>
+                    <button type='button' id='gift_delete".$id."' class='btn btn-primary' data-dismiss='modal'>Delete</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <script>
               $('#gift_delete".$id."').click(function(e){
                   $.ajax({
@@ -1109,11 +1320,35 @@
               <div class='col-md-9'>".$id.") Witness Name: ".$witness_name.", Address: ".$witness_address."</div>
               <div class='col-md-3 '>
                 <button type='button' style='width:80%;' class='badge1 badge-pill badge-danger' >
-                  <a id='witness_delete".$id."' class='badge1 '  title='Delete Family Member' > <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i></a>
+                  <a class='badge1 '  title='Delete Witness' data-toggle='modal' data-target='#witness_delete_modal_".$id."'>
+                    <i class='fa fa-trash' aria-hidden='true'  style='font-size:15px; width:15px;'></i>
+                  </a>
                 </button>
               </div>
             </div>
             <hr>
+
+
+            <div class='modal fade' id='witness_delete_modal_".$id."' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+              <div class='modal-dialog' role='document'>
+                <div class='modal-content'>
+                  <div class='modal-header'>
+                    <h5 class='modal-title' id='exampleModalLabel'>Do you want to delete</h5>
+                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                      <span aria-hidden='true'>&times;</span>
+                    </button>
+                  </div>
+                  <div class='modal-body'>
+                    <p>Name : ".$witness_name."</p>
+                  </div>
+                  <div class='modal-footer'>
+                    <button type='button' class='btn btn-secondary' data-dismiss='modal'>No</button>
+                    <button type='button' id='witness_delete".$id."' class='btn btn-primary' data-dismiss='modal'>Delete</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <script>
               $('#witness_delete".$id."').click(function(e){
                 //alert();

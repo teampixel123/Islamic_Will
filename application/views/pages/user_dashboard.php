@@ -6,6 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!-- include head -->
 <?php include('include/dashboard_header.php'); ?>
 <?php include('include/head.php'); ?>
+
 <!-- include head end -->
 <body>
   <?php
@@ -19,17 +20,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div id="content-wrapper">
     <div class="container-fluid">
       <div id="subscribe_success" class="alert alert-success" role="alert" style="display:none;"></div>
-
-      <!-- <?php if($this->session->userdata('temp_will_id')){
-        $will_id=$this->session->userdata('temp_will_id');?>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-
-          </li>
-        </ol>
-      <?php } ?> -->
       <?php if($user_subscription == 1){ ?>
         <div id="subscribe_for_will" class="alert alert-danger" role="alert" style="display:none;"></div>
+
+        <?php
+        if($is_have_blur == 'yes'){ ?>
+          <div class="alert alert-danger" role="alert">
+            <a href="<?php echo base_url() ?>Pricing"><b><u>Subscribe Now</u></b></a> to see and download your blur will.
+          </div>
+          <?php
+        }
+        ?>
+
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
@@ -38,8 +40,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <li class="breadcrumb-item active">Overview</li>
       </ol>
 
+
+
       <?php if($is_have_blur == 'yes'){
-        // echo $user_id;
         $get_blur_will = $this->Will_Model->get_blur_will_info($user_id);
 
         if($get_blur_will){ ?>
@@ -50,55 +53,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             foreach ($personal_data as $personal_data) {
             }
           ?>
-          <!-- <table class="table table-bordered" width="100%" cellspacing="0">
-            <thead>
-              <tr>
-                <th>Will Id</th>
-                <th>Full name</th>
-                <th>Mobile</th>
-                <th>Email</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><?php echo $personal_data->will_id; ?></td>
-                <td><?php echo $personal_data->full_name; ?></td>
-                <td><?php echo $personal_data->mobile_no; ?></td>
-                <td><?php echo $personal_data->email; ?></td>
-                <td>
-                  <table >
-                    <tbody style="border: none!important;">
-                      <tr style="border: none!important;">
-                        <td class="p-0" style="border: none!important;">
-                          <?php if($is_will_complete == 0){ ?>
-                            <form action="<?php echo base_url() ?>Will_controller/load_login_start_info" method="post">
-                              <input type="hidden" name="will_id" value="<?php echo $personal_data->will_id; ?>">
-                              <button type="submit" style="width:90px;" class="btn btn-sm btn-primary no-margin">Edit Will</button></p>
-                            </form>
-                          <?php  } ?>
-                        </td>
-                        <td class="p-0" style="border: none!important;">
-                          <form target="_blank" id="pdf" class="" action="<?php echo base_url() ?>Pdf_controller/pdf" method="post">
-                            <input type="hidden" name="will_id" value="<?php echo $personal_data->will_id; ?>">
-                            <button type="submit" style="width:90px;" class="btn btn-info btn-sm">View Will</button></p>
-                          </form>
-                        </td>
-                        <td class="p-0" style="border: none!important;">
-                          <a class="btn btn-Warning btn-sm" href="<?php echo base_url() ?>Pricing" style="color:white;">Subscribe</a>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-              For download complete pdf <a href="<?php echo base_url() ?>Pricing"><b>Subscribe Now</b></a>
-            </li>
-          </ol> -->
         <?php
         }
         ?>
@@ -110,8 +64,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </li>
           </ol>
       <?php } ?>
-
-
       <?php
       $incomplete_will = 0;
       $complete_will = 0;
@@ -147,16 +99,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </a>
           </div>
         </div>
-        <!-- <div class="col-xl-3 col-sm-6 mb-3">
-          <div class="card text-white bg-success o-hidden ">
-            <div class="card-body">
-              <div class="mr-0"><span style="font-size:32px; font-weight:700;"><?php echo $user_data->incomplete_will; ?></span></div>
-            </div>
-            <a class="card-footer text-white clearfix small z-1" href="<?php echo base_url(); ?>Will_controller/make_will_view">
-              <span class="float-left">Remaining Will!</span>
-            </a>
-          </div>
-        </div> -->
         <div class="col-xl-3 col-sm-6 mb-3">
           <div class="card text-white bg-danger o-hidden ">
             <div class="card-body">
@@ -164,7 +106,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <span style="font-size:28px; font-weight:700;"><?php echo $user_data->user_subscription_end_date; ?></span>
               </div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
+            <a class="card-footer text-white clearfix small z-1">
               <span class="float-left">End Subcription Date</span>
             </a>
           </div>
@@ -173,14 +115,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          Will List
+          Will List A
         </li>
       </ol>
       <!-- DataTables Example -->
       <div class="card mb-3">
         <div class="card-body">
           <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <!--  -->
+            <table class="table table-bordered will-list" id="dataTable" cellspacing="0">
               <thead>
                 <tr>
                   <th>#</th>
@@ -188,6 +131,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <th>Full name</th>
                   <th>Mobile</th>
                   <th>Email</th>
+                  <th>End Date</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -196,6 +140,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                    $i = 0;
                    foreach ($will_list2 as $will_list2) {
                    $i++;
+                   $will_rem_updations = $will_list2->will_rem_updations;
+                   $updation_last_date = $will_list2->updation_last_date;
+                   $is_will_complete = $will_list2->is_will_complete;
+                   $is_blur = $will_list2->is_blur;
+                   $today = date('d-m-Y');
                 ?>
                 <tr>
                   <td><?php echo $i; ?></td>
@@ -203,19 +152,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <td><?php echo $will_list2->full_name; ?></td>
                   <td><?php echo $will_list2->mobile_no; ?></td>
                   <td><?php echo $will_list2->email; ?></td>
+                  <td>
+                    <?php
+                      $is_blur = $will_list2->is_blur;
+                        if($will_rem_updations == 0 && $is_blur == 'no'){
+                          echo "Expired";
+                        }
+                        else if($will_rem_updations == 0 && $is_blur == 'yes'){
+                          echo "Not Subsrcribed";
+                        }
+                        else if(strtotime($updation_last_date) < strtotime($today)){
+                          echo "Expired";
+                        }
+                        else{
+                          echo $will_list2->updation_last_date;
+                        }
+                     ?>
+                  </td>
                   <td class="p-0">
                         <table >
                           <tbody style="border: none!important;">
                             <tr style="border: none!important;">
                               <?php
-                              $will_rem_updations = $will_list2->will_rem_updations;
-                              $updation_last_date = $will_list2->updation_last_date;
-                              $is_will_complete = $will_list2->is_will_complete;
-                              $is_blur = $will_list2->is_blur;
-                              $today = date('d-m-Y');
+
                               if($will_rem_updations > 0 && strtotime($updation_last_date) >= strtotime($today)){ ?>
                                 <td class="p-0" style="border: none!important;">
-                                  <button type="button" style="width:90px;" class="btn btn-sm btn-primary no-margin" data-toggle="modal" data-target="#exampleModal_<?php echo $i; ?>"><i style="color:#ffffff !important;" class="fa fa-edit"></i> Edit Will</button>
+                                  <button type="button"  class="btn btn-sm btn-primary no-margin" data-toggle="modal" data-target="#exampleModal_<?php echo $i; ?>"><i style="color:#ffffff !important;" class="fa fa-edit"></i> Edit Will</button>
                                 </td>
                                   <!-- Modal -->
                                   <div class="modal fade" id="exampleModal_<?php echo $i; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -243,11 +205,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     </div>
                                   </div>
                                   <!-- // Modal -->
-                                <?php } else if($is_will_complete == 0 && $is_blur == 'yes'){ ?>
+                                <?php }
+                                else if($is_blur == 'yes'){
+                                // else if($is_will_complete == 0 && $is_blur == 'yes'){ ?>
                                   <td class="p-0" style="border: none!important;">
                                     <form action="<?php echo base_url() ?>Will_controller/load_login_start_info" method="post">
                                       <input type="hidden" name="will_id" value="<?php echo $personal_data->will_id; ?>">
-                                      <button type="submit" style="width:90px;" class="btn btn-sm btn-primary no-margin">Edit Will</button></p>
+                                      <button type="submit" style="width:90px;" class="btn btn-sm btn-primary no-margin"><i style="color:#ffffff !important;" class="fa fa-edit"></i> Edit Will</button></p>
                                     </form>
                                   </td>
                                 <?php } else{ ?>
@@ -267,7 +231,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     						  </form>
                                 </td>
                               <?php  }
-                                else if($is_will_complete == 1 && $is_blur == 'yes'){ ?>
+                              else if($is_will_complete == 1 && $is_blur == 'yes'){ ?>
                                   <td class="p-0" style="border: none!important; color:red;">
                                     <form target="_blank" id="form_will_pdf" action="<?php echo base_url(); ?>Pdf_controller/pdf" method="post">
                           							 <input type="hidden" name="will_id" id="will_id" value="<?php echo $will_list2->will_id; ?>" />
@@ -282,6 +246,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </td>
                               <?php } ?>
                               <?php if($is_blur == 'yes'){ ?>
+
                                 <td class="p-0" style="border: none!important;">
                                   <a class="btn btn-warning btn-sm" href="<?php echo base_url() ?>Pricing" style="color:white;">Subscribe</a>
                                 </td>
@@ -464,5 +429,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   });
   </script>
 <?php } ?>
+
 </body>
 <?php } ?>

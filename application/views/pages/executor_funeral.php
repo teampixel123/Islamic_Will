@@ -68,7 +68,8 @@
 more than one-third of the surplus of his estate after payment of funeral
 expenses and debts. It means a third of the estate of the testator as is left after
 the payment of the funeral expenses, other charges and debts of the deceased
-(testator). He/she can give their 100% share to any person." class="fa fa-question-circle-o"></i></h3>
+(testator). He/she can give their 100% share to any person." class="fa fa-question-circle-o"></i>
+</h3>
             <div class="form-group" id="">
               <div class="row text-center">
                 <label class="col-md-3 text-right" for="exampleInputEmail1">Share To: </label>
@@ -118,15 +119,87 @@ the payment of the funeral expenses, other charges and debts of the deceased
                 </div>
               </div>
             </div>
+
+            <div id="guardian_div" style="display:none">
+              <div class="form-group" id="">
+                <div class="row text-center">
+                  <label class="col-md-3 text-right" for="exampleInputEmail1">Guardian Name</label>
+                  <div class="col-md-2 pr-0">
+                    <select class="form-control form-control-sm" name="guardian_name_title" id="guardian_name_title">
+          					  <option>Mr.</option>
+                      <option>Ms.</option>
+            					 <option>Mrs.</option>
+          				 </select>
+                  </div>
+                  <div class="col-md-7">
+                    <input type="text" name="guardian_name" id="guardian_name" class="text required title-case form-control form-control-sm minor clear"  aria-describedby="emailHelp" >
+                  </div>
+                </div>
+              </div>
+              <div class="form-group" id="">
+                <div class="row text-center">
+                  <label class="col-md-3 text-right" for="exampleInputEmail1">Guardian Age</label>
+                  <div class="col-md-6">
+                    <input type="number" name="guardian_age" id="guardian_age" class="required form-control form-control-sm minor clear age-major"  aria-describedby="emailHelp" >
+                  </div>
+                </div>
+              </div>
+              <div class="form-group" id="">
+                <div class="row text-center">
+                  <label class="col-md-3 text-right" for="exampleInputEmail1">Address</label>
+                  <div class="col-md-9">
+                    <input type="text" name="guardian_address" id="guardian_address" class="address required form-control form-control-sm minor clear"  aria-describedby="emailHelp" >
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" name="add_opt_guardian" id="add_opt_guardian">
+                  <label class="custom-control-label" for="add_opt_guardian">Add optional guardian</label>
+                </div>
+              </div>
+            </div>
+
+            <div id="opt_guardian_div" style="display:none">
+              <div class="form-group" id="">
+                <div class="row text-center">
+                  <label class="col-md-3 text-right" for="exampleInputEmail1">Optional Guardian Name</label>
+                  <div class="col-md-2 pr-0">
+                    <select class=" title-case form-control form-control-sm" name="opt_guardian_name_title" id="opt_guardian_name_title">
+          					  <option>Mr.</option>
+                      <option>Ms.</option>
+            					 <option>Mrs.</option>
+          				 </select>
+                  </div>
+                  <div class="col-md-7">
+                    <input type="text" name="opt_guardian_name" id="opt_guardian_name" class="text required form-control form-control-sm minor clear"  aria-describedby="emailHelp" >
+                  </div>
+                </div>
+              </div>
+              <div class="form-group" id="">
+                <div class="row text-center">
+                  <label class="col-md-3 text-right" for="exampleInputEmail1">Guardian Age</label>
+                  <div class="col-md-6">
+                    <input type="number" name="opt_guardian_age" id="opt_guardian_age" class="required form-control form-control-sm minor clear age-major"  aria-describedby="emailHelp" >
+                  </div>
+                </div>
+              </div>
+              <div class="form-group" id="">
+                <div class="row text-center">
+                  <label class="col-md-3 text-right" for="exampleInputEmail1">Address</label>
+                  <div class="col-md-9">
+                    <input type="text" name="opt_guardian_address" id="opt_guardian_address" class="address required form-control form-control-sm minor clear"  aria-describedby="emailHelp" >
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div class="form-group" id="">
               <div class="row text-center">
                 <label class="col-md-3 text-right" for="exampleInputEmail1">Percentage of Share: </label>
-
                 <div class="col-md-6">
-
         					<input type="number" data-toggle="tooltip" name="share_percentage" id="share_percentage" class="required form-control form-control-sm clear redTip" placeholder="%" >
-
-
                 </div>
                 <label id="rem_per" class="col-md-3 text-left"></label>
               </div>

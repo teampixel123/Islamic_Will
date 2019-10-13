@@ -264,13 +264,13 @@ foreach($family_data as $family_data ) {
     $html .= $Daughter_num.'.&nbsp;'.$family_data->family_person_name.',&nbsp;Age: '.$family_data->family_person_age.'<br>';
   }
 
-  if($family_data->relationship == 'Grand Father'){
-    $html .= '<br><br><span style="font-size:14; font-family: times, serif;" ><b>My Grand Father</b></span><br><br>';
+  if($family_data->relationship == 'Grandfather'){
+    $html .= '<br><br><span style="font-size:14; font-family: times, serif;" ><b>My Grandfather</b></span><br><br>';
     $html .= ''.$family_data->family_person_name.',&nbsp;Age: '.$family_data->family_person_age.'<br>';
   }
 
-  if($family_data->relationship == 'Grand Mother'){
-    $html .= '<br><br><span style="font-size:14; font-family: times, serif;" ><b>My Grand Mother</b></span><br><br>';
+  if($family_data->relationship == 'Grandmother'){
+    $html .= '<br><br><span style="font-size:14; font-family: times, serif;" ><b>My Grandmother</b></span><br><br>';
     $html .= ''.$family_data->family_person_name.',&nbsp;Age: '.$family_data->family_person_age.'<br>';
   }
 
@@ -304,7 +304,7 @@ foreach($excutor_data as $excutor_data ) {
 		$html .= '
       <p style="font-size:12; font-family: times, serif;">
       	1. &nbsp;&nbsp;&nbsp;&nbsp;I  hereby nominate and appoint, namely '.$excutor_data->e_name_title.' '.$excutor_data->executor_name.' Age - &nbsp;'.$excutor_data->executor_age.', presently Residing
-      	at &nbsp;'.$excutor_data->executor_address.',  to be the executor of my Last Will and Testament.
+      	at &nbsp;'.$excutor_data->executor_address.',  to be the executor of my Islamic Last Will and Testament.
       </p>
     ';
 	}
@@ -313,7 +313,7 @@ foreach($excutor_data as $excutor_data ) {
   		<p style="font-size:12; font-family: times, serif;">
   			2. &nbsp;&nbsp;&nbsp;&nbsp;In the event that '.$frist_executor.' will be unwilling or unable to act as executor, I nominate and appoint,
   			namely '.$excutor_data->e_name_title.' '.$excutor_data->executor_name.'&nbsp;Age - &nbsp;'.$excutor_data->executor_age.', presently Residing  at &nbsp;'.$excutor_data->executor_address.'&nbsp;&nbsp;to be executor of this
-  			 my Last Will and Testament. I direct no bond or surety for any bond be required for my executor in the performance of '.$key_2.' duties.
+  			 my Islamic Last Will and Testament. I direct no bond or surety for any bond be required for my executor in the performance of '.$key_2.' duties.
   		</p>
     ';
 	}
@@ -364,12 +364,15 @@ $html .= '
 		I direct that my '.$exec_title_sm.' apply first, the assets of my estate to the payment of all my legal debts - including such expenses incurred by my
 		last illness and burial as well as the expenses of administrating my estate. I direct the said '.$exec_title_sm.' to pay any "obligations to Allah" (Huquq Allah) which are binding on me, such as unpaid Zakaat, Kaffarat, or unperformed pilgrimage (Hajj).
 	</p>
-
 	<p style="font-size:12; text-indent:40px; font-family: times, serif;">
+	';
+	
+
+	$html .= "
 		 I direct that all inheritance, state, and succession taxes (including interest and other penalties thereon) payable by reason of my death shall be paid out of and be charged generally against the principal of my
-		 residuary estate (Any portion of the testator &apos s estate that is not specifically devised to someone in the will), without reimbursement from any person; except that this provision shall not be construed as a waiver of any right which my '.$exec_title_sm.' has,
+		 residuary estate (Any portion of the testator's estate that is not specifically devised to someone in the will), without reimbursement from any person; except that this provision shall not be construed as a waiver of any right which my ".$exec_title_sm." has,
 		  by law or otherwise, to claim reimbursement for any such taxes which become payable on account of property, if any, over which I have a power of appointment.
-	<br><br></p>';
+	<br><br></p>";
 
 
 
@@ -563,11 +566,27 @@ if($personal_data->marital_status == 0){
 }
 
 $html .= '
-  <h1 style="text-align:center; font-family: times, serif; " >  SCHEDULE A – MAWARITH (INHERITANCE) </h1>
-  <p style="font-size:12; text-indent:50px; font-family: times, serif;" >
-    This schedule A is signed by me as a part of this Last Will and Testament.<br><br>
-  </p>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+    table, td, th {
+      border: 1px solid black;
+      text-align:center;
 
+    }
+</style>
+    <table>
+    <tr>
+    <td>
+    
+    <span style="text-align:center; font-family: times, serif; font-size:16;"><br><b>SCHEDULE A – MAWARITH (INHERITANCE)</b></span><br>
+    <span style="text-align:center; font-family: times, serif; font-size:12;">This schedule A is signed by me as a part of this Islamic Last Will and Testament.</span><br>
+
+    </td>
+    </tr>
+    </table>
+    
   <p style="font-size:12;  font-family: times, serif;" >
     b. &nbsp;&nbsp;&nbsp;&nbsp;I direct that no part of the residue and remainder of my estate shall be inherited by any non-Muslim relative,
     whether he/she is a kin or an in-law, spouse, parent or child. I further direct or ordain that any non-Muslim relative be disregarded and
@@ -656,7 +675,7 @@ else{ $his_her = 'her';  $he_she = 'she'; $him_her = 'her'; }
 $html .= '<h1 style="text-align:center; font-family: times, serif;" >'.$heading++.'.  WITNESSES</h1>
 <p style="font-size:12; font-family: times, serif;" >
  We hereby certify that the foregoing instrument was on the date thereof, signed, Published, and declared by
- the Testator '.$personal_data->name_title.' '.$personal_data->full_name.', as and for '.$his_her.' Last Will and Testament, in our presence, who at
+ the Testator '.$personal_data->name_title.' '.$personal_data->full_name.', as and for '.$his_her.' Islamic Last Will and Testament, in our presence, who at
  '.$his_her.' request and in '.$his_her.' Presence, and in the presence of each other, have hereunto subscribed our names as
  Witnesses thereto, believing said Testator at the time of the signing to be of sound mind and memory.
 

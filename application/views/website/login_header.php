@@ -41,7 +41,7 @@
                                 <ul class="dropdown">
                                   <li><a href="<?php echo base_url(); ?>User_controller/user_dashboard">- Dashboard</a></li>
                                   <li><a href="<?php echo base_url(); ?>Will_controller/make_will_view">- Make A Will</a></li>
-                                  <li><a href="<?php echo base_url() ?>User_controller/will_list">- Will List</a></li>
+                                  <!-- <li><a href="<?php echo base_url() ?>User_controller/will_list">- Will List</a></li> -->
                                   <li><a href="<?php echo base_url(); ?>User_controller/profile">- Profile</a></li>
                                   <li><a href="<?php echo base_url(); ?>Will_controller/logout">- Logout</a></li>
                                 </ul>

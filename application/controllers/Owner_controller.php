@@ -43,9 +43,15 @@
       if($is_login){
         $owner_id = $this->session->userdata('owner_id');
         $data['owner_data'] = $this->Owner_Model->get_owner_data($owner_id);
+
         $data['all_will_count'] = $this->Owner_Model->all_will_count();
         $data['complete_will_count'] = $this->Owner_Model->complete_will_count();
         $data['incomplete_will_count'] = $this->Owner_Model->incomplete_will_count();
+
+        $data['all_will_no_user_count'] = $this->Owner_Model->all_will_no_user_count();
+        $data['complete_will_no_user_count'] = $this->Owner_Model->complete_will_no_user_count();
+        $data['incomplete_will_no_user_count'] = $this->Owner_Model->incomplete_will_no_user_count();
+
         $this->load->view('admin/owner_dashboard',$data);
       }
       else{
@@ -61,6 +67,20 @@
         $data['owner_data'] = $this->Owner_Model->get_owner_data($owner_id);
         $data['will_list'] = $this->Owner_Model->get_will_list();
         $this->load->view('admin/will_list',$data);
+      }
+      else{
+        header('Location:'.base_url().'Owner-Login');
+      }
+    }
+
+    public function will_list_without_user(){
+      $this->session->unset_userdata('will_id');
+      $is_login = $this->session->userdata('owner_is_login');
+      if($is_login){
+        $owner_id = $this->session->userdata('owner_id');
+        $data['owner_data'] = $this->Owner_Model->get_owner_data($owner_id);
+        $data['will_list'] = $this->Owner_Model->get_will_list_without_user();
+        $this->load->view('admin/will_list_without_user',$data);
       }
       else{
         header('Location:'.base_url().'Owner-Login');

@@ -16,18 +16,15 @@
                 <!-- Single Contact Information -->
                 <div class="col-12 col-sm-6 col-lg-6">
                     <div class="single-contact-information mb-80">
-                        <i class="icon_phone"></i>
+                        <i class="phone-icon"></i>
                         <h4>Phone</h4>
                         <p style="text-align:center;"> (+91)-9545-465-656</p>
                     </div>
                 </div>
-
-
-
                 <!-- Single Contact Information -->
                 <div class="col-12 col-sm-6 col-lg-6">
                     <div class="single-contact-information mb-80">
-                        <i class="icon_mail"></i>
+                        <i class="mail-icon"></i>
                         <h4>Email</h4>
                         <p style="text-align:center;" >info@easywillindia.com</p>
                     </div>

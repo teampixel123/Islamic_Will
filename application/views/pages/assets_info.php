@@ -208,7 +208,7 @@
                 <!-- <div id="amount" class="hide_num" >Some amount: </div> -->
               </label>
       				<div class="col-md-9" id="acc_num">
-      					<input type="text" name="account_number" id="account_number" class="policy_number required form-control form-control-sm clear"  aria-describedby="emailHelp" >
+      					<input type="text" name="account_number" id="account_number" class="address required form-control form-control-sm clear"  aria-describedby="emailHelp" >
                 <input type="text" style="display:none;" name="account_number2" id="account_number2" class="only_number required form-control form-control-sm clear"  aria-describedby="emailHelp" >
               </div>
             </div>
@@ -261,7 +261,7 @@
             <div class="row text-center">
               <label class="col-md-3 text-right" for="exampleInputEmail1">FD Receipt No  </label>
       				<div class="col-md-9">
-      					<input type="number" name="fd_recipt_No" id="fd_recipt_No" class="only_number required form-control form-control-sm clear"  aria-describedby="emailHelp" >
+      					<input type="number" name="fd_recipt_No" id="fd_recipt_No" class="address required form-control form-control-sm clear"  aria-describedby="emailHelp" >
               </div>
             </div>
           </div>

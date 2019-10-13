@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="col-12 col-lg-8 ">
-                    <div class="about--us--content mb-80">
+                    <div class="about--us--content mb-4">
                         <p class="indent"><a href="#" target="_blank"> <strong>www.islamicwill.com </strong></a> started with object to provide user friendly and cost effective online platform for
                            easy documentation to fulfil your needs. Our central principles are the understanding that each user’s
                             interests are unique and striving to tailor best solutions that best serve each user. We help Muslims

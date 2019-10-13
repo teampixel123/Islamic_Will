@@ -7,7 +7,8 @@
       $this->db->from('tbl_will w');
       $this->db->join('tbl_personal_info p','w.will_id = p.will_id','left');
       $this->db->where('w.will_user_id',$user_id);
-      $this->db->order_by("FIELD(w.is_blur,'yes','no')",'',FALSE);
+      $this->db->order_by("FIELD(w.is_blur,'yes','no')",'',TRUE);
+      $this->db->order_by("w.id",'DESC');
       $query = $this->db->get();
       //$last = $this->db->last_query();
       $result = $query->result();

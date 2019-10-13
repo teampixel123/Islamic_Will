@@ -4,7 +4,7 @@ if($is_login){
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <?php
-  $page = 'Users List';
+  $page = 'user_list';
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">

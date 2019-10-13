@@ -145,7 +145,7 @@ include('include/head.php');
 <?php } ?>
   <div class="container personal_data_dispaly " >
   	<div class="" >
-			<form style="font-family: 'Roboto Slab'!important ; font-size:12px;">
+			<form  style="font-family: 'Roboto Slab'!important ; font-size:12px;">
 		      <div class="row text-center">
 		        <label class="col-md-4 text-right" for="exampleInputEmail1" >Name :</label>
 						<label class="col-md-8 text-left" id="lbl_name" style="font-weight:600;"></label>
@@ -159,6 +159,11 @@ include('include/head.php');
 						<label class="col-md-8 text-left" id="lbl_email"></label>
 		      </div>
 			</form>
+			<form action="<?php echo base_url() ?>Will_controller/load_login_start_info" method="post" class="text-center">
+				<input type="hidden" name="will_id" value="<?php echo $start_will_data['will_id']; ?>">
+				<button type="submit" class="btn btn-sm btn-primary no-margin"><i style="color:#ffffff !important;" class="fa fa-edit"></i> Edit</button></p>
+			</form>
+			  <!-- <button type="submit" id="save_personal_data" class="btn btn-primary btn-sm" style="float:right;">Edit</button> -->
     </div>
   </div>
 </div>

@@ -19,7 +19,6 @@
           </div>
         </div>
       </div>
-
       <div class="form-group">
         <div class="row text-center">
           <div class="col-md-4 text-right">
@@ -34,54 +33,49 @@
           </div>
         </div>
       </div>
-
         <!--display:none;  -->
-
-          <div id="otp_div" style="display:none">
-          <!-- <input type="hidden" name="user_id" class="form-control" id="user_id"> -->
-          <div class="form-group" >
-            <div class="row text-center">
-              <div class="col-md-4 text-right">
-                <label class="log" for="exampleInputEmail1">Enter Security Code </label>
-              </div>
-              <div class="col-md-5">
-                <input type="text" name="otp" class="form-control" id="otp" aria-describedby="emailHelp" style="width:90%;" >
-                <p id="error_invalide_otp" style="color:red; display:none" class="text-left invalide">*Invalide Security Code</p>
-                <p id="" style="color:green;" class="text-left "> Security Code send to your Mobile/Email. </p>
-                <!-- <p id="error_expired_otp" style="color:red; display:none" class="text-left invalide">*Invalide Expired</p> -->
-              </div>
-            </div>
+      <div id="otp_div" style="display:none">
+        <!-- <input type="hidden" name="user_id" class="form-control" id="user_id"> -->
+      <div class="form-group" >
+        <div class="row text-center">
+          <div class="col-md-4 text-right">
+            <label class="log" for="exampleInputEmail1">Enter Security Code </label>
           </div>
-
-          <div class="form-group" >
-            <div class="row text-center">
-              <div class="col-md-4 text-right">
-                <label class="log" for="exampleInputEmail1">Enter New Passworld</label>
-              </div>
-              <div class="col-md-5">
-                <input type="text" name="user_password" class="form-control" id="user_password" aria-describedby="emailHelp" style="width:90%;" >
-                <p id="error_passwor" style="color:red;" class="text-left invalide">*Please Enter New Password </p>
-                <!-- <p id="error_expired_otp" style="color:red; display:none" class="text-left invalide">*Invalide Expired</p> -->
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12 text-center">
-                <button type="button" id="btn_login" class="btn btn-success btn-md lbtn ">submit</button>
-            </div>
+          <div class="col-md-5">
+            <input type="text" name="otp" class="form-control" id="otp" aria-describedby="emailHelp" style="width:90%;" >
+            <p id="error_invalide_otp" style="color:red; display:none" class="text-left invalide">*Invalide Security Code</p>
+            <p id="" style="color:green;" class="text-left "> Security Code send to your Mobile/Email. </p>
+            <!-- <p id="error_expired_otp" style="color:red; display:none" class="text-left invalide">*Invalide Expired</p> -->
           </div>
         </div>
-<div class="text-center">
-  <button type="button" id="btn_register" class="btn  btn-primary btn-md">Register</button>
-</div>
-
-      <div id="send_otp_div" class="row">
-      	<div class="col-md-12 text-center">
-      	</div>
-
       </div>
-    </form>
-<!-- </div> -->
+
+      <div class="form-group" >
+        <div class="row text-center">
+          <div class="col-md-4 text-right">
+            <label class="log" for="exampleInputEmail1">Enter New Password</label>
+          </div>
+          <div class="col-md-5">
+            <input type="text" name="user_password" class="form-control" id="user_password" aria-describedby="emailHelp" style="width:90%;" >
+            <p id="error_passwor" style="color:red;" class="text-left invalide">*Please Enter New Password </p>
+            <!-- <p id="error_expired_otp" style="color:red; display:none" class="text-left invalide">*Invalide Expired</p> -->
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center">
+            <button type="button" id="btn_login" class="btn akame-btn2 active btn-md lbtn ">submit</button>
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <button type="button" id="btn_register" class="btn akame-btn active btn-md">Register</button>
+    </div>
+    <div id="send_otp_div" class="row">
+    	<div class="col-md-12 text-center">
+    	</div>
+    </div>
+  </form>
 </div>
 
 <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js" type="text/javascript"></script>

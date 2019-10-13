@@ -18,13 +18,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="container-fluid">
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
-          <li class="breadcrumb-item mt-2">
+          <li class="breadcrumb-item">
             <a href="#">Dashboard</a>
           </li>
-          <li class="breadcrumb-item active  mt-2">Registered Will List</li>
-          <!-- <li class=""> -->
-            <a href="<?php echo base_url(); ?>Owner_controller/will_list_without_user" class="btn btn-primary ml-auto">Non Registered Will List</a>
-          <!-- </li> -->
+          <li class="breadcrumb-item active">Non Registered Will List</li>
+          <a href="<?php echo base_url(); ?>Owner_controller/will_list" class="btn btn-primary ml-auto">Registered Will List</a>
+
         </ol>
         <!-- Icon Cards-->
         <!-- Area Chart Example-->
@@ -32,7 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-table"></i>
-            Registered Will List</div>
+            Non Registered Will List</div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

@@ -495,14 +495,18 @@
       $input_relationship = $this->input->post('relationship');
 
       $posts = $this->Table_Model->getAllFamilyMembarDataAjax($will_id);
-      $i = 0; $j = 0; $k=0;
+      $get_personal_data = $this->Will_Model->get_personal_data($will_id);
+      foreach ($get_personal_data as $get_personal_data) {
+        $gender = $get_personal_data->gender;
+      }
+      $i = 0; $j = 0; $k=0; $s=0;
       foreach ($posts as $posts) {
         $relationship = $posts->relationship;
         if($relationship == 'Father'){ $i++; }
         if($relationship == 'Mother'){ $j++; }
-        if($relationship == 'Grand Father'){ $k++; }
+        if($relationship == 'Grandfather'){ $k++; }
+        if($relationship == 'Spouse'){ $s++; }
       }
-
 
         if($i==1 && $input_relationship == 'Father'){
           $error = 'max_father';
@@ -510,8 +514,14 @@
         elseif($j==4 && $input_relationship == 'Mother'){
           $error = 'max_mother';
         }
-        elseif ($k==1 && $input_relationship == 'Grand Father') {
+        elseif ($k==2 && $input_relationship == 'Grandfather') {
           $error = 'max_grand_father';
+        }
+        elseif ($gender=='Male' && $s==4 && $input_relationship == 'Spouse') {
+          $error = 'max_spouse';
+        }
+        elseif ($gender=='Female' && $s==1 && $input_relationship == 'Spouse') {
+          $error = 'max_spouse';
         }
         else{
           $member_data = array(
@@ -630,6 +640,16 @@
           'share_address' => $this->input->post('share_address'),
           'share_age' => $this->input->post('share_age'),
           'share_percentage' => $this->input->post('share_percentage'),
+
+          'guardian_name_title' => $this->input->post('guardian_name_title'),
+          'guardian_name' => $this->input->post('guardian_name'),
+          'guardian_age' => $this->input->post('guardian_age'),
+          'guardian_address' => $this->input->post('guardian_address'),
+          'opt_guardian_name_title' => $this->input->post('opt_guardian_name_title'),
+          'opt_guardian_name' => $this->input->post('opt_guardian_name'),
+          'opt_guardian_age' => $this->input->post('opt_guardian_age'),
+          'opt_guardian_address' => $this->input->post('opt_guardian_address'),
+
         );
         $this->Will_Model->save_share_distribution($share_data);
         $posts = $this->Table_Model->getAllShareDataAjax($will_id);
@@ -676,6 +696,14 @@
           'share_address' => $this->input->post('share_address'),
           'share_age' => $this->input->post('share_age'),
           'share_percentage' => $this->input->post('share_percentage'),
+          'guardian_name_title' => $this->input->post('guardian_name_title'),
+          'guardian_name' => $this->input->post('guardian_name'),
+          'guardian_age' => $this->input->post('guardian_age'),
+          'guardian_address' => $this->input->post('guardian_address'),
+          'opt_guardian_name_title' => $this->input->post('opt_guardian_name_title'),
+          'opt_guardian_name' => $this->input->post('opt_guardian_name'),
+          'opt_guardian_age' => $this->input->post('opt_guardian_age'),
+          'opt_guardian_address' => $this->input->post('opt_guardian_address'),
         );
         $this->Will_Model->update_share_distribution($share_id,$update_share_data);
         $posts = $this->Table_Model->getAllShareDataAjax($will_id);

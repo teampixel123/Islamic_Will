@@ -48,6 +48,17 @@ Last Update: Jan 19, 2018
   margin: 0;
   padding: 0; }
 
+  .rightb{
+      border-right: 1px solid #999 !important;
+  }
+  .first-color{
+    fill: #0D5294 !important;
+  }
+  @media only screen and (max-width: 470px) {
+    .rightb{
+        border-right: none !important;
+    }
+}
 body {
   /* font-family: "Times New Roma", sans-serif; */
   /* font-family: "medium-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif;" */
@@ -361,7 +372,7 @@ color: #1b334b;
   animation: load7 1.8s infinite ease-in-out; }
 
 .loader {
-  color: #0D5294;
+  color: #0F9C96;
   font-size: 6px;
   position: relative;
   -webkit-transform: translateZ(0);
@@ -409,7 +420,7 @@ color: #1b334b;
     margin-bottom: 15px;
     display: block;
     line-height: 1.2; }
-    @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    @media only screen and (min-width: 992px) and (max-width: 1300px) {
       .section-heading h2 {
         font-size: 36px; } }
     @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -435,7 +446,7 @@ color: #1b334b;
     opacity: 0.1;
     left: 0;
     font-weight: 700; }
-    @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    @media only screen and (min-width: 992px) and (max-width: 1300px) {
       .section-heading span {
         font-size: 70px; } }
     @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -450,13 +461,13 @@ color: #1b334b;
 /* :: 5.0 Backtotop CSS */
 #scrollUp {
   position: fixed;
-  right: 40px;
+  right: 30px;
   font-size: 20px;
   line-height: 40px;
   width: 40px;
   height: 40px;
-  bottom: 40px;
-  background-color: #0D5294;
+  bottom: 85px;
+  background-color: #0F9C96;
   color: #ffffff;
   text-align: center;
   -webkit-transition-duration: 500ms;
@@ -467,7 +478,7 @@ color: #1b334b;
   box-shadow: 0 2px 40px 8px rgba(15, 15, 15, 0.15);
   z-index: 15962536; }
   #scrollUp:focus, #scrollUp:hover {
-    background-color: #000000;
+    background-color: #0D5294;
     color: #ffffff; }
 
 /* :: 6.0 Buttons CSS */
@@ -495,11 +506,12 @@ color: #1b334b;
   -o-transition-duration: 500ms;
   transition-duration: 500ms;
   margin: 10px !important; }
+
   .akame-btn:focus, .akame-btn:hover {
-    border-color: #0D5294;
+    border-color: #0F9C96;
     font-weight: 400;
     font-size: 14px;
-    background-color: #0D5294;
+    background-color: #0F9C96;
     color: #ffffff;
     -webkit-box-shadow: 0 2px 40px 8px rgba(15, 15, 15, 0.15);
     box-shadow: 0 2px 40px 8px rgba(15, 15, 15, 0.15); }
@@ -508,11 +520,50 @@ color: #1b334b;
     background-color: #0D5294;
     color: #ffffff; }
     .akame-btn.active:focus, .akame-btn.active:hover {
-      border-color: #252525;
-      background-color: #252525;
+      border-color: #0F9C96;
+      background-color: #0F9C96;
       color: #ffffff;
-
     }
+
+    .akame-btn2 {
+      font-family: "Playfair Display", serif;
+      position: relative;
+      z-index: 1;
+      min-width: 150px;
+      height: 42px;
+      line-height: 40px;
+      font-size: 14px;
+      font-weight: 400;
+      display: inline-block;
+      padding: 0 35px;
+      text-align: center;
+      text-transform: uppercase;
+      background-color: transparent;
+      color: #252525;
+      border: 1px solid #252525;
+      border-radius: 60px;
+      -webkit-transition-duration: 500ms;
+      -o-transition-duration: 500ms;
+      transition-duration: 500ms;
+      margin: 10px !important; }
+
+    .akame-btn2:focus, .akame-btn2:hover {
+      border-color: #0D5294;
+      font-weight: 400;
+      font-size: 14px;
+      background-color: #0D5294;
+      color: #ffffff;
+      -webkit-box-shadow: 0 2px 40px 8px rgba(15, 15, 15, 0.15);
+      box-shadow: 0 2px 40px 8px rgba(15, 15, 15, 0.15); }
+    .akame-btn2.active {
+      border-color: #0F9C96;
+      background-color: #0F9C96;
+      color: #ffffff; }
+      .akame-btn2.active:focus, .akame-btn2.active:hover {
+        border-color: #0D5294;
+        background-color: #0D5294;
+        color: #ffffff;
+      }
 
 /* :: 7.0 Header CSS */
 .header-area {
@@ -569,7 +620,7 @@ color: #1b334b;
       font-size: 16px;
       text-transform: capitalize;
       color: #252525; }
-      @media only screen and (min-width: 992px) and (max-width: 1199px) {
+      @media only screen and (min-width: 992px) and (max-width: 1300px) {
         .classy-nav-container .classy-navbar .classynav ul li a {
           font-size: 14px; } }
       @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -579,7 +630,7 @@ color: #1b334b;
         .classy-nav-container .classy-navbar .classynav ul li a {
           font-size: 14px; } }
       .classy-nav-container .classy-navbar .classynav ul li a:focus, .classy-nav-container .classy-navbar .classynav ul li a:hover {
-        color: #0D5294; }
+        color: #0F9C96; }
     .classy-nav-container .classy-navbar .classynav ul li.cn-dropdown-item ul li a, .classy-nav-container .classy-navbar .classynav ul li.megamenu-item ul li a {
       font-size: 14px;
       text-transform: capitalize;
@@ -588,7 +639,7 @@ color: #1b334b;
       padding: 0 30px;
       color: #252525; }
       .classy-nav-container .classy-navbar .classynav ul li.cn-dropdown-item ul li a:focus, .classy-nav-container .classy-navbar .classynav ul li.cn-dropdown-item ul li a:hover, .classy-nav-container .classy-navbar .classynav ul li.megamenu-item ul li a:focus, .classy-nav-container .classy-navbar .classynav ul li.megamenu-item ul li a:hover {
-        color: #0D5294; }
+        color: #0F9C96; }
 
 .classynav ul li.active a {
   position: relative;
@@ -596,7 +647,7 @@ color: #1b334b;
   .classynav ul li.active a::before {
     width: 80%;
     height: 2px;
-    background-color: #0D5294;
+    background-color: #0F9C96;
     position: absolute;
     bottom: 0;
     left: 10%;
@@ -631,7 +682,7 @@ color: #1b334b;
   width: 100%;
   height: 720px;
   background-color: #ffffff; }
-  @media only screen and (min-width: 992px) and (max-width: 1199px) {
+  @media only screen and (min-width: 992px) and (max-width: 1300px) {
     .single-welcome-slide {
       height: 600px; } }
   @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -657,7 +708,7 @@ color: #1b334b;
         display: block;
         /* margin-bottom: 30px; */
         color: #252525; }
-      @media only screen and (min-width: 992px) and (max-width: 1199px) {
+      @media only screen and (min-width: 992px) and (max-width: 1300px) {
         .single-welcome-slide .welcome-text h2 {
           font-size: 60px; } }
       @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -667,7 +718,7 @@ color: #1b334b;
         .single-welcome-slide .welcome-text h2 {
           font-size: 36px; } }
 
-    @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    @media only screen and (min-width: 992px) and (max-width: 1300px) {
         .single-welcome-slide .welcome-text h3 {
               font-size: 25px; } }
 
@@ -800,7 +851,7 @@ color: #1b334b;
     font-size: 48px;
     display: block;
     margin-bottom: 30px; }
-    @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    @media only screen and (min-width: 992px) and (max-width: 1300px) {
       .akame-cta-area .cta-content h2 {
         font-size: 36px; } }
     @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -816,7 +867,7 @@ color: #1b334b;
     z-index: -1;
     top: 0;
     right: 0; }
-    @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    @media only screen and (min-width: 992px) and (max-width: 1300px) {
       .akame-cta-area .cta-thumbnail {
         width: 65%; } }
     @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -836,7 +887,7 @@ color: #1b334b;
   .breadcrumb-content h2 {
     font-size: 60px;
     margin-bottom: 15px; }
-    @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    @media only screen and (min-width: 992px) and (max-width: 1300px) {
       .breadcrumb-content h2 {
         font-size: 48px; } }
     @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -1184,7 +1235,7 @@ color: #1b334b;
     .akame-portfolio-single-item .overlay-content .overlay-text p {
       color: #ffffff;
       margin-bottom: 0; }
-      @media only screen and (min-width: 992px) and (max-width: 1199px) {
+      @media only screen and (min-width: 992px) and (max-width: 1300px) {
         .akame-portfolio-single-item .overlay-content .overlay-text p {
           font-size: 14px; } }
       @media only screen and (max-width: 767px) {
@@ -1334,8 +1385,10 @@ color: #1b334b;
   text-align: center;
   -webkit-transition-duration: 500ms;
   -o-transition-duration: 500ms;
-  transition-duration: 500ms; }
-  @media only screen and (min-width: 992px) and (max-width: 1199px) {
+  transition-duration: 500ms;
+  border-bottom: 4px solid #0F9C96 !important;
+}
+  @media only screen and (min-width: 992px) and (max-width: 1300px) {
     .single-service-area {
       padding: 30px 15px; } }
   .single-service-area img {
@@ -1347,12 +1400,12 @@ color: #1b334b;
     -webkit-transition-duration: 300ms;
     -o-transition-duration: 300ms;
     transition-duration: 300ms; }
-    @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    @media only screen and (min-width: 992px) and (max-width: 1300px) {
       .single-service-area h5 {
         font-size: 18px; } }
   .single-service-area p {
     margin-bottom: 0; }
-    @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    @media only screen and (min-width: 992px) and (max-width: 1300px) {
       .single-service-area p {
         font-size: 14px; } }
   .single-service-area:hover, .single-service-area:focus {
@@ -1382,7 +1435,7 @@ color: #1b334b;
       margin-left: auto;
       width: 555px;
       padding: 80px 0; }
-      @media only screen and (min-width: 992px) and (max-width: 1199px) {
+      @media only screen and (min-width: 992px) and (max-width: 1300px) {
         .single--service--item .service-content .service-text {
           width: 455px; } }
       @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -1396,7 +1449,7 @@ color: #1b334b;
         font-size: 42px;
         display: block;
         margin-bottom: 40px; }
-        @media only screen and (min-width: 992px) and (max-width: 1199px) {
+        @media only screen and (min-width: 992px) and (max-width: 1300px) {
           .single--service--item .service-content .service-text h2 {
             font-size: 36px; } }
         @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -1466,7 +1519,7 @@ color: #1b334b;
   .about-us-content h3 {
     display: block;
     margin-bottom: 15px; }
-    @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    @media only screen and (min-width: 992px) and (max-width: 1300px) {
       .about-us-content h3 {
         font-size: 24px; } }
     @media only screen and (max-width: 767px) {
@@ -1597,11 +1650,11 @@ color: #1b334b;}
     .testimonial-slides .owl-dots .owl-dot {
       width: 12px;
       height: 12px;
-      border: 1px solid #0D5294;
+      border: 1px solid #0F9C96;
       margin: 0 5px;
       border-radius: 50%; }
       .testimonial-slides .owl-dots .owl-dot.active {
-        background-color: #0D5294; }
+        background-color: #0F9C96; }
 
 .single-testimonial-slide {
   position: relative;
@@ -1629,7 +1682,7 @@ color: #1b334b;
     z-index: 1; }
     .single-testimonial-slide .ratings-name .ratings {
       font-size: 16px;
-      color: #e0cd3f; }
+      color: #0F9C96; }
     .single-testimonial-slide .ratings-name h5 {
       font-size: 18px;
       margin-bottom: 0; }
@@ -1674,7 +1727,7 @@ color: #1b334b;
       .single-booking-table .single-date-hours .booking-day h5 {
         font-weight: 600;
         font-family: "Open Sans", sans-serif; }
-        @media only screen and (min-width: 992px) and (max-width: 1199px) {
+        @media only screen and (min-width: 992px) and (max-width: 1300px) {
           .single-booking-table .single-date-hours .booking-day h5 {
             font-size: 16px; } }
         @media only screen and (max-width: 767px) {
@@ -1683,7 +1736,7 @@ color: #1b334b;
       .single-booking-table .single-date-hours .booking-day h6 {
         margin-bottom: 0;
         font-family: "Open Sans", sans-serif; }
-        @media only screen and (min-width: 992px) and (max-width: 1199px) {
+        @media only screen and (min-width: 992px) and (max-width: 1300px) {
           .single-booking-table .single-date-hours .booking-day h6 {
             font-size: 12px; } }
         @media only screen and (max-width: 767px) {
@@ -1704,7 +1757,7 @@ color: #1b334b;
         padding: 20px 5px;
         font-size: 24px;
         color: #252525; }
-        @media only screen and (min-width: 992px) and (max-width: 1199px) {
+        @media only screen and (min-width: 992px) and (max-width: 1300px) {
           .single-booking-table .single-date-hours .booking-hours span {
             font-size: 20px; } }
         @media only screen and (max-width: 767px) {
@@ -2081,8 +2134,8 @@ width: 19%;
     font-size: 20px!important;
     }
     svg{
-      width: 60px!important;
-      height: 60px!important;
+      /* width: 60px!important; */
+      /* height: 60px!important; */
     }
     .welcome-text{
       margin-bottom: 100px;
@@ -2141,5 +2194,21 @@ width: 19%;
   .copy{
     text-align: center;
   }
+
+
+/* Datta */
+/* .btn-first{
+  background-color: #0D5294 !important;
+}
+.btn-first:hover{
+  background-color: #0F9C96 !important;
+}
+.btn-second:hover{
+  background-color: #0D5294 !important;
+}
+.btn-second{
+  background-color: #0F9C96 !important;
+} */
+
 
 }

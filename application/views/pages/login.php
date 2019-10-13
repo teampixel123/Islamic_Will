@@ -50,10 +50,10 @@
             </div>
             <div class="row">
               <div class="col-md-12 text-center">
-                  <button type="button" id="btn_login" class="btn btn-success btn-md lbtn " style="width:15%;">Login</button>
+                  <button type="button" id="btn_login" class="btn akame-btn2 active btn-md lbtn " style="width:15%;">Login</button>
               </div>
               <div class="col-md-12">
-                <p class="text-center"><a href="<?php echo base_url(); ?>Login_controller/register_user_view" class="" > Register </a>|<a href="<?php echo base_url(); ?>Will_controller/forget_pass" class=""> Froget Password ? </a></p>
+                <p class="text-center"><a href="<?php echo base_url(); ?>Login_controller/register_user_view" class="" > Register </a>|<a href="<?php echo base_url(); ?>Will_controller/forget_pass" class=""> Forget Password ? </a></p>
               </div>
             </div>
             <br>

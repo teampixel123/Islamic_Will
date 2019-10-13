@@ -12,6 +12,7 @@
  <!-- bootstrap-datetimepicker -->
  <link href="<?php echo base_url();?>assets/datetimepicker3/bootstrap-datetimepicker.min.css" rel="stylesheet">
  <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+ 
  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
  <link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
  <link rel="shortcut icon" type="image/png" href="<?php echo base_url(); ?>assets/website/img/core-img/Easy_Islamic_Will_V3-06.png"/>

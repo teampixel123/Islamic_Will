@@ -60,8 +60,8 @@ $(document).ready(function(){
       $('#b_pin_code_div').show();
       $('#b_sum_amount_div').hide();
 
-      $('#account_number').hide();
-      $('#account_number2').show();
+      $('#account_number').show();
+      $('#account_number2').hide();
     }
     else if (assets_type == 'PPF') {
       $('.hide_num').hide();
